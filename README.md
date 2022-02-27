@@ -1,4 +1,4 @@
-# third-project
+# 어린이 카드놀이
 세번째 프로젝트의 목표
 
 - 리액트 네이티브를 사용해서 단어놀이앱 개발 및 배포
@@ -154,3 +154,42 @@ AsyncStorage
 1단계 : 사자라는 단어를 사회적으로 약속했는데 이미지와 단어를 보여주면서 매칭될 수있도록 돕는다
 
 2단계 : 단어만
+
+
+
+## 기획시각화
+
+1. 스플래쉬 스크린 / 로그인 스크린  
+![스크린샷 2022-02-27 오후 3 27 40](https://user-images.githubusercontent.com/81023768/155871234-0f408fdb-0abd-4880-a52e-8be2c3259db1.png)  
+
+2. 회원가입 스크린  
+![스크린샷 2022-02-27 오후 3 28 09](https://user-images.githubusercontent.com/81023768/155871250-c818f01d-4077-468b-8feb-6854db747e63.png)  
+
+3. 비회원 시작 스크린  
+![스크린샷 2022-02-27 오후 3 27 47](https://user-images.githubusercontent.com/81023768/155871263-3aa3f42c-9671-47e6-b02d-4741403f5076.png)  
+
+4. 메인메뉴  
+![스크린샷 2022-02-27 오후 3 28 17](https://user-images.githubusercontent.com/81023768/155871271-e86e2968-e89b-4def-b207-e32c3974ddcd.png)  
+
+5. 단어놀이 메인페이지  
+![스크린샷 2022-02-27 오후 3 28 22](https://user-images.githubusercontent.com/81023768/155871278-dc08c29b-c103-4156-b14b-7887f2a6d7a2.png)  
+
+
+6. 각종 버튼 눌렸을 때 이미지 변경    
+6-1 하트  
+![스크린샷 2022-02-27 오후 3 28 28](https://user-images.githubusercontent.com/81023768/155871288-dd603602-d541-4cd8-a78a-e85b9b1c7ac0.png)  
+6-2 체크   
+![스크린샷 2022-02-27 오후 3 28 34](https://user-images.githubusercontent.com/81023768/155871293-ea4ea5d7-fddf-4133-9936-858dfa12d03c.png)  
+6-3 랜덤  
+![스크린샷 2022-02-27 오후 3 28 41](https://user-images.githubusercontent.com/81023768/155871301-7d7c8c7c-77be-4bc8-bfa7-2b4527a12acf.png)  
+6-4 뒤로가기  
+![스크린샷 2022-02-27 오후 3 28 47](https://user-images.githubusercontent.com/81023768/155871304-d5fc8999-f1fc-4890-8048-c7b92511e075.png)  
+
+
+
+
+
+
+
+
+

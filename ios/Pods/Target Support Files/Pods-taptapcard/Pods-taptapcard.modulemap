@@ -1,0 +1,6 @@
+module Pods_taptapcard {
+  umbrella header "Pods-taptapcard-umbrella.h"
+
+  export *
+  module * { export * }
+}

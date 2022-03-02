@@ -9,7 +9,7 @@ const Shell = styled.View`
     align-items: center;
 `
 const Top = styled.View`
-    height: 70px;
+    height: 60px;
     flex-direction: row;
 `
 const GoBack = styled.View`
@@ -36,6 +36,7 @@ const StarView = styled.View`
     height: 60px;
     align-items: center;
     justify-content: center;
+    /* background-color: red; */
 `
 const StarViewImage = styled.ImageBackground`
     width: 70px;
@@ -82,18 +83,23 @@ const HeartRecordText = styled.Text`
 const CheckRecord = styled.View`
     flex:1;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    /* background-color: red; */
 `
 const CheckRecordImage = styled.ImageBackground`
     width: 24px;
     height: 24px;
-    margin-left: 5px;
-    margin-right: 5px;
-`
+    /* background-color: red; */
+    width: 40px;
+    `
 const CheckRecordText = styled.Text`
     color: green;
     font-size: 17px;
+    bottom: 1px;
+    /* width: 40px; */
+    /* margin-left: 5px; */
+    /* background-color: red; */
 `
 
 const Main = styled.View`
@@ -120,7 +126,7 @@ const RightBtnImage = styled.ImageBackground`
     height: 50px;
 `
 const CardSection = styled.View`
-    flex: 6;
+    flex: 12;
     background-color: #FED784;
     align-items: center;
     justify-content: center;
@@ -135,7 +141,8 @@ const CardSection = styled.View`
 const CardImgShell = styled.View`
     flex: 3;
     align-items: center;
-    width: 90%;
+    width: 70%;
+    /* background-color: red; */
 `
 const CardImg = styled.ImageBackground`
     flex: 1;
@@ -143,11 +150,12 @@ const CardImg = styled.ImageBackground`
 `
 const CardContents = styled.Pressable`
     flex: 1;
+    /* background-color: red; */
 `
 const CardName = styled.View`
     flex:1;
     align-items: center;
-    top: 20px;
+    /* top: 20px; */
 `
 const CardNameText = styled.Text`
     font-size: 65px;
@@ -172,9 +180,9 @@ const HeartBtnImage = styled.ImageBackground`
 const CheckBtn = styled.Pressable`
     position: absolute;
     right: 5px;
-    bottom: 0px;
-    width: 60px;
-    height: 60px;
+    top: 5px;
+    width: 40px;
+    height: 40px;
 `
 const CheckBtnImage = styled.ImageBackground`
     width: 100%;
@@ -201,13 +209,9 @@ const Word = ({navigation}) => {
             </Menu>
         </Top>
         <Record>
-            <HeartRecord>
-                <HeartRecordImage source={require("../asset/images/Heart2.png")}></HeartRecordImage>
-                <HeartRecordText>123</HeartRecordText>
-            </HeartRecord>
             <CheckRecord>
                 <CheckRecordImage source={require("../asset/images/Check.png")} resizeMode="contain"></CheckRecordImage>
-                <CheckRecordText>80/80</CheckRecordText>
+                <CheckRecordText>80 / 80</CheckRecordText>
             </CheckRecord>
         </Record>
         <Main>
@@ -215,6 +219,9 @@ const Word = ({navigation}) => {
                 <LeftBtnImage source={require("../asset/images/LeftArrow.png")}></LeftBtnImage>
             </LeftBtn>
             <CardSection> 
+                <CheckBtn onPress={() => console.log('채크버튼')}>
+                    <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
+                </CheckBtn>
                 <CardImgShell>
                     <CardImg source={require("../asset/images/Lion1.png")} resizeMode="contain"></CardImg>
                 </CardImgShell>
@@ -223,14 +230,6 @@ const Word = ({navigation}) => {
                         <CardNameText>사자</CardNameText>
                     </CardName>
                 </CardContents>
-                <CardBtn>
-                    <HeartBtn onPress={() => console.log('하트버튼')}>
-                        <HeartBtnImage source={require("../asset/images/EmptyHeart.png")}></HeartBtnImage>
-                    </HeartBtn>
-                    <CheckBtn onPress={() => console.log('채크버튼')}>
-                        <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
-                    </CheckBtn>
-                </CardBtn>
             </CardSection>
             <RightBtn onPress={() => console.log('오른쪽')}>
                 <RightBtnImage source={require("../asset/images/RightArrow.png")}></RightBtnImage>

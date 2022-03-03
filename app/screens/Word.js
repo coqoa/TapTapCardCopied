@@ -1,7 +1,49 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React, {useState, useEffect} from "react";
+import { Text, View, ActivityIndicator, FlatList, ScrollView,Dimensions } from "react-native";
 import styled from "styled-components";
 import { SafeAreaView } from 'react-native-safe-area-context';
+import wordCard from '../asset/json/wordCard.json'
+
+
+
+const cardData = [
+    {
+        "id" : 1, 
+        "image" : "../asset/images/Lion1.png", 
+        "name" : "사자"
+    }, 
+    {
+        "id" : 2, 
+        "image" : "../asset/images/Lion1.png", 
+        "name" : "강아지"
+    }, 
+    {
+        "id" : 3, 
+        "image" : "../asset/images/Lion1.png", 
+        "name" : "고양이"
+    }, 
+    {
+        "id" : 4, 
+        "image" : "../asset/images/Lion1.png", 
+        "name" : "쥐"
+    }, 
+    {
+        "id" : 5, 
+        "image" : "../asset/images/Lion1.png", 
+        "name" : "소"
+    }, 
+    {
+        "id" : 6, 
+        "image" : "../asset/images/Lion1.png", 
+        "name" : "말"
+    }, 
+    
+] 
+
+
+
+const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 const Shell = styled.View`
     flex: 1;
@@ -21,7 +63,7 @@ const GoBackBtn = styled.Pressable`
     width: 60px;
     height: 60px;
 `
-const GoBackBtnImage = styled.ImageBackground`
+const GoBackBtnImage = styled.Image`
     width: 100%;
     height: 100%;
 `
@@ -126,13 +168,14 @@ const RightBtnImage = styled.ImageBackground`
     height: 50px;
 `
 const CardSection = styled.View`
-    flex: 12;
+//Diemension쓰기위해 인라인 style 적용
+`
+const Card = styled.View`
+    flex: 1;
     background-color: #FED784;
     align-items: center;
     justify-content: center;
-    margin-left:10px;
-    margin-right:10px;
-    margin-bottom:20px;
+    margin:30px
     border: 1px solid black;
     border-radius: 15px;
     box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
@@ -144,7 +187,7 @@ const CardImgShell = styled.View`
     width: 70%;
     /* background-color: red; */
 `
-const CardImg = styled.ImageBackground`
+const CardImg = styled.Image`
     flex: 1;
     width: 100%;
 `
@@ -188,8 +231,27 @@ const CheckBtnImage = styled.ImageBackground`
     width: 100%;
     height: 100%;
 `
+const Loader = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Word = ({navigation}) => {
-    return(
+    const [loading, setLoading] = useState(true);
+
+    // const [wordData, setWordData] = useState(wordCard);
+
+    useEffect(() => {
+    }, []);
+    return( 
+    //     loading ? (
+    //     <Loader>
+    //       <ActivityIndicator />
+    //     </Loader>
+    // ) : (
+        
+        
     <Shell>
         <Top>
             <GoBack>
@@ -215,27 +277,84 @@ const Word = ({navigation}) => {
             </CheckRecord>
         </Record>
         <Main>
-            <LeftBtn onPress={() => console.log('왼쪽')}>
-                <LeftBtnImage source={require("../asset/images/LeftArrow.png")}></LeftBtnImage>
-            </LeftBtn>
-            <CardSection> 
-                <CheckBtn onPress={() => console.log('채크버튼')}>
-                    <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
-                </CheckBtn>
-                <CardImgShell>
-                    <CardImg source={require("../asset/images/Lion1.png")} resizeMode="contain"></CardImg>
-                </CardImgShell>
-                <CardContents onPress={() => console.log('사자')}>
-                    <CardName>
-                        <CardNameText>사자</CardNameText>
-                    </CardName>
-                </CardContents>
-            </CardSection>
-            <RightBtn onPress={() => console.log('오른쪽')}>
-                <RightBtnImage source={require("../asset/images/RightArrow.png")}></RightBtnImage>
-            </RightBtn>
+            {/* <ScrollView
+            horizontal
+            pagingEnabled
+            >
+            {wordData.map((item, index)=>{
+                console.log("item = ",item.image)
+                return(
+                    <CardSection style={{width:SCREEN_WIDTH}}> 
+                    <Card>
+                        <CheckBtn onPress={() => console.log('채크버튼')}>
+                            <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
+                        </CheckBtn>
+                        <CardImgShell>
+                            <CardImg source={require("../asset/images/Lion1.png")} resizeMode="contain"></CardImg>
+                        </CardImgShell>
+                        <CardContents onPress={() => console.log(item.name)}>
+                            <CardName>
+                                <CardNameText>{item.name}</CardNameText>
+                            </CardName>
+                        </CardContents>
+                    </Card>
+                </CardSection>
+                )
+            })}
+            </ScrollView> */}
+            <FlatList
+            horizontal
+            pagingEnabled
+            data={cardData}
+            renderItem = {({item})=>(
+                
+                // <View  style={{width:SCREEN_WIDTH,height:SCREEN_HEIGHT, backgroundColor:"lightgray"}}>
+                //     <Text>{item.id}</Text>
+                //     <Text>{item.title}</Text>
+                //     <Text>{item.artist}</Text>
+                //     <Text>{item.day}</Text>
+                // </View>
+                <CardSection style={{width:SCREEN_WIDTH}}> 
+                    <Card>
+                        <CheckBtn onPress={() => console.log('채크버튼')}>
+                            <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
+                        </CheckBtn>
+                        <CardImgShell>
+                            <CardImg source={require("../asset/images/Lion1.png")} resizeMode="contain"></CardImg>
+                            {/* <CardImg source={require(item.image)} resizeMode="contain"></CardImg> */}
+                        </CardImgShell>
+                        <CardContents onPress={() => console.log(item.name)}>
+                            <CardName>
+                                <CardNameText>{item.name}</CardNameText>
+                            </CardName>
+                        </CardContents>
+                    </Card>
+                </CardSection>
+            )
+        }
+            />
+            {/* // <LeftBtn onPress={() => console.log('왼쪽')}>
+            //     <LeftBtnImage source={require("../asset/images/LeftArrow.png")}></LeftBtnImage>
+            // </LeftBtn>
+            // <CardSection> 
+            //     <CheckBtn onPress={() => console.log('채크버튼')}>
+            //         <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
+            //     </CheckBtn>
+            //     <CardImgShell>
+            //         <CardImg source={require("../asset/images/Lion1.png")} resizeMode="contain"></CardImg>
+            //     </CardImgShell>
+            //     <CardContents onPress={() => console.log('사자')}>
+            //         <CardName>
+            //             <CardNameText>사자</CardNameText>
+            //         </CardName>
+            //     </CardContents>
+            // </CardSection>
+            // <RightBtn onPress={() => console.log('오른쪽')}>
+            //     <RightBtnImage source={require("../asset/images/RightArrow.png")}></RightBtnImage>
+            // </RightBtn> */}
         </Main>
     </Shell>
     )
+    // )
 }
 export default Word;

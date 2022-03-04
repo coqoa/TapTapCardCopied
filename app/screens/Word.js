@@ -3,47 +3,9 @@ import { Text, View, ActivityIndicator, FlatList, ScrollView,Dimensions } from "
 import styled from "styled-components";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { wordCard } from "../asset/data/wordCard";
+import { colors } from "../component/color";
+import { WordCardDefault1, WordCardDefault2 } from "../component/wordCardDefault";
 
-
-
-// const cardData = [
-//     {
-//         "id" : 1, 
-//         "image" : "../asset/images/Lion1.png", 
-//         "name" : "사자"
-//     }, 
-//     {
-//         "id" : 2, 
-//         "image" : "../asset/images/Lion1.png", 
-//         "name" : "강아지"
-//     }, 
-//     {
-//         "id" : 3, 
-//         "image" : "../asset/images/Lion1.png", 
-//         "name" : "고양이"
-//     }, 
-//     {
-//         "id" : 4, 
-//         "image" : "../asset/images/Lion1.png", 
-//         "name" : "쥐"
-//     }, 
-//     {
-//         "id" : 5, 
-//         "image" : "../asset/images/Lion1.png", 
-//         "name" : "소"
-//     }, 
-//     {
-//         "id" : 6, 
-//         "image" : "../asset/images/Lion1.png", 
-//         "name" : "말"
-//     }, 
-    
-// ] 
-
-
-
-const SCREEN_WIDTH = Dimensions.get("window").width;
-const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 const Shell = styled.View`
     flex: 1;
@@ -78,7 +40,6 @@ const StarView = styled.View`
     height: 60px;
     align-items: center;
     justify-content: center;
-    /* background-color: red; */
 `
 const StarViewImage = styled.ImageBackground`
     width: 70px;
@@ -100,10 +61,7 @@ const MenuBtnImage = styled.ImageBackground`
     height: 100%;
 `
 
-const Record = styled.View`
-    height: 30px;
-    flex-direction: row;
-`
+
 const HeartRecord = styled.View`
     flex-direction: row;
     flex:1;
@@ -121,28 +79,26 @@ const HeartRecordText = styled.Text`
     margin-left: 5px;
     margin-right: 5px;
 `
-
-const CheckRecord = styled.View`
-    flex:1;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    /* background-color: red; */
-`
-const CheckRecordImage = styled.ImageBackground`
-    width: 24px;
-    height: 24px;
-    /* background-color: red; */
-    width: 40px;
-    `
-const CheckRecordText = styled.Text`
-    color: green;
-    font-size: 17px;
-    bottom: 1px;
-    /* width: 40px; */
-    /* margin-left: 5px; */
-    /* background-color: red; */
-`
+// const Record = styled.View`
+//     height: 30px;
+//     flex-direction: row;
+// `
+// const CheckRecord = styled.View`
+//     flex:1;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
+// `
+// const CheckRecordImage = styled.ImageBackground`
+//     width: 24px;
+//     height: 24px;
+//     width: 40px;
+//     `
+// const CheckRecordText = styled.Text`
+//     color: green;
+//     font-size: 17px;
+//     bottom: 1px;
+// `
 
 const Main = styled.View`
     flex: 5;
@@ -167,44 +123,44 @@ const RightBtnImage = styled.ImageBackground`
     width: 50px;
     height: 50px;
 `
-const CardSection = styled.View`
-//Diemension쓰기위해 인라인 style 적용
-`
-const Card = styled.View`
-    flex: 1;
-    /* background-color: #FED784; */
-    align-items: center;
-    justify-content: center;
-    margin:30px;
-    border: 1px solid black;
-    border-radius: 15px;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
-`
 
-const CardImgShell = styled.View`
-    flex: 3;
-    align-items: center;
-    width: 70%;
-    /* background-color: red; */
-`
-const CardImg = styled.Image`
-    flex: 1;
-    width: 100%;
-`
-const CardContents = styled.Pressable`
-    flex: 1;
-    /* background-color: red; */
-`
-const CardName = styled.View`
-    flex:1;
-    align-items: center;
-    /* top: 20px; */
-`
-const CardNameText = styled.Text`
-    font-size: 65px;
-    font-weight: 900;
-    color: #585858;
-`
+// wordCardDefault 컴포넌트화 하면서 옮김
+// const SCREEN_WIDTH = Dimensions.get("window").width;
+// const SCREEN_HEIGHT = Dimensions.get("window").height;
+// const CardSection = styled.View`
+// //Diemension쓰기위해 인라인 style 적용
+// `
+// const Card = styled.View`
+//     flex: 1;
+//     align-items: center;
+//     justify-content: center;
+//     margin:30px;
+//     border: 1px solid black;
+//     border-radius: 15px;
+//     box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+// `
+
+// const CardImgShell = styled.View`
+//     flex: 3;
+//     align-items: center;
+//     width: 70%;
+// `
+// const CardImg = styled.Image`
+//     flex: 1;
+//     width: 100%;
+// `
+// const CardContents = styled.Pressable`
+//     flex: 1;
+// `
+// const CardName = styled.View`
+//     flex:1;
+//     align-items: center;
+// `
+// const CardNameText = styled.Text`
+//     font-size: 65px;
+//     font-weight: 900;
+//     color: ${colors.REALDARKGRAY};
+// `
 const CardBtn = styled.View`
     height: 60px;
     width: 100%;
@@ -270,12 +226,12 @@ const Word = ({navigation}) => {
                 </MenuBtn>
             </Menu>
         </Top>
-        <Record>
+        {/* <Record>
             <CheckRecord>
                 <CheckRecordImage source={require("../asset/images/Check.png")} resizeMode="contain"></CheckRecordImage>
                 <CheckRecordText>80 / 80</CheckRecordText>
             </CheckRecord>
-        </Record>
+        </Record> */}
         <Main>
             {/* <ScrollView
             horizontal
@@ -302,26 +258,20 @@ const Word = ({navigation}) => {
                 )
             })}
             </ScrollView> */}
-            <FlatList
+            <WordCardDefault1 />
+            {/* <WordCardDefault2 /> */}
+            {/* <FlatList
             horizontal
             pagingEnabled
             data={wordCard}
             renderItem = {({item})=>(
-                
-                // <View  style={{width:SCREEN_WIDTH,height:SCREEN_HEIGHT, backgroundColor:"lightgray"}}>
-                //     <Text>{item.id}</Text>
-                //     <Text>{item.title}</Text>
-                //     <Text>{item.artist}</Text>
-                //     <Text>{item.day}</Text>
-                // </View>
                 <CardSection style={{width:SCREEN_WIDTH}}> 
                     <Card style={{backgroundColor : item.bgColor}}>
-                        <CheckBtn onPress={() => console.log('채크버튼')}>
+                        <CheckBtn onPress={() => console.log(item.id)}>
                             <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
                         </CheckBtn>
                         <CardImgShell>
                             <CardImg source={item.image} resizeMode="contain"></CardImg>
-                            {/* <CardImg source={require(item.image)} resizeMode="contain"></CardImg> */}
                         </CardImgShell>
                         <CardContents onPress={() => console.log(item.name)}>
                             <CardName>
@@ -330,9 +280,9 @@ const Word = ({navigation}) => {
                         </CardContents>
                     </Card>
                 </CardSection>
-            )
-        }
-            />
+            )}
+            /> */}
+
             {/* // <LeftBtn onPress={() => console.log('왼쪽')}>
             //     <LeftBtnImage source={require("../asset/images/LeftArrow.png")}></LeftBtnImage>
             // </LeftBtn>

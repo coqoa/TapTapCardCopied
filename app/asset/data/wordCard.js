@@ -28,12 +28,40 @@ export const wordCard = [
         "image" : require("../images/Heart2.png"), 
         "bgColor" : "beige", 
         "name" : "소"
-    }, 
+    },
+
     {
         "id" : 6, 
+        "image" : require("../images/Heart2.png"), 
+        "bgColor" : "beige", 
+        "name" : "6"
+    }, 
+    {
+        "id" : 7, 
+        "image" : require("../images/Heart2.png"), 
+        "bgColor" : "beige", 
+        "name" : "7"
+    }, 
+    {
+        "id" : 8, 
+        "image" : require("../images/Heart2.png"), 
+        "bgColor" : "beige", 
+        "name" : "8"
+    }, 
+    {
+        "id" : 9, 
+        "image" : require("../images/Heart2.png"), 
+        "bgColor" : "beige", 
+        "name" : "9"
+    }, 
+
+
+    
+    {
+        "id" : 10000, 
         "image" :require("../images/Heart3.png"), 
         "bgColor" : "tomato", 
-        "name" : "말"
+        "name" : "마지막"
     }
 ] 
 

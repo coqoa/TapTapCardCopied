@@ -1,11 +1,17 @@
 import React from "react";
+import {createNativeStackNavigator} from "@react-navigation/native-stack" 
 import { Text, View } from "react-native";
 import styled from "styled-components/native";
 
-const Login = () => {
+const Login = ({navigation}) => {
     return(
-    <View>
-        <Text>Login</Text>
+    <View style={{flex: 1}}>
+        <View style={{flex:1, backgroundColor:"beige"}} >
+            <Text onPress={() => navigation.navigate("MenuStack")}>Login</Text>
+        </View>
+        <View style={{flex:1, backgroundColor:"tomato"}} >
+            <Text onPress={() => navigation.navigate("Signup")}>Signup</Text>
+        </View>
     </View>
     )
 }

@@ -1,7 +1,7 @@
-import React from "react";
+import React,{useState} from "react";
 import { Text, View } from "react-native";
 import styled from "styled-components";
-import Word from "./Word";
+import WordPlay from "./WordPlay";
 
 const Shell = styled.View`
     flex: 1;
@@ -12,6 +12,12 @@ const BG = styled.ImageBackground`
     height: 100%;
     justify-content: center;
     align-items: center;
+`
+const MenuBoxShell = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    /* border:1px solid red; */
 `
 const MenuBox = styled.TouchableOpacity`
     background-color: white;
@@ -26,16 +32,53 @@ const MenuBox = styled.TouchableOpacity`
 const MenuText = styled.Text`
     font-size: 35px;
 `
+
+const WordModalShell = styled.View`
+    /* flex: 1; */
+    width: 250px;
+    height: 200px;
+    position: absolute ;
+    border:1px solid gray;
+    z-index:1000 ;
+`
+const WordModalBtn = styled.Pressable`
+    flex: 1;
+    border: 1px solid green;
+`
+const WordModalText = styled.Text`
+    flex: 1;
+    background-color:red ;
+
+`
 const Menu = ({navigation}) => {
+
+    const [WordModalToggle, SetWordModalToggle] = useState(false);
+    const WordModalTogglePress = () =>{
+        SetWordModalToggle(!WordModalToggle)
+    }
     return(
     <Shell>
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
-        <MenuBox onPress={() => navigation.navigate(Word)}>
-            <MenuText>단어 놀이</MenuText>
-        </MenuBox>
-        <MenuBox>
-            <MenuText>수학 놀이</MenuText>
-        </MenuBox>
+        <MenuBoxShell>
+            {/* <MenuBox onPress={() => navigation.navigate('WordPlay')}> */}
+            <MenuBox onPress={() => WordModalTogglePress()}>
+                <MenuText>단어 놀이</MenuText>
+            </MenuBox>
+
+            {WordModalToggle ? (
+            <WordModalShell>
+                <WordModalBtn onPress={()=>WordModalTogglePress()}>
+                    <WordModalText>Text말고 별이미지로 바꾸자</WordModalText>
+                </WordModalBtn>
+            </WordModalShell>
+            ):null}
+            
+            
+            
+            <MenuBox>
+                <MenuText>수학 놀이</MenuText>
+            </MenuBox>
+        </MenuBoxShell>
     </BG>
     </Shell>
     )

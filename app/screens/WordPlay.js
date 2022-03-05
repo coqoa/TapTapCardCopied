@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { wordCard } from "../asset/data/wordCard";
 import { colors } from "../component/color";
-import { WordCardDefault1, WordCardDefault2 } from "../component/wordCardDefault";
+import { WordCard1LV, WordCard2LV } from "../component/CardDefault";
 
 
 const Shell = styled.View`
@@ -62,23 +62,23 @@ const MenuBtnImage = styled.ImageBackground`
 `
 
 
-const HeartRecord = styled.View`
-    flex-direction: row;
-    flex:1;
-    justify-content: flex-end;
-    align-items: center;
-`
-const HeartRecordImage = styled.ImageBackground`
-    width: 22px;
-    height: 22px;
-    bottom: 1px;
-`
-const HeartRecordText = styled.Text`
-    color: red;
-    font-size: 17px;
-    margin-left: 5px;
-    margin-right: 5px;
-`
+// const HeartRecord = styled.View`
+//     flex-direction: row;
+//     flex:1;
+//     justify-content: flex-end;
+//     align-items: center;
+// `
+// const HeartRecordImage = styled.ImageBackground`
+//     width: 22px;
+//     height: 22px;
+//     bottom: 1px;
+// `
+// const HeartRecordText = styled.Text`
+//     color: red;
+//     font-size: 17px;
+//     margin-left: 5px;
+//     margin-right: 5px;
+// `
 // const Record = styled.View`
 //     height: 30px;
 //     flex-direction: row;
@@ -104,31 +104,32 @@ const Main = styled.View`
     flex: 5;
     flex-direction: row;
 `
-const LeftBtn = styled.Pressable`
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-`
-const LeftBtnImage = styled.ImageBackground`
-    width: 50px;
-    height: 50px;
-`
+// const LeftBtn = styled.Pressable`
+//     flex: 1;
+//     align-items: center;
+//     justify-content: center;
+// `
+// const LeftBtnImage = styled.ImageBackground`
+//     width: 50px;
+//     height: 50px;
+// `
 
-const RightBtn = styled.Pressable`
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-`
-const RightBtnImage = styled.ImageBackground`
-    width: 50px;
-    height: 50px;
-`
+// const RightBtn = styled.Pressable`
+//     flex: 1;
+//     align-items: center;
+//     justify-content: center;
+// `
+// const RightBtnImage = styled.ImageBackground`
+//     width: 50px;
+//     height: 50px;
+// `
 
 // wordCardDefault 컴포넌트화 하면서 옮김
 // const SCREEN_WIDTH = Dimensions.get("window").width;
 // const SCREEN_HEIGHT = Dimensions.get("window").height;
 // const CardSection = styled.View`
 // //Diemension쓰기위해 인라인 style 적용
+
 // `
 // const Card = styled.View`
 //     flex: 1;
@@ -161,39 +162,39 @@ const RightBtnImage = styled.ImageBackground`
 //     font-weight: 900;
 //     color: ${colors.REALDARKGRAY};
 // `
-const CardBtn = styled.View`
-    height: 60px;
-    width: 100%;
-`
-const HeartBtn = styled.Pressable`
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
-    width: 50px;
-    height: 50px;
-`
-const HeartBtnImage = styled.ImageBackground`
-    width: 100%;
-    height: 100%;
-`
-const CheckBtn = styled.Pressable`
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    width: 40px;
-    height: 40px;
-`
-const CheckBtnImage = styled.ImageBackground`
-    width: 100%;
-    height: 100%;
-`
+// const CardBtn = styled.View`
+//     height: 60px;
+//     width: 100%;
+// `
+// const HeartBtn = styled.Pressable`
+//     position: absolute;
+//     left: 10px;
+//     bottom: 10px;
+//     width: 50px;
+//     height: 50px;
+// `
+// const HeartBtnImage = styled.ImageBackground`
+//     width: 100%;
+//     height: 100%;
+// `
+// const CheckBtn = styled.Pressable`
+//     position: absolute;
+//     right: 5px;
+//     top: 5px;
+//     width: 40px;
+//     height: 40px;
+// `
+// const CheckBtnImage = styled.ImageBackground`
+//     width: 100%;
+//     height: 100%;
+// `
 const Loader = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
 `;
 
-const Word = ({navigation}) => {
+const Word1LV = ({navigation}) => {
     const [loading, setLoading] = useState(true);
 
     // const [wordData, setWordData] = useState(wordCard);
@@ -258,8 +259,8 @@ const Word = ({navigation}) => {
                 )
             })}
             </ScrollView> */}
-            <WordCardDefault1 />
-            {/* <WordCardDefault2 /> */}
+            {/* <WordCard1LV /> */}
+            <WordCard2LV />
             {/* <FlatList
             horizontal
             pagingEnabled
@@ -307,4 +308,4 @@ const Word = ({navigation}) => {
     )
     // )
 }
-export default Word;
+export default Word1LV;

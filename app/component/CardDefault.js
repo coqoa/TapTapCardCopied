@@ -41,7 +41,7 @@ const CardNameText = styled.Text`
     color: ${colors.REALDARKGRAY};
 `
 
-export const WordCardDefault1 = () => {
+export const WordCard1LV = () => {
 
     return(
     <FlatList
@@ -68,6 +68,7 @@ export const WordCardDefault1 = () => {
     />
     )
 }
+
 const Record = styled.View`
     height: 30px;
     flex-direction: row;
@@ -90,7 +91,7 @@ const CheckRecordText = styled.Text`
 `
 
 //레벨2 레벨3은 이런식으로 작성하면 될것같음
-export const WordCardDefault2 = () => {
+export const WordCard2LV = () => {
 
     return(
     <View>

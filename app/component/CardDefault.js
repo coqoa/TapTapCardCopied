@@ -4,7 +4,7 @@ import Easing from "react-native/Libraries/Animated/Easing";
 import styled from "styled-components"
 import { wordCard } from "../asset/data/wordCard";
 import { colors } from "./color";
-
+import { Ionicons } from "@expo/vector-icons";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -133,64 +133,126 @@ export const WordCard2LV = () => {
 const Container = styled.View`
     flex: 1;
     justify-content: center;
+    align-items: center;    
+`
+const ExamCard = styled(Animated.createAnimatedComponent(View))`
+    background-color: beige;
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    position: absolute;
+`
+const BtnContainer = styled.View`
+    flex-direction: row;
+    flex: 1;
+`
+
+const Btn = styled.TouchableOpacity`
+    margin: 0px 10px;
+`
+const CardContainer = styled.View`
+    flex: 3;
+    justify-content: center;
     align-items: center;
 `
-const Box = styled.View`
-    background-color: tomato;
-    width: 200px;
-    height: 200px;
-`
-const AnimatedBox = Animated.createAnimatedComponent(Box);
+// const AnimatedCard = Animated.createAnimatedComponent(ExamCard);
 
 export const WordCard3LV = () => {
-    const POSITION = useRef(
-        new Animated.ValueXY({
-            x: 0, 
-            y: 0,
-        })
-    ).current;
-    const borderRadius = POSITION.y.interpolate({
-        inputRange : [-300,300],
-        outputRange:[100,0]
-    })
-    const boxColor= POSITION.y.interpolate({
-        inputRange: [-300, 300],
-        outputRange:["rgb(255, 99, 71)", "rgb(71, 166,255)"]
-    })
+    //Values
+    const scale = useRef(new Animated.Value(1)).current;
+    const position = useRef(new Animated.Value(0)).current;
+    const rotation = position.interpolate({
+        inputRange:[-250, 250],
+        outputRange:["-15deg", "15deg"],
+        extrapolate: "clamp" // 범위에서 넘어가면 interpolate를 어떻게 처리할지 ?
+    });
+    const secondScale = position.interpolate({
+        inputRange:[-200, 0, 200],
+        outputRange:[1, 0.7, 1],
+        extrapolate:"clamp"
+    }) ;
+    //Animations
+    const onPressIn = Animated.spring(scale, {
+        toValue:1.05, 
+        useNativeDriver:true
+    });
+    const onPressOut = Animated.spring(scale, {
+        toValue:1, 
+        useNativeDriver:true
+    });
+    const goCenter = Animated.spring(position, {
+        toValue:0,
+        tension:100,
+        friction:5,
+        useNativeDriver:true,
+    });
+    const goLeft = Animated.spring(position, {
+        toValue:-400, 
+        useNativeDriver:true
+    });
+    const goRight = Animated.spring(position, {
+        toValue:400, 
+        useNativeDriver:true
+    });
+    //panResponder
     const panResponder = useRef(
         PanResponder.create({
-            onStartShouldSetPanResponder: () => true, //터치를 감지하겠다는 뜻
-            onPanResponderGrant:() => {
-                console.log("Touch Start")
-                POSITION.setOffset({
-                    x:POSITION.x._value,
-                    y:POSITION.y._value
-                })
+            onStartShouldSetPanResponder: () => true,
+            onPanResponderMove:(_,{dx}) => {
+                position.setValue(dx)
+
+            }, 
+            onPanResponderGrant: () => onPressIn.start(),
+            onPanResponderRelease: (_, {dx}) => {
+                if(dx < -200){
+                    // console.log("dismiss to the left")
+                    goLeft.start();
+                }else if(dx>200){
+                    // console.log("dismiss to the right")
+                    goRight.start();
+
+                }else 
+                Animated.parallel([onPressOut, goCenter]).start();
+                
             },
-            onPanResponderMove: (_,{dx, dy}) => {
-                // console.log("dx=",dx, "// dy=",dy);
-                console.log("Finger Moving")
-                POSITION.setValue({
-                    x: dx,
-                    y : dy
-                })
-            },
-            onPanResponderRelease: () => {
-                console.log("Touch Finished")
-                POSITION.flattenOffset();
-            },
-            
-        })).current;
+
+        })
+    ).current
+    const checkPress = () => {
+        goLeft.start();
+    }
+    const closePress = () =>{
+        goRight.start();
+    }
     return(
         <Container>
-            <AnimatedBox 
-            {...panResponder.panHandlers}
+            <CardContainer>
+                <ExamCard 
+                // {...panResponder.panHandlers}
                 style={{
-                    backgroundColor: boxColor,
-                    borderRadius,
-                    transform: POSITION.getTranslateTransform(),
-                }} 
-            />
+                    transform:[{scale:secondScale}]
+                }}>
+                    <Ionicons name="beer" color="#192a56" size={98}/>
+                </ExamCard>
+                <ExamCard 
+                {...panResponder.panHandlers}
+                style={{
+                    transform:[{scale},{translateX:position}, {rotateZ:rotation}]
+                }}>
+                    <Ionicons name="pizza" color="#192a56" size={98}/>
+                </ExamCard>
+            </CardContainer>
+            <BtnContainer>
+                <Btn onPress={checkPress}>
+                    <Ionicons name="checkmark-circle" color="black" size={42} />
+                </Btn>
+                <Btn onPress={closePress}>
+                    <Ionicons name="close-circle" color="black" size={42} />
+                </Btn>
+            </BtnContainer>
         </Container>
     )
 }

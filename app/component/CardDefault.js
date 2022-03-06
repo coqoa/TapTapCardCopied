@@ -141,25 +141,51 @@ const Box = styled.View`
     height: 200px;
 `
 const AnimatedBox = Animated.createAnimatedComponent(Box);
+
 export const WordCard3LV = () => {
-    const [up, setUp] = useState(true)
-    const toggleUp = () => setUp(prev => !prev)
-    const POSITION =useRef(new Animated.ValueXY({x: 0, y: 300})).current;
+    const POSITION = useRef(
+        new Animated.ValueXY({
+            x: -SCREEN_WIDTH / 2 + 100, 
+            y: -SCREEN_HEIGHT / 2 + 100,
+        })
+    ).current;
+    
+    const topLeft =  Animated.timing(POSITION, {
+        toValue: {
+            x: -SCREEN_WIDTH / 2 + 100,
+            y: -SCREEN_HEIGHT / 2 + 100,
+        },
+        useNativeDriver: false,
+    });
+    const bottomLeft =  Animated.timing(POSITION, {
+        toValue: {
+            x: -SCREEN_WIDTH / 2 + 100,
+            y: SCREEN_HEIGHT / 2 - 100,
+        },
+        useNativeDriver: false,
+    });
+    const bottomRight =   Animated.timing(POSITION, {
+        toValue: {
+            x: SCREEN_WIDTH / 2 - 100,
+            y: SCREEN_HEIGHT / 2 - 100,
+        },
+        useNativeDriver: false,
+    });
+    const topRight =  Animated.timing(POSITION, {
+        toValue: {
+            x: SCREEN_WIDTH / 2 - 100,
+            y: -SCREEN_HEIGHT / 2 + 100,
+        },
+        useNativeDriver: false,
+    });
     const moveUp = () => {
-        Animated.timing(POSITION.y, {
-            toValue: up ? -300 : 300,
-            duration: 1000,
-            useNativeDriver: false,
-            
-        }).start(toggleUp);
+        Animated.loop(Animated.sequence([bottomLeft, bottomRight, topRight, topLeft])).start();
     }
+    
+
     const borderRadius = POSITION.y.interpolate({
         inputRange : [-300,300],
         outputRange:[100,0]
-    })
-    const rotation = POSITION.y.interpolate({
-        inputRange: [-300, 300],
-        outputRange:["-360deg", "360deg"]
     })
     const boxColor= POSITION.y.interpolate({
         inputRange: [-300, 300],
@@ -173,7 +199,7 @@ export const WordCard3LV = () => {
                 style={{
                     backgroundColor: boxColor,
                     borderRadius,
-                    transform: [{translateY: POSITION.y}, {rotateY: rotation}]
+                    transform: [...POSITION.getTranslateTransform()]
                 }} 
             />
             </Pressable>

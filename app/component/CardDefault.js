@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react"
-import {View, Dimensions, FlatList } from "react-native";
+import {View, Dimensions, FlatList, Animated, TouchableOpacity } from "react-native";
 import styled from "styled-components"
 import { wordCard } from "../asset/data/wordCard";
 import { colors } from "./color";
+
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -133,32 +134,37 @@ const Container = styled.View`
     justify-content: center;
     align-items: center;
 `
-const Box = styled.TouchableOpacity`
+const Box = styled.View`
     background-color: tomato;
     width: 200px;
     height: 200px;
 `
-
-
+const AnimatedBox = Animated.createAnimatedComponent(Box);
 export const WordCard3LV = () => {
-    const [y, setY] = useState(0);
-    const [intervalId, setIntervalId] = useState(null);
+    const Y = new Animated.Value(0)
     const moveUp = () => {
-        const id = setInterval(()=>setY(prev => prev+1), 10);
-        setIntervalId(id)
+        // Animated.spring(Y, {
+        //     toValue: -200,
+        //     // bounciness: 15,
+        //     tension: 100,
+        //     friction: 1,
+        //     useNativeDriver: true,
+        // }).start();
+        Animated.timing(Y, {
+            toValue: -200,
+            useNativeDriver: true,
+        }).start();
     }
-    useEffect(()=>{
-        if(y===200){
-            clearImmediate(intervalId)
-        }
-    },[y, intervalId])
+    Y.addListener(()=>console.log(Y))
     return(
         <Container>
-            <Box 
-            onPress={moveUp} 
-            style={{
-                transform: [{translateY: y}]
-            }} />
+            <TouchableOpacity onPress={moveUp} >
+            <AnimatedBox 
+                style={{
+                    transform: [{translateY: Y}]
+                }} 
+            />
+            </TouchableOpacity>
         </Container>
     // <View>
     //     <Record>

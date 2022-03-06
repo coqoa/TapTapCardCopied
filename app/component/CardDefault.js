@@ -157,28 +157,30 @@ export const WordCard3LV = () => {
         inputRange: [-300, 300],
         outputRange:["rgb(255, 99, 71)", "rgb(71, 166,255)"]
     })
-    const panResponder = useRef(PanResponder.create({
-        onStartShouldSetPanResponder: () => true, //터치를 감지하겠다는 뜻
-        onPanResponderMove: (_,{dx, dy}) => {
-            // console.log("dx=",dx, "// dy=",dy);
-            POSITION.setValue({
-                x: dx,
-                y : dy
-            })
-        },
-        onPanResponderRelease: () => {
-            Animated.spring(POSITION, {
-               toValue:{
-                   x:0,
-                   y:0,
-               },
-               bounciness:10,
-               useNativeDriver:false
-            }).start();
-        }
-
-
-    })).current;
+    const panResponder = useRef(
+        PanResponder.create({
+            onStartShouldSetPanResponder: () => true, //터치를 감지하겠다는 뜻
+            onPanResponderGrant:() => {
+                console.log("Touch Start")
+                POSITION.setOffset({
+                    x:POSITION.x._value,
+                    y:POSITION.y._value
+                })
+            },
+            onPanResponderMove: (_,{dx, dy}) => {
+                // console.log("dx=",dx, "// dy=",dy);
+                console.log("Finger Moving")
+                POSITION.setValue({
+                    x: dx,
+                    y : dy
+                })
+            },
+            onPanResponderRelease: () => {
+                console.log("Touch Finished")
+                POSITION.flattenOffset();
+            },
+            
+        })).current;
     return(
         <Container>
             <AnimatedBox 

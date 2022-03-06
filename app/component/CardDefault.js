@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useRef} from "react"
 import {View, Dimensions, FlatList, Animated, TouchableOpacity } from "react-native";
+import Easing from "react-native/Libraries/Animated/Easing";
 import styled from "styled-components"
 import { wordCard } from "../asset/data/wordCard";
 import { colors } from "./color";
@@ -141,7 +142,9 @@ const Box = styled.View`
 `
 const AnimatedBox = Animated.createAnimatedComponent(Box);
 export const WordCard3LV = () => {
-    const Y = new Animated.Value(0)
+    const [up, setUp] = useState(true)
+    const toggleUp = () => setUp(prev => !prev)
+    const Y =useRef(new Animated.Value(0)).current;
     const moveUp = () => {
         // Animated.spring(Y, {
         //     toValue: -200,
@@ -151,9 +154,10 @@ export const WordCard3LV = () => {
         //     useNativeDriver: true,
         // }).start();
         Animated.timing(Y, {
-            toValue: -200,
+            toValue: up? -200 : 200,
+            easing: Easing.elastic(1),
             useNativeDriver: true,
-        }).start();
+        }).start(toggleUp);
     }
     Y.addListener(()=>console.log(Y))
     return(

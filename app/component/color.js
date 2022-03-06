@@ -3,6 +3,7 @@ export const colors = {
     // NAVY: "#2E4772",
     PINK:"#FF5384",
     PASTELBLUE:"#3772E6",
+    LIGHTBLUE:"#c0dfff",
     NAVY: "#163976",
     TOMATO : "#FF8D8D",
     REALLIGHTGRAY : "#D0D0D0",

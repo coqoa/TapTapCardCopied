@@ -33,45 +33,45 @@ const MenuText = styled.Text`
     font-size: 35px;
 `
 
-const WordModalShell = styled.View`
-    /* flex: 1; */
-    width: 250px;
-    height: 200px;
-    position: absolute ;
-    border:1px solid gray;
-    z-index:1000 ;
-`
-const WordModalBtn = styled.Pressable`
-    flex: 1;
-    border: 1px solid green;
-`
-const WordModalText = styled.Text`
-    flex: 1;
-    background-color:red ;
+// const WordModalShell = styled.View`
+//     /* flex: 1; */
+//     width: 250px;
+//     height: 200px;
+//     position: absolute ;
+//     border:1px solid gray;
+//     z-index:1000 ;
+// `
+// const WordModalBtn = styled.Pressable`
+//     flex: 1;
+//     border: 1px solid green;
+// `
+// const WordModalText = styled.Text`
+//     flex: 1;
+//     background-color:red ;
 
-`
+// `
 const Menu = ({navigation}) => {
 
-    const [WordModalToggle, SetWordModalToggle] = useState(false);
-    const WordModalTogglePress = () =>{
-        SetWordModalToggle(!WordModalToggle)
-    }
+    // const [WordModalToggle, SetWordModalToggle] = useState(false);
+    // const WordModalTogglePress = () =>{
+    //     SetWordModalToggle(!WordModalToggle)
+    // }
     return(
     <Shell>
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
         <MenuBoxShell>
-            {/* <MenuBox onPress={() => navigation.navigate('WordPlay')}> */}
-            <MenuBox onPress={() => WordModalTogglePress()}>
+            <MenuBox onPress={() => navigation.navigate('WordPlay')}>
+            {/* <MenuBox onPress={() => WordModalTogglePress()}> */}
                 <MenuText>단어 놀이</MenuText>
             </MenuBox>
 
-            {WordModalToggle ? (
+            {/* {WordModalToggle ? (
             <WordModalShell>
                 <WordModalBtn onPress={()=>WordModalTogglePress()}>
                     <WordModalText>Text말고 별이미지로 바꾸자</WordModalText>
                 </WordModalBtn>
             </WordModalShell>
-            ):null}
+            ):null} */}
             
             
             

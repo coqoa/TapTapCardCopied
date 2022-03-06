@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import {View, Dimensions, FlatList } from "react-native";
 import styled from "styled-components"
 import { wordCard } from "../asset/data/wordCard";
@@ -98,7 +98,7 @@ export const WordCard2LV = () => {
         <Record>
             <CheckRecord>
                 <CheckRecordImage source={require("../asset/images/Check.png")} resizeMode="contain"></CheckRecordImage>
-                <CheckRecordText>80 / 80</CheckRecordText>
+                <CheckRecordText>2레벨</CheckRecordText>
             </CheckRecord>
         </Record>
 
@@ -125,5 +125,71 @@ export const WordCard2LV = () => {
             )}
         />
     </View>
+    )
+}
+
+const Container = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`
+const Box = styled.TouchableOpacity`
+    background-color: tomato;
+    width: 200px;
+    height: 200px;
+`
+
+
+export const WordCard3LV = () => {
+    const [y, setY] = useState(0);
+    const [intervalId, setIntervalId] = useState(null);
+    const moveUp = () => {
+        const id = setInterval(()=>setY(prev => prev+1), 10);
+        setIntervalId(id)
+    }
+    useEffect(()=>{
+        if(y===200){
+            clearImmediate(intervalId)
+        }
+    },[y, intervalId])
+    return(
+        <Container>
+            <Box 
+            onPress={moveUp} 
+            style={{
+                transform: [{translateY: y}]
+            }} />
+        </Container>
+    // <View>
+    //     <Record>
+    //         <CheckRecord>
+    //             <CheckRecordImage source={require("../asset/images/Check.png")} resizeMode="contain"></CheckRecordImage>
+    //             <CheckRecordText>3레벨</CheckRecordText>
+    //         </CheckRecord>
+    //     </Record>
+
+    //     <FlatList
+    //         horizontal
+    //         pagingEnabled
+    //         data={wordCard}
+    //         renderItem = {({item})=>(
+    //             <CardSection style={{width:SCREEN_WIDTH}}> 
+    //                 <Card>
+    //                     {/* <CheckBtn onPress={() => console.log(item.id)}>
+    //                         <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
+    //                     </CheckBtn> */}
+    //                     <CardImgShell>
+    //                         <CardImg source={item.image} resizeMode="contain"></CardImg>
+    //                     </CardImgShell>
+    //                     <CardContents onPress={() => console.log(item.name)}>
+    //                         <CardName>
+    //                             <CardNameText>{item.name}</CardNameText>
+    //                         </CardName>
+    //                     </CardContents>
+    //                 </Card>
+    //             </CardSection>
+    //         )}
+    //     />
+    // </View>
     )
 }

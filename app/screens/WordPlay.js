@@ -4,9 +4,17 @@ import styled from "styled-components";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { wordCard } from "../asset/data/wordCard";
 import { colors } from "../component/color";
-import { WordCard1LV, WordCard2LV } from "../component/CardDefault";
+import { WordCard1LV, WordCard2LV, WordCard3LV } from "../component/CardDefault";
+import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
+const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCREEN_HEIGHT = Dimensions.get("window").height;
 
+const Loader = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`;
 const Shell = styled.View`
     flex: 1;
     background-color: white;
@@ -17,7 +25,7 @@ const Top = styled.View`
     flex-direction: row;
 `
 const GoBack = styled.View`
-    flex: 1;
+    width: 60px;
     align-items: center;
     justify-content: center;
 `
@@ -29,9 +37,8 @@ const GoBackBtnImage = styled.Image`
     width: 100%;
     height: 100%;
 `
-
 const Star = styled.View`
-    flex: 3;
+    flex: 1;
     align-items: center;
     justify-content: center;
 `
@@ -45,12 +52,11 @@ const StarViewImage = styled.ImageBackground`
     width: 70px;
     height: 70px;
 `
-
-
 const Menu = styled.View`
-    flex: 1;
+    width: 60px;
     align-items: center;
     justify-content: center;
+    /* border: 1px solid red ; */
 `
 const MenuBtn = styled.Pressable`
     width: 60px;
@@ -60,252 +66,140 @@ const MenuBtnImage = styled.ImageBackground`
     width: 100%;
     height: 100%;
 `
+const MenuModalBg = styled.Pressable``
 
-
-// const HeartRecord = styled.View`
-//     flex-direction: row;
-//     flex:1;
-//     justify-content: flex-end;
-//     align-items: center;
-// `
-// const HeartRecordImage = styled.ImageBackground`
-//     width: 22px;
-//     height: 22px;
-//     bottom: 1px;
-// `
-// const HeartRecordText = styled.Text`
-//     color: red;
-//     font-size: 17px;
-//     margin-left: 5px;
-//     margin-right: 5px;
-// `
-// const Record = styled.View`
-//     height: 30px;
-//     flex-direction: row;
-// `
-// const CheckRecord = styled.View`
-//     flex:1;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-// `
-// const CheckRecordImage = styled.ImageBackground`
-//     width: 24px;
-//     height: 24px;
-//     width: 40px;
-//     `
-// const CheckRecordText = styled.Text`
-//     color: green;
-//     font-size: 17px;
-//     bottom: 1px;
-// `
-
+const MenuModalContainer = styled.View`
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+`
+const MenuModal = styled.View`
+    width: 90%;
+    height: 90%;
+`
+const LevelBtn = styled.Pressable`
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border-radius: 15px;
+    background-color: ${colors.LIGHTBLUE};
+    box-shadow: 0px 1px 3px ${colors.LIGHTBLUE};
+`
 const Main = styled.View`
     flex: 5;
     flex-direction: row;
 `
-// const LeftBtn = styled.Pressable`
-//     flex: 1;
-//     align-items: center;
-//     justify-content: center;
-// `
-// const LeftBtnImage = styled.ImageBackground`
-//     width: 50px;
-//     height: 50px;
-// `
 
-// const RightBtn = styled.Pressable`
-//     flex: 1;
-//     align-items: center;
-//     justify-content: center;
-// `
-// const RightBtnImage = styled.ImageBackground`
-//     width: 50px;
-//     height: 50px;
-// `
 
-// wordCardDefault 컴포넌트화 하면서 옮김
-// const SCREEN_WIDTH = Dimensions.get("window").width;
-// const SCREEN_HEIGHT = Dimensions.get("window").height;
-// const CardSection = styled.View`
-// //Diemension쓰기위해 인라인 style 적용
-
-// `
-// const Card = styled.View`
-//     flex: 1;
-//     align-items: center;
-//     justify-content: center;
-//     margin:30px;
-//     border: 1px solid black;
-//     border-radius: 15px;
-//     box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
-// `
-
-// const CardImgShell = styled.View`
-//     flex: 3;
-//     align-items: center;
-//     width: 70%;
-// `
-// const CardImg = styled.Image`
-//     flex: 1;
-//     width: 100%;
-// `
-// const CardContents = styled.Pressable`
-//     flex: 1;
-// `
-// const CardName = styled.View`
-//     flex:1;
-//     align-items: center;
-// `
-// const CardNameText = styled.Text`
-//     font-size: 65px;
-//     font-weight: 900;
-//     color: ${colors.REALDARKGRAY};
-// `
-// const CardBtn = styled.View`
-//     height: 60px;
-//     width: 100%;
-// `
-// const HeartBtn = styled.Pressable`
-//     position: absolute;
-//     left: 10px;
-//     bottom: 10px;
-//     width: 50px;
-//     height: 50px;
-// `
-// const HeartBtnImage = styled.ImageBackground`
-//     width: 100%;
-//     height: 100%;
-// `
-// const CheckBtn = styled.Pressable`
-//     position: absolute;
-//     right: 5px;
-//     top: 5px;
-//     width: 40px;
-//     height: 40px;
-// `
-// const CheckBtnImage = styled.ImageBackground`
-//     width: 100%;
-//     height: 100%;
-// `
-const Loader = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Word1LV = ({navigation}) => {
+const WordPlay = ({navigation}) => {
     const [loading, setLoading] = useState(true);
+    
+    const [cardSelector, setCardSelector] = useState();
+    const [modalToggle, setModalToggle] = useState(false);
+    
+    const cardCheck = (e) => {
+        setCardSelector(e);
+        setModalToggle(!modalToggle);
+        console.log(e);
+    }
 
-    // const [wordData, setWordData] = useState(wordCard);
-
+    const modalTogglePress = () => setModalToggle(!modalToggle)
     useEffect(() => {
+        // ((cardSelector == undefined) ? setCardSelector("word1LV") :null)
+        if(cardSelector == undefined) {
+            // setCardSelector("word1LV")
+            setCardSelector("word3LV")
+        } 
+        setLoading(false)
     }, []);
-    return( 
-    //     loading ? (
-    //     <Loader>
-    //       <ActivityIndicator />
-    //     </Loader>
-    // ) : (
-        
-        
-    <Shell>
-        <Top>
-            <GoBack>
-                <GoBackBtn onPress={() => navigation.goBack()}>
-                    <GoBackBtnImage source={require("../asset/images/goBack1.png")}></GoBackBtnImage>
-                </GoBackBtn>
-            </GoBack>
-            <Star>
-                <StarView>
-                    <StarViewImage source={require("../asset/images/Star.png")}></StarViewImage>
-                </StarView>
-            </Star>
-            <Menu>
-                <MenuBtn onPress={() => console.log('메뉴버튼')}>
-                    <MenuBtnImage source={require("../asset/images/MenuBar.png")}></MenuBtnImage>
-                </MenuBtn>
-            </Menu>
-        </Top>
-        {/* <Record>
-            <CheckRecord>
-                <CheckRecordImage source={require("../asset/images/Check.png")} resizeMode="contain"></CheckRecordImage>
-                <CheckRecordText>80 / 80</CheckRecordText>
-            </CheckRecord>
-        </Record> */}
-        <Main>
-            {/* <ScrollView
-            horizontal
-            pagingEnabled
-            >
-            {wordData.map((item, index)=>{
-                console.log("item = ",item.image)
-                return(
-                    <CardSection style={{width:SCREEN_WIDTH}}> 
-                    <Card>
-                        <CheckBtn onPress={() => console.log('채크버튼')}>
-                            <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
-                        </CheckBtn>
-                        <CardImgShell>
-                            <CardImg source={require("../asset/images/Lion1.png")} resizeMode="contain"></CardImg>
-                        </CardImgShell>
-                        <CardContents onPress={() => console.log(item.name)}>
-                            <CardName>
-                                <CardNameText>{item.name}</CardNameText>
-                            </CardName>
-                        </CardContents>
-                    </Card>
-                </CardSection>
-                )
-            })}
-            </ScrollView> */}
-            {/* <WordCard1LV /> */}
-            <WordCard2LV />
-            {/* <FlatList
-            horizontal
-            pagingEnabled
-            data={wordCard}
-            renderItem = {({item})=>(
-                <CardSection style={{width:SCREEN_WIDTH}}> 
-                    <Card style={{backgroundColor : item.bgColor}}>
-                        <CheckBtn onPress={() => console.log(item.id)}>
-                            <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
-                        </CheckBtn>
-                        <CardImgShell>
-                            <CardImg source={item.image} resizeMode="contain"></CardImg>
-                        </CardImgShell>
-                        <CardContents onPress={() => console.log(item.name)}>
-                            <CardName>
-                                <CardNameText>{item.name}</CardNameText>
-                            </CardName>
-                        </CardContents>
-                    </Card>
-                </CardSection>
-            )}
-            /> */}
+    // console.log(cardSelector) // word1LV
 
-            {/* // <LeftBtn onPress={() => console.log('왼쪽')}>
-            //     <LeftBtnImage source={require("../asset/images/LeftArrow.png")}></LeftBtnImage>
-            // </LeftBtn>
-            // <CardSection> 
-            //     <CheckBtn onPress={() => console.log('채크버튼')}>
-            //         <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
-            //     </CheckBtn>
-            //     <CardImgShell>
-            //         <CardImg source={require("../asset/images/Lion1.png")} resizeMode="contain"></CardImg>
-            //     </CardImgShell>
-            //     <CardContents onPress={() => console.log('사자')}>
-            //         <CardName>
-            //             <CardNameText>사자</CardNameText>
-            //         </CardName>
-            //     </CardContents>
-            // </CardSection>
-            // <RightBtn onPress={() => console.log('오른쪽')}>
-            //     <RightBtnImage source={require("../asset/images/RightArrow.png")}></RightBtnImage>
-            // </RightBtn> */}
-        </Main>
-    </Shell>
+    // function CardFunction() {
+
+    //     return{
+    //         if(cardSelector=="word1LV"){
+    //             <WordCard1LV />
+    //         }else if(cardSelector=="word2LV"){
+    //             <WordCard2LV />
+    //         }else if(cardSelector=="word3LV"){
+    //             <WordCard3LV />
+    //         }else{
+    //             <WordCard1LV />
+    //         }
+    //     }
+        
+    // }
+    return( 
+        loading ? (
+            <Loader>
+                <ActivityIndicator />
+            </Loader>
+        ) : (
+            <Shell>
+            <Top>
+                <GoBack>
+                    <GoBackBtn onPress={() => navigation.goBack()}>
+                        <GoBackBtnImage source={require("../asset/images/goBack1.png")}></GoBackBtnImage>
+                    </GoBackBtn>
+                </GoBack>
+                <Star>
+                    <StarView>
+                        <StarViewImage source={require("../asset/images/Star.png")}></StarViewImage>
+                    </StarView>
+                </Star>
+                <Menu>
+                    <MenuBtn onPress={() => modalTogglePress()}>
+                        <MenuBtnImage source={require("../asset/images/MenuBar.png")}></MenuBtnImage>
+                    </MenuBtn>
+                </Menu>
+
+            </Top>
+            <Main>
+                {/* {CardFunction()} */}
+                {(()=>{
+                    if(cardSelector === "word1LV") return <WordCard1LV />;
+                    else if(cardSelector=="word2LV") return <WordCard2LV />;
+                    else if(cardSelector=="word3LV") return <WordCard3LV />;
+                    else return <WordCard1LV />
+                    
+                })()}
+                {/* {cardSelector=="word1LV" ? <WordCard1LV /> : null}
+                {cardSelector=="word2LV" ? <WordCard2LV /> : null}
+                {cardSelector=="word3LV" ? <WordCard3LV /> : null} */}
+            </Main>
+             {/* 모달창 178~180라인 왜 안되는지 확인... > 해결 */}
+            {modalToggle == true ? (
+                <MenuModalBg 
+                style={{position:"absolute", width:SCREEN_WIDTH, height:SCREEN_HEIGHT, backgroundColor:"rgba(0,0,0,0)"}} 
+                onPress={()=>{
+                    modalTogglePress()
+                }}>
+                    <MenuModalContainer>
+                        <MenuModal>
+                            {/* <LevelBtn onPress={()=>{setCardSelector("word1Lv")}}><Text>1레벨</Text></LevelBtn>
+                            <LevelBtn onPress={()=>{setCardSelector("word2Lv")}}><Text>2레벨</Text></LevelBtn>
+                            <LevelBtn onPress={()=>{setCardSelector("word3Lv")}}><Text>3레벨</Text></LevelBtn> */}
+                            <LevelBtn onPress={()=>{cardCheck("word1LV")}}><Text>1레벨</Text></LevelBtn>
+                            <LevelBtn onPress={()=>{cardCheck("word2LV")}}><Text>2레벨</Text></LevelBtn>
+                            <LevelBtn onPress={()=>{cardCheck("word3LV")}}><Text>3레벨</Text></LevelBtn>
+                            {/* <LevelBtn onPress={()=>console.log('1레벨')}><Text>1레벨</Text></LevelBtn>
+                            <LevelBtn onPress={()=>console.log('2레벨')}><Text>2레벨</Text></LevelBtn>
+                            <LevelBtn onPress={()=>console.log('3레벨')}><Text>3레벨</Text></LevelBtn> */}
+                        </MenuModal>
+                    </MenuModalContainer>
+                </MenuModalBg>
+            ) : null
+            }
+            </Shell>
+        )
     )
-    // )
 }
-export default Word1LV;
+export default WordPlay;

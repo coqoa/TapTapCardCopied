@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Text } from 'react-native';
 import Stack from './app/navigators/Stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import WordPlay from './app/screens/WordPlay';
 
 
 export default function App() {
@@ -27,7 +28,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <SafeAreaView style={{flex:1}}>
-        <Stack />
+        {/* <Stack /> */}
+        <WordPlay />
       </SafeAreaView>
     </NavigationContainer>
   )

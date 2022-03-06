@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from "react"
-import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable } from "react-native";
+import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable, PanResponder } from "react-native";
 import Easing from "react-native/Libraries/Animated/Easing";
 import styled from "styled-components"
 import { wordCard } from "../asset/data/wordCard";
@@ -145,44 +145,10 @@ const AnimatedBox = Animated.createAnimatedComponent(Box);
 export const WordCard3LV = () => {
     const POSITION = useRef(
         new Animated.ValueXY({
-            x: -SCREEN_WIDTH / 2 + 100, 
-            y: -SCREEN_HEIGHT / 2 + 100,
+            x: 0, 
+            y: 0,
         })
     ).current;
-    
-    const topLeft =  Animated.timing(POSITION, {
-        toValue: {
-            x: -SCREEN_WIDTH / 2 + 100,
-            y: -SCREEN_HEIGHT / 2 + 100,
-        },
-        useNativeDriver: false,
-    });
-    const bottomLeft =  Animated.timing(POSITION, {
-        toValue: {
-            x: -SCREEN_WIDTH / 2 + 100,
-            y: SCREEN_HEIGHT / 2 - 100,
-        },
-        useNativeDriver: false,
-    });
-    const bottomRight =   Animated.timing(POSITION, {
-        toValue: {
-            x: SCREEN_WIDTH / 2 - 100,
-            y: SCREEN_HEIGHT / 2 - 100,
-        },
-        useNativeDriver: false,
-    });
-    const topRight =  Animated.timing(POSITION, {
-        toValue: {
-            x: SCREEN_WIDTH / 2 - 100,
-            y: -SCREEN_HEIGHT / 2 + 100,
-        },
-        useNativeDriver: false,
-    });
-    const moveUp = () => {
-        Animated.loop(Animated.sequence([bottomLeft, bottomRight, topRight, topLeft])).start();
-    }
-    
-
     const borderRadius = POSITION.y.interpolate({
         inputRange : [-300,300],
         outputRange:[100,0]
@@ -191,18 +157,38 @@ export const WordCard3LV = () => {
         inputRange: [-300, 300],
         outputRange:["rgb(255, 99, 71)", "rgb(71, 166,255)"]
     })
-    //color의 경우는 native에서 실행이 안되므로 useNativeDriver를 false로 해줘야 한다
+    const panResponder = useRef(PanResponder.create({
+        onStartShouldSetPanResponder: () => true, //터치를 감지하겠다는 뜻
+        onPanResponderMove: (_,{dx, dy}) => {
+            // console.log("dx=",dx, "// dy=",dy);
+            POSITION.setValue({
+                x: dx,
+                y : dy
+            })
+        },
+        onPanResponderRelease: () => {
+            Animated.spring(POSITION, {
+               toValue:{
+                   x:0,
+                   y:0,
+               },
+               bounciness:10,
+               useNativeDriver:false
+            }).start();
+        }
+
+
+    })).current;
     return(
         <Container>
-            <Pressable onPress={moveUp} >
             <AnimatedBox 
+            {...panResponder.panHandlers}
                 style={{
                     backgroundColor: boxColor,
                     borderRadius,
-                    transform: [...POSITION.getTranslateTransform()]
+                    transform: POSITION.getTranslateTransform(),
                 }} 
             />
-            </Pressable>
         </Container>
     )
 }

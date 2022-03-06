@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from "react"
-import {View, Dimensions, FlatList, Animated, TouchableOpacity } from "react-native";
+import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable } from "react-native";
 import Easing from "react-native/Libraries/Animated/Easing";
 import styled from "styled-components"
 import { wordCard } from "../asset/data/wordCard";
@@ -144,32 +144,42 @@ const AnimatedBox = Animated.createAnimatedComponent(Box);
 export const WordCard3LV = () => {
     const [up, setUp] = useState(true)
     const toggleUp = () => setUp(prev => !prev)
-    const Y =useRef(new Animated.Value(0)).current;
+    const POSITION =useRef(new Animated.ValueXY({x: 0, y: 300})).current;
     const moveUp = () => {
-        // Animated.spring(Y, {
-        //     toValue: -200,
-        //     // bounciness: 15,
-        //     tension: 100,
-        //     friction: 1,
-        //     useNativeDriver: true,
-        // }).start();
-        Animated.timing(Y, {
-            toValue: up? -200 : 200,
-            easing: Easing.elastic(1),
-            useNativeDriver: true,
+        Animated.timing(POSITION.y, {
+            toValue: up ? -300 : 300,
+            duration: 1000,
+            useNativeDriver: false,
+            
         }).start(toggleUp);
     }
-    Y.addListener(()=>console.log(Y))
+    const borderRadius = POSITION.y.interpolate({
+        inputRange : [-300,300],
+        outputRange:[100,0]
+    })
+    const rotation = POSITION.y.interpolate({
+        inputRange: [-300, 300],
+        outputRange:["-360deg", "360deg"]
+    })
+    const boxColor= POSITION.y.interpolate({
+        inputRange: [-300, 300],
+        outputRange:["rgb(255, 99, 71)", "rgb(71, 166,255)"]
+    })
+    //color의 경우는 native에서 실행이 안되므로 useNativeDriver를 false로 해줘야 한다
     return(
         <Container>
-            <TouchableOpacity onPress={moveUp} >
+            <Pressable onPress={moveUp} >
             <AnimatedBox 
                 style={{
-                    transform: [{translateY: Y}]
+                    backgroundColor: boxColor,
+                    borderRadius,
+                    transform: [{translateY: POSITION.y}, {rotateY: rotation}]
                 }} 
             />
-            </TouchableOpacity>
+            </Pressable>
         </Container>
+    )
+}
     // <View>
     //     <Record>
     //         <CheckRecord>
@@ -201,5 +211,5 @@ export const WordCard3LV = () => {
     //         )}
     //     />
     // </View>
-    )
-}
+//     )
+// }

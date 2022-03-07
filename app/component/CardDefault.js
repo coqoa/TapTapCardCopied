@@ -22,20 +22,24 @@ const Card = styled.View`
     box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
 `
 const CardImgShell = styled.View`
-    flex: 3;
+    /* flex: 3; */
     align-items: center;
-    width: 70%;
-`
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+    `
 const CardImg = styled.Image`
     flex: 1;
     width: 100%;
-`
-const CardContents = styled.Pressable`
-    flex: 1;
+    `
+const CardContents = styled.View`
+    width: 200px;
+    height: 100px;
 `
 const CardName = styled.View`
     flex:1;
     align-items: center;
+    justify-content: center;
 `
 const CardNameText = styled.Text`
     font-size: 65px;
@@ -109,6 +113,7 @@ export const WordCard2LV = () => {
             pagingEnabled
             data={wordCard}
             renderItem = {({item})=>(
+                
                 <CardSection style={{width:SCREEN_WIDTH}}> 
                     <Card>
                         {/* <CheckBtn onPress={() => console.log(item.id)}>
@@ -129,16 +134,23 @@ export const WordCard2LV = () => {
     </View>
     )
 }
-
 const Container = styled.View`
     flex: 1;
     justify-content: center;
     align-items: center;    
+    `
+const CardContainer = styled.View`
+    flex: 3;
+    margin-top: 10px;
+    justify-content: flex-start;
+    align-items: center;
 `
 const ExamCard = styled(Animated.createAnimatedComponent(View))`
+    border: 1px solid green;
     background-color: beige;
     width: 300px;
-    height: 300px;
+    height: 530px;
+    padding: 20px;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
@@ -149,17 +161,25 @@ const BtnContainer = styled.View`
     flex-direction: row;
     flex: 1;
 `
-
-const Btn = styled.TouchableOpacity`
-    margin: 0px 10px;
-`
-const CardContainer = styled.View`
-    flex: 3;
-    justify-content: center;
-    align-items: center;
+// const AudioBtnContainer = styled.View`
+//     position: absolute;
+//     flex: 1;
+// `
+const ImageAudioBtn = styled.TouchableOpacity`
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    background-color: rgba(0,0,0,0.1);
+    `
+const TextAudioBtn = styled.TouchableOpacity`
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    background-color: rgba(0,0,0,0.1);
 `
 // const AnimatedCard = Animated.createAnimatedComponent(ExamCard);
-
 export const WordCard3LV = () => {
     //Values
     const scale = useRef(new Animated.Value(1)).current;
@@ -191,14 +211,16 @@ export const WordCard3LV = () => {
     });
     const goLeft = Animated.spring(position, {
         toValue: -SCREEN_WIDTH, 
-        tension: 5,
+        tension: 35,
         restSpeedThreshold: 100,
         restDisplacementThreshold:100,
         useNativeDriver:true
     });
     const goRight = Animated.spring(position, {
-        toValue:400, 
-        tension: 5,
+        toValue: SCREEN_WIDTH, 
+        restSpeedThreshold: 100,
+        restDisplacementThreshold:100,
+        tension: 35,
         useNativeDriver:true
     });
     //panResponder
@@ -211,14 +233,14 @@ export const WordCard3LV = () => {
             }, 
             onPanResponderGrant: () => onPressIn.start(),
             onPanResponderRelease: (_, {dx}) => {
-                if(dx < -200){
+                if(dx < -180){
                     // console.log("dismiss to the left")
                     goLeft.start(onDismiss);
-                }else if(dx>200){
+                }else if(dx>180){
                     // console.log("dismiss to the right")
                     goRight.start(onDismiss);
 
-                }else 
+                }else
                 Animated.parallel([onPressOut, goCenter]).start();
                 
             },
@@ -231,9 +253,9 @@ export const WordCard3LV = () => {
         // if (index+4 == wordCard.length){
         //     null
         // }else{
+            setIndex((prev) => prev +1)
             scale.setValue(1);
             position.setValue(0);
-            setIndex((prev) => prev +1)
         // }
     }
     const checkPress = () => {
@@ -242,10 +264,9 @@ export const WordCard3LV = () => {
     const closePress = () =>{
         goRight.start(onDismiss);
     }
-    
-    console.log(wordCard.length);
+    console.log(wordCard.length-2);
     console.log(index)
-
+    
     
     return(
         <Container>
@@ -255,26 +276,74 @@ export const WordCard3LV = () => {
                 style={{
                     transform:[{scale:secondScale}]
                 }}>
-                    {/* <Ionicons name="beer" color="#192a56" size={98}/> */}
-                    <CardImg source={wordCard[index+1].image} resizeMode="contain"></CardImg>
+                    <CardImgShell>
+                        <CardImg source={wordCard[index+1].image} resizeMode="contain"></CardImg>
+                    </CardImgShell>
+                    {/* <CardContents onPress={() => console.log(wordCard[index+1].id)}> */}
+                    <CardContents>
+                        <CardName>
+                            <CardNameText>{wordCard[index+1].name}</CardNameText>
+                        </CardName>
+                    </CardContents>
                 </ExamCard>
-                <ExamCard 
-                {...panResponder.panHandlers}
-                style={{
-                    transform:[{scale},{translateX:position}, {rotateZ:rotation}]
-                }}>
-                    {/* <Ionicons name="pizza" color="#192a56" size={98}/> */}
-                    <CardImg source={wordCard[index].image} resizeMode="contain"></CardImg>
-                </ExamCard>
+                
+                {wordCard.length-3 >= index ? ( // 배열의 마지막카드 전에 카드움직이기 멈추도록, else부분에 축하애니메이션+ 다음레벨 모달창을 넣을 수도 있음
+                    <ExamCard 
+                    {...panResponder.panHandlers}
+                    style={{
+                        transform:[{scale},{translateX:position}, {rotateZ:rotation}]
+                    }}>
+                        <CardImgShell>
+                        <CardImg 
+                        source={wordCard[index].image} 
+                        resizeMode="contain"
+                        onPress={() => console.log(wordCard[index].id)}
+                        />
+                        <ImageAudioBtn onPress={()=>{console.log('이미지 오디오 출력')}} />
+                    
+                        </CardImgShell>
+                        {/* <CardContents onPress={() => console.log(wordCard[index].id)}> */}
+                        <CardContents>
+                            <CardName>
+                                <CardNameText>{wordCard[index].name}</CardNameText>
+                                <TextAudioBtn onPress={()=>{console.log('텍스트 오디오 출력')}} />
+                            </CardName>
+                        </CardContents>
+                    </ExamCard>
+                ) : (
+                    <ExamCard 
+                    style={{
+                        transform:[{scale},{translateX:position}, {rotateZ:rotation}]
+                    }}>
+                        <CardImgShell>
+                        <CardImg 
+                        source={wordCard[index].image} 
+                        resizeMode="contain"
+                        onPress={() => console.log(wordCard[index].id)}
+                        />
+                        <ImageAudioBtn onPress={()=>{console.log('이미지 오디오 출력')}} />
+                    
+                        </CardImgShell>
+                        {/* <CardContents onPress={() => console.log(wordCard[index].id)}> */}
+                        <CardContents>
+                            <CardName>
+                                <CardNameText>{wordCard[index].name}</CardNameText>
+                                <TextAudioBtn onPress={()=>{console.log('텍스트 오디오 출력')}} />
+                            </CardName>
+                        </CardContents>
+                    </ExamCard>
+                )}
+                
+                    
             </CardContainer>
-            <BtnContainer>
+            {/* <BtnContainer>
                 <Btn onPress={checkPress}>
                     <Ionicons name="checkmark-circle" color="black" size={42} />
                 </Btn>
                 <Btn onPress={closePress}>
                     <Ionicons name="close-circle" color="black" size={42} />
                 </Btn>
-            </BtnContainer>
+            </BtnContainer> */}
         </Container>
     )
 }

@@ -21,7 +21,7 @@ const Shell = styled.View`
     align-items: center;
 `
 const Top = styled.View`
-    height: 60px;
+    height: 80px;
     flex-direction: row;
 `
 const GoBack = styled.View`

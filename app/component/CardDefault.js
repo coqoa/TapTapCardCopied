@@ -190,8 +190,10 @@ export const WordCard3LV = () => {
         useNativeDriver:true,
     });
     const goLeft = Animated.spring(position, {
-        toValue:-500, 
+        toValue: -SCREEN_WIDTH, 
         tension: 5,
+        restSpeedThreshold: 100,
+        restDisplacementThreshold:100,
         useNativeDriver:true
     });
     const goRight = Animated.spring(position, {

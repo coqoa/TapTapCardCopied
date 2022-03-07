@@ -1,8 +1,14 @@
 export const wordCard = [
     {
-        "id" : 1, 
+        "id" : 0, 
         "image" : require("../images/Lion1.png"), 
         "bgColor" : "red", 
+        "name" : "사자"
+    }, 
+    {
+        "id" : 1, 
+        "image" : require("../images/Lion2.png"), 
+        "bgColor" : "tomato", 
         "name" : "사자"
     }, 
     {

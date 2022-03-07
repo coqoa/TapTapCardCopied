@@ -190,11 +190,13 @@ export const WordCard3LV = () => {
         useNativeDriver:true,
     });
     const goLeft = Animated.spring(position, {
-        toValue:-400, 
+        toValue:-500, 
+        tension: 5,
         useNativeDriver:true
     });
     const goRight = Animated.spring(position, {
         toValue:400, 
+        tension: 5,
         useNativeDriver:true
     });
     //panResponder
@@ -209,10 +211,10 @@ export const WordCard3LV = () => {
             onPanResponderRelease: (_, {dx}) => {
                 if(dx < -200){
                     // console.log("dismiss to the left")
-                    goLeft.start();
+                    goLeft.start(onDismiss);
                 }else if(dx>200){
                     // console.log("dismiss to the right")
-                    goRight.start();
+                    goRight.start(onDismiss);
 
                 }else 
                 Animated.parallel([onPressOut, goCenter]).start();
@@ -221,12 +223,28 @@ export const WordCard3LV = () => {
 
         })
     ).current
+    // State
+    const [index, setIndex] = useState(0);
+    const onDismiss = () => {
+        // if (index+4 == wordCard.length){
+        //     null
+        // }else{
+            scale.setValue(1);
+            position.setValue(0);
+            setIndex((prev) => prev +1)
+        // }
+    }
     const checkPress = () => {
-        goLeft.start();
+        goLeft.start(onDismiss);
     }
     const closePress = () =>{
-        goRight.start();
+        goRight.start(onDismiss);
     }
+    
+    console.log(wordCard.length);
+    console.log(index)
+
+    
     return(
         <Container>
             <CardContainer>
@@ -235,14 +253,16 @@ export const WordCard3LV = () => {
                 style={{
                     transform:[{scale:secondScale}]
                 }}>
-                    <Ionicons name="beer" color="#192a56" size={98}/>
+                    {/* <Ionicons name="beer" color="#192a56" size={98}/> */}
+                    <CardImg source={wordCard[index+1].image} resizeMode="contain"></CardImg>
                 </ExamCard>
                 <ExamCard 
                 {...panResponder.panHandlers}
                 style={{
                     transform:[{scale},{translateX:position}, {rotateZ:rotation}]
                 }}>
-                    <Ionicons name="pizza" color="#192a56" size={98}/>
+                    {/* <Ionicons name="pizza" color="#192a56" size={98}/> */}
+                    <CardImg source={wordCard[index].image} resizeMode="contain"></CardImg>
                 </ExamCard>
             </CardContainer>
             <BtnContainer>

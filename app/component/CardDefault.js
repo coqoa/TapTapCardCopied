@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from "react"
 import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable, PanResponder } from "react-native";
 import Easing from "react-native/Libraries/Animated/Easing";
 import styled from "styled-components"
-import { wordCard } from "../asset/data/wordCard";
+import { WordCardArray } from "../asset/data/WordCardArray";
 import { colors } from "./color";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -53,7 +53,7 @@ export const WordCard1LV = () => {
     <FlatList
         horizontal
         pagingEnabled
-        data={wordCard}
+        data={WordCardArray}
         renderItem = {({item})=>(
             <CardSection style={{width:SCREEN_WIDTH}}> 
                 <Card style={{backgroundColor : item.bgColor}}>
@@ -111,7 +111,7 @@ export const WordCard2LV = () => {
         <FlatList
             horizontal
             pagingEnabled
-            data={wordCard}
+            data={WordCardArray}
             renderItem = {({item})=>(
                 
                 <CardSection style={{width:SCREEN_WIDTH}}> 
@@ -144,10 +144,8 @@ const CardContainer = styled.View`
     margin-top: 10px;
     justify-content: flex-start;
     align-items: center;
-`
+    `
 const ExamCard = styled(Animated.createAnimatedComponent(View))`
-    border: 1px solid green;
-    background-color: beige;
     width: 300px;
     height: 530px;
     padding: 20px;
@@ -156,6 +154,7 @@ const ExamCard = styled(Animated.createAnimatedComponent(View))`
     border-radius: 15px;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
     position: absolute;
+    border:1px solid ${colors.REALDARKGRAY} ;
 `
 const BtnContainer = styled.View`
     flex-direction: row;
@@ -250,7 +249,7 @@ export const WordCard3LV = () => {
     // State
     const [index, setIndex] = useState(0);
     const onDismiss = () => {
-        // if (index+4 == wordCard.length){
+        // if (index+4 == WordCardArray.length){
         //     null
         // }else{
             setIndex((prev) => prev +1)
@@ -264,7 +263,7 @@ export const WordCard3LV = () => {
     const closePress = () =>{
         goRight.start(onDismiss);
     }
-    console.log(wordCard.length-2);
+    console.log(WordCardArray.length-2);
     console.log(index)
     
     
@@ -274,38 +273,40 @@ export const WordCard3LV = () => {
                 <ExamCard 
                 // {...panResponder.panHandlers}
                 style={{
+                    backgroundColor:WordCardArray[index+1].bgColor,
                     transform:[{scale:secondScale}]
                 }}>
                     <CardImgShell>
-                        <CardImg source={wordCard[index+1].image} resizeMode="contain"></CardImg>
+                        <CardImg source={WordCardArray[index+1].image} resizeMode="contain"></CardImg>
                     </CardImgShell>
                     {/* <CardContents onPress={() => console.log(wordCard[index+1].id)}> */}
                     <CardContents>
                         <CardName>
-                            <CardNameText>{wordCard[index+1].name}</CardNameText>
+                            <CardNameText>{WordCardArray[index+1].name}</CardNameText>
                         </CardName>
                     </CardContents>
                 </ExamCard>
                 
-                {wordCard.length-3 >= index ? ( // 배열의 마지막카드 전에 카드움직이기 멈추도록, else부분에 축하애니메이션+ 다음레벨 모달창을 넣을 수도 있음
+                {WordCardArray.length-3 >= index ? ( // 배열의 마지막카드 전에 카드움직이기 멈추도록, else부분에 축하애니메이션+ 다음레벨 모달창을 넣을 수도 있음
                     <ExamCard 
                     {...panResponder.panHandlers}
                     style={{
+                        backgroundColor:WordCardArray[index].bgColor,
                         transform:[{scale},{translateX:position}, {rotateZ:rotation}]
                     }}>
                         <CardImgShell>
                         <CardImg 
-                        source={wordCard[index].image} 
+                        source={WordCardArray[index].image} 
                         resizeMode="contain"
-                        onPress={() => console.log(wordCard[index].id)}
+                        onPress={() => console.log(WordCardArray[index].id)}
                         />
                         <ImageAudioBtn onPress={()=>{console.log('이미지 오디오 출력')}} />
                     
                         </CardImgShell>
-                        {/* <CardContents onPress={() => console.log(wordCard[index].id)}> */}
+                        {/* <CardContents onPress={() => console.log(wordCardArray[index].id)}> */}
                         <CardContents>
                             <CardName>
-                                <CardNameText>{wordCard[index].name}</CardNameText>
+                                <CardNameText>{WordCardArray[index].name}</CardNameText>
                                 <TextAudioBtn onPress={()=>{console.log('텍스트 오디오 출력')}} />
                             </CardName>
                         </CardContents>
@@ -313,21 +314,22 @@ export const WordCard3LV = () => {
                 ) : (
                     <ExamCard 
                     style={{
+                        backgroundColor:WordCardArray[index].bgColor,
                         transform:[{scale},{translateX:position}, {rotateZ:rotation}]
                     }}>
                         <CardImgShell>
                         <CardImg 
-                        source={wordCard[index].image} 
+                        source={WordCardArray[index].image} 
                         resizeMode="contain"
-                        onPress={() => console.log(wordCard[index].id)}
+                        onPress={() => console.log(WordCardArray[index].id)}
                         />
                         <ImageAudioBtn onPress={()=>{console.log('이미지 오디오 출력')}} />
                     
                         </CardImgShell>
-                        {/* <CardContents onPress={() => console.log(wordCard[index].id)}> */}
+                        {/* <CardContents onPress={() => console.log(WordCardArray[index].id)}> */}
                         <CardContents>
                             <CardName>
-                                <CardNameText>{wordCard[index].name}</CardNameText>
+                                <CardNameText>{WordCardArray[index].name}</CardNameText>
                                 <TextAudioBtn onPress={()=>{console.log('텍스트 오디오 출력')}} />
                             </CardName>
                         </CardContents>
@@ -358,7 +360,7 @@ export const WordCard3LV = () => {
     //     <FlatList
     //         horizontal
     //         pagingEnabled
-    //         data={wordCard}
+    //         data={WordCardArray}
     //         renderItem = {({item})=>(
     //             <CardSection style={{width:SCREEN_WIDTH}}> 
     //                 <Card>

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Text, View, ActivityIndicator, FlatList, ScrollView,Dimensions } from "react-native";
 import styled from "styled-components";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { wordCard } from "../asset/data/wordCard";
+import { WordCardArray } from "../asset/data/WordCardArray";
 import { colors } from "../component/color";
 import { WordCard1LV, WordCard2LV, WordCard3LV } from "../component/CardDefault";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
@@ -49,8 +49,10 @@ const StarView = styled.View`
     justify-content: center;
 `
 const StarViewImage = styled.ImageBackground`
-    width: 70px;
+    top: 2;
+    width: 220px;
     height: 70px;
+    border: 1px solid gray;
 `
 const Menu = styled.View`
     width: 60px;
@@ -59,8 +61,9 @@ const Menu = styled.View`
     /* border: 1px solid red ; */
 `
 const MenuBtn = styled.Pressable`
-    width: 60px;
-    height: 60px;
+    top: 5px;
+    width: 65px;
+    height: 65px;
 `
 const MenuBtnImage = styled.ImageBackground`
     width: 100%;
@@ -152,7 +155,13 @@ const WordPlay = ({navigation}) => {
                 </GoBack>
                 <Star>
                     <StarView>
-                        <StarViewImage source={require("../asset/images/Star.png")}></StarViewImage>
+                        {(()=>{
+                            if(cardSelector === "word1LV") return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>;
+                            else if(cardSelector=="word2LV") return <StarViewImage source={require("../asset/images/Star2.png")}></StarViewImage>;
+                            else if(cardSelector=="word3LV") return <StarViewImage source={require("../asset/images/Star3.png")}></StarViewImage>;
+                            else return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>
+                        })()}
+                        {/* <StarViewImage source={require("../asset/images/Star.png")}></StarViewImage> */}
                     </StarView>
                 </Star>
                 <Menu>
@@ -169,7 +178,6 @@ const WordPlay = ({navigation}) => {
                     else if(cardSelector=="word2LV") return <WordCard2LV />;
                     else if(cardSelector=="word3LV") return <WordCard3LV />;
                     else return <WordCard1LV />
-                    
                 })()}
                 {/* {cardSelector=="word1LV" ? <WordCard1LV /> : null}
                 {cardSelector=="word2LV" ? <WordCard2LV /> : null}

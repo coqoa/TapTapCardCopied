@@ -12,5 +12,7 @@ export const colors = {
     DARKGRAY:"#747474",
     // REALDARKGRAY:"#393939",
     REALDARKGRAY:"#505050",
+    BEIGE:"#f5f5dc",
+    ORANGE:"#FED784",
 };
 // export default colors;

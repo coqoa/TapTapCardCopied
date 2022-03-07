@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import React, { useState } from 'react';
-import { Text } from 'react-native';
 import Stack from './app/navigators/Stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import WordPlay from './app/screens/WordPlay';

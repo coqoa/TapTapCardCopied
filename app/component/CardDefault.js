@@ -140,30 +140,47 @@ const Container = styled.View`
     align-items: center;    
     `
 const CardContainer = styled.View`
-    flex: 3;
+    flex: 1;
     margin-top: 10px;
     justify-content: flex-start;
     align-items: center;
-    `
+`
 const ExamCard = styled(Animated.createAnimatedComponent(View))`
     width: 300px;
-    height: 530px;
+    height: 540px;
     padding: 20px;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
     position: absolute;
-    border:1px solid ${colors.REALDARKGRAY} ;
+    border:2px solid ${colors.REALDARKGRAY} ;
 `
-const BtnContainer = styled.View`
-    flex-direction: row;
-    flex: 1;
-`
-// const AudioBtnContainer = styled.View`
-//     position: absolute;
-//     flex: 1;
+// const BtnContainer = styled.View`
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-between;
+//     border: 1px solid red;
 // `
+const CheckBtn = styled(Animated.createAnimatedComponent(View))`
+    position: absolute;
+    left: 0px;
+    top: 40%;
+    /* border: 1px solid gray; */
+    `
+const NonCheckBtn = styled(Animated.createAnimatedComponent(View))`
+    position: absolute;
+    right: 0px;
+    top: 40%;
+    /* border: 1px solid gray; */
+    `
+const CheckBtnImage = styled.ImageBackground`
+    width: 56px;
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid gray; */
+`
 const ImageAudioBtn = styled.TouchableOpacity`
     position: absolute;
     width: 150px;
@@ -183,6 +200,8 @@ export const WordCard3LV = () => {
     //Values
     const scale = useRef(new Animated.Value(1)).current;
     const position = useRef(new Animated.Value(0)).current;
+    const btnOpacity = useRef(new Animated.Value(0)).current;
+
     const rotation = position.interpolate({
         inputRange:[-250, 250],
         outputRange:["-15deg", "15deg"],
@@ -193,9 +212,17 @@ export const WordCard3LV = () => {
         outputRange:[1, 0.7, 1],
         extrapolate:"clamp"
     }) ;
+    const CheckBtnOpacityInput = Animated.timing(btnOpacity, {
+        toValue: 1,
+        useNativeDriver:true
+    })
+    const CheckBtnOpacityOutput = Animated.timing(btnOpacity, {
+        toValue: 0,
+        useNativeDriver:true
+    })
     //Animations
     const onPressIn = Animated.spring(scale, {
-        toValue:1.05, 
+        toValue:0.9, 
         useNativeDriver:true
     });
     const onPressOut = Animated.spring(scale, {
@@ -230,17 +257,22 @@ export const WordCard3LV = () => {
                 position.setValue(dx)
 
             }, 
-            onPanResponderGrant: () => onPressIn.start(),
+            onPanResponderGrant: () => {
+                Animated.parallel(
+                    [CheckBtnOpacityInput,onPressIn]
+                ).start();
+                // onPressIn.start()
+            },
             onPanResponderRelease: (_, {dx}) => {
                 if(dx < -180){
                     // console.log("dismiss to the left")
-                    goLeft.start(onDismiss);
+                    Animated.parallel([goLeft,CheckBtnOpacityOutput]).start(onDismiss);
                 }else if(dx>180){
                     // console.log("dismiss to the right")
-                    goRight.start(onDismiss);
+                    Animated.parallel([goRight,CheckBtnOpacityOutput]).start(onDismiss);
 
                 }else
-                Animated.parallel([onPressOut, goCenter]).start();
+                Animated.parallel([onPressOut,CheckBtnOpacityOutput, goCenter]).start();
                 
             },
 
@@ -268,6 +300,7 @@ export const WordCard3LV = () => {
     
     
     return(
+        <>
         <Container>
             <CardContainer>
                 <ExamCard 
@@ -338,15 +371,27 @@ export const WordCard3LV = () => {
                 
                     
             </CardContainer>
-            {/* <BtnContainer>
-                <Btn onPress={checkPress}>
-                    <Ionicons name="checkmark-circle" color="black" size={42} />
-                </Btn>
-                <Btn onPress={closePress}>
-                    <Ionicons name="close-circle" color="black" size={42} />
-                </Btn>
-            </BtnContainer> */}
         </Container>
+        {/* <BtnContainer style={{width: SCREEN_WIDTH, height: SCREEN_HEIGHT}}> */}
+            {/* <CheckBtn onPress={checkPress}> */}
+            <CheckBtn style={{
+                opacity: btnOpacity,
+            }}>
+                {/* <StarViewImage source={require("../asset/images/Check.png") }></StarViewImage> */}
+                <CheckBtnImage>
+                    <Ionicons name="checkmark-circle" size={50} color={colors.PASTELBLUE} />
+                </CheckBtnImage>
+            </CheckBtn>
+            <NonCheckBtn style={{
+                opacity: btnOpacity,
+            }}>
+                {/* <StarViewImage source={require("../asset/images/Random.png")}></StarViewImage> */}
+                <CheckBtnImage>
+                    <Ionicons name="help-circle" size={50} color={colors.TOMATO} />
+                </CheckBtnImage>
+            </NonCheckBtn>
+        {/* </BtnContainer> */}
+        </>
     )
 }
     // <View>

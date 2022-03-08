@@ -49,10 +49,10 @@ const StarView = styled.View`
     justify-content: center;
 `
 const StarViewImage = styled.ImageBackground`
-    top: 2;
+    top: 2px;
     width: 220px;
     height: 70px;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
 `
 const Menu = styled.View`
     width: 60px;
@@ -99,6 +99,7 @@ const LevelBtn = styled.Pressable`
 const Main = styled.View`
     flex: 5;
     flex-direction: row;
+    /* border: 1px solid red ; */
 `
 
 
@@ -183,7 +184,7 @@ const WordPlay = ({navigation}) => {
                 {cardSelector=="word2LV" ? <WordCard2LV /> : null}
                 {cardSelector=="word3LV" ? <WordCard3LV /> : null} */}
             </Main>
-             {/* 모달창 178~180라인 왜 안되는지 확인... > 해결 */}
+            {/* 모달창 178~180라인 왜 안되는지 확인... > 해결 */}
             {modalToggle == true ? (
                 <MenuModalBg 
                 style={{position:"absolute", width:SCREEN_WIDTH, height:SCREEN_HEIGHT, backgroundColor:"rgba(0,0,0,0)"}} 

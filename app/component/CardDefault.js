@@ -21,7 +21,7 @@ const Card = styled.View`
     border-radius: 15px;
     box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
 `
-const CardImgShell = styled.View`
+const CardImgShell = styled(Animated.createAnimatedComponent(View))`
     /* flex: 3; */
     align-items: center;
     justify-content: center;
@@ -220,12 +220,16 @@ const CheckSplashScreenImage = styled.View`
     border-radius: 10px;
 `
 // const AnimatedCard = Animated.createAnimatedComponent(ExamCard);
+
+//----------__----------__----------__----------__----------__----------__----------__----------__----------__
+
 export const WordCard3LV = () => {
     //Values
     const scale = useRef(new Animated.Value(1)).current;
     const position = useRef(new Animated.Value(0)).current;
+    const cardImageOpacity = useRef(new Animated.Value(1)).current;
     const btnOpacity = useRef(new Animated.Value(0)).current;
-    const checkSplash = useRef(new Animated.Value(0.9)).current;
+    // const checkSplash = useRef(new Animated.Value(0.9)).current;
 
     const rotation = position.interpolate({
         inputRange:[-250, 250],
@@ -245,18 +249,18 @@ export const WordCard3LV = () => {
         toValue: 0,
         useNativeDriver:true
     })
-    const checkSplashUpScale = Animated.timing(checkSplash, {
-        toValue: 1.1,
-        duration: 300,
-        delay: 0,
-        useNativeDriver:true
-    })
-    const checkSplashDownScale = Animated.timing(checkSplash, {
-        toValue: 0.9,
-        duration: 100,
-        delay: 0,
-        useNativeDriver:true
-    })
+    // const checkSplashUpScale = Animated.timing(checkSplash, {
+    //     toValue: 1.1,
+    //     duration: 300,
+    //     delay: 0,
+    //     useNativeDriver:true
+    // })
+    // const checkSplashDownScale = Animated.timing(checkSplash, {
+    //     toValue: 0.9,
+    //     duration: 100,
+    //     delay: 0,
+    //     useNativeDriver:true
+    // })
     //Animations
     const onPressIn = Animated.spring(scale, {
         toValue:0.9, 
@@ -303,7 +307,8 @@ export const WordCard3LV = () => {
             onPanResponderRelease: (_, {dx}) => {
                 if(dx < -180){
                     // console.log("dismiss to the left")
-                    Animated.parallel([goLeft,CheckBtnOpacityOutput,checkSplashUpScale]).start(onDismiss);
+                    // Animated.parallel([goLeft,CheckBtnOpacityOutput,checkSplashUpScale]).start(onDismiss);
+                    Animated.parallel([goLeft,CheckBtnOpacityOutput]).start(onDismiss);
                 }else if(dx>180){
                     // console.log("dismiss to the right")
                     Animated.parallel([goRight,CheckBtnOpacityOutput]).start(onDismiss);
@@ -349,7 +354,7 @@ export const WordCard3LV = () => {
             setIndex((prev) => prev +1)
             scale.setValue(1);
             position.setValue(0);
-            Animated.sequence([checkSplashUpScale, checkSplashDownScale]).start();
+            // Animated.sequence([checkSplashUpScale, checkSplashDownScale]).start();
             
             
             // console.log(index)//계속 0만뜬다 onDismiss밖에서는 정상작동함
@@ -404,7 +409,7 @@ export const WordCard3LV = () => {
                         backgroundColor:WordCardArray[index].bgColor,
                         transform:[{scale},{translateX:position}, {rotateZ:rotation}]
                     }}>
-                        <CardImgShell>
+                        <CardImgShell style={{opacity:cardImageOpacity}}>
                         <CardImg 
                         source={WordCardArray[index].image} 
                         resizeMode="contain"
@@ -448,7 +453,7 @@ export const WordCard3LV = () => {
                 
                     
             </CardContainer>
-            <CheckSplashScreen style={{
+            {/* <CheckSplashScreen style={{
                     zIndex: checkSplash,
                     transform: [{scale:checkSplash}],
                     opacity: 1
@@ -456,7 +461,7 @@ export const WordCard3LV = () => {
                 <CheckSplashScreenImage>
                     <Ionicons name="checkmark-circle" size={50} color={colors.NAVY} />
                 </CheckSplashScreenImage>
-            </CheckSplashScreen>
+            </CheckSplashScreen> */}
         </Container>
 
         <CheckBtn style={{

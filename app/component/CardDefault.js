@@ -134,16 +134,24 @@ export const WordCard2LV = () => {
     </View>
     )
 }
+
+
+
+
+
 const Container = styled.View`
     flex: 1;
     justify-content: center;
-    align-items: center;    
+    align-items: center;  
+    z-index  : 1;
+    /* background-color: red; */
     `
 const CardContainer = styled.View`
     flex: 1;
     margin-top: 10px;
     justify-content: flex-start;
     align-items: center;
+    z-index  : 1;
 `
 const ExamCard = styled(Animated.createAnimatedComponent(View))`
     width: 300px;
@@ -162,32 +170,13 @@ const ExamCard = styled(Animated.createAnimatedComponent(View))`
 //     justify-content: space-between;
 //     border: 1px solid red;
 // `
-const CheckBtn = styled(Animated.createAnimatedComponent(View))`
-    position: absolute;
-    left: 0px;
-    top: 40%;
-    /* border: 1px solid gray; */
-    `
-const NonCheckBtn = styled(Animated.createAnimatedComponent(View))`
-    position: absolute;
-    right: 0px;
-    top: 40%;
-    /* border: 1px solid gray; */
-    `
-const CheckBtnImage = styled.ImageBackground`
-    width: 56px;
-    height: 56px;
-    align-items: center;
-    justify-content: center;
-    /* border: 1px solid gray; */
-`
 const ImageAudioBtn = styled.TouchableOpacity`
     position: absolute;
     width: 150px;
     height: 150px;
     border-radius: 150px;
     background-color: rgba(0,0,0,0.1);
-    `
+`
 const TextAudioBtn = styled.TouchableOpacity`
     position: absolute;
     width: 80px;
@@ -195,12 +184,48 @@ const TextAudioBtn = styled.TouchableOpacity`
     border-radius: 80px;
     background-color: rgba(0,0,0,0.1);
 `
+const CheckBtn = styled(Animated.createAnimatedComponent(View))`
+        position: absolute;
+        left: 0px;
+        top: 40%;
+        /* border: 1px solid gray; */
+`
+const NonCheckBtn = styled(Animated.createAnimatedComponent(View))`
+        position: absolute;
+        right: 0px;
+        top: 40%;
+        /* border: 1px solid gray; */
+`
+const CheckBtnImage = styled.ImageBackground`
+        width: 56px;
+        height: 56px;
+        align-items: center;
+        justify-content: center;
+        /* border: 1px solid gray; */
+`
+const CheckSplashScreen = styled(Animated.createAnimatedComponent(View))`
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    /* background-color: rgba(0,0,0,0.1); */
+    align-items: center;
+    justify-content: center;
+`
+const CheckSplashScreenImage = styled.View`
+    width: 200px;
+    height: 250px;
+    align-items: center;
+    justify-content: center;
+    background-color: ${colors.BEIGE};
+    border-radius: 10px;
+`
 // const AnimatedCard = Animated.createAnimatedComponent(ExamCard);
 export const WordCard3LV = () => {
     //Values
     const scale = useRef(new Animated.Value(1)).current;
     const position = useRef(new Animated.Value(0)).current;
     const btnOpacity = useRef(new Animated.Value(0)).current;
+    const checkSplash = useRef(new Animated.Value(0.9)).current;
 
     const rotation = position.interpolate({
         inputRange:[-250, 250],
@@ -220,6 +245,18 @@ export const WordCard3LV = () => {
         toValue: 0,
         useNativeDriver:true
     })
+    const checkSplashUpScale = Animated.timing(checkSplash, {
+        toValue: 1.1,
+        duration: 300,
+        delay: 0,
+        useNativeDriver:true
+    })
+    const checkSplashDownScale = Animated.timing(checkSplash, {
+        toValue: 0.9,
+        duration: 100,
+        delay: 0,
+        useNativeDriver:true
+    })
     //Animations
     const onPressIn = Animated.spring(scale, {
         toValue:0.9, 
@@ -236,16 +273,16 @@ export const WordCard3LV = () => {
         useNativeDriver:true,
     });
     const goLeft = Animated.spring(position, {
-        toValue: -SCREEN_WIDTH, 
+        toValue: -SCREEN_WIDTH-200, 
         tension: 35,
-        restSpeedThreshold: 100,
-        restDisplacementThreshold:100,
+        restSpeedThreshold: 1,
+        restDisplacementThreshold:1,
         useNativeDriver:true
     });
     const goRight = Animated.spring(position, {
-        toValue: SCREEN_WIDTH, 
-        restSpeedThreshold: 100,
-        restDisplacementThreshold:100,
+        toValue: SCREEN_WIDTH+200, 
+        restSpeedThreshold: 1,
+        restDisplacementThreshold:1,
         tension: 35,
         useNativeDriver:true
     });
@@ -266,7 +303,7 @@ export const WordCard3LV = () => {
             onPanResponderRelease: (_, {dx}) => {
                 if(dx < -180){
                     // console.log("dismiss to the left")
-                    Animated.parallel([goLeft,CheckBtnOpacityOutput]).start(onDismiss);
+                    Animated.parallel([goLeft,CheckBtnOpacityOutput,checkSplashUpScale]).start(onDismiss);
                 }else if(dx>180){
                     // console.log("dismiss to the right")
                     Animated.parallel([goRight,CheckBtnOpacityOutput]).start(onDismiss);
@@ -279,7 +316,32 @@ export const WordCard3LV = () => {
         })
     ).current
     // State
+    
+    // let cardArrayNum = WordCardArray.length;
+    // function randomIndex(){
+    //     let ranNum = Math.floor(Math.random()*(cardArrayNum))+1
+    //     return ranNum;
+    // } 
+    const randomIndexConsole =  WordCardArray.filter((dat)=>{
+        if(dat.check == false){
+            return dat
+        }else{
+            null
+        }
+    })
+    // console.log(randomIndexConsole[0].id)
+
+    // const [index, setIndex] = useState(randomIndexConsole[0].id);
     const [index, setIndex] = useState(0);
+    const checkCard = () => {
+        console.log(WordCardArray[index])
+    }
+    // checkCard()
+    // 여기서 막혔음 (좌로 가면 check true로 바꾸고싶은데 좌로 카드를 넘겨도 계속 index가 0 으로 출력됨)
+    //onDismiss에서 index를 바꾸는데 왜 PanResponder에서는 적용이 안되지? 
+    // check값을 출력하고 바꾸려면 어떻게 해야하지?
+
+
     const onDismiss = () => {
         // if (index+4 == WordCardArray.length){
         //     null
@@ -287,6 +349,23 @@ export const WordCard3LV = () => {
             setIndex((prev) => prev +1)
             scale.setValue(1);
             position.setValue(0);
+            Animated.sequence([checkSplashUpScale, checkSplashDownScale]).start();
+            
+            
+            // console.log(index)//계속 0만뜬다 onDismiss밖에서는 정상작동함
+        // }
+    }
+    const onDismissRight = () => {
+        // if (index+4 == WordCardArray.length){
+        //     null
+        // }else{
+            setIndex((prev) => prev -1)
+            scale.setValue(1);
+            position.setValue(0);
+            // Animated.sequence([checkSplashUpScale, checkSplashDownScale]).start();
+            
+            
+            // console.log(index)//계속 0만뜬다 onDismiss밖에서는 정상작동함
         // }
     }
     const checkPress = () => {
@@ -295,14 +374,12 @@ export const WordCard3LV = () => {
     const closePress = () =>{
         goRight.start(onDismiss);
     }
-    console.log(WordCardArray.length-2);
-    console.log(index)
-    
-    
     return(
         <>
         <Container>
+            
             <CardContainer>
+                {/* backCard */}
                 <ExamCard 
                 // {...panResponder.panHandlers}
                 style={{
@@ -319,7 +396,7 @@ export const WordCard3LV = () => {
                         </CardName>
                     </CardContents>
                 </ExamCard>
-                
+                {/* fronCard */}
                 {WordCardArray.length-3 >= index ? ( // 배열의 마지막카드 전에 카드움직이기 멈추도록, else부분에 축하애니메이션+ 다음레벨 모달창을 넣을 수도 있음
                     <ExamCard 
                     {...panResponder.panHandlers}
@@ -371,26 +448,34 @@ export const WordCard3LV = () => {
                 
                     
             </CardContainer>
+            <CheckSplashScreen style={{
+                    zIndex: checkSplash,
+                    transform: [{scale:checkSplash}],
+                    opacity: 1
+                }}>
+                <CheckSplashScreenImage>
+                    <Ionicons name="checkmark-circle" size={50} color={colors.NAVY} />
+                </CheckSplashScreenImage>
+            </CheckSplashScreen>
         </Container>
-        {/* <BtnContainer style={{width: SCREEN_WIDTH, height: SCREEN_HEIGHT}}> */}
-            {/* <CheckBtn onPress={checkPress}> */}
-            <CheckBtn style={{
-                opacity: btnOpacity,
-            }}>
-                {/* <StarViewImage source={require("../asset/images/Check.png") }></StarViewImage> */}
-                <CheckBtnImage>
-                    <Ionicons name="checkmark-circle" size={50} color={colors.PASTELBLUE} />
-                </CheckBtnImage>
-            </CheckBtn>
-            <NonCheckBtn style={{
-                opacity: btnOpacity,
-            }}>
-                {/* <StarViewImage source={require("../asset/images/Random.png")}></StarViewImage> */}
-                <CheckBtnImage>
-                    <Ionicons name="help-circle" size={50} color={colors.TOMATO} />
-                </CheckBtnImage>
-            </NonCheckBtn>
-        {/* </BtnContainer> */}
+
+        <CheckBtn style={{
+            opacity: btnOpacity,
+        }}>
+            {/* <StarViewImage source={require("../asset/images/Check.png") }></StarViewImage> */}
+            <CheckBtnImage>
+                <Ionicons name="checkmark-circle" size={50} color={colors.NAVY} />
+            </CheckBtnImage>
+        </CheckBtn>
+        <NonCheckBtn style={{
+            opacity: btnOpacity,
+        }}>
+            {/* <StarViewImage source={require("../asset/images/Random.png")}></StarViewImage> */}
+            <CheckBtnImage>
+                <Ionicons name="help-circle" size={50} color={colors.TOMATO} />
+            </CheckBtnImage>
+        </NonCheckBtn>
+
         </>
     )
 }

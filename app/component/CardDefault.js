@@ -12,7 +12,6 @@ const SCREEN_HEIGHT = Dimensions.get("window").height;
 // const CardSection = styled.View`
 // const CardSection = styled(Animated.createAnimatedComponent(View))`
 const CardSection = styled.View`
-    border: 1px solid blue;
     justify-content: center;
     align-items: center;
     //Diemension쓰기위해 인라인 style 적용
@@ -28,14 +27,14 @@ const Card = styled(Animated.createAnimatedComponent(View))`
     /* margin:0px; */
     border-radius: 15px;
     box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
-    border: 1px solid white;
+    border: 2px solid black;
 `
 const CardImgShell = styled.View`
     flex: 3;
     align-items: center;
     justify-content: center;
     width: 100%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     `
 const CardImg = styled.Image`
     flex: 1;
@@ -44,7 +43,7 @@ const CardImg = styled.Image`
 const CardContents = styled.View`
     flex: 1;
     width: 100%;
-    border: 1px solid green;
+    /* border: 1px solid green; */
 `
 const CardName = styled.View`
     flex:1;
@@ -115,35 +114,32 @@ const CardList = styled(Animated.createAnimatedComponent(FlatList))`
 //레벨2 레벨3은 이런식으로 작성하면 될것같음
 export const WordCard2LV = () => {
     //Values
-    const scale = useRef(new Animated.Value(1)).current;
-
+    const scale = useRef(new Animated.Value(0.9)).current;
     const position = useRef(new Animated.Value(0)).current;
     const btnOpacity = useRef(new Animated.Value(0)).current;
-    const cardImageOpacity = useRef(new Animated.Value(1)).current;
 
     const rotation = position.interpolate({
-        inputRange:[-180, 180],
-        outputRange:["-15deg", "15deg"],
+        inputRange:[-180,0, 180],
+        outputRange:["-25deg","0deg" ,"25deg"],
         extrapolate: "clamp" // 범위에서 넘어가면 interpolate를 어떻게 처리할지 ?
     });
 
     //Animations
     const onPressIn = Animated.spring(scale, {
-        toValue:0.9, 
+        toValue:1, 
         useNativeDriver:true
     });
     const onPressOut = Animated.spring(scale, {
-        toValue:1, 
+        toValue:0.9, 
         useNativeDriver:true,
     });
-
     const tensionAnimated = Animated.spring(position, {
-        tension:100,
+        tension:10,
         friction:5,
         useNativeDriver:true,
     });
     const CheckBtnOpacityInput = Animated.timing(btnOpacity, {
-        toValue: 1,
+        toValue: 0.8,
         duration:10,
         useNativeDriver:true
     })
@@ -183,26 +179,26 @@ export const WordCard2LV = () => {
                     // onPressIn.start()
                     console.log('Grant')
                 },
-                onPanResponderRelease: (_, {dx}) => {
-                    console.log('Release',dx)
-                //     if(dx < -180){
-                //         Animated.parallel([onPressOut,tensionAnimated]).start();
-                //         //     // console.log("dismiss to the left")
-                //         //     // Animated.parallel([goLeft,CheckBtnOpacityOutput,checkSplashUpScale]).start(onDismiss);
-                //         //     // Animated.parallel([goLeft,CheckBtnOpacityOutput]).start(onDismiss);
-                //         //     Animated.parallel([goLeft]).start(onDismiss);
-                //     }else if(dx>180){
-                //         Animated.parallel([onPressOut, tensionAnimated]).start();
-                //             //     // console.log("dismiss to the right")
-                // //     // Animated.parallel([goRight,CheckBtnOpacityOutput]).start(onDismiss);
-                // //     Animated.parallel([goRight]).start(onDismiss);
+            onPanResponderRelease: (_, {x0}) => {
+                console.log('Release',x0)
+            //     if(dx < -180){
+            //         Animated.parallel([onPressOut,tensionAnimated]).start();
+            //         //     // console.log("dismiss to the left")
+            //         //     // Animated.parallel([goLeft,CheckBtnOpacityOutput,checkSplashUpScale]).start(onDismiss);
+            //         //     // Animated.parallel([goLeft,CheckBtnOpacityOutput]).start(onDismiss);
+            //         //     Animated.parallel([goLeft]).start(onDismiss);
+            //     }else if(dx>180){
+            //         Animated.parallel([onPressOut, tensionAnimated]).start();
+            //             //     // console.log("dismiss to the right")
+            // //     // Animated.parallel([goRight,CheckBtnOpacityOutput]).start(onDismiss);
+            // //     Animated.parallel([goRight]).start(onDismiss);
 
-                //     }else{
-                        Animated.parallel([onPressOut,tensionAnimated,CheckBtnOpacityOutput]).start();
-                    // }
-                // // Animated.parallel([onPressOut,CheckBtnOpacityOutput, goCenter]).start();
-                // Animated.parallel([onPressOut, goCenter]).start();
-                
+            //     }else{
+                    Animated.parallel([onPressOut,tensionAnimated,CheckBtnOpacityOutput]).start();
+                // }
+            // // Animated.parallel([onPressOut,CheckBtnOpacityOutput, goCenter]).start();
+            // Animated.parallel([onPressOut, goCenter]).start();
+            
             },
 
         })
@@ -233,17 +229,21 @@ export const WordCard2LV = () => {
             {...panResponder.panHandlers}
             horizontal
             pagingEnabled
+            indicatorStyle={"white"}
             data={WordCardArray}
             renderItem = {({item})=>(
                 
                 <CardSection style={{
                     width:SCREEN_WIDTH,
                     // transform:[{scale}]
+                    // backgroundColor:colors.BEIGE,
                 }}> 
                     <Card style={{
                         backgroundColor : item.bgColor,
                         transform:[{scale},{rotateZ:rotation}]
+                        // transform:[{scale:cardScale}]
                         // transform:[{scale}]
+
                     }}>
                         {/* <CheckBtn onPress={() => console.log(item.id)}>
                             <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
@@ -260,22 +260,16 @@ export const WordCard2LV = () => {
                 </CardSection>
             )}
         />
-                <CheckBtn style={{
+        <LeftImage style={{
             opacity: btnOpacity,
         }}>
-            {/* <StarViewImage source={require("../asset/images/Check.png") }></StarViewImage> */}
-            <CheckBtnImage>
-                <Ionicons name="checkmark-circle" size={50} color={colors.NAVY} />
-            </CheckBtnImage>
-        </CheckBtn>
-        <NonCheckBtn style={{
+            <ArrowImage source={require("../asset/images/LeftArrow.png") } />
+        </LeftImage>
+        <RightImage style={{
             opacity: btnOpacity,
         }}>
-            {/* <StarViewImage source={require("../asset/images/Random.png")}></StarViewImage> */}
-            <CheckBtnImage>
-                <Ionicons name="help-circle" size={50} color={colors.TOMATO} />
-            </CheckBtnImage>
-        </NonCheckBtn>
+            <ArrowImage  source={require("../asset/images/RightArrow.png")} />
+        </RightImage>
     </View>
     )
 }
@@ -331,21 +325,21 @@ const TextAudioBtn = styled.TouchableOpacity`
     border-radius: 80px;
     background-color: rgba(0,0,0,0.1);
 `
-const CheckBtn = styled(Animated.createAnimatedComponent(View))`
+const LeftImage = styled(Animated.createAnimatedComponent(View))`
         position: absolute;
         left: 0px;
         top: 40%;
         /* border: 1px solid gray; */
 `
-const NonCheckBtn = styled(Animated.createAnimatedComponent(View))`
+const RightImage = styled(Animated.createAnimatedComponent(View))`
         position: absolute;
         right: 0px;
         top: 40%;
         /* border: 1px solid gray; */
 `
-const CheckBtnImage = styled.ImageBackground`
-        width: 56px;
-        height: 56px;
+const ArrowImage = styled.ImageBackground`
+        width: 36px;
+        height: 36px;
         align-items: center;
         justify-content: center;
         /* border: 1px solid gray; */
@@ -624,14 +618,14 @@ export const WordCard3LV = () => {
         }}>
             {/* <StarViewImage source={require("../asset/images/Check.png") }></StarViewImage> */}
             <CheckBtnImage>
-                <Ionicons name="checkmark-circle" size={50} color={colors.NAVY} />
+                {/* <Ionicons name="checkmark-circle" size={50} color={colors.NAVY} /> */}
             </CheckBtnImage>
         </CheckBtn>
         <NonCheckBtn style={{
             opacity: btnOpacity,
         }}>
-            {/* <StarViewImage source={require("../asset/images/Random.png")}></StarViewImage> */}
             <CheckBtnImage>
+            {/* <StarViewImage source={require("../asset/images/Random.png")}></StarViewImage> */}
                 <Ionicons name="help-circle" size={50} color={colors.TOMATO} />
             </CheckBtnImage>
         </NonCheckBtn>

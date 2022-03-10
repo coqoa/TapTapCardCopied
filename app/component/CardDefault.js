@@ -9,32 +9,42 @@ import { Ionicons } from "@expo/vector-icons";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
+// const CardSection = styled.View`
+// const CardSection = styled(Animated.createAnimatedComponent(View))`
 const CardSection = styled.View`
-//Diemension쓰기위해 인라인 style 적용
+    border: 1px solid blue;
+    justify-content: center;
+    align-items: center;
+    //Diemension쓰기위해 인라인 style 적용
+
 `
-const Card = styled.View`
-    flex: 1;
+const Card = styled(Animated.createAnimatedComponent(View))`
+    /* flex: 1; */
+    width: 300px;
+    height: 540px;
+    padding: 0px 10px;
     align-items: center;
     justify-content: center;
-    margin:30px;
-    /* border: 1px solid black; */
+    /* margin:0px; */
     border-radius: 15px;
     box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
+    border: 1px solid white;
 `
-const CardImgShell = styled(Animated.createAnimatedComponent(View))`
-    /* flex: 3; */
+const CardImgShell = styled.View`
+    flex: 3;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 80%;
+    border: 1px solid red;
     `
 const CardImg = styled.Image`
     flex: 1;
     width: 100%;
     `
 const CardContents = styled.View`
-    width: 200px;
-    height: 100px;
+    flex: 1;
+    width: 100%;
+    border: 1px solid green;
 `
 const CardName = styled.View`
     flex:1;
@@ -71,9 +81,14 @@ export const WordCard1LV = () => {
                 </Card>
             </CardSection>
         )}
-    />
-    )
-}
+        />
+        )
+    }
+    
+    // --------------1----------------------------1----------------------------1----------------------------1--------------
+    // --------------2----------------------------2----------------------------2----------------------------2--------------
+    
+
 
 const Record = styled.View`
     height: 30px;
@@ -95,27 +110,141 @@ const CheckRecordText = styled.Text`
     font-size: 17px;
     bottom: 1px;
 `
-
+const CardList = styled(Animated.createAnimatedComponent(FlatList))`
+`
 //레벨2 레벨3은 이런식으로 작성하면 될것같음
 export const WordCard2LV = () => {
+    //Values
+    const scale = useRef(new Animated.Value(1)).current;
+
+    const position = useRef(new Animated.Value(0)).current;
+    const btnOpacity = useRef(new Animated.Value(0)).current;
+    const cardImageOpacity = useRef(new Animated.Value(1)).current;
+
+    const rotation = position.interpolate({
+        inputRange:[-180, 180],
+        outputRange:["-15deg", "15deg"],
+        extrapolate: "clamp" // 범위에서 넘어가면 interpolate를 어떻게 처리할지 ?
+    });
+
+    //Animations
+    const onPressIn = Animated.spring(scale, {
+        toValue:0.9, 
+        useNativeDriver:true
+    });
+    const onPressOut = Animated.spring(scale, {
+        toValue:1, 
+        useNativeDriver:true,
+    });
+
+    const tensionAnimated = Animated.spring(position, {
+        tension:100,
+        friction:5,
+        useNativeDriver:true,
+    });
+    const CheckBtnOpacityInput = Animated.timing(btnOpacity, {
+        toValue: 1,
+        duration:10,
+        useNativeDriver:true
+    })
+    const CheckBtnOpacityOutput = Animated.timing(btnOpacity, {
+        toValue: 0,
+        duration:1000,
+        useNativeDriver:true
+    })
+    // const goLeft = Animated.spring(position, {
+    //     // toValue: -SCREEN_WIDTH, 
+    //     tension: 35,
+    //     restSpeedThreshold: 1,
+    //     restDisplacementThreshold:1,
+    //     useNativeDriver:true
+    // });
+    // const goRight = Animated.spring(position, {
+    //     toValue: SCREEN_WIDTH, 
+    //     restSpeedThreshold: 1,
+    //     restDisplacementThreshold:1,
+    //     tension: 35,
+    //     useNativeDriver:true
+    // });
+
+    //panResponder
+    const panResponder = useRef(
+        PanResponder.create({
+            onStartShouldSetPanResponder: () => true,
+            onPanResponderMove:(_,{dx}) => {
+                position.setValue(dx)
+                console.log('Move',dx)
+            }, 
+            onPanResponderGrant: () => {
+                Animated.parallel(
+                        [CheckBtnOpacityInput,onPressIn]
+                        // [onPressIn]
+                    ).start();
+                    // onPressIn.start()
+                    console.log('Grant')
+                },
+                onPanResponderRelease: (_, {dx}) => {
+                    console.log('Release',dx)
+                //     if(dx < -180){
+                //         Animated.parallel([onPressOut,tensionAnimated]).start();
+                //         //     // console.log("dismiss to the left")
+                //         //     // Animated.parallel([goLeft,CheckBtnOpacityOutput,checkSplashUpScale]).start(onDismiss);
+                //         //     // Animated.parallel([goLeft,CheckBtnOpacityOutput]).start(onDismiss);
+                //         //     Animated.parallel([goLeft]).start(onDismiss);
+                //     }else if(dx>180){
+                //         Animated.parallel([onPressOut, tensionAnimated]).start();
+                //             //     // console.log("dismiss to the right")
+                // //     // Animated.parallel([goRight,CheckBtnOpacityOutput]).start(onDismiss);
+                // //     Animated.parallel([goRight]).start(onDismiss);
+
+                //     }else{
+                        Animated.parallel([onPressOut,tensionAnimated,CheckBtnOpacityOutput]).start();
+                    // }
+                // // Animated.parallel([onPressOut,CheckBtnOpacityOutput, goCenter]).start();
+                // Animated.parallel([onPressOut, goCenter]).start();
+                
+            },
+
+        })
+    ).current
+
+    const onDismiss = async() => {
+        scale.setValue(1);
+        position.setValue(0);
+    }
+
 
     return(
     <View>
-        <Record>
+        {/* <Image
+            source={{}}
+        
+        /> */}
+
+        
+        {/* <Record>
             <CheckRecord>
                 <CheckRecordImage source={require("../asset/images/Check.png")} resizeMode="contain"></CheckRecordImage>
                 <CheckRecordText>2레벨</CheckRecordText>
             </CheckRecord>
-        </Record>
+        </Record> */}
 
-        <FlatList
+        <CardList
+            {...panResponder.panHandlers}
             horizontal
             pagingEnabled
             data={WordCardArray}
             renderItem = {({item})=>(
                 
-                <CardSection style={{width:SCREEN_WIDTH}}> 
-                    <Card>
+                <CardSection style={{
+                    width:SCREEN_WIDTH,
+                    // transform:[{scale}]
+                }}> 
+                    <Card style={{
+                        backgroundColor : item.bgColor,
+                        transform:[{scale},{rotateZ:rotation}]
+                        // transform:[{scale}]
+                    }}>
                         {/* <CheckBtn onPress={() => console.log(item.id)}>
                             <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
                         </CheckBtn> */}
@@ -131,11 +260,29 @@ export const WordCard2LV = () => {
                 </CardSection>
             )}
         />
+                <CheckBtn style={{
+            opacity: btnOpacity,
+        }}>
+            {/* <StarViewImage source={require("../asset/images/Check.png") }></StarViewImage> */}
+            <CheckBtnImage>
+                <Ionicons name="checkmark-circle" size={50} color={colors.NAVY} />
+            </CheckBtnImage>
+        </CheckBtn>
+        <NonCheckBtn style={{
+            opacity: btnOpacity,
+        }}>
+            {/* <StarViewImage source={require("../asset/images/Random.png")}></StarViewImage> */}
+            <CheckBtnImage>
+                <Ionicons name="help-circle" size={50} color={colors.TOMATO} />
+            </CheckBtnImage>
+        </NonCheckBtn>
     </View>
     )
 }
 
 
+// --------------2----------------------------2----------------------------2----------------------------2--------------
+// --------------3----------------------------3----------------------------3----------------------------3--------------
 
 
 
@@ -221,7 +368,6 @@ const CheckSplashScreenImage = styled.View`
 `
 // const AnimatedCard = Animated.createAnimatedComponent(ExamCard);
 
-//----------__----------__----------__----------__----------__----------__----------__----------__----------__
 
 export const WordCard3LV = () => {
     //Values
@@ -241,6 +387,14 @@ export const WordCard3LV = () => {
         outputRange:[1, 0.7, 1],
         extrapolate:"clamp"
     }) ;
+    const cardImageOpacityVisible = Animated.timing(cardImageOpacity, {
+        toValue: 1,
+        useNativeDriver:true
+    })
+    const cardImageOpacityInisible = Animated.timing(cardImageOpacity, {
+        toValue: 0,
+        useNativeDriver:true
+    })
     const CheckBtnOpacityInput = Animated.timing(btnOpacity, {
         toValue: 1,
         useNativeDriver:true
@@ -347,13 +501,14 @@ export const WordCard3LV = () => {
     // check값을 출력하고 바꾸려면 어떻게 해야하지?
 
 
-    const onDismiss = () => {
+    const onDismiss = async() => {
         // if (index+4 == WordCardArray.length){
         //     null
         // }else{
-            setIndex((prev) => prev +1)
+            await setIndex((prev) => prev +1)
             scale.setValue(1);
             position.setValue(0);
+            // cardImageOpacityVisible.start();
             // Animated.sequence([checkSplashUpScale, checkSplashDownScale]).start();
             
             
@@ -389,7 +544,7 @@ export const WordCard3LV = () => {
                 // {...panResponder.panHandlers}
                 style={{
                     backgroundColor:WordCardArray[index+1].bgColor,
-                    transform:[{scale:secondScale}]
+                    transform:[{scale:secondScale}, {rotateZ:rotation}]
                 }}>
                     <CardImgShell>
                         <CardImg source={WordCardArray[index+1].image} resizeMode="contain"></CardImg>

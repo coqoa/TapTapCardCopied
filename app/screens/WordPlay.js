@@ -120,7 +120,7 @@ const WordPlay = ({navigation}) => {
         // ((cardSelector == undefined) ? setCardSelector("word1LV") :null)
         if(cardSelector == undefined) {
             // setCardSelector("word1LV")
-            setCardSelector("word3LV")
+            setCardSelector("word2LV")
         } 
         setLoading(false)
     }, []);

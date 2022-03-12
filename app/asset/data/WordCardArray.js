@@ -73,25 +73,41 @@ export const WordCardArray = [
         "name" : "9",
         "check" : false
     }, 
-
-
-
-
-
     {
-        "id" : 9999, 
+        "id" : 10, 
+        "image" : require("../images/RightArrow.png"), 
+        "bgColor" : colors.BEIGE, 
+        "name" : "10",
+        "check" : false
+    }, 
+    {
+        "id" : 11, 
+        "image" : require("../images/RightArrow.png"), 
+        "bgColor" : colors.BEIGE, 
+        "name" : "11",
+        "check" : false
+    },
+    {
+        "id" : 12, 
+        "image" : require("../images/RightArrow.png"), 
+        "bgColor" : colors.BEIGE, 
+        "name" : "12",
+        "check" : false
+    },
+    {
+        "id" : 13, 
+        "image" : require("../images/RightArrow.png"), 
+        "bgColor" : colors.BEIGE, 
+        "name" : "13",
+        "check" : false
+    },
+    {
+        "id" : 14, 
         "image" : require("../images/RightArrow.png"), 
         "bgColor" : colors.BEIGE, 
         "name" : "끝",
         "check" : false
-    }, 
-    {
-        "id" : 10000, 
-        "image" :require("../images/RightArrow.png"), 
-        "bgColor" : " ", 
-        "name" : " ",
-        "check" : false
-    }
+    },
 ]
 
 

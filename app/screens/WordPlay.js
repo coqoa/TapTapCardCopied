@@ -179,6 +179,7 @@ const WordPlay = ({navigation}) => {
                     else if(cardSelector=="word2LV") return <WordCard2LV />;
                     else if(cardSelector=="word3LV") return <WordCard3LV />;
                     else return <WordCard1LV />
+                    // return <WordCard1LV />
                 })()}
                 {/* {cardSelector=="word1LV" ? <WordCard1LV /> : null}
                 {cardSelector=="word2LV" ? <WordCard2LV /> : null}

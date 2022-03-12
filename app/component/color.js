@@ -14,5 +14,6 @@ export const colors = {
     REALDARKGRAY:"#505050",
     BEIGE:"#f5f5dc",
     ORANGE:"#FED784",
+    GREEN:"#198c19",
 };
 // export default colors;

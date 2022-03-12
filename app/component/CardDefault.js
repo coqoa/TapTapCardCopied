@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from "react"
-import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable, PanResponder } from "react-native";
+import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable, PanResponder,Text } from "react-native";
 import Easing from "react-native/Libraries/Animated/Easing";
 import styled from "styled-components"
 import { WordCardArray } from "../asset/data/WordCardArray";
@@ -19,8 +19,8 @@ const CardSection = styled.View`
 `
 const Card = styled(Animated.createAnimatedComponent(View))`
     /* flex: 1; */
-    width: 300px;
-    height: 540px;
+    width: 290px;
+    height: 510px;
     padding: 0px 10px;
     align-items: center;
     justify-content: center;
@@ -33,7 +33,7 @@ const CardImgShell = styled.View`
     flex: 3;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 80%;
     /* border: 1px solid red; */
     `
 const CardImg = styled.Image`
@@ -111,43 +111,90 @@ const CheckRecordText = styled.Text`
 `
 const CardList = styled(Animated.createAnimatedComponent(FlatList))`
 `
+const LeftArrowSplash = styled(Animated.createAnimatedComponent(View))`
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    /* border: 1px solid red; */
+    justify-content: center;
+    align-items: center;
+`
+const RightArrowSplash = styled(LeftArrowSplash)`
+`
+const ImageAudioBtn = styled.TouchableOpacity`
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    background-color: rgba(0,0,0,0.1);
+`
+const TextAudioBtn = styled.TouchableOpacity`
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    background-color: rgba(0,0,0,0.1);
+`
+const ClearModal = styled.View`
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid red;
+    align-items: center;
+    justify-content: center;
+`
+// const CheckBtnImage = styled.Image`
+// `
+// const NonCheckBtnImage = styled.Image`
+// `
 //레벨2 레벨3은 이런식으로 작성하면 될것같음
 export const WordCard2LV = () => {
+    const [refresh, setRefresh] = useState(true);
+    const [clearModalToggle, setClearModalToggle] = useState(false)
     //Values
-    const scale = useRef(new Animated.Value(0.9)).current;
+    const scale = useRef(new Animated.Value(1)).current;
     const position = useRef(new Animated.Value(0)).current;
     const btnOpacity = useRef(new Animated.Value(0)).current;
+    
 
+    const scaleControl = position.interpolate({
+        inputRange:[-400,-200,0,200,400],
+        outputRange:[1,0,1,0,1],
+        extrapolate: "clamp" 
+    });
     const rotation = position.interpolate({
-        inputRange:[-180,0, 180],
-        outputRange:["-25deg","0deg" ,"25deg"],
+        inputRange:[-200,0, 200],
+        outputRange:["-15deg","0deg" ,"15deg"],
         extrapolate: "clamp" // 범위에서 넘어가면 interpolate를 어떻게 처리할지 ?
     });
 
     //Animations
     const onPressIn = Animated.spring(scale, {
-        toValue:1, 
+        toValue:0, 
         useNativeDriver:true
     });
     const onPressOut = Animated.spring(scale, {
-        toValue:0.9, 
+        toValue:1, 
         useNativeDriver:true,
     });
     const tensionAnimated = Animated.spring(position, {
         tension:10,
         friction:5,
+        restSpeedThreshold: 1,
+        restDisplacementThreshold:1,
         useNativeDriver:true,
     });
     const CheckBtnOpacityInput = Animated.timing(btnOpacity, {
-        toValue: 0.8,
-        duration:10,
+        toValue: 0.3,
+        duration:150,
         useNativeDriver:true
     })
     const CheckBtnOpacityOutput = Animated.timing(btnOpacity, {
         toValue: 0,
-        duration:1000,
+        duration:150,
         useNativeDriver:true
     })
+    
     // const goLeft = Animated.spring(position, {
     //     // toValue: -SCREEN_WIDTH, 
     //     tension: 35,
@@ -169,107 +216,134 @@ export const WordCard2LV = () => {
             onStartShouldSetPanResponder: () => true,
             onPanResponderMove:(_,{dx}) => {
                 position.setValue(dx)
-                console.log('Move',dx)
-            }, 
-            onPanResponderGrant: () => {
-                Animated.parallel(
-                        [CheckBtnOpacityInput,onPressIn]
-                        // [onPressIn]
-                    ).start();
-                    // onPressIn.start()
-                    console.log('Grant')
-                },
-            onPanResponderRelease: (_, {x0}) => {
-                console.log('Release',x0)
-            //     if(dx < -180){
-            //         Animated.parallel([onPressOut,tensionAnimated]).start();
+                // console.log('Move',dx)
+            //     if(dx < -184.6){
+            //         Animated.sequence([CheckBtnOpacityInput,CheckBtnOpacityOutput,]).start();
             //         //     // console.log("dismiss to the left")
             //         //     // Animated.parallel([goLeft,CheckBtnOpacityOutput,checkSplashUpScale]).start(onDismiss);
             //         //     // Animated.parallel([goLeft,CheckBtnOpacityOutput]).start(onDismiss);
             //         //     Animated.parallel([goLeft]).start(onDismiss);
-            //     }else if(dx>180){
-            //         Animated.parallel([onPressOut, tensionAnimated]).start();
+            //     }else if(dx>184.6){
+            //         Animated.sequence([CheckBtnOpacityInput,CheckBtnOpacityOutput,]).start();
             //             //     // console.log("dismiss to the right")
             // //     // Animated.parallel([goRight,CheckBtnOpacityOutput]).start(onDismiss);
             // //     Animated.parallel([goRight]).start(onDismiss);
 
             //     }else{
-                    Animated.parallel([onPressOut,tensionAnimated,CheckBtnOpacityOutput]).start();
+                    // Animated.parallel([onPressOut,tensionAnimated,CheckBtnOpacityOutput]).start();
+                    // Animated.parallel([CheckBtnOpacityOutput]).start();
+                // }
+            }, 
+            // onPanResponderGrant: () => {
+            //     Animated.parallel(
+            //             // [onPressIn,CheckBtnOpacityInput]
+            //             [CheckBtnOpacityInput]
+            //             // [onPressIn]
+            //         ).start();
+            //         // onPressIn.start()
+            //         console.log('Grant')
+            //     },
+            onPanResponderRelease: (_, {dx}) => {
+                // console.log('Release',dx)
+            //     if(dx < -184.6){
+            //         //     // console.log("dismiss to the left")
+            //         //     // Animated.parallel([goLeft,CheckBtnOpacityOutput,checkSplashUpScale]).start(onDismiss);
+            //         //     // Animated.parallel([goLeft,CheckBtnOpacityOutput]).start(onDismiss);
+            //         //     Animated.parallel([goLeft]).start(onDismiss);
+            //     }else if(dx>184.6){
+            //             //     // console.log("dismiss to the right")
+            // //     // Animated.parallel([goRight,CheckBtnOpacityOutput]).start(onDismiss);
+            // //     Animated.parallel([goRight]).start(onDismiss);
+
+                // }else{
+                    // Animated.parallel([onPressOut,tensionAnimated,CheckBtnOpacityOutput]).start();
+                    // Animated.parallel([tensionAnimated,CheckBtnOpacityOutput]).start();
+                    Animated.parallel([tensionAnimated]).start();
                 // }
             // // Animated.parallel([onPressOut,CheckBtnOpacityOutput, goCenter]).start();
             // Animated.parallel([onPressOut, goCenter]).start();
             
-            },
+            }
 
         })
     ).current
 
-    const onDismiss = async() => {
-        scale.setValue(1);
-        position.setValue(0);
-    }
+    const lastListModalOn = () => {
+        setClearModalToggle((prev) => !prev)
+    };
+    const clear2 = () => {
+        setRefresh((prev) => !prev)
+        setClearModalToggle((prev) => !prev)
+        setTimeout(function() {
+            setRefresh((prev) => !prev)
+        },100)
+        // setClearModalToggle((prev) => !prev)
+        // console.log(refresh)
+    };
 
 
     return(
-    <View>
-        {/* <Image
-            source={{}}
+    <View  style={{alignItems:"center", justifyContent:"center"}}>
+        {refresh ? (
+        <View  style={{alignItems:"center", justifyContent:"center"}}>
+            <CardList
+                {...panResponder.panHandlers}
+                horizontal
+                pagingEnabled
+                showsHorizontalScrollIndicator={false}
+                data={WordCardArray}
+                onEndReached={lastListModalOn}
+                onEndReachedThreshold={0.1}
+                renderItem = {({item, index})=>{
+                    // {item.length<item.id ? console.log(item.id):console.log(item.name)}
+                    // {console.log('item =',item.id, ' index=',index)}
+                    // {console.log(index)}
+                    return (
+                    <CardSection style={{
+                        width:SCREEN_WIDTH,
+                    }}> 
+                        <Card style={{
+                            backgroundColor : item.bgColor,
+                            opacity: scaleControl,
+                            transform:[{scale:scaleControl},{rotateZ:rotation}]
+
+                        }}>
+                            <CardImgShell>
+                                <CardImg source={item.image} resizeMode="contain"></CardImg>
+                                {/* <ImageAudioBtn onPress={()=>{console.log('이미지 오디오 출력')}} /> */}
+                                <ImageAudioBtn onPress={()=>{lastListModalOn()}} />
+                            </CardImgShell>
+                            <CardContents onPress={() => console.log(item.length)}>
+                                <CardName>
+                                    <CardNameText>{item.name}</CardNameText>
+                                    <TextAudioBtn onPress={()=>{console.log('텍스트 오디오 출력')}} />
+                                </CardName>
+                            </CardContents>
+                        </Card>
+                    </CardSection>
+                    )
+                    
+                }}
+            />
+            <LeftArrowImageContainer style={{
+                opacity: btnOpacity,
+            }}>
+                <ArrowImage source={require("../asset/images/LeftArrow.png") } />
+            </LeftArrowImageContainer>
+            <RightArrowImageContainer style={{
+                opacity: btnOpacity,
+            }}>
+                <ArrowImage  source={require("../asset/images/RightArrow.png")} />
+            </RightArrowImageContainer>
+        </View>):null
+        }
+        {clearModalToggle ? (
+            <ClearModal>
+            <TouchableOpacity onPress={() => clear2()}><Text>다시하기</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => clear2()}><Text>다음페이지</Text></TouchableOpacity>
+        </ClearModal>
+        ):null}
         
-        /> */}
-
-        
-        {/* <Record>
-            <CheckRecord>
-                <CheckRecordImage source={require("../asset/images/Check.png")} resizeMode="contain"></CheckRecordImage>
-                <CheckRecordText>2레벨</CheckRecordText>
-            </CheckRecord>
-        </Record> */}
-
-        <CardList
-            {...panResponder.panHandlers}
-            horizontal
-            pagingEnabled
-            indicatorStyle={"white"}
-            data={WordCardArray}
-            renderItem = {({item})=>(
-                
-                <CardSection style={{
-                    width:SCREEN_WIDTH,
-                    // transform:[{scale}]
-                    // backgroundColor:colors.BEIGE,
-                }}> 
-                    <Card style={{
-                        backgroundColor : item.bgColor,
-                        transform:[{scale},{rotateZ:rotation}]
-                        // transform:[{scale:cardScale}]
-                        // transform:[{scale}]
-
-                    }}>
-                        {/* <CheckBtn onPress={() => console.log(item.id)}>
-                            <CheckBtnImage source={require("../asset/images/EmptyCheck.png")}></CheckBtnImage>
-                        </CheckBtn> */}
-                        <CardImgShell>
-                            <CardImg source={item.image} resizeMode="contain"></CardImg>
-                        </CardImgShell>
-                        <CardContents onPress={() => console.log(item.name)}>
-                            <CardName>
-                                <CardNameText>{item.name}</CardNameText>
-                            </CardName>
-                        </CardContents>
-                    </Card>
-                </CardSection>
-            )}
-        />
-        <LeftImage style={{
-            opacity: btnOpacity,
-        }}>
-            <ArrowImage source={require("../asset/images/LeftArrow.png") } />
-        </LeftImage>
-        <RightImage style={{
-            opacity: btnOpacity,
-        }}>
-            <ArrowImage  source={require("../asset/images/RightArrow.png")} />
-        </RightImage>
     </View>
     )
 }
@@ -311,30 +385,16 @@ const ExamCard = styled(Animated.createAnimatedComponent(View))`
 //     justify-content: space-between;
 //     border: 1px solid red;
 // `
-const ImageAudioBtn = styled.TouchableOpacity`
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    border-radius: 150px;
-    background-color: rgba(0,0,0,0.1);
-`
-const TextAudioBtn = styled.TouchableOpacity`
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border-radius: 80px;
-    background-color: rgba(0,0,0,0.1);
-`
-const LeftImage = styled(Animated.createAnimatedComponent(View))`
+const LeftArrowImageContainer = styled(Animated.createAnimatedComponent(View))`
         position: absolute;
         left: 0px;
-        top: 40%;
+        top: 45%;
         /* border: 1px solid gray; */
 `
-const RightImage = styled(Animated.createAnimatedComponent(View))`
+const RightArrowImageContainer = styled(Animated.createAnimatedComponent(View))`
         position: absolute;
         right: 0px;
-        top: 40%;
+        top: 45%;
         /* border: 1px solid gray; */
 `
 const ArrowImage = styled.ImageBackground`
@@ -599,8 +659,6 @@ export const WordCard3LV = () => {
                         </CardContents>
                     </ExamCard>
                 )}
-                
-                    
             </CardContainer>
             {/* <CheckSplashScreen style={{
                     zIndex: checkSplash,

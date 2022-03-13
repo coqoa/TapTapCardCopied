@@ -132,7 +132,7 @@ const WordPlay = ({navigation}) => {
             <Top>
                 <GoBack>
                     <GoBackBtn onPress={() => navigation.goBack()}>
-                        <GoBackBtnImage source={require("../asset/images/goBack1.png")}></GoBackBtnImage>
+                        <GoBackBtnImage source={require("../asset/images/goBackShadow.png")}></GoBackBtnImage>
                     </GoBackBtn>
                 </GoBack>
                 <Menu>

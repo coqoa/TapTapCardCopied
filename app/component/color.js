@@ -4,7 +4,6 @@ export const colors = {
     PINK:"#FF5384",
     PASTELBLUE:"#3772E6",
     LIGHTBLUE:"#c0dfff",
-    고래배경:"#37b5e6",
     NAVY: "#163976",
     TOMATO : "#FF8D8D",
     REALLIGHTGRAY : "#D0D0D0",
@@ -16,5 +15,6 @@ export const colors = {
     BEIGE:"#f5f5dc",
     ORANGE:"#FED784",
     GREEN:"#198c19",
+    WhaleBG:"#37b5e6",
 };
 // export default colors;

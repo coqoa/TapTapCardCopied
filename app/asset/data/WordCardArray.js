@@ -8,23 +8,23 @@ export const WordCardArray = [
         "bgColor" : colors.ORANGE, 
         "name" : "사자",
         "check" : true,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
     {
         "id" : 1, 
-        "image" : require("../images/Speaker.png"), 
-        "bgColor" : colors.LIGHTBLUE, 
-        "name" : "말",
+        "image" : require("../images/Whale.png"), 
+        "bgColor" : colors.WhaleBG, 
+        "name" : "고래",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
     {
         "id" : 2, 
-        "image" : require("../images/Star.png"),
+        "image" : require("../images/Bull.png"),
         "bgColor" : colors.TOMATO,  
-        "name" : "강아지",
+        "name" : "소",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
     {
         "id" : 3, 
@@ -32,7 +32,7 @@ export const WordCardArray = [
         "bgColor" : colors.BEIGE, 
         "name" : "고양이",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
     {
         "id" : 4, 
@@ -40,7 +40,7 @@ export const WordCardArray = [
         "bgColor" : colors.NAVY, 
         "name" : "쥐",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
     {
         "id" : 5, 
@@ -48,7 +48,7 @@ export const WordCardArray = [
         "bgColor" : colors.PASTELBLUE, 
         "name" : "소",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     },
 
     {
@@ -57,7 +57,7 @@ export const WordCardArray = [
         "bgColor" : colors.REALLIGHTGRAY, 
         "name" : "6",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
     {
         "id" : 7, 
@@ -65,7 +65,7 @@ export const WordCardArray = [
         "bgColor" : colors.LIGHTGRAY, 
         "name" : "7",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
     {
         "id" : 8, 
@@ -73,7 +73,7 @@ export const WordCardArray = [
         "bgColor" : colors.ORANGE, 
         "name" : "8",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
     {
         "id" : 9, 
@@ -81,7 +81,7 @@ export const WordCardArray = [
         "bgColor" : colors.BEIGE, 
         "name" : "9",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
     {
         "id" : 10, 
@@ -89,7 +89,7 @@ export const WordCardArray = [
         "bgColor" : colors.BEIGE, 
         "name" : "10",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
     {
         "id" : 11, 
@@ -97,7 +97,7 @@ export const WordCardArray = [
         "bgColor" : colors.BEIGE, 
         "name" : "11",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     },
     {
         "id" : 12, 
@@ -105,7 +105,7 @@ export const WordCardArray = [
         "bgColor" : colors.BEIGE, 
         "name" : "12",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     },
     {
         "id" : 13, 
@@ -113,7 +113,7 @@ export const WordCardArray = [
         "bgColor" : colors.BEIGE, 
         "name" : "13",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     },
     {
         "id" : 14, 
@@ -121,7 +121,7 @@ export const WordCardArray = [
         "bgColor" : colors.BEIGE, 
         "name" : "끝",
         "check" : false,
-        "randomImage" : require("../images/Random.png")
+        "questionMarkImage" : require("../images/QuestionMark.png")
     },
 ]
 

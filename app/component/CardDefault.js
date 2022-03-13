@@ -5,6 +5,7 @@ import { WordCardArray } from "../asset/data/WordCardArray";
 import { colors } from "./color";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { transform } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 //Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -49,7 +50,7 @@ const CardImgShell = styled.View`
     flex: 3;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 90%;
     `
 const CardImg = styled.Image`
     flex: 1;
@@ -96,6 +97,16 @@ const TextAudioBtn = styled.TouchableOpacity`
     border-radius: 80px;
     background-color: rgba(0,0,0,0.1);
 `
+const ClearModalContainer = styled.View`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.1);
+    left: 0px;
+    top: 0px;
+    align-items: center;
+    justify-content: center;
+`
 const ClearModal = styled.View`
     position: absolute;
     width: 300px;
@@ -128,20 +139,43 @@ const NextLevel = styled(RepeatLevel)`
 const RepeatLevelText = styled.Text``
 const NextLevelText = styled.Text``
 
+const TextBarContainer = styled.View`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+`
+const TextBar = styled.TextInput`
+    background-color: white;
+    padding: 0px 15px;
+    border-radius: 15px;
+    width: 230px;
+    height: 100px;
+    margin: 10px auto;
+    font-size: 50px;
+    font-weight: 600;
+    border: 1px solid ${colors.REALDARKGRAY};
+    align-content:center;
+`
+
 // ----------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
     //useState
     const [refresh, setRefresh] = useState(true);
-    const [clearModalToggle, setClearModalToggle] = useState(false)
+    const [clearModalToggle, setClearModalToggle] = useState(false);
+    const [questionMark, setQuestionMark] = useState(true);
     //Values
     const scale = useRef(new Animated.Value(1)).current;
     const position = useRef(new Animated.Value(0)).current;
     const btnOpacity = useRef(new Animated.Value(0)).current;
     //interpolate
     const scaleControl = position.interpolate({
-        inputRange:[-400,-200,0,200,400],
-        outputRange:[1,0,1,0,1],
+        inputRange:[-200,0,200,],
+        outputRange:[0,1,0],
         extrapolate: "clamp" 
     });
     const rotation = position.interpolate({
@@ -157,15 +191,59 @@ export const WordCardLevel = (props) => {
         restDisplacementThreshold:1,
         useNativeDriver:true,
     });
+    const onPressIn =  Animated.spring(scale, {
+        toValue:0.9,
+        useNativeDriver:true
+    })
+    const onPressOut = Animated.spring(scale, {
+        toValue:1,
+        useNativeDriver:true
+    })
+    const goCenter = Animated.spring(position, {
+        toValue:0,
+        useNativeDriver:true
+    })
+    const goLeft = Animated.spring(position, {
+        toValue:-SCREEN_WIDTH, 
+        useNativeDriver:true
+    })
+    const goRight = Animated.spring(position, {
+        toValue:SCREEN_WIDTH,
+        useNativeDriver:true
+    })
     //panResponder
     const panResponder = useRef(
         PanResponder.create({
             onStartShouldSetPanResponder: () => true,
+            onPanResponderGrant:() => {
+                // console.log(position)
+            //     position.setOffset({
+            //         x:position._value
+            // });
+            onPressIn.start();
+            }, 
             onPanResponderMove:(_,{dx}) => {
+                console.log("Move",dx)
                 position.setValue(dx)
             }, 
-            onPanResponderRelease: () => {
-                    Animated.parallel([tensionAnimated]).start();
+            onPanResponderRelease: (_,{dx}) => {
+                console.log("Release",dx)
+                // if(dx>-50){
+                //     position.setValue(0)
+                //     // console.log('dismiss!!!!1')
+                //     // Animated.parallel([onPressOut, goLeft,tensionAnimated]).start();
+                    
+                // }else if(dx<50){
+                //     position.setValue(0)
+                //     // console.log('dismiss!!!!2')
+                //     // Animated.parallel([onPressOut,goRight,tensionAnimated]).start();
+                    
+                // }else{
+                //     // console.log('dismiss!!!!3')
+                    // Animated.parallel([onPressOut,goCenter]).start();
+                    setQuestionMark(true)
+                    Animated.parallel([onPressOut,tensionAnimated]).start();
+                // }
             }
         })
     ).current
@@ -180,6 +258,11 @@ export const WordCardLevel = (props) => {
             setRefresh((prev) => !prev)
         },100)
     };
+    const QuestionMarkClick = () => {
+        // setQuestionMark(false)
+        // console.log(e.nativeEvent)
+    }
+
 
 
     const levelConsole = () => {
@@ -202,9 +285,10 @@ export const WordCardLevel = (props) => {
                 {refresh ? (
                 <>
                     <CardList
-                        {...panResponder.panHandlers}
+                        // {...panResponder.panHandlers}
                         horizontal
                         pagingEnabled
+                        scrollEnabled={true}
                         showsHorizontalScrollIndicator={false}
                         data={WordCardArray}
                         onEndReached={lastListModalOn}
@@ -222,47 +306,112 @@ export const WordCardLevel = (props) => {
                                     <CardImgShell>
                                         <CardImg source={item.image} resizeMode="contain"></CardImg>
                                         {/* <ImageAudioBtn onPress={()=>{lastListModalOn()}} /> */}
-                                        <ImageAudioBtn onPress={()=>{console.log('이미지변경')}} />
+                                        <ImageAudioBtn onPress={()=>{console.log('이미지오디오출력')}} />
                                     </CardImgShell>
 
                                     <CardContents onPress={() => console.log(item.length)}>
                                         <CardName>
                                             <CardNameText>{item.name}</CardNameText>
                                             <TextAudioBtn onPress={()=>{console.log('텍스트 오디오 출력')}} />
-                                            {props.level == "word2LV" ? (
-                                                <QuestionMarkBtn style={{backgroundColor: item.bgColor}}>
-                                                    <QuestionMarkImage source={require("../asset/images/Random.png")}  resizeMode="contain" />
+                                            
+                                            {props.level == "word2LV" && questionMark ? (
+                                                <QuestionMarkBtn 
+                                                // style={({ pressed }) => [{
+                                                //     backgroundColor: !pressed
+                                                //       ? item.bgColor
+                                                //       : 'red'
+                                                //   }]},
+                                                    // style={{
+                                                    //     backgroundColor: item.bgColor,
+                                                    //     // transform: [{scale:questionMark}]
+                                                    // }}
+                                                    // onPress={()=>setQuestionMark(false)} 
+                                                >
+                                                    <QuestionMarkImage 
+                                                    source={item.randomImage}  
+                                                    resizeMode="contain"
+                                                    />
                                                 </QuestionMarkBtn>
                                             ) : null}
-                                            {props.level == "word3LV" ? (
-                                                <View><Text>텍스트입력창?</Text></View>
-                                            ) : null}
+                                            {/* {props.level == "word3LV" ? (
+                                                <TextBarContainer>
+                                                    <TextBar />
+                                                </TextBarContainer>
+                                            ) : null} */}
                                         </CardName>
                                     </CardContents>
                                 </Card>
                             </CardSection>
                             )
-                            
                         }}
-                    />
+                        />
                 </>):(null)
                 }
                 {/* 마지막리스트 모달창 */}
                 {clearModalToggle ? (
-                    <ClearModal>
-                        <ClearImage  source={require("../asset/images/Check.png")} />
-                        <RepeatLevel onPress={() => restartLevelBtn()}>
-                            <RepeatLevelText>{props.level}</RepeatLevelText>
-                        </RepeatLevel>
-                        <NextLevel>
-                            <NextLevelText>다음레벨 도전!</NextLevelText>
-                        </NextLevel>
-                    </ClearModal>
+                    <ClearModalContainer>
+                        <ClearModal>
+                            <ClearImage  source={require("../asset/images/Check.png")} />
+                            <RepeatLevel onPress={() => restartLevelBtn()}>
+                                <RepeatLevelText>다시 하기!</RepeatLevelText>
+                            </RepeatLevel>
+                            <NextLevel>
+                                <NextLevelText>다음레벨 도전!</NextLevelText>
+                            </NextLevel>
+                        </ClearModal>
+                    </ClearModalContainer>
                 ):null}
                 </View>
             </SafeAreaView>
             </View>
         )
     }
+
+// const Container = styled.View`
+//     flex-direction: row;
+//     position: absolute;
+//     /* left: -50%; */
+//     /* top: 0px; */
+//     /* padding: 0px; */
+//     background-color: red;
+// `
+// const CardShell = styled.View`
+//     align-items: center;
+//     justify-content: center;
+//     z-index: 10;
+// `
+// const Card = styled(Animated.createAnimatedComponent(View))`
+//     width: 300px;
+//     height: 300px;
+//     justify-content: center;
+//     align-items: center;
+//     border-radius: 12px;
+//     box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+//     z-index: 15;
+// `
+//     const wordCardMapFunction = WordCardArray.map(function(item){
+//         // const scale = useRef(new Animated.Value(1)).current;
+//         return (
+//             <CardShell  key={item.id} style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT}}>
+                
+//                 <Card 
+//                 {...panResponder.panHandlers}
+//                 style={{
+//                     backgroundColor: item.bgColor, 
+//                     // opacity: scaleControl,
+//                     // transform: [{scale:scaleControl}, {translateX:position}]
+//                     transform: [{scale}, {translateX:position}]
+//                 }}>
+//                     <Text>{item.name}</Text>
+//                 </Card>
+//             </CardShell>
+//         )
+//     })
     return(levelConsole())
+    // return(
+    //     <Container>
+    //         {/* <Card><Text>123</Text></Card> */}
+    //         {wordCardMapFunction}
+    //     </Container>
+    // )
 }

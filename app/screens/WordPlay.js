@@ -106,9 +106,14 @@ const WordPlay = ({navigation}) => {
     
     const [cardSelector, setCardSelector] = useState("word1LV");
     const [modalToggle, setModalToggle] = useState(false);
+    const [mainScreenRender, setMainScreenRender] = useState(true)
     
     const cardCheck = (e) => {
+        setMainScreenRender(false);
         setCardSelector(e);
+        setTimeout(function(){
+            setMainScreenRender(true)
+        },100)
         setModalToggle(!modalToggle);
     }
     //자식컴포넌트로부터 값을 받아서 state를 변경하기 위해 props로 넘길 함수
@@ -132,11 +137,13 @@ const WordPlay = ({navigation}) => {
         //         <ActivityIndicator />
         //     </Loader>
         // ) : (
+            
             <Shell>
             <Top>
                 <GoBack>
                     <GoBackBtn onPress={() => navigation.goBack()}>
-                        <GoBackBtnImage source={require("../asset/images/goBackShadow.png")}></GoBackBtnImage>
+                        {/* <GoBackBtnImage source={require("../asset/images/goBackShadow.png")}></GoBackBtnImage> */}
+                        <GoBackBtnImage source={require("../asset/images/goBack1.png")}></GoBackBtnImage>
                     </GoBackBtn>
                 </GoBack>
                 <Menu>
@@ -146,6 +153,7 @@ const WordPlay = ({navigation}) => {
                 </Menu>
 
             </Top>
+            {mainScreenRender && (
             <Main>
                 {(()=>{
                     return (
@@ -154,6 +162,7 @@ const WordPlay = ({navigation}) => {
                 })()}
                 {/* <Pressable style={{hei}} onPress={()=>{cardCheck("word2LV")}}><Text>123</Text></Pressable> */}
             </Main>
+            )}
             {modalToggle == true ? (
                 <MenuModalBg 
                 style={{position:"absolute", width:SCREEN_WIDTH, height:SCREEN_HEIGHT, backgroundColor:"rgba(0,0,0,0)"}} 

@@ -43,8 +43,8 @@ const Card = styled(Animated.createAnimatedComponent(View))`
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
-    /* border: 2px solid black; */
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+    border: 2px solid ${colors.REALDARKGRAY};
 `
 const CardImgShell = styled.View`
     /* flex: 3; */
@@ -65,7 +65,7 @@ const CardImgShellModal = styled.View`
     top: 0px;
     width: 260px;
     height:350px;
-    margin: 15px 15px;
+    margin: 15px 13px;
     border-radius: 10px;
 `
 const CardImg2 = styled(CardImg)`
@@ -101,7 +101,7 @@ const CardNameModal = styled.View`
 const CardNameModalText = styled.Text`
     font-size: 65px;
     font-weight: 900;
-    color: ${colors.PASTELBLUE};
+    color: ${colors.SEABLUE};
 `
 const CardNameModalBox = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
@@ -179,8 +179,8 @@ const RepeatLevel = styled.Pressable`
     
 `
 const NextLevel = styled(RepeatLevel)`
-    background-color: ${colors.ORANGE};
-    box-shadow: 2px 2px 5px ${colors.ORANGE};
+    background-color: ${colors.REDORANGE};
+    box-shadow: 2px 2px 5px ${colors.REDORANGE};
 `
 const RepeatLevelText = styled.Text``
 const NextLevelText = styled.Text``
@@ -369,73 +369,69 @@ export const WordCardLevel = (props) => {
                 </Star>
 
                 {/* 본문 */}
-                {refresh ? (
+                {refresh && (
                 <>
                     <CardList
                         {...panResponder.panHandlers}
-                        horizontal
-                        pagingEnabled
-                        // scrollEnabled={true}
-                        showsHorizontalScrollIndicator={false}
                         data={WordCardArray}
+                        pagingEnabled
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
                         onEndReached={lastListModalOn}
                         onEndReachedThreshold={0.1}
                         renderItem = {({item})=>{
                             return (
-                            <CardSection style={{
-                                width:SCREEN_WIDTH,
-                                // backgroundColor:item.bgColor
-                            }}> 
+                            <CardSection style={{width:SCREEN_WIDTH}}> 
                                 <Card style={{
-                                    // backgroundColor : item.bgColor,
                                     backgroundColor : colors.BEIGE,
                                     opacity: opacityControl,
                                     transform:[{scale:scaleControl},{rotateZ:rotation}]
                                 }}>
                                     <CardImgShell style={{backgroundColor:item.bgColor}}>
                                         <CardImg source={item.image} resizeMode="contain"></CardImg>
-                                        {/* <ImageAudioBtn onPress={()=>{lastListModalOn()}} /> */}
                                         <ImageAudioBtn onPress={()=>imageModalToggle()} />
                                     </CardImgShell>
-                                    {imageToggle ? (
+                                    {imageToggle && (
                                         <CardImgShellModal style={{backgroundColor: item.bgColor}}>
-                                            <CardImg2 source={item.image} resizeMode="contain"></CardImg2>
+                                            <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
                                         </CardImgShellModal>
-                                    ) : (null)}
+                                    )}
                                     
 
-                                    <CardContents onPress={() => console.log(item.length)}>
+                                    <CardContents>
                                         <CardName>
                                             <CardNameText>{item.name}</CardNameText>
                                             <TextAudioBtn onPress={()=>textModalToggle()} />
-                                            {textToggle ? (
+                                            {textToggle && (
                                                 <CardNameModal>
                                                     <CardNameModalText>{item.name}</CardNameModalText>
                                                     <CardNameModalBox></CardNameModalBox>
                                                 </CardNameModal>
-                                            ) : null}
-                                            
-                                            {props.level == "word2LV" && questionMarkBackground ? (
+                                            )}
+
+                                            {/* 2레벨에서만 사용되는 물음표 박스 컴포넌트 */}
+                                            {props.level == "word2LV" && questionMarkBackground && (
                                                 <QuestionMarkBg
                                                 style={{backgroundColor: colors.BEIGE}}
                                                 >
-                                                {props.level == "word2LV" && questionMark ? (
+                                                {props.level == "word2LV" && questionMark && (
                                                     <QuestionMarkBtn onPress={()=>{setQuestionMark(false), setQuestionMarkBackground(false)}} >    
                                                         <QuestionMarkImage source={item.questionMarkImage} resizeMode="contain"/>
                                                     </QuestionMarkBtn>
-                                                ) : null}
+                                                )}
                                             </QuestionMarkBg>
-                                            ) : null}
+                                            )}
                                         </CardName>
                                     </CardContents>
+
                                 </Card>
                             </CardSection>
                             )
                         }}
-                        />
-                </>):(null)
-                }
-                {/* 마지막리스트 모달창 */}
+                    />
+                </>
+                )}
+                {/* 마지막리스트 도달하면 열리는 모달창 */}
                 {clearModalToggle ? (
                     <ClearModalContainer>
                         <ClearModal>
@@ -447,8 +443,7 @@ export const WordCardLevel = (props) => {
                                 <NextLevelText>다음레벨 도전!</NextLevelText>
                             </NextLevel>
                         </ClearModal>
-                    </ClearModalContainer>
-                    
+                    </ClearModalContainer>  
                 ):null} 
                 </View>
             </SafeAreaView>

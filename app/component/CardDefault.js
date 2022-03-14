@@ -309,21 +309,12 @@ export const WordCardLevel = (props) => {
         })
     ).current
     // modal
-    const lastListModalOn = () => {
-        setClearModalToggle((prev) => !prev)
-    };
-    const restartLevelBtn = () => {
-        setRefresh((prev) => !prev)
-        setClearModalToggle((prev) => !prev)
-        setTimeout(function() {
-            setRefresh((prev) => !prev)
-        },100)
-    };
+
     const imageModalToggle = () => {
         setImageToggle((prev) => !prev)
         setTimeout(function() {
             setImageToggle((prev) => !prev)
-        },1500)
+        },2000)
     }
     const textModalToggle = () => {
         setTextToggle((prev) => !prev)
@@ -335,7 +326,30 @@ export const WordCardLevel = (props) => {
     //     setQuestionMark(false)
     //     // console.log(e.nativeEvent)
     // }
-
+    const lastListModalOn = () => {
+        setClearModalToggle((prev) => !prev)
+    };
+    const restartLevelBtn = () => {
+        setRefresh((prev) => !prev)
+        setClearModalToggle((prev) => !prev)
+        setTimeout(function() {
+            setRefresh((prev) => !prev)
+        },100)
+    };
+    const nextLevelBtn = () => {
+        props.level = "word2LV"
+        // setRefresh((pre
+        console.log(props.level)
+    };
+    //자식컴포넌트에서 부모컴포넌트 state를 바꾸려면 함수를 이용해야한다 (그냥 props는 읽기전용이라 props.level="???" 이런식으로 변경 불가능)
+    const childComponentClick = () => {
+        props.getData('word2LV')
+        setRefresh((prev) => !prev)
+        setClearModalToggle((prev) => !prev)
+        setTimeout(function() {
+            setRefresh((prev) => !prev)
+        },100)
+    }
 
 
     const levelConsole = () => {
@@ -429,12 +443,13 @@ export const WordCardLevel = (props) => {
                             <RepeatLevel onPress={() => restartLevelBtn()}>
                                 <RepeatLevelText>다시 하기!</RepeatLevelText>
                             </RepeatLevel>
-                            <NextLevel>
+                            <NextLevel onPress={()=> childComponentClick()}>
                                 <NextLevelText>다음레벨 도전!</NextLevelText>
                             </NextLevel>
                         </ClearModal>
                     </ClearModalContainer>
-                ):null}
+                    
+                ):null} 
                 </View>
             </SafeAreaView>
             </View>

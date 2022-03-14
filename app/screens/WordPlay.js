@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Text, View, ActivityIndicator, FlatList, ScrollView,Dimensions } from "react-native";
+import { Text, View, ActivityIndicator, FlatList, ScrollView,Dimensions,Pressable } from "react-native";
 import styled from "styled-components";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { WordCardArray } from "../asset/data/WordCardArray";
@@ -104,12 +104,16 @@ const Main = styled.View`
 const WordPlay = ({navigation}) => {
     const [loading, setLoading] = useState(true);
     
-    const [cardSelector, setCardSelector] = useState();
+    const [cardSelector, setCardSelector] = useState("word1LV");
     const [modalToggle, setModalToggle] = useState(false);
     
     const cardCheck = (e) => {
         setCardSelector(e);
         setModalToggle(!modalToggle);
+    }
+    //자식컴포넌트로부터 값을 받아서 state를 변경하기 위해 props로 넘길 함수
+    const getData = (cardSelector) => {
+        setCardSelector(cardSelector)
     }
 
     const modalTogglePress = () => setModalToggle(!modalToggle)
@@ -144,8 +148,11 @@ const WordPlay = ({navigation}) => {
             </Top>
             <Main>
                 {(()=>{
-                    return <WordCardLevel level={cardSelector} />
+                    return (
+                    <WordCardLevel level={cardSelector} getData={getData} />
+                    )
                 })()}
+                {/* <Pressable style={{hei}} onPress={()=>{cardCheck("word2LV")}}><Text>123</Text></Pressable> */}
             </Main>
             {modalToggle == true ? (
                 <MenuModalBg 

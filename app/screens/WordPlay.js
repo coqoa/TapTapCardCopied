@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import * as Font from "expo-font"
 import { Text, View, ActivityIndicator, FlatList, ScrollView,Dimensions,Pressable } from "react-native";
 import styled from "styled-components";
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -109,6 +110,14 @@ const WordPlay = ({route, navigation}) => {
     const [modalToggle, setModalToggle] = useState(false);
     const [mainScreenRender, setMainScreenRender] = useState(true)
     
+    // useEffect(async() => {
+    //     await Font.loadAsync({
+    //         "SDChild": require("../asset/fonts/SDChildfundkorea.otf")
+    //     })
+    // }, []);
+    
+    const modalTogglePress = () => setModalToggle(!modalToggle)
+
     const cardCheck = (e) => {
         setMainScreenRender(false);
         setCardSelector(e);
@@ -122,20 +131,10 @@ const WordPlay = ({route, navigation}) => {
         setCardSelector(cardSelector)
     }
 
-    const modalTogglePress = () => setModalToggle(!modalToggle)
-    // useEffect(() => {
-    //     // ((cardSelector == undefined) ? setCardSelector("word1LV") :null)
-    //     if(cardSelector == undefined) {
-    //         // setCardSelector("word1LV")
-    //         setCardSelector("word1LV")
-    //     } 
-    //     setLoading(false)
-    // }, []);
-
     // Menu.js로부터 type을 받는다 (한글인지 영어인지) 그 후 type을 토대로 출력되는 코드들을 정해준다
     const type = route.params.type
     // console.log(type)
-
+    
     return( 
 
         // loading ? (
@@ -172,9 +171,7 @@ const WordPlay = ({route, navigation}) => {
             {modalToggle == true ? (
                 <MenuModalBg 
                 style={{position:"absolute", width:SCREEN_WIDTH, height:SCREEN_HEIGHT, backgroundColor:"rgba(0,0,0,0)"}} 
-                onPress={()=>{
-                    modalTogglePress()
-                }}>
+                onPress={()=>{modalTogglePress()}}>
                     <MenuModalContainer>
                         <MenuModal>
                             <LevelBtn onPress={()=>{cardCheck("word1LV")}}><Text>1레벨</Text></LevelBtn>

@@ -1,4 +1,5 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
+import * as Font from "expo-font"
 import { Text, View } from "react-native";
 import styled from "styled-components";
 import { colors } from "../component/color";
@@ -32,6 +33,7 @@ const MenuBox = styled.TouchableOpacity`
 `
 const MenuText = styled.Text`
     font-size: 35px;
+    font-family: 'SDChild';
 `
 
 const WordSelectModalBG = styled.Pressable`
@@ -70,11 +72,13 @@ const WordSelectTitle = styled.View`
     height: 60px;
     align-items: center;
     justify-content: center;
+    font-family: 'SDChild';
 `
 const WordSelectText = styled.Text`
     font-size: 25px;
     font-weight: 800;
     color: white;
+    font-family: 'SDChild';
 `
 const WordSelectTitleText = styled(WordSelectText)`
     font-size: 40px;
@@ -100,10 +104,17 @@ const WordSelectTitleText = styled(WordSelectText)`
 // `
 const Menu = ({navigation}) => {
     const [wordSelectModal, setWordSelectModal] = useState(false)
+    // useEffect(async() => {
+    //     await Font.loadAsync({
+    //         "SDChild": require("../asset/fonts/SDChildfundkorea.otf")
+    //     })
+    // }, [])
+
     // const [WordModalToggle, SetWordModalToggle] = useState(false);
     // const WordModalTogglePress = () =>{
     //     SetWordModalToggle(!WordModalToggle)
     // }
+    
     const BtnClick = (e) => {
         setWordSelectModal(false)
         navigation.navigate('WordPlay',{type:e}) 

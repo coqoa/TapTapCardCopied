@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from "react"
+import * as Font from "expo-font"
 import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable, PanResponder,Text } from "react-native";
 import styled from "styled-components"
 import { WordCardArray } from "../asset/data/WordCardArray";
@@ -86,6 +87,7 @@ const CardName = styled.View`
 const CardNameText = styled.Text`
     font-size: 65px;
     font-weight: 900;
+    font-family: 'SDChild';
     color: ${colors.REALDARKGRAY};
 `
 const CardNameModal = styled.View`
@@ -101,6 +103,7 @@ const CardNameModal = styled.View`
 const CardNameModalText = styled.Text`
     font-size: 65px;
     font-weight: 900;
+    font-family: 'SDChild';
     color: ${colors.SEABLUE};
 `
 const CardNameModalBox = styled(Animated.createAnimatedComponent(Pressable))`
@@ -167,23 +170,27 @@ const ClearImage = styled.Image`
     width: 130px;
     height: 130px;
 `
-const RepeatLevel = styled.Pressable`
+const RepeatLevel = styled.TouchableOpacity`
     width: 200px;
     height: 60px;
     border-radius: 15px;
     margin: 5px;
     align-items: center;
     justify-content: center;
-    background-color: ${colors.LIGHTBLUE};
-    box-shadow: 2px 2px 5px ${colors.LIGHTBLUE};
+    background-color: ${colors.BLUE};
+    box-shadow: 1px 1px 3px ${colors.BLUE};
     
 `
 const NextLevel = styled(RepeatLevel)`
     background-color: ${colors.REDORANGE};
-    box-shadow: 2px 2px 5px ${colors.REDORANGE};
+    box-shadow: 1px 1px 3px ${colors.REDORANGE};
 `
-const RepeatLevelText = styled.Text``
-const NextLevelText = styled.Text``
+const RepeatLevelText = styled.Text`
+    font-size: 23px;
+    color: white;
+    font-family: 'SDChild';
+`
+const NextLevelText = styled(RepeatLevelText)``
 
 const TextBarContainer = styled.View`
     position: absolute;
@@ -314,7 +321,7 @@ export const WordCardLevel = (props) => {
         setImageToggle((prev) => !prev)
         setTimeout(function() {
             setImageToggle((prev) => !prev)
-        },2000)
+        },1700)
     }
     const textModalToggle = () => {
         setTextToggle((prev) => !prev)
@@ -442,10 +449,14 @@ export const WordCardLevel = (props) => {
                         <ClearModal>
                             <ClearImage  source={require("../asset/images/Check.png")} />
                             <RepeatLevel onPress={() => restartLevelBtn()}>
-                                <RepeatLevelText>다시 하기!</RepeatLevelText>
+                                {type == "KOR" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
+                                {type == "ENG" && (<RepeatLevelText>Again !</RepeatLevelText>)}
+                                {/* <RepeatLevelText>다시 하기!</RepeatLevelText> */}
                             </RepeatLevel>
                             <NextLevel onPress={()=> childComponentClick()}>
-                                <NextLevelText>다음레벨 도전!</NextLevelText>
+                                {type == "KOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
+                                {type == "ENG" && (<NextLevelText>Next Level !</NextLevelText>)}
+                                {/* <NextLevelText>다음레벨 도전!</NextLevelText> */}
                             </NextLevel>
                         </ClearModal>
                     </ClearModalContainer>  

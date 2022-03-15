@@ -7,7 +7,8 @@ export const WordCardArray = [
         "image" : require("../images/Lion1.png"), 
         "image2" : require("../images/Lion2.png"), 
         "bgColor" : colors.DARKORANGE, 
-        "name" : "사자",
+        "nameKOR" : "사자",
+        "nameENG" : "Lion",
         "check" : true,
         "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
@@ -16,7 +17,8 @@ export const WordCardArray = [
         "image" : require("../images/AnimalWhale1.png"),
         "image2" : require("../images/AnimalWhale2.png"), 
         "bgColor" : colors.WhaleBG, 
-        "name" : "고래",
+        "nameKOR" : "고래",
+        "nameENG" : "Whale",
         "check" : false,
         "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
@@ -25,7 +27,8 @@ export const WordCardArray = [
         "image" : require("../images/AnimalBull1.png"),
         "image2" : require("../images/AnimalBull2.png"), 
         "bgColor" : colors.TOMATO,  
-        "name" : "소",
+        "nameKOR" : "소",
+        "nameENG" : "Bull",
         "check" : false,
         "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
@@ -34,7 +37,8 @@ export const WordCardArray = [
         "image" : require("../images/Random.png"), 
         "image2" : require("../images/Lion2.png"), 
         "bgColor" : colors.BEIGE, 
-        "name" : "고양이",
+        "nameKOR" : "고양이",
+        "nameENG" : "Cat",
         "check" : false,
         "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
@@ -43,7 +47,8 @@ export const WordCardArray = [
         "image" : require("../images/Heart1.png"), 
         "image2" : require("../images/Lion2.png"), 
         "bgColor" : colors.NAVY, 
-        "name" : "쥐",
+        "nameKOR" : "쥐",
+        "nameENG" : "Mouse",
         "check" : false,
         "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
@@ -52,7 +57,8 @@ export const WordCardArray = [
         "image" : require("../images/Heart2.png"), 
         "image2" : require("../images/Lion2.png"), 
         "bgColor" : colors.SKYBLUE, 
-        "name" : "소",
+        "nameKOR" : "소",
+        "nameENG" : "Bull",
         "check" : false,
         "questionMarkImage" : require("../images/QuestionMark.png")
     },
@@ -62,43 +68,18 @@ export const WordCardArray = [
         "image" : require("../images/Heart3.png"), 
         "image2" : require("../images/Lion2.png"), 
         "bgColor" : colors.REALLIGHTGRAY, 
-        "name" : "6",
+        "nameKOR" : "6",
+        "nameENG" : "Six",
         "check" : false,
         "questionMarkImage" : require("../images/QuestionMark.png")
     }, 
     {
         "id" : 7, 
-        "image" : require("../images/Lion2.png"), 
-        "image2" : require("../images/Lion2.png"), 
-        "bgColor" : colors.LIGHTGRAY, 
-        "name" : "7",
-        "check" : false,
-        "questionMarkImage" : require("../images/QuestionMark.png")
-    }, 
-    {
-        "id" : 8, 
-        "image" : require("../images/LeftArrow.png"), 
-        "image2" : require("../images/Lion2.png"), 
-        "bgColor" : colors.REDORANGE, 
-        "name" : "8",
-        "check" : false,
-        "questionMarkImage" : require("../images/QuestionMark.png")
-    }, 
-    {
-        "id" : 9, 
         "image" : require("../images/RightArrow.png"), 
         "image2" : require("../images/Lion2.png"), 
         "bgColor" : colors.BEIGE, 
-        "name" : "9",
-        "check" : false,
-        "questionMarkImage" : require("../images/QuestionMark.png")
-    }, 
-    {
-        "id" : 10, 
-        "image" : require("../images/RightArrow.png"), 
-        "image2" : require("../images/Lion2.png"), 
-        "bgColor" : colors.BEIGE, 
-        "name" : "끝",
+        "nameKOR" : "끝",
+        "nameENG" : "End",
         "check" : false,
         "questionMarkImage" : require("../images/QuestionMark.png")
     },

@@ -350,8 +350,8 @@ export const WordCardLevel = (props) => {
             setRefresh((prev) => !prev)
         },100)
     }
-
-
+    const type = props.type
+    // console.log(type)
     const levelConsole = () => {
         return(
             <View  style={{alignItems:"center", justifyContent:"center"}}>
@@ -400,11 +400,16 @@ export const WordCardLevel = (props) => {
 
                                     <CardContents>
                                         <CardName>
-                                            <CardNameText>{item.name}</CardNameText>
+                                            {/* type에 따라 한글/영어 등 만 보이도록 */}
+                                            {type == "KOR" && (<CardNameText>{item.nameKOR}</CardNameText>)}
+                                            {type == "ENG" && (<CardNameText>{item.nameENG}</CardNameText>)}
+                                            
                                             <TextAudioBtn onPress={()=>textModalToggle()} />
                                             {textToggle && (
                                                 <CardNameModal>
-                                                    <CardNameModalText>{item.name}</CardNameModalText>
+                                                    {/* <CardNameModalText>{item.nameKOR}</CardNameModalText> */}
+                                                    {type == "KOR" && (<CardNameModalText>{item.nameKOR}</CardNameModalText>)}
+                                                    {type == "ENG" && (<CardNameModalText>{item.nameENG}</CardNameModalText>)}
                                                     <CardNameModalBox></CardNameModalBox>
                                                 </CardNameModal>
                                             )}

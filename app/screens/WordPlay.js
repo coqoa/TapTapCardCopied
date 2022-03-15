@@ -101,7 +101,8 @@ const Main = styled.View`
 `
 
 
-const WordPlay = ({navigation}) => {
+// const WordPlay = (props,{navigation}) => {
+const WordPlay = ({route, navigation}) => {
     const [loading, setLoading] = useState(true);
     
     const [cardSelector, setCardSelector] = useState("word1LV");
@@ -113,7 +114,7 @@ const WordPlay = ({navigation}) => {
         setCardSelector(e);
         setTimeout(function(){
             setMainScreenRender(true)
-        },100)
+        },50)
         setModalToggle(!modalToggle);
     }
     //자식컴포넌트로부터 값을 받아서 state를 변경하기 위해 props로 넘길 함수
@@ -131,7 +132,12 @@ const WordPlay = ({navigation}) => {
     //     setLoading(false)
     // }, []);
 
+    // Menu.js로부터 type을 받는다 (한글인지 영어인지) 그 후 type을 토대로 출력되는 코드들을 정해준다
+    const type = route.params.type
+    // console.log(type)
+
     return( 
+
         // loading ? (
         //     <Loader>
         //         <ActivityIndicator />
@@ -157,7 +163,7 @@ const WordPlay = ({navigation}) => {
             <Main>
                 {(()=>{
                     return (
-                    <WordCardLevel level={cardSelector} getData={getData} />
+                    <WordCardLevel level={cardSelector} getData={getData} type={type} />
                     )
                 })()}
                 {/* <Pressable style={{hei}} onPress={()=>{cardCheck("word2LV")}}><Text>123</Text></Pressable> */}

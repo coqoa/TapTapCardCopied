@@ -10,7 +10,11 @@ export const WordCardArray = [
         "nameKOR" : "사자",
         "nameENG" : "Lion",
         "check" : true,
-        "questionMarkImage" : require("../images/QuestionMark.png")
+        "questionMarkImage" : require("../images/QuestionMark.png"),
+        "SoundImage" : require("../audio/Lion.mp3"),
+        "SoundKOR" : require("../audio/LionKOR.mp3"),
+        "SoundENG" : require("../audio/LionENG.mp3")
+
     }, 
     {
         "id" : 1, 
@@ -20,7 +24,10 @@ export const WordCardArray = [
         "nameKOR" : "고래",
         "nameENG" : "Whale",
         "check" : false,
-        "questionMarkImage" : require("../images/QuestionMark.png")
+        "questionMarkImage" : require("../images/QuestionMark.png"),
+        "SoundImage" : require("../audio/Whale.mp3"),
+        "SoundKOR" : require("../audio/WhaleKOR.mp3"),
+        "SoundENG" : require("../audio/WhaleENG.mp3")
     }, 
     {
         "id" : 2, 
@@ -28,9 +35,12 @@ export const WordCardArray = [
         "image2" : require("../images/AnimalBull2.png"), 
         "bgColor" : colors.TOMATO,  
         "nameKOR" : "소",
-        "nameENG" : "Bull",
+        "nameENG" : "Cow",
         "check" : false,
-        "questionMarkImage" : require("../images/QuestionMark.png")
+        "questionMarkImage" : require("../images/QuestionMark.png"),
+        "SoundImage" : require("../audio/Cow.mp3"),
+        "SoundKOR" : require("../audio/CowKOR.mp3"),
+        "SoundENG" : require("../audio/CowENG.mp3")
     }, 
     {
         "id" : 3, 

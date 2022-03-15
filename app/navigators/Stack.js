@@ -1,5 +1,4 @@
-import React, {useEffect} from "react";
-import * as Font from "expo-font"
+import React from "react";
 import {createNativeStackNavigator} from "@react-navigation/native-stack" 
 
 import Login from "../screens/Login";
@@ -8,13 +7,8 @@ import MenuStack from "./MenuStack";
 
 const NativeStack = createNativeStackNavigator();
 
-
+// 스택네비게이터 (Login, Signup, MenuStack을 Screen으로 가진다)
 const Stack = () => {
-    useEffect(async() => {
-        await Font.loadAsync({
-            "SDChild": require("../asset/fonts/SDChildfundkorea.otf")
-        })
-    }, [])
     return(
     <NativeStack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}} >
         <NativeStack.Screen name="Login" component={Login} />

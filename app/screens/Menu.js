@@ -1,13 +1,10 @@
-import React,{useState, useEffect} from "react";
-import * as Font from "expo-font"
-import { Text, View } from "react-native";
+import React,{ useState } from "react";
 import styled from "styled-components";
 import { colors } from "../component/color";
-import WordPlay from "./WordPlay";
 
-const Shell = styled.View`
-    flex: 1;
-    `
+// const Shell = styled.View`
+//     flex: 1;
+// `
 const BG = styled.ImageBackground`
     flex: 1;
     width: 100%;
@@ -19,22 +16,21 @@ const MenuBoxShell = styled.View`
     flex: 1;
     justify-content: center;
     align-items: center;
-    /* border:1px solid red; */
 `
-const MenuBox = styled.TouchableOpacity`
-    background-color: white;
-    width: 250px;
-    height: 80px;
-    margin: 20px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 25px;
-    box-shadow: 0px 3px 5px rgba(0,0,0,0.2) ;
-`
-const MenuText = styled.Text`
-    font-size: 35px;
-    font-family: 'SDChild';
-`
+    const MenuBox = styled.TouchableOpacity`
+        background-color: white;
+        width: 250px;
+        height: 80px;
+        margin: 20px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 25px;
+        box-shadow: 0px 3px 5px rgba(0,0,0,0.2) ;
+    `
+    const MenuText = styled.Text`
+        font-size: 35px;
+        font-family: 'SDChild';
+    `
 
 const WordSelectModalBG = styled.Pressable`
     position: absolute;
@@ -42,7 +38,6 @@ const WordSelectModalBG = styled.Pressable`
     height: 100%;
     align-items: center;
     justify-content: center;
-    /* background-color: rgba(0,0,0,0.1); */
 `
 const WordSelectContainer = styled.View`
     width: 250px;
@@ -52,6 +47,13 @@ const WordSelectContainer = styled.View`
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
     align-items: center;
     justify-content: center;
+`
+const WordSelectTitle = styled.View`
+    width: 200px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'SDChild';
 `
 const WordKorBtn = styled.TouchableOpacity`
     width: 200px;
@@ -67,80 +69,42 @@ const WordKorBtn = styled.TouchableOpacity`
 const WordEngBtn = styled(WordKorBtn)`
     background-color: ${colors.REDORANGE};
 `
-const WordSelectTitle = styled.View`
-    width: 200px;
-    height: 60px;
-    align-items: center;
-    justify-content: center;
-    font-family: 'SDChild';
-`
 const WordSelectText = styled.Text`
-    font-size: 25px;
+    font-size: 32px;
     font-weight: 800;
     color: white;
     font-family: 'SDChild';
 `
 const WordSelectTitleText = styled(WordSelectText)`
     font-size: 40px;
-    color: ${colors.DARKGRAY};
+    color: ${colors.REALDARKGRAY};
     margin-bottom: 10px;
 `
-// const WordModalShell = styled.View`
-//     /* flex: 1; */
-//     width: 250px;
-//     height: 200px;
-//     position: absolute ;
-//     border:1px solid gray;
-//     z-index:1000 ;
-// `
-// const WordModalBtn = styled.Pressable`
-//     flex: 1;
-//     border: 1px solid green;
-// `
-// const WordModalText = styled.Text`
-//     flex: 1;
-//     background-color:red ;
 
-// `
+// -------------------------------------------------------------------------------------------------
+
 const Menu = ({navigation}) => {
     const [wordSelectModal, setWordSelectModal] = useState(false)
-    // useEffect(async() => {
-    //     await Font.loadAsync({
-    //         "SDChild": require("../asset/fonts/SDChildfundkorea.otf")
-    //     })
-    // }, [])
-
-    // const [WordModalToggle, SetWordModalToggle] = useState(false);
-    // const WordModalTogglePress = () =>{
-    //     SetWordModalToggle(!WordModalToggle)
-    // }
     
     const BtnClick = (e) => {
         setWordSelectModal(false)
         navigation.navigate('WordPlay',{type:e}) 
     }
     return(
-    <Shell>
+    // <Shell>
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
         <MenuBoxShell>
             <MenuBox onPress={()=>setWordSelectModal(true)}>
-            {/* <MenuBox onPress={() => navigation.navigate('WordPlay')}> */}
-            {/* <MenuBox onPress={() => WordModalTogglePress()}> */}
                 <MenuText>단어 놀이</MenuText>
             </MenuBox>
-            {/* {WordModalToggle ? (
-            <WordModalShell>
-                <WordModalBtn onPress={()=>WordModalTogglePress()}>
-                    <WordModalText>Text말고 별이미지로 바꾸자</WordModalText>
-                </WordModalBtn>
-            </WordModalShell>
-            ):null} */}
             <MenuBox>
                 <MenuText>수학 놀이</MenuText>
             </MenuBox>
             
         </MenuBoxShell>
+        {/* Menu터치시 출력될 모달 */}
         {wordSelectModal && (
+        // 모달컨테이너를 제외한 전체화면 : 터치시 모달 닫기위해 구현
         <WordSelectModalBG onPress={()=>setWordSelectModal(false)}>
             <WordSelectContainer>
                 <WordSelectTitle><WordSelectTitleText>단어놀이</WordSelectTitleText></WordSelectTitle>
@@ -149,9 +113,8 @@ const Menu = ({navigation}) => {
             </WordSelectContainer>
         </WordSelectModalBG>
         )}
-        
     </BG>
-    </Shell>
+    // </Shell>
     )
 }
 export default Menu;

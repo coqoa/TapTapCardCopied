@@ -1,12 +1,11 @@
 import React, {useState, useEffect, useRef} from "react"
-import * as Font from "expo-font"
+import { Audio } from 'expo-av';
 import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable, PanResponder,Text } from "react-native";
 import styled from "styled-components"
 import { WordCardArray } from "../asset/data/WordCardArray";
 import { colors } from "./color";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { transform } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 //Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -15,27 +14,23 @@ const Star = styled.View`
     height: 65px;
     width: 250px;
     align-items: center;
-    /* justify-content: center;
-    background-color: rgba(0,0,0,0.5); */
 `
 const StarView = styled.View`
     width: 170px;
     height: 60px;
     align-items: center;
     justify-content: center;
-`
+    `
 const StarViewImage = styled.ImageBackground`
     top: 2px;
     width: 220px;
     height: 70px;
-    /* border: 1px solid gray; */
 `
 
 const CardList = styled(Animated.createAnimatedComponent(FlatList))``
 const CardSection = styled.View`
     justify-content: center;
     align-items: center;
-    //Diemension쓰기위해 인라인 style 적용
 `
 const Card = styled(Animated.createAnimatedComponent(View))`
     width: 290px;
@@ -48,7 +43,6 @@ const Card = styled(Animated.createAnimatedComponent(View))`
     border: 2px solid ${colors.REALDARKGRAY};
 `
 const CardImgShell = styled.View`
-    /* flex: 3; */
     align-items: center;
     justify-content: center;
     width: 260px;
@@ -76,7 +70,6 @@ const CardContents = styled.View`
     flex: 1;
     margin-bottom: 2px;
     width: 100%;
-    /* border: 1px solid gray; */
 `
 const CardName = styled.View`
     flex:1;
@@ -98,7 +91,6 @@ const CardNameModal = styled.View`
     height:100%;
     align-items: center;
     justify-content: center;
-    /* background-color: red; */
 `
 const CardNameModalText = styled.Text`
     font-size: 65px;
@@ -108,13 +100,9 @@ const CardNameModalText = styled.Text`
 `
 const CardNameModalBox = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
-    /* left: 104; */
     width: 80%;
     height: 70px;
-    /* border: 1px solid black; */
     background-color: transparent;
-    /* background-color: ${colors.BEIGE}; */
-    /* background-color: blue; */
 `
 
 
@@ -192,28 +180,6 @@ const RepeatLevelText = styled.Text`
 `
 const NextLevelText = styled(RepeatLevelText)``
 
-const TextBarContainer = styled.View`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid red;
-`
-const TextBar = styled.TextInput`
-    background-color: white;
-    padding: 0px 15px;
-    border-radius: 15px;
-    width: 230px;
-    height: 100px;
-    margin: 10px auto;
-    font-size: 50px;
-    font-weight: 600;
-    border: 1px solid ${colors.REALDARKGRAY};
-    align-content:center;
-`
-
 // ----------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
@@ -227,7 +193,6 @@ export const WordCardLevel = (props) => {
     //Values
     const scale = useRef(new Animated.Value(1)).current;
     const position = useRef(new Animated.Value(0)).current;
-    const btnOpacity = useRef(new Animated.Value(0)).current;
     //interpolate
     const scaleControl = position.interpolate({
         inputRange:[-100,0,100,],
@@ -260,63 +225,26 @@ export const WordCardLevel = (props) => {
         toValue:1,
         useNativeDriver:true
     })
-    const goCenter = Animated.spring(position, {
-        toValue:0,
-        useNativeDriver:true
-    })
-    const goLeft = Animated.spring(position, {
-        toValue:-SCREEN_WIDTH, 
-        useNativeDriver:true
-    })
-    const goRight = Animated.spring(position, {
-        toValue:SCREEN_WIDTH,
-        useNativeDriver:true
-    })
     //panResponder
     const panResponder = useRef(
         PanResponder.create({
             onStartShouldSetPanResponder: () => true,
             onPanResponderGrant:() => {
-                // console.log(position)
-            //     position.setOffset({
-            //         x:position._value
-            // });
-            onPressIn.start();
+                onPressIn.start();
             }, 
             onPanResponderMove:(_,{dx}) => {
-                console.log("Move",dx)
                 position.setValue(dx)
             }, 
             onPanResponderRelease: (_,{dx}) => {
-                console.log("Release",dx)
-                // if(dx<-150){
-                //     position.setValue(0)
-                //     // console.log('dismiss!!!!1')
-                //     // Animated.parallel([onPressOut,tensionAnimated,goLeft]).start();
-                //     Animated.spring(position, {
-                //         toValue:-dx, 
-                //         useNativeDriver:true
-                //     }).start()
-                    
-                // }else if(dx>150){
-                //     position.setValue(0)
-                //     // console.log('dismiss!!!!2')
-                //     Animated.parallel([onPressOut,goRight,tensionAnimated]).start();
-                    
-                // }else{
-                //     // console.log('dismiss!!!!3')
-                    // Animated.parallel([onPressOut,goCenter,tensionAnimated]).start();
-                    setQuestionMarkBackground(true)
-                    setTimeout(function() {
-                        setQuestionMark(true)
-                    },30)
-                    Animated.parallel([onPressOut,tensionAnimated]).start();
-                // }
+                setQuestionMarkBackground(true)
+                setTimeout(function() {
+                    setQuestionMark(true)
+                },30)
+                Animated.parallel([onPressOut,tensionAnimated]).start();
             }
         })
     ).current
     // modal
-
     const imageModalToggle = () => {
         setImageToggle((prev) => !prev)
         setTimeout(function() {
@@ -329,10 +257,6 @@ export const WordCardLevel = (props) => {
             setTextToggle((prev) => !prev)
         },1000)
     }
-    // const QuestionMarkClick = () => {
-    //     setQuestionMark(false)
-    //     // console.log(e.nativeEvent)
-    // }
     const lastListModalOn = () => {
         setClearModalToggle((prev) => !prev)
     };
@@ -343,13 +267,8 @@ export const WordCardLevel = (props) => {
             setRefresh((prev) => !prev)
         },100)
     };
-    const nextLevelBtn = () => {
-        props.level = "word2LV"
-        // setRefresh((pre
-        console.log(props.level)
-    };
     //자식컴포넌트에서 부모컴포넌트 state를 바꾸려면 함수를 이용해야한다 (그냥 props는 읽기전용이라 props.level="???" 이런식으로 변경 불가능)
-    const childComponentClick = () => {
+    const nextLevelBtn = () => {
         props.getData('word2LV')
         setRefresh((prev) => !prev)
         setClearModalToggle((prev) => !prev)
@@ -359,159 +278,129 @@ export const WordCardLevel = (props) => {
     }
     const type = props.type
     // console.log(type)
+    const playSound = async(e) => {
+        const sound = new Audio.Sound();
+      try {    
+      	// 저장한 path로 음원 파일 불러오기 
+        await sound.loadAsync(e);
+        // 음원 재생하기 
+        await sound.playAsync();
+      } catch (error) {
+     }
+    }
+
+
+
     const levelConsole = () => {
         return(
             <View  style={{alignItems:"center", justifyContent:"center"}}>
             <SafeAreaView style={{flex:1}}>
-                <View  style={{alignItems:"center", justifyContent:"center"}}>
-                <Star>
-                    <StarView>
-                        {(()=>{
-                            if(props.level === "word1LV") return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>;
-                            else if(props.level=="word2LV") return <StarViewImage source={require("../asset/images/Star2.png")}></StarViewImage>;
-                            else if(props.level=="word3LV") return <StarViewImage source={require("../asset/images/Star3.png")}></StarViewImage>;
-                            else return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>
-                        })()}
-                    </StarView>
-                </Star>
+            <View  style={{alignItems:"center", justifyContent:"center"}}>
+            <Star>
+                <StarView>
+                    {(()=>{
+                        if(props.level === "word1LV") return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>;
+                        else if(props.level=="word2LV") return <StarViewImage source={require("../asset/images/Star2.png")}></StarViewImage>;
+                        else if(props.level=="word3LV") return <StarViewImage source={require("../asset/images/Star3.png")}></StarViewImage>;
+                        else return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>
+                    })()}
+                </StarView>
+            </Star>
 
-                {/* 본문 */}
-                {refresh && (
-                <>
-                    <CardList
-                        {...panResponder.panHandlers}
-                        data={WordCardArray}
-                        pagingEnabled
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        onEndReached={lastListModalOn}
-                        onEndReachedThreshold={0.1}
-                        renderItem = {({item})=>{
-                            return (
-                            <CardSection style={{width:SCREEN_WIDTH}}> 
-                                <Card style={{
-                                    backgroundColor : colors.BEIGE,
-                                    opacity: opacityControl,
-                                    transform:[{scale:scaleControl},{rotateZ:rotation}]
-                                }}>
-                                    <CardImgShell style={{backgroundColor:item.bgColor}}>
-                                        <CardImg source={item.image} resizeMode="contain"></CardImg>
-                                        <ImageAudioBtn onPress={()=>imageModalToggle()} />
-                                    </CardImgShell>
-                                    {imageToggle && (
-                                        <CardImgShellModal style={{backgroundColor: item.bgColor}}>
-                                            <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
-                                        </CardImgShellModal>
-                                    )}
+            {/* 카드부분 */}
+            {refresh && (
+            <>
+            <CardList
+                {...panResponder.panHandlers}
+                data={WordCardArray}
+                pagingEnabled
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                onEndReached={lastListModalOn}
+                onEndReachedThreshold={0.1}
+                renderItem = {({item})=>{
+
+                    return (
+                    <CardSection style={{width:SCREEN_WIDTH}}> 
+                        {/* 카드전체스타일 */}
+                        <Card style={{
+                            backgroundColor : colors.BEIGE,
+                            opacity: opacityControl,
+                            transform:[{scale:scaleControl},{rotateZ:rotation}]
+                        }}>
+                            {/* 카드 이미지 부분 */}
+                            <CardImgShell style={{backgroundColor:item.bgColor}}>
+                                <CardImg source={item.image} resizeMode="contain"></CardImg>
+                                <ImageAudioBtn onPress={()=>{imageModalToggle(), playSound(item.SoundImage)}} />
+                            </CardImgShell>
+                            {/* 이미지 터치시 출력되는 세컨드이미지 */}
+                            {imageToggle && (
+                                <CardImgShellModal style={{backgroundColor: item.bgColor}}>
+                                    <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
+                                </CardImgShellModal>
+                            )}
+                            
+                            {/* 카드 텍스트 부분 */}
+                            <CardContents>
+                                <CardName>
+                                    {/* type에 따라 한글/영어 등 만 보이도록 */}
+                                    {type == "KOR" && (<CardNameText>{item.nameKOR}</CardNameText>)}
+                                    {type == "ENG" && (<CardNameText>{item.nameENG}</CardNameText>)}
                                     
+                                    {/* type에 따라 한글을 읽어주는지, 영어를 읽어주는지 */}
+                                    {type == "KOR" && (<TextAudioBtn onPress={()=>{textModalToggle(), playSound(item.SoundKOR)}} />)}
+                                    {type == "ENG" && (<TextAudioBtn onPress={()=>{textModalToggle(), playSound(item.SoundENG)}} />)}
+                                    
+                                    {/* 터치시 텍스트 색깔을 바꿔주는 모달 */}
+                                    {textToggle && (
+                                        <CardNameModal>
+                                            {type == "KOR" && (<CardNameModalText>{item.nameKOR}</CardNameModalText>)}
+                                            {type == "ENG" && (<CardNameModalText>{item.nameENG}</CardNameModalText>)}
+                                            <CardNameModalBox></CardNameModalBox>
+                                        </CardNameModal>
+                                    )}
 
-                                    <CardContents>
-                                        <CardName>
-                                            {/* type에 따라 한글/영어 등 만 보이도록 */}
-                                            {type == "KOR" && (<CardNameText>{item.nameKOR}</CardNameText>)}
-                                            {type == "ENG" && (<CardNameText>{item.nameENG}</CardNameText>)}
-                                            
-                                            <TextAudioBtn onPress={()=>textModalToggle()} />
-                                            {textToggle && (
-                                                <CardNameModal>
-                                                    {/* <CardNameModalText>{item.nameKOR}</CardNameModalText> */}
-                                                    {type == "KOR" && (<CardNameModalText>{item.nameKOR}</CardNameModalText>)}
-                                                    {type == "ENG" && (<CardNameModalText>{item.nameENG}</CardNameModalText>)}
-                                                    <CardNameModalBox></CardNameModalBox>
-                                                </CardNameModal>
+                                    {/* 2레벨에서만 사용되는 물음표 박스 컴포넌트 */}
+                                    {props.level == "word2LV" && questionMarkBackground && (
+                                        <QuestionMarkBg
+                                        style={{backgroundColor: colors.BEIGE}}
+                                        >
+                                            {props.level == "word2LV" && questionMark && (
+                                                <QuestionMarkBtn onPress={()=>{setQuestionMark(false), setQuestionMarkBackground(false)}} >    
+                                                    <QuestionMarkImage source={item.questionMarkImage} resizeMode="contain"/>
+                                                </QuestionMarkBtn>
                                             )}
-
-                                            {/* 2레벨에서만 사용되는 물음표 박스 컴포넌트 */}
-                                            {props.level == "word2LV" && questionMarkBackground && (
-                                                <QuestionMarkBg
-                                                style={{backgroundColor: colors.BEIGE}}
-                                                >
-                                                {props.level == "word2LV" && questionMark && (
-                                                    <QuestionMarkBtn onPress={()=>{setQuestionMark(false), setQuestionMarkBackground(false)}} >    
-                                                        <QuestionMarkImage source={item.questionMarkImage} resizeMode="contain"/>
-                                                    </QuestionMarkBtn>
-                                                )}
-                                            </QuestionMarkBg>
-                                            )}
-                                        </CardName>
-                                    </CardContents>
-
-                                </Card>
-                            </CardSection>
-                            )
-                        }}
-                    />
-                </>
-                )}
-                {/* 마지막리스트 도달하면 열리는 모달창 */}
-                {clearModalToggle ? (
-                    <ClearModalContainer>
-                        <ClearModal>
-                            <ClearImage  source={require("../asset/images/Check.png")} />
-                            <RepeatLevel onPress={() => restartLevelBtn()}>
-                                {type == "KOR" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
-                                {type == "ENG" && (<RepeatLevelText>Again !</RepeatLevelText>)}
-                                {/* <RepeatLevelText>다시 하기!</RepeatLevelText> */}
-                            </RepeatLevel>
-                            <NextLevel onPress={()=> childComponentClick()}>
-                                {type == "KOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
-                                {type == "ENG" && (<NextLevelText>Next Level !</NextLevelText>)}
-                                {/* <NextLevelText>다음레벨 도전!</NextLevelText> */}
-                            </NextLevel>
-                        </ClearModal>
-                    </ClearModalContainer>  
-                ):null} 
-                </View>
+                                        </QuestionMarkBg>
+                                    )}
+                                </CardName>
+                            </CardContents>
+                        </Card>
+                    </CardSection>
+                    )
+                }}
+            />
+            </>
+            )}
+            {/* 마지막리스트 도달하면 열리는 모달창 */}
+            {clearModalToggle ? (
+                <ClearModalContainer>
+                    <ClearModal>
+                        <ClearImage  source={require("../asset/images/Check.png")} />
+                        <RepeatLevel onPress={() => restartLevelBtn()}>
+                            {type == "KOR" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
+                            {type == "ENG" && (<RepeatLevelText>Again !</RepeatLevelText>)}
+                        </RepeatLevel>
+                        <NextLevel onPress={()=> nextLevelBtn()}>
+                            {type == "KOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
+                            {type == "ENG" && (<NextLevelText>Next Level !</NextLevelText>)}
+                        </NextLevel>
+                    </ClearModal>
+                </ClearModalContainer>  
+            ):null} 
+            </View>
             </SafeAreaView>
             </View>
         )
     }
-
-// const Container = styled.View`
-//     flex-direction: row;
-//     position: absolute;
-//     /* left: -50%; */
-//     /* top: 0px; */
-//     /* padding: 0px; */
-//     background-color: red;
-// `
-// const CardShell = styled.View`
-//     align-items: center;
-//     justify-content: center;
-//     z-index: 10;
-// `
-// const Card = styled(Animated.createAnimatedComponent(View))`
-//     width: 300px;
-//     height: 300px;
-//     justify-content: center;
-//     align-items: center;
-//     border-radius: 12px;
-//     box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-//     z-index: 15;
-// `
-//     const wordCardMapFunction = WordCardArray.map(function(item){
-//         // const scale = useRef(new Animated.Value(1)).current;
-//         return (
-//             <CardShell  key={item.id} style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT}}>
-                
-//                 <Card 
-//                 {...panResponder.panHandlers}
-//                 style={{
-//                     backgroundColor: item.bgColor, 
-//                     // opacity: scaleControl,
-//                     // transform: [{scale:scaleControl}, {translateX:position}]
-//                     transform: [{scale}, {translateX:position}]
-//                 }}>
-//                     <Text>{item.name}</Text>
-//                 </Card>
-//             </CardShell>
-//         )
-//     })
     return(levelConsole())
-    // return(
-    //     <Container>
-    //         {/* <Card><Text>123</Text></Card> */}
-    //         {wordCardMapFunction}
-    //     </Container>
-    // )
 }

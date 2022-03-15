@@ -1,11 +1,7 @@
-import React, {useState, useEffect} from "react";
-import * as Font from "expo-font"
-import { Text, View, ActivityIndicator, FlatList, ScrollView,Dimensions,Pressable } from "react-native";
+import React, { useState } from "react";
+import { Text, Dimensions } from "react-native";
 import styled from "styled-components";
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { WordCardArray } from "../asset/data/WordCardArray";
 import { colors } from "../component/color";
-import { WordCard1LV, WordCard2LV, WordCard3LV } from "../component/CardDefault";
 import { WordCardLevel } from "../component/CardDefault";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -26,7 +22,6 @@ const Top = styled.View`
     width: 100%;
     height: 80px;
     flex-direction: row;
-    /* border: 1px solid red; */
     background-color: transparent;
     z-index: 30;
 `
@@ -34,10 +29,8 @@ const GoBack = styled.View`
     position: absolute;
     width: 65px;
     height: 65px;
-    /* top: 8px; */
     align-items: center;
     justify-content: center;
-    /* border: 1px solid red ; */
 `
 const GoBackBtn = styled.Pressable`
     width: 100%;
@@ -51,11 +44,9 @@ const Menu = styled.View`
     position: absolute;
     width: 65px;
     height: 65px;
-    /* top: 8px; */
     right: 0px;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid red ; */
 `
 const MenuBtn = styled.Pressable`
     width: 100%;
@@ -97,24 +88,16 @@ const LevelBtn = styled.Pressable`
 const Main = styled.View`
     flex: 5;
     flex-direction: row;
-    /* border: 1px solid red ; */
     z-index: 10;
 `
 
 
-// const WordPlay = (props,{navigation}) => {
 const WordPlay = ({route, navigation}) => {
     const [loading, setLoading] = useState(true);
     
     const [cardSelector, setCardSelector] = useState("word1LV");
     const [modalToggle, setModalToggle] = useState(false);
     const [mainScreenRender, setMainScreenRender] = useState(true)
-    
-    // useEffect(async() => {
-    //     await Font.loadAsync({
-    //         "SDChild": require("../asset/fonts/SDChildfundkorea.otf")
-    //     })
-    // }, []);
     
     const modalTogglePress = () => setModalToggle(!modalToggle)
 
@@ -147,7 +130,6 @@ const WordPlay = ({route, navigation}) => {
             <Top>
                 <GoBack>
                     <GoBackBtn onPress={() => navigation.goBack()}>
-                        {/* <GoBackBtnImage source={require("../asset/images/goBackShadow.png")}></GoBackBtnImage> */}
                         <GoBackBtnImage source={require("../asset/images/goBack1.png")}></GoBackBtnImage>
                     </GoBackBtn>
                 </GoBack>
@@ -158,32 +140,28 @@ const WordPlay = ({route, navigation}) => {
                 </Menu>
 
             </Top>
+            {/* 카드를 출력되는 부분은 CardDefault 컴포넌트를 불러와서 사용함 */}
             {mainScreenRender && (
             <Main>
-                {(()=>{
-                    return (
-                    <WordCardLevel level={cardSelector} getData={getData} type={type} />
-                    )
-                })()}
-                {/* <Pressable style={{hei}} onPress={()=>{cardCheck("word2LV")}}><Text>123</Text></Pressable> */}
+                {(()=>{ return ( <WordCardLevel level={cardSelector} getData={getData} type={type} /> )})()}
             </Main>
             )}
-            {modalToggle == true ? (
+            {/* 햄버거바 터치시 출력되는 모달 */}
+            {modalToggle && (
                 <MenuModalBg 
                 style={{position:"absolute", width:SCREEN_WIDTH, height:SCREEN_HEIGHT, backgroundColor:"rgba(0,0,0,0)"}} 
                 onPress={()=>{modalTogglePress()}}>
                     <MenuModalContainer>
                         <MenuModal>
+                            {/* 1레벨이 아닌 이미지가 출력되도록 바꿀예정 */}
                             <LevelBtn onPress={()=>{cardCheck("word1LV")}}><Text>1레벨</Text></LevelBtn>
                             <LevelBtn onPress={()=>{cardCheck("word2LV")}}><Text>2레벨</Text></LevelBtn>
                             <LevelBtn onPress={()=>{cardCheck("word3LV")}}><Text>3레벨</Text></LevelBtn>
                         </MenuModal>
                     </MenuModalContainer>
                 </MenuModalBg>
-            ) : null
-            }
+            )}
             </Shell>
         )
-    // )
 }
 export default WordPlay;

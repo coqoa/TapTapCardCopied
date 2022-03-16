@@ -54,6 +54,14 @@ const CardImg = styled.Image`
     flex: 1;
     width: 100%;
 `
+const ClickBlocker = styled.View`
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0,0,0,0.5); */
+`
 const CardImgShellModal = styled.View`
     position: absolute;
     left: 0px;
@@ -126,6 +134,7 @@ const ImageAudioBtn = styled.TouchableOpacity`
     height: 220px;
     border-radius: 150px;
     background-color: rgba(0,0,0,0.1);
+    z-index: 1;
 `
 const TextAudioBtn = styled.TouchableOpacity`
     position: absolute;
@@ -190,6 +199,7 @@ export const WordCardLevel = (props) => {
     const [textToggle, setTextToggle] = useState(false)
     const [questionMarkBackground, setQuestionMarkBackground] = useState(true);
     const [questionMark, setQuestionMark] = useState(true);
+    const [clickBlockerToggle, setClickBlockerToggle] = useState(false)
     //Values
     const scale = useRef(new Animated.Value(1)).current;
     const position = useRef(new Animated.Value(0)).current;
@@ -245,18 +255,25 @@ export const WordCardLevel = (props) => {
         })
     ).current
     // modal
-    const imageModalToggle = () => {
+    // 터치시 이미지 변경 및 오디오출력 함수
+    const imageChangeFunc = () =>{
         setImageToggle((prev) => !prev)
-        setTimeout(function() {
-            setImageToggle((prev) => !prev)
-        },1700)
+        setClickBlockerToggle((prev) => !prev)
+    }
+    const imageModalToggle = () => {
+        imageChangeFunc()
+        setTimeout(function() {imageChangeFunc()},1700)
+    }
+    //터치시 텍스트 변경 함수
+    const textChangeFunc = () =>{
+        setTextToggle((prev) => !prev)
+        setClickBlockerToggle((prev) => !prev)
     }
     const textModalToggle = () => {
-        setTextToggle((prev) => !prev)
-        setTimeout(function() {
-            setTextToggle((prev) => !prev)
-        },1000)
+        textChangeFunc()
+        setTimeout(function() {textChangeFunc()},1000)
     }
+    //마지막 카드에서 출력되는 모달창, 다시하기버튼, 다음레벨 버튼
     const lastListModalOn = () => {
         setClearModalToggle((prev) => !prev)
     };
@@ -276,9 +293,12 @@ export const WordCardLevel = (props) => {
             setRefresh((prev) => !prev)
         },100)
     }
+    //부모 컴포넌트로부터 type props(KOR, ENG 등등)를 받아서 그에 맞는 화면을 출력해주기 위한 변수 
     const type = props.type
-    // console.log(type)
+
+    // 오디오출력, props를 받아서 해당 파일을 출력해줌
     const playSound = async(e) => {
+        console.log(e)
         const sound = new Audio.Sound();
       try {    
       	// 저장한 path로 음원 파일 불러오기 
@@ -299,9 +319,9 @@ export const WordCardLevel = (props) => {
             <Star>
                 <StarView>
                     {(()=>{
-                        if(props.level === "word1LV") return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>;
-                        else if(props.level=="word2LV") return <StarViewImage source={require("../asset/images/Star2.png")}></StarViewImage>;
-                        else if(props.level=="word3LV") return <StarViewImage source={require("../asset/images/Star3.png")}></StarViewImage>;
+                        if(props.level === "word1LV") return <StarViewImage source={require("../asset/images/Star1.png")} />
+                        else if(props.level=="word2LV") return <StarViewImage source={require("../asset/images/Star2.png")} />
+                        else if(props.level=="word3LV") return <StarViewImage source={require("../asset/images/Star3.png")} />
                         else return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>
                     })()}
                 </StarView>
@@ -335,9 +355,11 @@ export const WordCardLevel = (props) => {
                             </CardImgShell>
                             {/* 이미지 터치시 출력되는 세컨드이미지 */}
                             {imageToggle && (
-                                <CardImgShellModal style={{backgroundColor: item.bgColor}}>
-                                    <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
-                                </CardImgShellModal>
+                                // <CardImageContainer>
+                                    <CardImgShellModal style={{backgroundColor: item.bgColor}}>
+                                        <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
+                                    </CardImgShellModal>
+                                // </CardImageContainer>
                             )}
                             
                             {/* 카드 텍스트 부분 */}
@@ -379,6 +401,7 @@ export const WordCardLevel = (props) => {
                     )
                 }}
             />
+            {clickBlockerToggle && (<ClickBlocker />)}
             </>
             )}
             {/* 마지막리스트 도달하면 열리는 모달창 */}

@@ -85,6 +85,10 @@ const LevelBtn = styled.Pressable`
     background-color: ${colors.LIGHTBLUE};
     box-shadow: 0px 1px 3px ${colors.LIGHTBLUE};
 `
+const StarViewImage = styled.ImageBackground`
+    width: 80%;
+    height: 80%;
+`
 const Main = styled.View`
     flex: 5;
     flex-direction: row;
@@ -154,9 +158,9 @@ const WordPlay = ({route, navigation}) => {
                     <MenuModalContainer>
                         <MenuModal>
                             {/* 1레벨이 아닌 이미지가 출력되도록 바꿀예정 */}
-                            <LevelBtn onPress={()=>{cardCheck("word1LV")}}><Text>1레벨</Text></LevelBtn>
-                            <LevelBtn onPress={()=>{cardCheck("word2LV")}}><Text>2레벨</Text></LevelBtn>
-                            <LevelBtn onPress={()=>{cardCheck("word3LV")}}><Text>3레벨</Text></LevelBtn>
+                            <LevelBtn onPress={()=>{cardCheck("word1LV")}}><StarViewImage source={require("../asset/images/Star1.png")} /></LevelBtn>
+                            <LevelBtn onPress={()=>{cardCheck("word2LV")}}><StarViewImage source={require("../asset/images/Star2.png")} /></LevelBtn>
+                            <LevelBtn onPress={()=>{cardCheck("word3LV")}}><StarViewImage source={require("../asset/images/Star3.png")} /></LevelBtn>
                         </MenuModal>
                     </MenuModalContainer>
                 </MenuModalBg>

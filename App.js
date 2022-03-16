@@ -4,6 +4,8 @@ import AppLoading from 'expo-app-loading';
 import React, { useState, useEffect } from 'react';
 import Stack from './app/navigators/Stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import WordPlay from './app/screens/WordPlay';
+import Menu from './app/screens/Menu';
 
 
 export default function App() {

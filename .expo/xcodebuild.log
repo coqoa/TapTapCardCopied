@@ -978,7 +978,7 @@ PhaseScriptExecution [CP]\ Copy\ Pods\ Resources /Users/coqoa/Library/Developer/
 building file list ... done
 EXConstants.bundle/app.config
 
-sent 798 bytes  received 42 bytes  1680.00 bytes/sec
+sent 798 bytes  received 42 bytes  560.00 bytes/sec
 total size is 7198  speedup is 8.57
 
 CodeSign /Users/coqoa/Library/Developer/Xcode/DerivedData/taptapcard-fvilyrfuddwelierelynajuzqbzp/Build/Products/Debug-iphonesimulator/taptapcard.app (in target 'taptapcard' from project 'taptapcard')

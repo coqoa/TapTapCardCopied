@@ -1,5 +1,6 @@
 import React,{ useState } from "react";
 import styled from "styled-components";
+import { Audio } from 'expo-av';
 import { colors } from "../component/color";
 
 // const Shell = styled.View`
@@ -17,7 +18,7 @@ const MenuBoxShell = styled.View`
     justify-content: center;
     align-items: center;
 `
-    const MenuBox = styled.TouchableOpacity`
+    const MenuBox = styled.Pressable`
         background-color: white;
         width: 250px;
         height: 80px;
@@ -55,7 +56,7 @@ const WordSelectTitle = styled.View`
     justify-content: center;
     font-family: 'SDChild';
 `
-const WordKorBtn = styled.TouchableOpacity`
+const WordKorBtn = styled.Pressable`
     width: 200px;
     height: 60px;
     border-radius: 20px;
@@ -90,11 +91,32 @@ const Menu = ({navigation}) => {
         setWordSelectModal(false)
         navigation.navigate('WordPlay',{type:e}) 
     }
+    const playBtnSound = async(e) => {
+        const sound = new Audio.Sound();
+      try {    
+      	// 저장한 path로 음원 파일 불러오기 
+        await sound.loadAsync(e);
+        // 음원 재생하기 
+        await sound.playAsync();
+      } catch (error) {
+     }
+    }
+    const ClickSound = async() => {
+        const sound = new Audio.Sound();
+      try {    
+        await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
+        await sound.playAsync();
+      } catch (error) {
+     }
+    }
     return(
     // <Shell>
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
         <MenuBoxShell>
-            <MenuBox onPress={()=>setWordSelectModal(true)}>
+            <MenuBox 
+                onPressIn={() => ClickSound()}
+                onPressOut={() => setWordSelectModal(true)}
+            >
                 <MenuText>단어 놀이</MenuText>
             </MenuBox>
             <MenuBox>
@@ -108,8 +130,18 @@ const Menu = ({navigation}) => {
         <WordSelectModalBG onPress={()=>setWordSelectModal(false)}>
             <WordSelectContainer>
                 <WordSelectTitle><WordSelectTitleText>단어놀이</WordSelectTitleText></WordSelectTitle>
-                <WordKorBtn onPress={() => BtnClick("KOR")}><WordSelectText>한글</WordSelectText></WordKorBtn>
-                <WordEngBtn onPress={() => BtnClick("ENG")}><WordSelectText>영어</WordSelectText></WordEngBtn>
+                <WordKorBtn 
+                    onPressIn={() => ClickSound()}
+                    onPressOut={() => BtnClick("KOR")}
+                >
+                    <WordSelectText>한글</WordSelectText>
+                </WordKorBtn>
+                <WordEngBtn 
+                onPressIn={() => ClickSound()}
+                onPressOut={() => BtnClick("ENG")}
+                >
+                    <WordSelectText>영어</WordSelectText>
+                </WordEngBtn>
             </WordSelectContainer>
         </WordSelectModalBG>
         )}

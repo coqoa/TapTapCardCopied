@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Text, Dimensions } from "react-native";
+import React, { useState, useRef } from "react";
+import {View, Text, Dimensions, PanResponder, Animated, Pressable } from "react-native";
+import { Audio } from 'expo-av';
 import styled from "styled-components";
 import { colors } from "../component/color";
 import { WordCardLevel } from "../component/CardDefault";
@@ -103,6 +104,8 @@ const WordPlay = ({route, navigation}) => {
     const [modalToggle, setModalToggle] = useState(false);
     const [mainScreenRender, setMainScreenRender] = useState(true)
     
+    
+    
     const modalTogglePress = () => setModalToggle(!modalToggle)
 
     const cardCheck = (e) => {
@@ -121,7 +124,35 @@ const WordPlay = ({route, navigation}) => {
     // Menu.js로부터 type을 받는다 (한글인지 영어인지) 그 후 type을 토대로 출력되는 코드들을 정해준다
     const type = route.params.type
     // console.log(type)
+
+    const goBack = () => {
+        navigation.goBack()
+    }
+
+    const playBtnSound = async() => {
+        const sound = new Audio.Sound();
+        try {    
+            await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
+            await sound.playAsync();
+        } catch (error) {
+        }
+    }
+    const ClickSound = async() => {
+        const sound = new Audio.Sound();
+        try {    
+            await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
+            await sound.playAsync();
+        } catch (error) {
+        }
+    }
+    //Btn Animation
+    const [goBackAnimation, setGaBackAnimation] = useState(1)
+    const goBackScaleToggle = (e) =>{setGaBackAnimation(e)}
     
+    const [menuAnimation, setMenuAnimation] = useState(1)
+    const menuScaleToggle = (e) =>{setMenuAnimation(e)}
+    // const menuScaleToggle = (e) =>{console.log(e)}
+
     return( 
 
         // loading ? (
@@ -133,12 +164,21 @@ const WordPlay = ({route, navigation}) => {
             <Shell>
             <Top>
                 <GoBack>
-                    <GoBackBtn onPress={() => navigation.goBack()}>
+                    <GoBackBtn 
+                        onPressIn={() => {ClickSound(), goBackScaleToggle(0.8)}}
+                        onPressOut={() => {goBack(), goBackScaleToggle(1)}}
+                        style={{transform: [{scale:goBackAnimation}]}}
+                    >
                         <GoBackBtnImage source={require("../asset/images/goBack1.png")}></GoBackBtnImage>
                     </GoBackBtn>
                 </GoBack>
                 <Menu>
-                    <MenuBtn onPress={() => modalTogglePress()}>
+                    <MenuBtn
+                        onPressIn={() => {ClickSound(), menuScaleToggle(0.8)}}
+                        onPressOut={(e) => {modalTogglePress(), menuScaleToggle(1)}}
+                        style={{transform: [{scale:menuAnimation}]}}
+                        // style={{transform: [{scale:btnScale}]}}
+                    >
                         <MenuBtnImage source={require("../asset/images/MenuBar.png")}></MenuBtnImage>
                     </MenuBtn>
                 </Menu>
@@ -158,9 +198,24 @@ const WordPlay = ({route, navigation}) => {
                     <MenuModalContainer>
                         <MenuModal>
                             {/* 1레벨이 아닌 이미지가 출력되도록 바꿀예정 */}
-                            <LevelBtn onPress={()=>{cardCheck("word1LV")}}><StarViewImage source={require("../asset/images/Star1.png")} /></LevelBtn>
-                            <LevelBtn onPress={()=>{cardCheck("word2LV")}}><StarViewImage source={require("../asset/images/Star2.png")} /></LevelBtn>
-                            <LevelBtn onPress={()=>{cardCheck("word3LV")}}><StarViewImage source={require("../asset/images/Star3.png")} /></LevelBtn>
+                            <LevelBtn 
+                                onPressIn={() => ClickSound()} 
+                                onPressOut={()=>{cardCheck("word1LV")}}
+                            >
+                                <StarViewImage source={require("../asset/images/Star1.png")} />
+                            </LevelBtn>
+                            <LevelBtn 
+                                onPressIn={() => ClickSound()} 
+                                onPressOut={()=>{cardCheck("word2LV")}}
+                            >
+                                <StarViewImage source={require("../asset/images/Star2.png")} />
+                            </LevelBtn>
+                            <LevelBtn 
+                                onPressIn={() => ClickSound()} 
+                                onPressOut={()=>{cardCheck("word3LV")}}
+                            >
+                                <StarViewImage source={require("../asset/images/Star3.png")} />
+                            </LevelBtn>
                         </MenuModal>
                     </MenuModalContainer>
                 </MenuModalBg>

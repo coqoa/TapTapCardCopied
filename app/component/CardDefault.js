@@ -133,7 +133,7 @@ const ImageAudioBtn = styled.TouchableOpacity`
     width: 220px;
     height: 220px;
     border-radius: 150px;
-    background-color: rgba(0,0,0,0.1);
+    /* background-color: rgba(0,0,0,0.1); */
     z-index: 1;
 `
 const TextAudioBtn = styled.TouchableOpacity`
@@ -141,7 +141,7 @@ const TextAudioBtn = styled.TouchableOpacity`
     width: 220px;
     height: 60px;
     border-radius: 80px;
-    background-color: rgba(0,0,0,0.1);
+    /* background-color: rgba(0,0,0,0.1); */
 `
 const ClearModalContainer = styled.View`
     position: absolute;
@@ -246,6 +246,7 @@ export const WordCardLevel = (props) => {
                 position.setValue(dx)
             }, 
             onPanResponderRelease: (_,{dx}) => {
+                ClickSound()
                 setQuestionMarkBackground(true)
                 setTimeout(function() {
                     setQuestionMark(true)
@@ -304,6 +305,14 @@ export const WordCardLevel = (props) => {
       	// 저장한 path로 음원 파일 불러오기 
         await sound.loadAsync(e);
         // 음원 재생하기 
+        await sound.playAsync();
+      } catch (error) {
+     }
+    }
+    const ClickSound = async() => {
+        const sound = new Audio.Sound();
+      try {    
+        await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
         await sound.playAsync();
       } catch (error) {
      }
@@ -388,9 +397,19 @@ export const WordCardLevel = (props) => {
                                         style={{backgroundColor: colors.BEIGE}}
                                         >
                                             {props.level == "word2LV" && questionMark && (
-                                                <QuestionMarkBtn onPress={()=>{setQuestionMark(false), setQuestionMarkBackground(false)}} >    
-                                                    <QuestionMarkImage source={item.questionMarkImage} resizeMode="contain"/>
-                                                </QuestionMarkBtn>
+                                                <>
+                                                {type == "KOR" && (
+                                                    <QuestionMarkBtn onPress={()=>{setQuestionMark(false), setQuestionMarkBackground(false),textModalToggle(), playSound(item.SoundKOR)}} >    
+                                                        <QuestionMarkImage source={item.questionMarkImage} resizeMode="contain"/>
+                                                    </QuestionMarkBtn>                                                    
+                                                )}
+                                                {type == "ENG" && (
+                                                    <QuestionMarkBtn onPress={()=>{setQuestionMark(false), setQuestionMarkBackground(false),textModalToggle(), playSound(item.SoundENG)}} >    
+                                                        <QuestionMarkImage source={item.questionMarkImage} resizeMode="contain"/>
+                                                    </QuestionMarkBtn> 
+                                                )}
+
+                                                </>
                                             )}
                                         </QuestionMarkBg>
                                     )}
@@ -409,11 +428,17 @@ export const WordCardLevel = (props) => {
                 <ClearModalContainer>
                     <ClearModal>
                         <ClearImage  source={require("../asset/images/Check.png")} />
-                        <RepeatLevel onPress={() => restartLevelBtn()}>
+                        <RepeatLevel
+                            onPressIn={() => ClickSound()}
+                            onPressOut={() => restartLevelBtn()}
+                        >
                             {type == "KOR" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
                             {type == "ENG" && (<RepeatLevelText>Again !</RepeatLevelText>)}
                         </RepeatLevel>
-                        <NextLevel onPress={()=> nextLevelBtn()}>
+                        <NextLevel 
+                            onPressIn={()=> ClickSound()}
+                            onPressOut={()=> nextLevelBtn()}
+                        >
                             {type == "KOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
                             {type == "ENG" && (<NextLevelText>Next Level !</NextLevelText>)}
                         </NextLevel>

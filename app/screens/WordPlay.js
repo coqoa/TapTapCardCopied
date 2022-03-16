@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {View, Text, Dimensions, PanResponder, Animated, Pressable } from "react-native";
 import { Audio } from 'expo-av';
 import styled from "styled-components";
@@ -98,22 +98,30 @@ const Main = styled.View`
 
 
 const WordPlay = ({route, navigation}) => {
+
     const [loading, setLoading] = useState(true);
-    
     const [cardSelector, setCardSelector] = useState("word1LV");
     const [modalToggle, setModalToggle] = useState(false);
-    const [mainScreenRender, setMainScreenRender] = useState(true)
+    const [mainScreenRender, setMainScreenRender] = useState(false)
     
-    
-    
+    // mainScreenRender를 false로 만들면 실행되는 리렌더코드(clearTimeout해준다)
+    const rerenderTimeout = useRef(null); 
+    useEffect(()=>{
+        rerenderTimeout.current = setTimeout(() => {setMainScreenRender(true)},50)
+        return() => clearTimeout(rerenderTimeout.current)
+    },[mainScreenRender])
+
+
     const modalTogglePress = () => setModalToggle(!modalToggle)
 
     const cardCheck = (e) => {
+        // console.log("e",e)
         setMainScreenRender(false);
         setCardSelector(e);
-        setTimeout(function(){
-            setMainScreenRender(true)
-        },50)
+        // setMainScreenRender(true);
+        // setTimeout(function(){
+        //     setMainScreenRender(true)
+        // },50)
         setModalToggle(!modalToggle);
     }
     //자식컴포넌트로부터 값을 받아서 state를 변경하기 위해 props로 넘길 함수
@@ -145,16 +153,23 @@ const WordPlay = ({route, navigation}) => {
         } catch (error) {
         }
     }
-    //Btn Animation
-    const [goBackAnimation, setGaBackAnimation] = useState(1)
-    const goBackScaleToggle = (e) =>{setGaBackAnimation(e)}
-    
-    const [menuAnimation, setMenuAnimation] = useState(1)
-    const menuScaleToggle = (e) =>{setMenuAnimation(e)}
-    // const menuScaleToggle = (e) =>{console.log(e)}
-
+    // 버튼 애니메이션
+    // 뒤로가기버튼
+    const [goBackBtnAnimation, setGaBackBtnAnimation] = useState(1)
+    const goBackScaleToggle = (e) =>{setGaBackBtnAnimation(e)}
+    // 메뉴버튼
+    const [menuBtnAnimation, setMenuBtnAnimation] = useState(1)
+    const menuScaleToggle = (e) =>{setMenuBtnAnimation(e)}
+    // 1레벨버튼
+    const [level1Clicked, setLevel1Clicked] = useState(1)
+    const level1Animated = (e) =>{setLevel1Clicked(e)}
+    // 2레벨버튼
+    const [level2Clicked, setLevel2Clicked] = useState(1)
+    const level2Animated = (e) =>{setLevel2Clicked(e)}
+    // 1레벨버튼
+    const [level3Clicked, setLevel3Clicked] = useState(1)
+    const level3Animated = (e) =>{setLevel3Clicked(e)}
     return( 
-
         // loading ? (
         //     <Loader>
         //         <ActivityIndicator />
@@ -165,18 +180,18 @@ const WordPlay = ({route, navigation}) => {
             <Top>
                 <GoBack>
                     <GoBackBtn 
+                        style={{transform: [{scale:goBackBtnAnimation}]}}
                         onPressIn={() => {ClickSound(), goBackScaleToggle(0.8)}}
                         onPressOut={() => {goBack(), goBackScaleToggle(1)}}
-                        style={{transform: [{scale:goBackAnimation}]}}
                     >
                         <GoBackBtnImage source={require("../asset/images/goBack1.png")}></GoBackBtnImage>
                     </GoBackBtn>
                 </GoBack>
                 <Menu>
                     <MenuBtn
+                        style={{transform: [{scale:menuBtnAnimation}]}}
                         onPressIn={() => {ClickSound(), menuScaleToggle(0.8)}}
                         onPressOut={(e) => {modalTogglePress(), menuScaleToggle(1)}}
-                        style={{transform: [{scale:menuAnimation}]}}
                         // style={{transform: [{scale:btnScale}]}}
                     >
                         <MenuBtnImage source={require("../asset/images/MenuBar.png")}></MenuBtnImage>
@@ -199,20 +214,23 @@ const WordPlay = ({route, navigation}) => {
                         <MenuModal>
                             {/* 1레벨이 아닌 이미지가 출력되도록 바꿀예정 */}
                             <LevelBtn 
-                                onPressIn={() => ClickSound()} 
-                                onPressOut={()=>{cardCheck("word1LV")}}
+                                style={{transform: [{scale:level1Clicked}]}}
+                                onPressIn={() => {ClickSound(), level1Animated(0.8)}} 
+                                onPressOut={()=>{cardCheck("word1LV"), level1Animated(1)}}
                             >
                                 <StarViewImage source={require("../asset/images/Star1.png")} />
                             </LevelBtn>
                             <LevelBtn 
-                                onPressIn={() => ClickSound()} 
-                                onPressOut={()=>{cardCheck("word2LV")}}
+                                style={{transform: [{scale:level2Clicked}]}}
+                                onPressIn={() => {ClickSound(), level2Animated(0.8)}} 
+                                onPressOut={()=>{cardCheck("word2LV"), level2Animated(1)}}
                             >
                                 <StarViewImage source={require("../asset/images/Star2.png")} />
                             </LevelBtn>
                             <LevelBtn 
-                                onPressIn={() => ClickSound()} 
-                                onPressOut={()=>{cardCheck("word3LV")}}
+                                style={{transform: [{scale:level3Clicked}]}}
+                                onPressIn={() => {ClickSound(), level3Animated(0.8)}} 
+                                onPressOut={()=>{cardCheck("word3LV"), level3Animated(1)}}
                             >
                                 <StarViewImage source={require("../asset/images/Star3.png")} />
                             </LevelBtn>

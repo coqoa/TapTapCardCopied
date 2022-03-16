@@ -109,13 +109,26 @@ const Menu = ({navigation}) => {
       } catch (error) {
      }
     }
+
+    //Btn Animation
+    //단어놀이버튼
+    const [wordPlayBtnAnimation, setWordPlayBtnAnimation] = useState(1)
+    const wordPlayScaleToggle = (e) =>{setWordPlayBtnAnimation(e)}
+    // 한글버튼
+    const [KorBtnAnimation, setKorBtnAnimation] = useState(1)
+    const KorScaleToggle = (e) =>{setKorBtnAnimation(e)}
+    // 영어버튼
+    const [EngBtnAnimation, setEngBtnAnimation] = useState(1)
+    const EngScaleToggle = (e) =>{setEngBtnAnimation(e)}
+
     return(
     // <Shell>
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
         <MenuBoxShell>
             <MenuBox 
-                onPressIn={() => ClickSound()}
-                onPressOut={() => setWordSelectModal(true)}
+                style={{transform: [{scale:wordPlayBtnAnimation}]}}
+                onPressIn={() => {ClickSound(), wordPlayScaleToggle(0.8)}}
+                onPressOut={() => (setWordSelectModal(true),wordPlayScaleToggle(1))}
             >
                 <MenuText>단어 놀이</MenuText>
             </MenuBox>
@@ -131,14 +144,16 @@ const Menu = ({navigation}) => {
             <WordSelectContainer>
                 <WordSelectTitle><WordSelectTitleText>단어놀이</WordSelectTitleText></WordSelectTitle>
                 <WordKorBtn 
-                    onPressIn={() => ClickSound()}
-                    onPressOut={() => BtnClick("KOR")}
+                    style={{transform: [{scale:KorBtnAnimation}]}}
+                    onPressIn={() => (ClickSound(), KorScaleToggle(0.8))}
+                    onPressOut={() => {BtnClick("KOR"),KorScaleToggle(1)}}
                 >
                     <WordSelectText>한글</WordSelectText>
                 </WordKorBtn>
                 <WordEngBtn 
-                onPressIn={() => ClickSound()}
-                onPressOut={() => BtnClick("ENG")}
+                style={{transform: [{scale:EngBtnAnimation}]}}
+                onPressIn={() => {ClickSound(),EngScaleToggle(0.8)}}
+                onPressOut={() => {BtnClick("ENG"),EngScaleToggle(1)}}
                 >
                     <WordSelectText>영어</WordSelectText>
                 </WordEngBtn>

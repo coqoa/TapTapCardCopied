@@ -246,7 +246,9 @@ export const WordCardLevel = (props) => {
                 position.setValue(dx)
             }, 
             onPanResponderRelease: (_,{dx}) => {
-                ClickSound()
+                // if(dx<-100 || dx>100){
+                    playSound(require("../asset/audio/CardPass.mp3"))
+                // }
                 setQuestionMarkBackground(true)
                 setTimeout(function() {
                     setQuestionMark(true)
@@ -257,42 +259,35 @@ export const WordCardLevel = (props) => {
     ).current
     // modal
     // 터치시 이미지 변경 및 오디오출력 함수
-    const imageChangeFunc = () =>{
-        setImageToggle((prev) => !prev)
-        setClickBlockerToggle((prev) => !prev)
-    }
     const imageModalToggle = () => {
-        imageChangeFunc()
-        setTimeout(function() {imageChangeFunc()},1700)
+        setImageToggle(true)
+        setClickBlockerToggle(true)
     }
     //터치시 텍스트 변경 함수
-    const textChangeFunc = () =>{
-        setTextToggle((prev) => !prev)
-        setClickBlockerToggle((prev) => !prev)
-    }
     const textModalToggle = () => {
-        textChangeFunc()
-        setTimeout(function() {textChangeFunc()},1000)
+        setTextToggle(true)
+        setClickBlockerToggle(true)
     }
     //마지막 카드에서 출력되는 모달창, 다시하기버튼, 다음레벨 버튼
     const lastListModalOn = () => {
         setClearModalToggle((prev) => !prev)
     };
+    // 재시작버튼
     const restartLevelBtn = () => {
-        setRefresh((prev) => !prev)
+        setRefresh(false)
         setClearModalToggle((prev) => !prev)
-        setTimeout(function() {
-            setRefresh((prev) => !prev)
-        },100)
+        // setTimeout(function() {
+        //     setRefresh((prev) => !prev)
+        // },100)
     };
     //자식컴포넌트에서 부모컴포넌트 state를 바꾸려면 함수를 이용해야한다 (그냥 props는 읽기전용이라 props.level="???" 이런식으로 변경 불가능)
     const nextLevelBtn = () => {
         props.getData('word2LV')
-        setRefresh((prev) => !prev)
+        setRefresh(false)
         setClearModalToggle((prev) => !prev)
-        setTimeout(function() {
-            setRefresh((prev) => !prev)
-        },100)
+        // setTimeout(function() {
+        //     setRefresh((prev) => !prev)
+        // },100)
     }
     //부모 컴포넌트로부터 type props(KOR, ENG 등등)를 받아서 그에 맞는 화면을 출력해주기 위한 변수 
     const type = props.type
@@ -317,8 +312,26 @@ export const WordCardLevel = (props) => {
       } catch (error) {
      }
     }
-
-
+//setTimeout / clearTimeout
+    // 이미지 터치시 시작되는 Timeout
+    const imageChangeTimeout = useRef(null); 
+    useEffect(()=>{
+        imageChangeTimeout.current = setTimeout(() => {setImageToggle(false), setClickBlockerToggle(false)},1700)
+        return() => clearTimeout(imageChangeTimeout.current)
+    },[imageToggle])
+    // 텍스트 터치시 시작되는 Timeout
+    const textChangeTimeout = useRef(null); 
+    useEffect(()=>{
+        textChangeTimeout.current = setTimeout(() => {setTextToggle(false), setClickBlockerToggle(false)},1000)
+        return() => clearTimeout(textChangeTimeout.current)
+    },[textToggle])
+    //리스페쉬부분
+    const refreshTimeout = useRef(null); 
+    useEffect(()=>{
+        refreshTimeout.current = setTimeout(function() {setRefresh(true)},100)
+        return() => clearTimeout(refreshTimeout.current)
+    },[refresh])
+// 다른부분들도 setTimeout으로 바꿔야할텐데?
 
     const levelConsole = () => {
         return(

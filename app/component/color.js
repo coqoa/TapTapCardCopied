@@ -1,5 +1,6 @@
 export const colors = {
     bgColor : "#F9EBEB",
+    mainBgColor : "#D3F3FF",
 
     BEIGE:"#f5f5dc",
     CUSTOMPINK:"#FF5384",
@@ -7,7 +8,7 @@ export const colors = {
     GREEN:"#198c19",
 
     REALLIGHTGRAY : "#DBDBDB",
-    LIGHTGRAY : "##C4C4C4",
+    LIGHTGRAY : "#C4C4C4",
     GRAY:"#989898",
     DARKGRAY:"#747474",
     REALDARKGRAY:"#3C3C3C",

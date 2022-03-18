@@ -1,31 +1,30 @@
 import React, {useState, useEffect, useRef} from "react"
 import { Audio } from 'expo-av';
-import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable, PanResponder,Text } from "react-native";
+import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable, PanResponder,Text, TextInput, KeyboardAvoidingView } from "react-native";
 import styled from "styled-components"
 import { WordCardArray } from "../asset/data/WordCardArray";
 import { colors } from "./color";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { KeyboardAwareFlatList } from "react-native-keyboard-aware-scroll-view";
+import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 //Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
-const Star = styled.View`
-    height: 65px;
-    width: 250px;
-    align-items: center;
-`
-const StarView = styled.View`
-    width: 170px;
-    height: 60px;
-    align-items: center;
-    justify-content: center;
-    `
-const StarViewImage = styled.ImageBackground`
-    top: 2px;
-    width: 220px;
-    height: 70px;
-`
+// const Star = styled.View`
+//     height: 55px;
+//     width: 50%;
+//     top: 3%;
+//     align-items: center;
+//     justify-content: center;
+//     border: 1px solid red;
+//     `
+// const StarViewImage = styled.ImageBackground`
+//     /* top: 2px; */
+//     width: 100%;
+//     height: 100%;
+// `
 
 const CardList = styled(Animated.createAnimatedComponent(FlatList))``
 const CardSection = styled.View`
@@ -33,21 +32,23 @@ const CardSection = styled.View`
     align-items: center;
 `
 const Card = styled(Animated.createAnimatedComponent(View))`
-    width: 290px;
-    height: 510px;
-    padding: 0px 10px;
+    width: 80%;
+    top: 10px;
+    height: 90%;
+    padding: 0px 15px;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
-    border: 2px solid ${colors.REALDARKGRAY};
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+    /* border: 2px solid ${colors.REALDARKGRAY}; */
 `
 const CardImgShell = styled.View`
     align-items: center;
     justify-content: center;
-    width: 260px;
-    height: 350px;
-    margin: 15px 5px;
+    flex: 4;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
     border-radius: 10px;
 `
 const CardImg = styled.Image`
@@ -66,9 +67,8 @@ const CardImgShellModal = styled.View`
     position: absolute;
     left: 0px;
     top: 0px;
-    width: 260px;
-    height:350px;
-    margin: 15px 13px;
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
 `
 const CardImg2 = styled(CardImg)`
@@ -76,20 +76,21 @@ const CardImg2 = styled(CardImg)`
 `
 const CardContents = styled.View`
     flex: 1;
-    margin-bottom: 2px;
     width: 100%;
-`
+    /* border: 1px solid black; */
+    /* margin-bottom: 15px; */
+    `
 const CardName = styled.View`
     flex:1;
     align-items: center;
     justify-content: center;
-    margin-bottom: 5px;
-`
+    `
 const CardNameText = styled.Text`
     font-size: 65px;
     font-weight: 900;
     font-family: 'SDChild';
     color: ${colors.REALDARKGRAY};
+    /* border: 1px solid black; */
 `
 const CardNameModal = styled.View`
     position: absolute;
@@ -106,12 +107,12 @@ const CardNameModalText = styled.Text`
     font-family: 'SDChild';
     color: ${colors.SEABLUE};
 `
-const CardNameModalBox = styled(Animated.createAnimatedComponent(Pressable))`
-    position: absolute;
-    width: 80%;
-    height: 70px;
-    background-color: transparent;
-`
+// const CardNameModalBox = styled(Animated.createAnimatedComponent(Pressable))`
+//     position: absolute;
+//     width: 80%;
+//     height: 70px;
+//     background-color: transparent;
+// `
 
 
 const QuestionMarkBg = styled.View`
@@ -130,16 +131,16 @@ const QuestionMarkImage = styled.Image`
 `
 const ImageAudioBtn = styled.TouchableOpacity`
     position: absolute;
-    width: 220px;
-    height: 220px;
+    width: 100%;
+    height: 90%;
     border-radius: 150px;
     /* background-color: rgba(0,0,0,0.1); */
     z-index: 1;
 `
 const TextAudioBtn = styled.TouchableOpacity`
     position: absolute;
-    width: 220px;
-    height: 60px;
+    width: 90%;
+    height: 90%;
     border-radius: 80px;
     /* background-color: rgba(0,0,0,0.1); */
 `
@@ -147,7 +148,7 @@ const ClearModalContainer = styled.View`
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.1);
+    /* background-color: rgba(0,0,0,0.1); */
     left: 0px;
     top: 0px;
     align-items: center;
@@ -205,12 +206,12 @@ export const WordCardLevel = (props) => {
     const position = useRef(new Animated.Value(0)).current;
     //interpolate
     const scaleControl = position.interpolate({
-        inputRange:[-100,0,100,],
-        outputRange:[0.2,1,0.2],
+        inputRange:[-170,0,170,],
+        outputRange:[0,1,0],
         extrapolate: "clamp" 
     });
     const opacityControl = position.interpolate({
-        inputRange:[-150,0,150,],
+        inputRange:[-200,0,200,],
         outputRange:[0,1,0],
         extrapolate: "clamp" 
     });
@@ -337,17 +338,15 @@ export const WordCardLevel = (props) => {
         return(
             <View  style={{alignItems:"center", justifyContent:"center"}}>
             <SafeAreaView style={{flex:1}}>
-            <View  style={{alignItems:"center", justifyContent:"center"}}>
-            <Star>
-                <StarView>
+            {/* <View  style={{alignItems:"center", justifyContent:"center"}}> */}
+            {/* <Star>
                     {(()=>{
-                        if(props.level === "word1LV") return <StarViewImage source={require("../asset/images/Star1.png")} />
-                        else if(props.level=="word2LV") return <StarViewImage source={require("../asset/images/Star2.png")} />
-                        else if(props.level=="word3LV") return <StarViewImage source={require("../asset/images/Star3.png")} />
+                        if(props.level === "word1LV") return <StarViewImage source={require("../asset/images/Star1.png")} resizeMode="contain" />
+                        else if(props.level=="word2LV") return <StarViewImage source={require("../asset/images/Star2.png")} resizeMode="contain" />
+                        else if(props.level=="word3LV") return <StarViewImage source={require("../asset/images/Star3.png")} resizeMode="contain" />
                         else return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>
                     })()}
-                </StarView>
-            </Star>
+            </Star> */}
 
             {/* 카드부분 */}
             {refresh && (
@@ -374,15 +373,14 @@ export const WordCardLevel = (props) => {
                             <CardImgShell style={{backgroundColor:item.bgColor}}>
                                 <CardImg source={item.image} resizeMode="contain"></CardImg>
                                 <ImageAudioBtn onPress={()=>{imageModalToggle(), playSound(item.SoundImage)}} />
+                                {imageToggle && (
+                                    <CardImgShellModal style={{backgroundColor: item.bgColor}}>
+                                            <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
+                                        </CardImgShellModal>
+                                 )} 
                             </CardImgShell>
                             {/* 이미지 터치시 출력되는 세컨드이미지 */}
-                            {imageToggle && (
-                                // <CardImageContainer>
-                                    <CardImgShellModal style={{backgroundColor: item.bgColor}}>
-                                        <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
-                                    </CardImgShellModal>
-                                // </CardImageContainer>
-                            )}
+                            
                             
                             {/* 카드 텍스트 부분 */}
                             <CardContents>
@@ -400,7 +398,7 @@ export const WordCardLevel = (props) => {
                                         <CardNameModal>
                                             {type == "KOR" && (<CardNameModalText>{item.nameKOR}</CardNameModalText>)}
                                             {type == "ENG" && (<CardNameModalText>{item.nameENG}</CardNameModalText>)}
-                                            <CardNameModalBox></CardNameModalBox>
+                                            {/* <CardNameModalBox></CardNameModalBox> */}
                                         </CardNameModal>
                                     )}
 
@@ -425,6 +423,23 @@ export const WordCardLevel = (props) => {
                                                 </>
                                             )}
                                         </QuestionMarkBg>
+                                    )}
+                                    {props.level == "word3LV" &&(
+                                        <>
+                                        <KeyboardAwareFlatList style={{position:"absolute", width:SCREEN_WIDTH, height: SCREEN_HEIGHT}} contentContainerStyle={{position:"absolute", width:100, height:100, backgroundColor:"blue"}}>
+                                                    <TextInput 
+                                                    autoComplete="none"
+                                                    style={{
+                                                        position: "absolute",
+                                                        width: 150,
+                                                        height: 80,
+                                                        backgroundColor:"black",
+                                                        opacity: 0.5 
+
+                                                    }}>     
+                                                    </TextInput>
+                                                </KeyboardAwareFlatList>
+                                        </>
                                     )}
                                 </CardName>
                             </CardContents>
@@ -458,7 +473,7 @@ export const WordCardLevel = (props) => {
                     </ClearModal>
                 </ClearModalContainer>  
             ):null} 
-            </View>
+            {/* </View> */}
             </SafeAreaView>
             </View>
         )

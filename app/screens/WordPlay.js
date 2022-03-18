@@ -8,30 +8,37 @@ import { WordCardLevel } from "../component/CardDefault";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
-const Loader = styled.View`
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-`;
+// const Loader = styled.View`
+//     flex: 1;
+//     justify-content: center;
+//     align-items: center;
+// `;
 const Shell = styled.View`
     flex: 1;
-    background-color: white;
+    background-color: ${colors.mainBgColor};
     align-items: center;
+    /* border: 1px solid green; */
 `
 const Top = styled.View`
-    position: absolute;
-    width: 100%;
-    height: 80px;
     flex-direction: row;
-    background-color: transparent;
+    width: 80%;
+    height: 55px;
+    top: 20px;
+    border-radius: 20px;
+    align-items: center;
     z-index: 30;
+    background-color: rgba(255,255,255,0.6);
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
 `
 const GoBack = styled.View`
     position: absolute;
-    width: 65px;
-    height: 65px;
+    width: 35px;
+    height: 35px;
+    left: 5px;
     align-items: center;
     justify-content: center;
+    z-index: 30;
+    /* border: 1px solid black; */
 `
 const GoBackBtn = styled.Pressable`
     width: 100%;
@@ -41,13 +48,32 @@ const GoBackBtnImage = styled.Image`
     width: 100%;
     height: 100%;
 `
+
+const Star = styled.View`
+    flex: 1;
+    height: 40px;
+    width: 30%;
+    bottom: 1px;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid gray; */
+`
+const StarViewImage1 = styled.ImageBackground`
+    /* top: 2px; */
+    width: 100%;
+    height: 100%;
+`
+
+
 const Menu = styled.View`
     position: absolute;
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
+    /* top: 3px; */
     right: 0px;
     align-items: center;
     justify-content: center;
+    z-index: 30;
 `
 const MenuBtn = styled.Pressable`
     width: 100%;
@@ -59,19 +85,21 @@ const MenuBtnImage = styled.ImageBackground`
 `
 
 const MenuModalBg = styled.Pressable`
-    z-index: 15;
+    z-index: 35;
+    align-items: center;
+    justify-content: center;
 `
 const MenuModalContainer = styled.View`
     position: absolute;
-    top: 60px;
-    right: 10px;
+    top: 80px;
+    /* right: 10px; */
     width: 200px;
     height: 200px;
     border-radius: 20px;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
 `
 const MenuModal = styled.View`
     width: 90%;
@@ -82,25 +110,26 @@ const LevelBtn = styled.Pressable`
     align-items: center;
     justify-content: center;
     margin: 5px;
+    padding: 5px;
     border-radius: 15px;
-    background-color: ${colors.LIGHTBLUE};
-    box-shadow: 0px 1px 3px ${colors.LIGHTBLUE};
+    /* background-color: rgba(255,255,255,0.8); */
+    /* /* background-color: ${colors.BLUE}; */
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
 `
 const StarViewImage = styled.ImageBackground`
     width: 80%;
     height: 80%;
 `
 const Main = styled.View`
-    flex: 5;
+    flex: 1;
     flex-direction: row;
-    z-index: 10;
 `
 
 
 const WordPlay = ({route, navigation}) => {
 
     const [loading, setLoading] = useState(true);
-    const [cardSelector, setCardSelector] = useState("word1LV");
+    const [cardSelector, setCardSelector] = useState();
     const [modalToggle, setModalToggle] = useState(false);
     const [mainScreenRender, setMainScreenRender] = useState(false)
     
@@ -187,6 +216,16 @@ const WordPlay = ({route, navigation}) => {
                         <GoBackBtnImage source={require("../asset/images/goBack1.png")}></GoBackBtnImage>
                     </GoBackBtn>
                 </GoBack>
+                <Star>
+                    {(()=>{
+                        if(cardSelector === "word1LV") return <StarViewImage1 source={require("../asset/images/Star1.png")} resizeMode="contain" />
+                        else if(cardSelector=="word2LV") return <StarViewImage1 source={require("../asset/images/Star2.png")} resizeMode="contain" />
+                        else if(cardSelector=="word3LV") return <StarViewImage1 source={require("../asset/images/Star3.png")} resizeMode="contain" />
+                        else if(cardSelector==undefined){ return setCardSelector('word3LV')
+                        } else {
+                            return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>
+                        }})()}
+                </Star>
                 <Menu>
                     <MenuBtn
                         style={{transform: [{scale:menuBtnAnimation}]}}
@@ -214,21 +253,27 @@ const WordPlay = ({route, navigation}) => {
                         <MenuModal>
                             {/* 1레벨이 아닌 이미지가 출력되도록 바꿀예정 */}
                             <LevelBtn 
-                                style={{transform: [{scale:level1Clicked}]}}
+                                style={{
+                                    backgroundColor: colors.BLUE,
+                                    transform: [{scale:level1Clicked}]}}
                                 onPressIn={() => {ClickSound(), level1Animated(0.8)}} 
                                 onPressOut={()=>{cardCheck("word1LV"), level1Animated(1)}}
                             >
                                 <StarViewImage source={require("../asset/images/Star1.png")} />
                             </LevelBtn>
                             <LevelBtn 
-                                style={{transform: [{scale:level2Clicked}]}}
+                                style={{
+                                    backgroundColor: colors.REDORANGE,
+                                    transform: [{scale:level2Clicked}]}}
                                 onPressIn={() => {ClickSound(), level2Animated(0.8)}} 
                                 onPressOut={()=>{cardCheck("word2LV"), level2Animated(1)}}
                             >
                                 <StarViewImage source={require("../asset/images/Star2.png")} />
                             </LevelBtn>
                             <LevelBtn 
-                                style={{transform: [{scale:level3Clicked}]}}
+                                style={{
+                                    backgroundColor: colors.DARKOLIVE,
+                                    transform: [{scale:level3Clicked}]}}
                                 onPressIn={() => {ClickSound(), level3Animated(0.8)}} 
                                 onPressOut={()=>{cardCheck("word3LV"), level3Animated(1)}}
                             >

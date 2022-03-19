@@ -48,7 +48,7 @@ const CardImgShell = styled.View`
     flex: 4;
     width: 100%;
     margin-top: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border-radius: 10px;
 `
 const CardImg = styled.Image`
@@ -189,6 +189,18 @@ const RepeatLevelText = styled.Text`
     font-family: 'SDChild';
 `
 const NextLevelText = styled(RepeatLevelText)``
+
+const CardTextInput = styled.TextInput`
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    font-family: 'SDChild';
+    font-size: 40px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+`
 
 // ----------------------------------------------------------------------------------
 
@@ -426,19 +438,15 @@ export const WordCardLevel = (props) => {
                                     )}
                                     {props.level == "word3LV" &&(
                                         <>
-                                        <KeyboardAwareFlatList style={{position:"absolute", width:SCREEN_WIDTH, height: SCREEN_HEIGHT}} contentContainerStyle={{position:"absolute", width:100, height:100, backgroundColor:"blue"}}>
-                                                    <TextInput 
-                                                    autoComplete="none"
-                                                    style={{
-                                                        position: "absolute",
-                                                        width: 150,
-                                                        height: 80,
-                                                        backgroundColor:"black",
-                                                        opacity: 0.5 
+                                        {/* <KeyboardAwareFlatList 
+                                        style={{flex:1, width:200}} 
+                                        contentContainerStyle={{width:200, height:200}}> */}
+                                        <CardTextInput
+                                            
+                                        >
 
-                                                    }}>     
-                                                    </TextInput>
-                                                </KeyboardAwareFlatList>
+                                        </CardTextInput>
+                                        {/* </KeyboardAwareFlatList> */}
                                         </>
                                     )}
                                 </CardName>

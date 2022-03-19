@@ -24,7 +24,7 @@ const Top = styled.View`
     width: 80%;
     height: 55px;
     top: 20px;
-    border-radius: 20px;
+    border-radius: 15px;
     align-items: center;
     z-index: 30;
     background-color: rgba(255,255,255,0.6);

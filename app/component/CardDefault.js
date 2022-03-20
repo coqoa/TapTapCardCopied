@@ -6,7 +6,7 @@ import { WordCardArray } from "../asset/data/WordCardArray";
 import { colors } from "./color";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { KeyboardAwareFlatList } from "react-native-keyboard-aware-scroll-view";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 //Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -50,6 +50,7 @@ const CardImgShell = styled.View`
     margin-top: 15px;
     margin-bottom: 5px;
     border-radius: 10px;
+    z-index: 10;
 `
 const CardImg = styled.Image`
     flex: 1;
@@ -75,8 +76,8 @@ const CardImg2 = styled(CardImg)`
 
 `
 const CardContents = styled.View`
-    flex: 1;
     width: 100%;
+    z-index: 15;
     /* border: 1px solid black; */
     /* margin-bottom: 15px; */
     `
@@ -190,18 +191,40 @@ const RepeatLevelText = styled.Text`
 `
 const NextLevelText = styled(RepeatLevelText)``
 
-const CardTextInput = styled.TextInput`
+
+
+const DistractorContainer = styled.View`
     position: absolute;
-    width: 200px;
-    height: 80px;
-    font-family: 'SDChild';
-    font-size: 40px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: ${colors.BEIGE};
+    `
+const DistractorRow = styled.View`
+    flex-direction: row;
+    width: 96%;
+    height: 48%;
+    justify-content: center;
+    align-items: center;
+    background-color: ${colors.BEIGE};
+    /* margin: 5px; */
+`
+const Distractor = styled.Pressable`
+    width: 48%;
+    height: 90%;
+    margin: 5px;
     border-radius: 15px;
-    text-align: center;
-    background-color: white;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
+    background-color: rgba(255,255,255, 0.9);
 `
 
+const Container = styled.ScrollView`
+    /* background-color: red; */
+`
+const BgImg = styled.Image`
+    flex: 1;
+`
 // ----------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
@@ -213,6 +236,9 @@ export const WordCardLevel = (props) => {
     const [questionMarkBackground, setQuestionMarkBackground] = useState(true);
     const [questionMark, setQuestionMark] = useState(true);
     const [clickBlockerToggle, setClickBlockerToggle] = useState(false)
+    const [cardContentsHeight, setCardContentsHeight] = useState(1)
+
+    const [cardScrollView, setCardScrollView] = useState(WordCardArray)
     //Values
     const scale = useRef(new Animated.Value(1)).current;
     const position = useRef(new Animated.Value(0)).current;
@@ -307,7 +333,7 @@ export const WordCardLevel = (props) => {
 
     // 오디오출력, props를 받아서 해당 파일을 출력해줌
     const playSound = async(e) => {
-        console.log(e)
+        // console.log(e)
         const sound = new Audio.Sound();
       try {    
       	// 저장한 path로 음원 파일 불러오기 
@@ -346,22 +372,32 @@ export const WordCardLevel = (props) => {
     },[refresh])
 // 다른부분들도 setTimeout으로 바꿔야할텐데?
 
+// 3레벨카드의 텍스트부분 범위넓게해주기
+    useEffect(()=>{
+        if(props.level == "word3LV"){
+            setCardContentsHeight(3)
+        }else{
+            setCardContentsHeight(1)
+        }        
+    },[])
+    
+
+
     const levelConsole = () => {
+        // const [randomNum, setRandomNum] = useState(WordCardArray)
+                            // const numArray = [1,1,1,1,1,1,1,1,1]
+                            // const ranArray = numArray.map(item => item*)
+                            // console.log(WordCardArray.length)
+                            // console.log(randomNum1)
+                    
+                    // const ranArray = numArray.map(item => console.log(item))
+                    // console.log(Array.from(new Set(numArray)))
+                    // console.log(numArray.filter((item, index)=> numArray.indexOf(item) == index))
         return(
             <View  style={{alignItems:"center", justifyContent:"center"}}>
-            <SafeAreaView style={{flex:1}}>
-            {/* <View  style={{alignItems:"center", justifyContent:"center"}}> */}
-            {/* <Star>
-                    {(()=>{
-                        if(props.level === "word1LV") return <StarViewImage source={require("../asset/images/Star1.png")} resizeMode="contain" />
-                        else if(props.level=="word2LV") return <StarViewImage source={require("../asset/images/Star2.png")} resizeMode="contain" />
-                        else if(props.level=="word3LV") return <StarViewImage source={require("../asset/images/Star3.png")} resizeMode="contain" />
-                        else return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>
-                    })()}
-            </Star> */}
-
             {/* 카드부분 */}
             {refresh && (
+
             <>
             <CardList
                 {...panResponder.panHandlers}
@@ -370,10 +406,67 @@ export const WordCardLevel = (props) => {
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 onEndReached={lastListModalOn}
-                onEndReachedThreshold={0.1}
+                onEndReachedThreshold={-0.1}
                 renderItem = {({item})=>{
 
+                    // const [randomState, setRandomState] = useState([]);
+
+                    // const randomNumberPlace = () => {
+                    //     return
+
+                    // }
+                    
+                    const numberArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+                    const mapArray = numberArray.map(item => item*Math.floor(Math.random()*WordCardArray.length)) 
+                    const mapArraySort = Array.from(new Set(mapArray))
+                    const filterMapArray = mapArraySort.filter(function(element){
+                        return element !== item.id
+                    });
+                    const numArray = [item.nameKOR,WordCardArray[filterMapArray[0]].nameKOR, WordCardArray[filterMapArray[1]].nameKOR, WordCardArray[filterMapArray[2]].nameKOR]
+
+                    console.log('itemid는',item.id)
+                    console.log('필터링결과는',filterMapArray)
+                    // 일단 랜덤배열은 생성완료, 
+                    // 카드에서 랜덤배치해야함 
+
+
+                    // let randomNum1 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum2 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum3 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum4 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum5 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum6 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum7 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum8 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum9 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum10 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum11 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum12 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum13 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum14 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum15 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum16 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum17 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum18 = Math.floor(Math.random()*WordCardArray.length)
+                    // let randomNum19 = Math.floor(Math.random()*WordCardArray.length)
+
+                    // const ranArray = [
+                    //     randomNum1,randomNum2,randomNum3,randomNum4,randomNum5,randomNum6,randomNum7,
+                    //     randomNum8,randomNum9,randomNum10,randomNum11,randomNum12,randomNum13,randomNum14,
+                    //     randomNum15,randomNum16,randomNum17,randomNum18,randomNum19]
+                    // const ranArraySort = Array.from(new Set(ranArray))
+                    // const filterRanArray = ranArraySort.filter(function(element){
+                    //     return element !== item.id
+                    // });
+                    // console.log('itemid는',item.id)
+                    // console.log('필터링결과는',filterRanArray)
+
+
+                    // const numArray = [item.nameKOR,WordCardArray[filterRanArray[0]].nameKOR, WordCardArray[filterRanArray[1]].nameKOR, WordCardArray[filterRanArray[2]].nameKOR]
+                    // console.log(numArray[0])
+
                     return (
+                    
                     <CardSection style={{width:SCREEN_WIDTH}}> 
                         {/* 카드전체스타일 */}
                         <Card style={{
@@ -389,13 +482,13 @@ export const WordCardLevel = (props) => {
                                     <CardImgShellModal style={{backgroundColor: item.bgColor}}>
                                             <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
                                         </CardImgShellModal>
-                                 )} 
+                                )} 
                             </CardImgShell>
                             {/* 이미지 터치시 출력되는 세컨드이미지 */}
                             
                             
                             {/* 카드 텍스트 부분 */}
-                            <CardContents>
+                            <CardContents style={{flex:cardContentsHeight}}>
                                 <CardName>
                                     {/* type에 따라 한글/영어 등 만 보이도록 */}
                                     {type == "KOR" && (<CardNameText>{item.nameKOR}</CardNameText>)}
@@ -438,16 +531,18 @@ export const WordCardLevel = (props) => {
                                     )}
                                     {props.level == "word3LV" &&(
                                         <>
-                                        {/* <KeyboardAwareFlatList 
-                                        style={{flex:1, width:200}} 
-                                        contentContainerStyle={{width:200, height:200}}> */}
-                                        <CardTextInput
-                                            
-                                        >
-
-                                        </CardTextInput>
-                                        {/* </KeyboardAwareFlatList> */}
-                                        </>
+                                            <DistractorContainer>
+                                                <DistractorRow>
+                                                    {/* <Distractor onPress={()=>{console.log(A)}}><Text>{WordCardArray[numArray[0]].nameKOR}</Text></Distractor> */}
+                                                    <Distractor onPress={()=>{console.log(A)}}><Text>{numArray[0]}</Text></Distractor>
+                                                    <Distractor onPress={()=>{console.log('2')}}><Text>{numArray[1]}</Text></Distractor>
+                                                </DistractorRow>
+                                                <DistractorRow>
+                                                    <Distractor onPress={()=>{console.log('3')}}><Text>{numArray[2]}</Text></Distractor>
+                                                    <Distractor onPress={()=>{console.log('4')}}><Text>{numArray[3]}</Text></Distractor>
+                                                </DistractorRow>
+                                            </DistractorContainer>
+                                        </> 
                                     )}
                                 </CardName>
                             </CardContents>
@@ -460,7 +555,7 @@ export const WordCardLevel = (props) => {
             </>
             )}
             {/* 마지막리스트 도달하면 열리는 모달창 */}
-            {clearModalToggle ? (
+            {clearModalToggle && (
                 <ClearModalContainer>
                     <ClearModal>
                         <ClearImage  source={require("../asset/images/Check.png")} />
@@ -480,9 +575,7 @@ export const WordCardLevel = (props) => {
                         </NextLevel>
                     </ClearModal>
                 </ClearModalContainer>  
-            ):null} 
-            {/* </View> */}
-            </SafeAreaView>
+            )} 
             </View>
         )
     }

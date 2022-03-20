@@ -81,16 +81,6 @@ export const WordCardArray = [
         "SoundKOR" : require("../audio/WhaleKOR.mp3"),
         "SoundENG" : require("../audio/WhaleENG.mp3")
     }, 
-    {
-        "id" : 6, 
-        "image" : require("../images/RightArrow.png"), 
-        "image2" : require("../images/Lion2.png"), 
-        "bgColor" : colors.BEIGE, 
-        "nameKOR" : "끝",
-        "nameENG" : "End",
-        "check" : false,
-        "questionMarkImage" : require("../images/QuestionMark.png")
-    },
 ]
 
 

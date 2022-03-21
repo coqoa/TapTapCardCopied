@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from "react"
 import { Audio } from 'expo-av';
-import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable, PanResponder,Text, TextInput, KeyboardAvoidingView } from "react-native";
+import {View, Dimensions, FlatList, Animated, TouchableOpacity, Pressable, PanResponder,Text, TextInput, Button } from "react-native";
 import styled from "styled-components"
 import { WordCardArray } from "../asset/data/WordCardArray";
 import { colors } from "./color";
@@ -209,22 +209,23 @@ const DistractorRow = styled.View`
     align-items: center;
     background-color: ${colors.BEIGE};
     /* margin: 5px; */
-`
-const Distractor = styled.Pressable`
+    `
+const Distractor = styled.TouchableOpacity`
     width: 48%;
     height: 90%;
     margin: 5px;
     border-radius: 15px;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
     background-color: rgba(255,255,255, 0.9);
 `
+const DistractorText = styled.Text`
+    font-family: 'SDChild';
+    font-size: 30px;
+    color: ${colors.REALDARKGRAY};
+`
 
-const Container = styled.ScrollView`
-    /* background-color: red; */
-`
-const BgImg = styled.Image`
-    flex: 1;
-`
 // ----------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
@@ -384,20 +385,11 @@ export const WordCardLevel = (props) => {
 
 
     const levelConsole = () => {
-        // const [randomNum, setRandomNum] = useState(WordCardArray)
-                            // const numArray = [1,1,1,1,1,1,1,1,1]
-                            // const ranArray = numArray.map(item => item*)
-                            // console.log(WordCardArray.length)
-                            // console.log(randomNum1)
-                    
-                    // const ranArray = numArray.map(item => console.log(item))
-                    // console.log(Array.from(new Set(numArray)))
-                    // console.log(numArray.filter((item, index)=> numArray.indexOf(item) == index))
+
         return(
             <View  style={{alignItems:"center", justifyContent:"center"}}>
             {/* 카드부분 */}
             {refresh && (
-
             <>
             <CardList
                 {...panResponder.panHandlers}
@@ -409,61 +401,33 @@ export const WordCardLevel = (props) => {
                 onEndReachedThreshold={-0.1}
                 renderItem = {({item})=>{
 
-                    // const [randomState, setRandomState] = useState([]);
-
-                    // const randomNumberPlace = () => {
-                    //     return
-
-                    // }
-                    
+                    // 무작위배열만들기
                     const numberArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+                    // 배열마다 무작위 숫자 부여
                     const mapArray = numberArray.map(item => item*Math.floor(Math.random()*WordCardArray.length)) 
+                    //동일한 숫자 제거
                     const mapArraySort = Array.from(new Set(mapArray))
+                    // 해당카드의 id는 제거한다(중복방지)
                     const filterMapArray = mapArraySort.filter(function(element){
                         return element !== item.id
                     });
-                    const numArray = [item.nameKOR,WordCardArray[filterMapArray[0]].nameKOR, WordCardArray[filterMapArray[1]].nameKOR, WordCardArray[filterMapArray[2]].nameKOR]
-
-                    console.log('itemid는',item.id)
-                    console.log('필터링결과는',filterMapArray)
-                    // 일단 랜덤배열은 생성완료, 
-                    // 카드에서 랜덤배치해야함 
-
-
-                    // let randomNum1 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum2 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum3 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum4 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum5 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum6 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum7 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum8 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum9 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum10 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum11 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum12 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum13 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum14 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum15 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum16 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum17 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum18 = Math.floor(Math.random()*WordCardArray.length)
-                    // let randomNum19 = Math.floor(Math.random()*WordCardArray.length)
-
-                    // const ranArray = [
-                    //     randomNum1,randomNum2,randomNum3,randomNum4,randomNum5,randomNum6,randomNum7,
-                    //     randomNum8,randomNum9,randomNum10,randomNum11,randomNum12,randomNum13,randomNum14,
-                    //     randomNum15,randomNum16,randomNum17,randomNum18,randomNum19]
-                    // const ranArraySort = Array.from(new Set(ranArray))
-                    // const filterRanArray = ranArraySort.filter(function(element){
-                    //     return element !== item.id
-                    // });
+                    const numArray = [item,WordCardArray[filterMapArray[0]], WordCardArray[filterMapArray[1]], WordCardArray[filterMapArray[2]]]
                     // console.log('itemid는',item.id)
-                    // console.log('필터링결과는',filterRanArray)
-
-
-                    // const numArray = [item.nameKOR,WordCardArray[filterRanArray[0]].nameKOR, WordCardArray[filterRanArray[1]].nameKOR, WordCardArray[filterRanArray[2]].nameKOR]
-                    // console.log(numArray[0])
+                    // console.log('필터링결과는',filterMapArray)
+                    // 배열 섞기
+                    function shuffle(array) {
+                        array.sort(() => Math.random() - 0.5);
+                    }
+                    shuffle(numArray);
+                    // 정답체크
+                    const answerCheck = (e) => {
+                        if(e==item.nameKOR){
+                            console.log('정답')
+                        }else{
+                            console.log('오답')
+                        }
+                    }
+                    // 정답입력전에는 터치못하도록, 정답시 화면에서 지워주고 오답시 해당버튼이미지보여줄 모달창 구현하기
 
                     return (
                     
@@ -533,13 +497,15 @@ export const WordCardLevel = (props) => {
                                         <>
                                             <DistractorContainer>
                                                 <DistractorRow>
-                                                    {/* <Distractor onPress={()=>{console.log(A)}}><Text>{WordCardArray[numArray[0]].nameKOR}</Text></Distractor> */}
-                                                    <Distractor onPress={()=>{console.log(A)}}><Text>{numArray[0]}</Text></Distractor>
-                                                    <Distractor onPress={()=>{console.log('2')}}><Text>{numArray[1]}</Text></Distractor>
+                                                    <Distractor  onPress={()=>answerCheck(numArray[0].nameKOR)}><DistractorText>{numArray[0].nameKOR}</DistractorText></Distractor>
+                                                    <Distractor  onPress={()=>answerCheck(numArray[1].nameKOR)}><DistractorText>{numArray[1].nameKOR}</DistractorText></Distractor>
+                                                    {/* <Distractor onPress={()=>answerCheck(numArray[1].nameKOR)} title={numArray[1].nameKOR}></Distractor> */}
                                                 </DistractorRow>
                                                 <DistractorRow>
-                                                    <Distractor onPress={()=>{console.log('3')}}><Text>{numArray[2]}</Text></Distractor>
-                                                    <Distractor onPress={()=>{console.log('4')}}><Text>{numArray[3]}</Text></Distractor>
+                                                    <Distractor  onPress={()=>answerCheck(numArray[2].nameKOR)}><DistractorText>{numArray[2].nameKOR}</DistractorText></Distractor>
+                                                    <Distractor  onPress={()=>answerCheck(numArray[3].nameKOR)}><DistractorText>{numArray[3].nameKOR}</DistractorText></Distractor>
+                                                    {/* <Distractor onPress={()=>answerCheck(numArray[2].nameKOR)} title={numArray[2].nameKOR}></Distractor> */}
+                                                    {/* <Distractor onPress={()=>answerCheck(numArray[3].nameKOR)} title={numArray[3].nameKOR}></Distractor> */}
                                                 </DistractorRow>
                                             </DistractorContainer>
                                         </> 

@@ -191,7 +191,10 @@ const RepeatLevelText = styled.Text`
 `
 const NextLevelText = styled(RepeatLevelText)``
 
-
+const LV3ClickBlocker = styled.View`
+    position: absolute;
+    background-color: red;
+`
 
 const DistractorContainer = styled.View`
     position: absolute;
@@ -200,14 +203,18 @@ const DistractorContainer = styled.View`
     justify-content: center;
     align-items: center;
     background-color: ${colors.BEIGE};
+    /* border: 1px solid red; */
     `
 const DistractorRow = styled.View`
     flex-direction: row;
-    width: 96%;
-    height: 48%;
+    width: 100%;
+    height: 47%;
+    bottom: 1%;
     justify-content: center;
     align-items: center;
     background-color: ${colors.BEIGE};
+    /* bottom: 1%; */
+    /* border: 1px solid green; */
     /* margin: 5px; */
     `
 const Distractor = styled.TouchableOpacity`
@@ -219,13 +226,26 @@ const Distractor = styled.TouchableOpacity`
     align-items: center;
     box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
     background-color: rgba(255,255,255, 0.9);
-`
+    `
 const DistractorText = styled.Text`
     font-family: 'SDChild';
     font-size: 30px;
     color: ${colors.REALDARKGRAY};
-`
+    `
+const WrongAnswerContainer = styled.View`
+    position: absolute;
+    width: 100%;
+    height: 95%;
+    bottom: 5%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 
+`
+const WrongAnswerImage = styled.Image`
+    width: 100%;
+    height: 100%;
+`
 // ----------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
@@ -238,6 +258,11 @@ export const WordCardLevel = (props) => {
     const [questionMark, setQuestionMark] = useState(true);
     const [clickBlockerToggle, setClickBlockerToggle] = useState(false)
     const [cardContentsHeight, setCardContentsHeight] = useState(1)
+    const [distractorWindowBackground, setDistractorWindowBackground] = useState(true);
+    const [distractorWindow, setDistractorWindow] = useState(true);
+    const [wrongImage, setWrongImage] = useState(false)
+    const [wrongImageSrc, setWrongImageSrc] = useState("")
+    const [wrongImageBgColor, setWrongImageBgColor] = useState("")
 
     const [cardScrollView, setCardScrollView] = useState(WordCardArray)
     //Values
@@ -287,16 +312,36 @@ export const WordCardLevel = (props) => {
             }, 
             onPanResponderRelease: (_,{dx}) => {
                 // if(dx<-100 || dx>100){
-                    playSound(require("../asset/audio/CardPass.mp3"))
+                playSound(require("../asset/audio/CardPass.mp3"))
                 // }
-                setQuestionMarkBackground(true)
-                setTimeout(function() {
-                    setQuestionMark(true)
-                },30)
+                {props.level == "word2LV" && (
+                    setQuestionMarkBackground(true),
+                    setTimeout(function() {
+                        setQuestionMark(true)
+                    },30)
+                ) }
+                {props.level == "word3LV" && (
+                    setDistractorWindowBackground(true),
+                    setTimeout(function() {
+                        setDistractorWindow(true)
+                    },80)
+                )}
                 Animated.parallel([onPressOut,tensionAnimated]).start();
             }
         })
     ).current
+    // const wrongPanResponder = useRef(
+    //     PanResponder.create({
+    //         onStartShouldSetPanResponder: () => true,
+    //         onPanResponderGrant:() => {
+    //             wrongPressIn.start();
+    //         }, 
+    //         onPanResponderRelease: () => {
+    //             wrongPressOut.start();
+    //         }
+    //     })
+    // ).current
+
     // modal
     // 터치시 이미지 변경 및 오디오출력 함수
     const imageModalToggle = () => {
@@ -365,6 +410,14 @@ export const WordCardLevel = (props) => {
         textChangeTimeout.current = setTimeout(() => {setTextToggle(false), setClickBlockerToggle(false)},1000)
         return() => clearTimeout(textChangeTimeout.current)
     },[textToggle])
+
+    // 3레벨 오답처리  Timeout
+    const wrongImageTimeout = useRef(null); 
+    useEffect(()=>{
+        wrongImageTimeout.current = setTimeout(() => {setWrongImage(false)},1800)
+        return() => clearTimeout(wrongImageTimeout.current)
+    },[wrongImage])
+
     //리스페쉬부분
     const refreshTimeout = useRef(null); 
     useEffect(()=>{
@@ -376,7 +429,7 @@ export const WordCardLevel = (props) => {
 // 3레벨카드의 텍스트부분 범위넓게해주기
     useEffect(()=>{
         if(props.level == "word3LV"){
-            setCardContentsHeight(3)
+            setCardContentsHeight(1.5)
         }else{
             setCardContentsHeight(1)
         }        
@@ -421,10 +474,18 @@ export const WordCardLevel = (props) => {
                     shuffle(numArray);
                     // 정답체크
                     const answerCheck = (e) => {
-                        if(e==item.nameKOR){
+                        if(e.nameKOR==item.nameKOR){
                             console.log('정답')
+                            setDistractorWindowBackground(false)
+                            setDistractorWindow(false)
+                            textModalToggle()
+                            playSound(e.SoundKOR)
                         }else{
                             console.log('오답')
+                            playSound(e.SoundImage)
+                            setWrongImage(true)
+                            setWrongImageSrc(e.image)
+                            setWrongImageBgColor(e.bgColor)
                         }
                     }
                     // 정답입력전에는 터치못하도록, 정답시 화면에서 지워주고 오답시 해당버튼이미지보여줄 모달창 구현하기
@@ -438,6 +499,8 @@ export const WordCardLevel = (props) => {
                             opacity: opacityControl,
                             transform:[{scale:scaleControl},{rotateZ:rotation}]
                         }}>
+
+                        
                             {/* 카드 이미지 부분 */}
                             <CardImgShell style={{backgroundColor:item.bgColor}}>
                                 <CardImg source={item.image} resizeMode="contain"></CardImg>
@@ -493,20 +556,27 @@ export const WordCardLevel = (props) => {
                                             )}
                                         </QuestionMarkBg>
                                     )}
-                                    {props.level == "word3LV" &&(
+                                    {props.level == "word3LV" && distractorWindowBackground &&(
                                         <>
+                                        {/* <LV3ClickBlocker style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT}}></LV3ClickBlocker> */}
                                             <DistractorContainer>
+                                                {distractorWindow && (
+                                                <>
                                                 <DistractorRow>
-                                                    <Distractor  onPress={()=>answerCheck(numArray[0].nameKOR)}><DistractorText>{numArray[0].nameKOR}</DistractorText></Distractor>
-                                                    <Distractor  onPress={()=>answerCheck(numArray[1].nameKOR)}><DistractorText>{numArray[1].nameKOR}</DistractorText></Distractor>
-                                                    {/* <Distractor onPress={()=>answerCheck(numArray[1].nameKOR)} title={numArray[1].nameKOR}></Distractor> */}
+                                                    <Distractor  onPress={()=>{ClickSound(),answerCheck(numArray[0], console.log(type))}}><DistractorText>{numArray[0].nameKOR}</DistractorText></Distractor>
+                                                    <Distractor  onPress={()=>{ClickSound(),answerCheck(numArray[1])}}><DistractorText>{numArray[1].nameKOR}</DistractorText></Distractor>
                                                 </DistractorRow>
                                                 <DistractorRow>
-                                                    <Distractor  onPress={()=>answerCheck(numArray[2].nameKOR)}><DistractorText>{numArray[2].nameKOR}</DistractorText></Distractor>
-                                                    <Distractor  onPress={()=>answerCheck(numArray[3].nameKOR)}><DistractorText>{numArray[3].nameKOR}</DistractorText></Distractor>
-                                                    {/* <Distractor onPress={()=>answerCheck(numArray[2].nameKOR)} title={numArray[2].nameKOR}></Distractor> */}
-                                                    {/* <Distractor onPress={()=>answerCheck(numArray[3].nameKOR)} title={numArray[3].nameKOR}></Distractor> */}
+                                                    <Distractor  onPress={()=>{ClickSound(),answerCheck(numArray[2])}}><DistractorText>{numArray[2].nameKOR}</DistractorText></Distractor>
+                                                    <Distractor  onPress={()=>{ClickSound(),answerCheck(numArray[3])}}><DistractorText>{numArray[3].nameKOR}</DistractorText></Distractor>
                                                 </DistractorRow>
+                                                {wrongImage && (
+                                                <WrongAnswerContainer style={{backgroundColor:wrongImageBgColor}}>
+                                                    <WrongAnswerImage source={wrongImageSrc} resizeMode="contain" />
+                                                </WrongAnswerContainer>
+                                                )}
+                                                </>
+                                                )}
                                             </DistractorContainer>
                                         </> 
                                     )}
@@ -517,6 +587,7 @@ export const WordCardLevel = (props) => {
                     )
                 }}
             />
+
             {clickBlockerToggle && (<ClickBlocker />)}
             </>
             )}

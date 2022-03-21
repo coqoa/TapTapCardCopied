@@ -33,11 +33,11 @@ const CardSection = styled.View`
 `
 const Card = styled(Animated.createAnimatedComponent(View))`
     width: 80%;
-    top: 10px;
-    height: 90%;
+    /* top: 1%; */
+    height: 96%;
     padding: 0px 15px;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     border-radius: 15px;
     box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
     /* border: 2px solid ${colors.REALDARKGRAY}; */
@@ -376,7 +376,7 @@ export const WordCardLevel = (props) => {
     }
     //부모 컴포넌트로부터 type props(KOR, ENG 등등)를 받아서 그에 맞는 화면을 출력해주기 위한 변수 
     const type = props.type
-
+    const itemType = ("item."+type)
     // 오디오출력, props를 받아서 해당 파일을 출력해줌
     const playSound = async(e) => {
         // console.log(e)
@@ -440,6 +440,7 @@ export const WordCardLevel = (props) => {
     const levelConsole = () => {
 
         return(
+            // <View>
             <View  style={{alignItems:"center", justifyContent:"center"}}>
             {/* 카드부분 */}
             {refresh && (
@@ -453,7 +454,6 @@ export const WordCardLevel = (props) => {
                 onEndReached={lastListModalOn}
                 onEndReachedThreshold={-0.1}
                 renderItem = {({item})=>{
-
                     // 무작위배열만들기
                     const numberArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
                     // 배열마다 무작위 숫자 부여
@@ -464,7 +464,7 @@ export const WordCardLevel = (props) => {
                     const filterMapArray = mapArraySort.filter(function(element){
                         return element !== item.id
                     });
-                    const numArray = [item,WordCardArray[filterMapArray[0]], WordCardArray[filterMapArray[1]], WordCardArray[filterMapArray[2]]]
+                    const numArray =  [item, WordCardArray[filterMapArray[0]], WordCardArray[filterMapArray[1]], WordCardArray[filterMapArray[2]]]
                     // console.log('itemid는',item.id)
                     // console.log('필터링결과는',filterMapArray)
                     // 배열 섞기
@@ -518,17 +518,18 @@ export const WordCardLevel = (props) => {
                             <CardContents style={{flex:cardContentsHeight}}>
                                 <CardName>
                                     {/* type에 따라 한글/영어 등 만 보이도록 */}
-                                    {type == "KOR" && (<CardNameText>{item.nameKOR}</CardNameText>)}
+                                    {type == "nameKOR" && (<CardNameText>{item.nameKOR}</CardNameText>)}
                                     {type == "ENG" && (<CardNameText>{item.nameENG}</CardNameText>)}
+                                    {/* {type == "ENG" && (<CardNameText>{item.nameENG}</CardNameText>)} */}
                                     
                                     {/* type에 따라 한글을 읽어주는지, 영어를 읽어주는지 */}
-                                    {type == "KOR" && (<TextAudioBtn onPress={()=>{textModalToggle(), playSound(item.SoundKOR)}} />)}
+                                    {type == "nameKOR" && (<TextAudioBtn onPress={()=>{textModalToggle(), playSound(item.SoundKOR)}} />)}
                                     {type == "ENG" && (<TextAudioBtn onPress={()=>{textModalToggle(), playSound(item.SoundENG)}} />)}
                                     
                                     {/* 터치시 텍스트 색깔을 바꿔주는 모달 */}
                                     {textToggle && (
                                         <CardNameModal>
-                                            {type == "KOR" && (<CardNameModalText>{item.nameKOR}</CardNameModalText>)}
+                                            {type == "nameKOR" && (<CardNameModalText>{item.nameKOR}</CardNameModalText>)}
                                             {type == "ENG" && (<CardNameModalText>{item.nameENG}</CardNameModalText>)}
                                             {/* <CardNameModalBox></CardNameModalBox> */}
                                         </CardNameModal>
@@ -541,7 +542,7 @@ export const WordCardLevel = (props) => {
                                         >
                                             {props.level == "word2LV" && questionMark && (
                                                 <>
-                                                {type == "KOR" && (
+                                                {type == "nameKOR" && (
                                                     <QuestionMarkBtn onPress={()=>{setQuestionMark(false), setQuestionMarkBackground(false),textModalToggle(), playSound(item.SoundKOR)}} >    
                                                         <QuestionMarkImage source={item.questionMarkImage} resizeMode="contain"/>
                                                     </QuestionMarkBtn>                                                    
@@ -600,14 +601,14 @@ export const WordCardLevel = (props) => {
                             onPressIn={() => ClickSound()}
                             onPressOut={() => restartLevelBtn()}
                         >
-                            {type == "KOR" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
+                            {type == "nameKOR" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
                             {type == "ENG" && (<RepeatLevelText>Again !</RepeatLevelText>)}
                         </RepeatLevel>
                         <NextLevel 
                             onPressIn={()=> ClickSound()}
                             onPressOut={()=> nextLevelBtn()}
                         >
-                            {type == "KOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
+                            {type == "nameKOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
                             {type == "ENG" && (<NextLevelText>Next Level !</NextLevelText>)}
                         </NextLevel>
                     </ClearModal>

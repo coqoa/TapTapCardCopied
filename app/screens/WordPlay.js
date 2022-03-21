@@ -19,11 +19,25 @@ const Shell = styled.View`
     align-items: center;
     /* border: 1px solid green; */
 `
-const Top = styled.View`
+const Main = styled.View`
+    flex: 9;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
+    /* border: 1px solid red; */
+`
+const BottomContainer = styled.View`
+    flex: 1;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+`
+const Bottom = styled.View`
+/* flex: 1; */
+flex-direction: row;
     width: 80%;
     height: 55px;
-    top: 20px;
+    /* bottom: 10px; */
     border-radius: 15px;
     align-items: center;
     z-index: 30;
@@ -91,10 +105,10 @@ const MenuModalBg = styled.Pressable`
 `
 const MenuModalContainer = styled.View`
     position: absolute;
-    top: 80px;
+    bottom: 14%;
     /* right: 10px; */
-    width: 200px;
-    height: 200px;
+    width: 60%;
+    height: 25%;
     border-radius: 20px;
     align-items: center;
     justify-content: center;
@@ -109,20 +123,55 @@ const LevelBtn = styled.Pressable`
     flex: 1;
     align-items: center;
     justify-content: center;
-    margin: 5px;
+    margin: 2px;
     padding: 5px;
     border-radius: 15px;
     /* background-color: rgba(255,255,255,0.8); */
-    /* /* background-color: ${colors.BLUE}; */
+    /* background-color: ${colors.BLUE}; */
     box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
 `
 const StarViewImage = styled.ImageBackground`
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
 `
-const Main = styled.View`
+const GoBackModalBg = styled.Pressable`
+    z-index: 35;
+    align-items: center;
+    justify-content: center;
+`
+const GoBackModalContainer = styled.View`
+    position: absolute;
+    bottom: 14%;
+    /* right: 10px; */
+    width: 55%;
+    height: 25%;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+`
+const GoBackModal = styled.View`
+    width: 95%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+`
+const ModalBtn = styled.Pressable`
     flex: 1;
-    flex-direction: row;
+    width: 90%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border-radius: 15px;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.3); 
+    background-color: rgba(255,255,255, 0.9);
+    `
+const GoBackText = styled.Text`
+    font-size: 25px;
+    font-family: 'SDChild';
+    color : white;
 `
 
 
@@ -131,6 +180,7 @@ const WordPlay = ({route, navigation}) => {
     const [loading, setLoading] = useState(true);
     const [cardSelector, setCardSelector] = useState();
     const [modalToggle, setModalToggle] = useState(false);
+    const [goBackModalToggle, setGoBackModalToggle] = useState(false);
     const [mainScreenRender, setMainScreenRender] = useState(false)
     
     // mainScreenRender를 false로 만들면 실행되는 리렌더코드(clearTimeout해준다)
@@ -142,6 +192,7 @@ const WordPlay = ({route, navigation}) => {
 
 
     const modalTogglePress = () => setModalToggle(!modalToggle)
+    // const goBackModalTogglePress = () => setGoBackModalToggle(!goBackModalToggle)
 
     const cardCheck = (e) => {
         // console.log("e",e)
@@ -198,6 +249,12 @@ const WordPlay = ({route, navigation}) => {
     // 1레벨버튼
     const [level3Clicked, setLevel3Clicked] = useState(1)
     const level3Animated = (e) =>{setLevel3Clicked(e)}
+    // 뒤로가기버튼
+    const [goBackClicked, setGoBackClicked] = useState(1)
+    const goBackAnimated = (e) =>{setGoBackClicked(e)}
+    // 뒤로가기취소
+    const [stayClicked, setStayClicked] = useState(1)
+    const stayAnimated = (e) =>{setStayClicked(e)}
     return( 
         // loading ? (
         //     <Loader>
@@ -206,12 +263,19 @@ const WordPlay = ({route, navigation}) => {
         // ) : (
             
             <Shell>
-            <Top>
+                {/* 카드를 출력되는 부분은 CardDefault 컴포넌트를 불러와서 사용함 */}
+            {mainScreenRender && (
+            <Main>
+                {(()=>{ return ( <WordCardLevel level={cardSelector} getData={getData} type={type} /> )})()}
+            </Main>
+            )}
+            <BottomContainer>
+            <Bottom>
                 <GoBack>
                     <GoBackBtn 
                         style={{transform: [{scale:goBackBtnAnimation}]}}
-                        onPressIn={() => {ClickSound(), goBackScaleToggle(0.8)}}
-                        onPressOut={() => {goBack(), goBackScaleToggle(1)}}
+                        onPressIn={() => {setGoBackModalToggle(true), ClickSound(), goBackScaleToggle(0.8)}}
+                        onPressOut={() => {goBackScaleToggle(1)}}
                     >
                         <GoBackBtnImage source={require("../asset/images/goBack1.png")}></GoBackBtnImage>
                     </GoBackBtn>
@@ -229,21 +293,17 @@ const WordPlay = ({route, navigation}) => {
                 <Menu>
                     <MenuBtn
                         style={{transform: [{scale:menuBtnAnimation}]}}
-                        onPressIn={() => {ClickSound(), menuScaleToggle(0.8)}}
-                        onPressOut={(e) => {modalTogglePress(), menuScaleToggle(1)}}
+                        onPressIn={() => {modalTogglePress(), ClickSound(), menuScaleToggle(0.8)}}
+                        onPressOut={(e) => { menuScaleToggle(1)}}
                         // style={{transform: [{scale:btnScale}]}}
                     >
                         <MenuBtnImage source={require("../asset/images/MenuBar.png")}></MenuBtnImage>
                     </MenuBtn>
                 </Menu>
 
-            </Top>
-            {/* 카드를 출력되는 부분은 CardDefault 컴포넌트를 불러와서 사용함 */}
-            {mainScreenRender && (
-            <Main>
-                {(()=>{ return ( <WordCardLevel level={cardSelector} getData={getData} type={type} /> )})()}
-            </Main>
-            )}
+            </Bottom>
+            </BottomContainer>
+            
             {/* 햄버거바 터치시 출력되는 모달 */}
             {modalToggle && (
                 <MenuModalBg 
@@ -259,7 +319,7 @@ const WordPlay = ({route, navigation}) => {
                                 onPressIn={() => {ClickSound(), level1Animated(0.8)}} 
                                 onPressOut={()=>{cardCheck("word1LV"), level1Animated(1)}}
                             >
-                                <StarViewImage source={require("../asset/images/Star1.png")} />
+                                <StarViewImage source={require("../asset/images/Star1.png")} resizeMode="contain" />
                             </LevelBtn>
                             <LevelBtn 
                                 style={{
@@ -268,7 +328,7 @@ const WordPlay = ({route, navigation}) => {
                                 onPressIn={() => {ClickSound(), level2Animated(0.8)}} 
                                 onPressOut={()=>{cardCheck("word2LV"), level2Animated(1)}}
                             >
-                                <StarViewImage source={require("../asset/images/Star2.png")} />
+                                <StarViewImage source={require("../asset/images/Star2.png")} resizeMode="contain" />
                             </LevelBtn>
                             <LevelBtn 
                                 style={{
@@ -277,12 +337,40 @@ const WordPlay = ({route, navigation}) => {
                                 onPressIn={() => {ClickSound(), level3Animated(0.8)}} 
                                 onPressOut={()=>{cardCheck("word3LV"), level3Animated(1)}}
                             >
-                                <StarViewImage source={require("../asset/images/Star3.png")} />
+                                <StarViewImage source={require("../asset/images/Star3.png")} resizeMode="contain" />
                             </LevelBtn>
                         </MenuModal>
                     </MenuModalContainer>
                 </MenuModalBg>
             )}
+            {goBackModalToggle && (
+            <GoBackModalBg style={{position:"absolute", width:SCREEN_WIDTH, height:SCREEN_HEIGHT, backgroundColor:"rgba(0,0,0,0)"}} 
+            onPress={()=>{setGoBackModalToggle(false)}}>
+                <GoBackModalContainer>
+                    <GoBackModal>
+                        <ModalBtn 
+                        style={{
+                            backgroundColor:colors.BLUE, 
+                            transform:[{scale:goBackClicked}]
+                        }}
+                        onPressIn={()=>{ClickSound(), goBackAnimated(0.8)}}
+                        onPressOut={()=>{goBackAnimated(1), goBack()}}>
+                            <GoBackText>메뉴로 가실?</GoBackText>
+                        </ModalBtn>
+                        <ModalBtn 
+                        style={{
+                            backgroundColor:colors.REDORANGE, 
+                            transform:[{scale:stayClicked}]
+                        }}
+                        onPressIn={()=>{ClickSound(), stayAnimated(0.8)}}
+                        onPressOut={()=>{stayAnimated(1), setGoBackModalToggle(false)}}>
+                            <GoBackText>그냥 여기있으실?</GoBackText>
+                        </ModalBtn>
+                    </GoBackModal>
+                </GoBackModalContainer>
+            </GoBackModalBg>
+            )}
+            
             </Shell>
         )
 }

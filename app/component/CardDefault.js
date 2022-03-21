@@ -366,8 +366,14 @@ export const WordCardLevel = (props) => {
         // },100)
     };
     //자식컴포넌트에서 부모컴포넌트 state를 바꾸려면 함수를 이용해야한다 (그냥 props는 읽기전용이라 props.level="???" 이런식으로 변경 불가능)
-    const nextLevelBtn = () => {
-        props.getData('word2LV')
+    const nextLevelBtn = (e) => {
+        if(e=='word1LV'){
+            props.getData('word2LV')
+        }else if(e=='word2LV'){
+            props.getData('word3LV')
+        }else{
+            null
+        }
         setRefresh(false)
         setClearModalToggle((prev) => !prev)
         // setTimeout(function() {
@@ -606,7 +612,7 @@ export const WordCardLevel = (props) => {
                         </RepeatLevel>
                         <NextLevel 
                             onPressIn={()=> ClickSound()}
-                            onPressOut={()=> nextLevelBtn()}
+                            onPressOut={()=> nextLevelBtn(props.level)}
                         >
                             {type == "nameKOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
                             {type == "ENG" && (<NextLevelText>Next Level !</NextLevelText>)}

@@ -9,8 +9,8 @@ note: Planning
 Analyze workspace
 
 Create build description
-Build description signature: 8017d8bd6317990112230e9bfc5461ea
-Build description path: /Users/coqoa/Library/Developer/Xcode/DerivedData/taptapcard-fvilyrfuddwelierelynajuzqbzp/Build/Intermediates.noindex/XCBuildData/8017d8bd6317990112230e9bfc5461ea-desc.xcbuild
+Build description signature: cb7ab290133d5784450012989a82e295
+Build description path: /Users/coqoa/Library/Developer/Xcode/DerivedData/taptapcard-fvilyrfuddwelierelynajuzqbzp/Build/Intermediates.noindex/XCBuildData/cb7ab290133d5784450012989a82e295-desc.xcbuild
 
 note: Build preparation complete
 note: Building targets in dependency order
@@ -978,8 +978,8 @@ PhaseScriptExecution [CP]\ Copy\ Pods\ Resources /Users/coqoa/Library/Developer/
 building file list ... done
 EXConstants.bundle/app.config
 
-sent 798 bytes  received 42 bytes  1680.00 bytes/sec
-total size is 7198  speedup is 8.57
+sent 806 bytes  received 42 bytes  1696.00 bytes/sec
+total size is 7198  speedup is 8.49
 
 CodeSign /Users/coqoa/Library/Developer/Xcode/DerivedData/taptapcard-fvilyrfuddwelierelynajuzqbzp/Build/Products/Debug-iphonesimulator/taptapcard.app (in target 'taptapcard' from project 'taptapcard')
     cd /Users/coqoa/Downloads/RN-APP/taptapcard/ios

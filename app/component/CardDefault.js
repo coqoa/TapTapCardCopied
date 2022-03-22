@@ -34,10 +34,10 @@ const CardSection = styled.View`
 const Card = styled(Animated.createAnimatedComponent(View))`
     width: 80%;
     /* top: 1%; */
-    height: 96%;
+    height: 100%;
     padding: 0px 15px;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
     border-radius: 15px;
     box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
     /* border: 2px solid ${colors.REALDARKGRAY}; */
@@ -52,6 +52,25 @@ const CardImgShell = styled.View`
     border-radius: 10px;
     z-index: 10;
 `
+const LV3ClickBlocker = styled.Pressable`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+    /* background-color: rgba(0,0,0,0.1); */
+`
+const LV3ClickAlert = styled.Pressable`
+position: absolute;
+width: 85%;
+height: 70%;
+border-radius: 30px;
+align-items: center;
+justify-content: center;
+background-color: white;
+box-shadow:2px 2px 5px rgba(0,0,0,0.3);
+`
 const CardImg = styled.Image`
     flex: 1;
     width: 100%;
@@ -64,6 +83,7 @@ const ClickBlocker = styled.View`
     height: 100%;
     /* background-color: rgba(0,0,0,0.5); */
 `
+
 const CardImgShellModal = styled.View`
     position: absolute;
     left: 0px;
@@ -191,10 +211,6 @@ const RepeatLevelText = styled.Text`
 `
 const NextLevelText = styled(RepeatLevelText)``
 
-const LV3ClickBlocker = styled.View`
-    position: absolute;
-    background-color: red;
-`
 
 const DistractorContainer = styled.View`
     position: absolute;
@@ -246,6 +262,7 @@ const WrongAnswerImage = styled.Image`
     width: 100%;
     height: 100%;
 `
+
 // ----------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
@@ -257,14 +274,15 @@ export const WordCardLevel = (props) => {
     const [questionMarkBackground, setQuestionMarkBackground] = useState(true);
     const [questionMark, setQuestionMark] = useState(true);
     const [clickBlockerToggle, setClickBlockerToggle] = useState(false)
-    const [cardContentsHeight, setCardContentsHeight] = useState(1)
     const [distractorWindowBackground, setDistractorWindowBackground] = useState(true);
     const [distractorWindow, setDistractorWindow] = useState(true);
     const [wrongImage, setWrongImage] = useState(false)
     const [wrongImageSrc, setWrongImageSrc] = useState("")
     const [wrongImageBgColor, setWrongImageBgColor] = useState("")
+    const [lv3ClickBlockerOn, setLv3ClickBlockerOn] = useState(true)
+    const [lv3ClickAlertWindow, setLv3ClickAlertWindow] = useState(false);
+    
 
-    const [cardScrollView, setCardScrollView] = useState(WordCardArray)
     //Values
     const scale = useRef(new Animated.Value(1)).current;
     const position = useRef(new Animated.Value(0)).current;
@@ -324,23 +342,13 @@ export const WordCardLevel = (props) => {
                     setDistractorWindowBackground(true),
                     setTimeout(function() {
                         setDistractorWindow(true)
-                    },80)
+                    },80),
+                    setLv3ClickBlockerOn(true)
                 )}
                 Animated.parallel([onPressOut,tensionAnimated]).start();
             }
         })
     ).current
-    // const wrongPanResponder = useRef(
-    //     PanResponder.create({
-    //         onStartShouldSetPanResponder: () => true,
-    //         onPanResponderGrant:() => {
-    //             wrongPressIn.start();
-    //         }, 
-    //         onPanResponderRelease: () => {
-    //             wrongPressOut.start();
-    //         }
-    //     })
-    // ).current
 
     // modal
     // 터치시 이미지 변경 및 오디오출력 함수
@@ -361,9 +369,6 @@ export const WordCardLevel = (props) => {
     const restartLevelBtn = () => {
         setRefresh(false)
         setClearModalToggle((prev) => !prev)
-        // setTimeout(function() {
-        //     setRefresh((prev) => !prev)
-        // },100)
     };
     //자식컴포넌트에서 부모컴포넌트 state를 바꾸려면 함수를 이용해야한다 (그냥 props는 읽기전용이라 props.level="???" 이런식으로 변경 불가능)
     const nextLevelBtn = (e) => {
@@ -376,32 +381,29 @@ export const WordCardLevel = (props) => {
         }
         setRefresh(false)
         setClearModalToggle((prev) => !prev)
-        // setTimeout(function() {
-        //     setRefresh((prev) => !prev)
-        // },100)
     }
     //부모 컴포넌트로부터 type props(KOR, ENG 등등)를 받아서 그에 맞는 화면을 출력해주기 위한 변수 
     const type = props.type
-    const itemType = ("item."+type)
+    
     // 오디오출력, props를 받아서 해당 파일을 출력해줌
     const playSound = async(e) => {
         // console.log(e)
         const sound = new Audio.Sound();
-      try {    
-      	// 저장한 path로 음원 파일 불러오기 
-        await sound.loadAsync(e);
-        // 음원 재생하기 
-        await sound.playAsync();
-      } catch (error) {
-     }
+        try {    
+            // 저장한 path로 음원 파일 불러오기 
+            await sound.loadAsync(e);
+            // 음원 재생하기 
+            await sound.playAsync();
+        } catch (error) {
+        }
     }
     const ClickSound = async() => {
         const sound = new Audio.Sound();
-      try {    
-        await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
-        await sound.playAsync();
-      } catch (error) {
-     }
+        try {    
+            await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
+            await sound.playAsync();
+        } catch (error) {
+        }
     }
 //setTimeout / clearTimeout
     // 이미지 터치시 시작되는 Timeout
@@ -430,18 +432,8 @@ export const WordCardLevel = (props) => {
         refreshTimeout.current = setTimeout(function() {setRefresh(true)},100)
         return() => clearTimeout(refreshTimeout.current)
     },[refresh])
-// 다른부분들도 setTimeout으로 바꿔야할텐데?
 
-// 3레벨카드의 텍스트부분 범위넓게해주기
-    useEffect(()=>{
-        if(props.level == "word3LV"){
-            setCardContentsHeight(1.5)
-        }else{
-            setCardContentsHeight(1)
-        }        
-    },[])
-    
-
+//------------------------//------------------------//------------------------//------------------------//------------------------
 
     const levelConsole = () => {
 
@@ -484,6 +476,7 @@ export const WordCardLevel = (props) => {
                             console.log('정답')
                             setDistractorWindowBackground(false)
                             setDistractorWindow(false)
+                            setLv3ClickBlockerOn(false)
                             textModalToggle()
                             playSound(e.SoundKOR)
                         }else{
@@ -499,15 +492,17 @@ export const WordCardLevel = (props) => {
                     return (
                     
                     <CardSection style={{width:SCREEN_WIDTH}}> 
+                    
                         {/* 카드전체스타일 */}
                         <Card style={{
                             backgroundColor : colors.BEIGE,
                             opacity: opacityControl,
                             transform:[{scale:scaleControl},{rotateZ:rotation}]
                         }}>
-
+                            
                         
                             {/* 카드 이미지 부분 */}
+                            
                             <CardImgShell style={{backgroundColor:item.bgColor}}>
                                 <CardImg source={item.image} resizeMode="contain"></CardImg>
                                 <ImageAudioBtn onPress={()=>{imageModalToggle(), playSound(item.SoundImage)}} />
@@ -516,12 +511,16 @@ export const WordCardLevel = (props) => {
                                             <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
                                         </CardImgShellModal>
                                 )} 
+                                {lv3ClickBlockerOn &&(
+                                    <LV3ClickBlocker onPress={()=>{setLv3ClickAlertWindow(prev => !prev)}} />
+                                )}
                             </CardImgShell>
                             {/* 이미지 터치시 출력되는 세컨드이미지 */}
                             
                             
+
                             {/* 카드 텍스트 부분 */}
-                            <CardContents style={{flex:cardContentsHeight}}>
+                            <CardContents style={{flex:props.level == "word3LV" ? 2 : 1}}>
                                 <CardName>
                                     {/* type에 따라 한글/영어 등 만 보이도록 */}
                                     {type == "nameKOR" && (<CardNameText>{item.nameKOR}</CardNameText>)}
@@ -565,7 +564,6 @@ export const WordCardLevel = (props) => {
                                     )}
                                     {props.level == "word3LV" && distractorWindowBackground &&(
                                         <>
-                                        {/* <LV3ClickBlocker style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT}}></LV3ClickBlocker> */}
                                             <DistractorContainer>
                                                 {distractorWindow && (
                                                 <>
@@ -584,16 +582,25 @@ export const WordCardLevel = (props) => {
                                                 )}
                                                 </>
                                                 )}
+                                                {lv3ClickAlertWindow && (
+                                                    <LV3ClickAlert onPress={()=>{setLv3ClickAlertWindow(false)}}>
+                                                        <Text>정답먼저!</Text>
+                                                    </LV3ClickAlert>
+                                                )}
                                             </DistractorContainer>
                                         </> 
                                     )}
+                                    
                                 </CardName>
                             </CardContents>
+
+                          
                         </Card>
                     </CardSection>
                     )
                 }}
-            />
+                />
+                
 
             {clickBlockerToggle && (<ClickBlocker />)}
             </>

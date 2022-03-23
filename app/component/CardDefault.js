@@ -59,7 +59,7 @@ const LV3ClickBlocker = styled.Pressable`
     align-items: center;
     justify-content: center;
     z-index: 11;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0);
 `
 const LV3ClickAlert = styled.Pressable`
 position: absolute;
@@ -83,7 +83,6 @@ const ClickBlocker = styled.View`
     height: 100%;
     /* background-color: rgba(0,0,0,0.5); */
 `
-
 const CardImgShellModal = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     left: 0px;
@@ -98,17 +97,19 @@ const CardImg2 = styled(CardImg)`
 const CardContents = styled.View`
     width: 100%;
     z-index: 15;
-    /* border: 1px solid black; */
     /* margin-bottom: 15px; */
     `
 const CardName = styled.View`
     flex:1;
     align-items: center;
     justify-content: center;
+    /* border: 1px solid black; */
     `
 const CardNameText = styled.Text`
-    font-size: 65px;
-    font-weight: 900;
+    /* width: 80px; */
+    height: 90px;
+    text-align: center;
+    font-size: 90px;
     font-family: 'SDChild';
     color: ${colors.REALDARKGRAY};
     /* border: 1px solid black; */
@@ -122,18 +123,7 @@ const CardNameModal = styled.View`
     align-items: center;
     justify-content: center;
 `
-const CardNameModalText = styled.Text`
-    font-size: 65px;
-    font-weight: 900;
-    font-family: 'SDChild';
-    color: ${colors.SEABLUE};
-`
-// const CardNameModalBox = styled(Animated.createAnimatedComponent(Pressable))`
-//     position: absolute;
-//     width: 80%;
-//     height: 70px;
-//     background-color: transparent;
-// `
+const CardNameModalText = styled(CardNameText)``
 
 
 const QuestionMarkBg = styled.View`
@@ -153,7 +143,7 @@ const QuestionMarkImage = styled.Image`
 const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     width: 60%;
-    height: 70%;
+    height: 50%;
     border-radius: 150px;
     z-index: 1;
     background-color: rgba(0,0,0,0);
@@ -164,7 +154,7 @@ const TextAudioBtn = styled.TouchableOpacity`
     width: 90%;
     height: 90%;
     border-radius: 80px;
-    /* background-color: rgba(0,0,0,0.1); */
+    background-color: rgba(0,0,0,0);
 `
 const ClearModalContainer = styled.View`
     position: absolute;
@@ -234,7 +224,7 @@ const DistractorRow = styled.View`
     /* border: 1px solid green; */
     /* margin: 5px; */
     `
-const Distractor = styled.TouchableOpacity`
+const Distractor = styled(Animated.createAnimatedComponent(Pressable))`
     width: 48%;
     height: 90%;
     margin: 5px;
@@ -246,7 +236,7 @@ const Distractor = styled.TouchableOpacity`
     `
 const DistractorText = styled.Text`
     font-family: 'SDChild';
-    font-size: 30px;
+    font-size: 45px;
     color: ${colors.REALDARKGRAY};
     `
 const WrongAnswerContainer = styled.View`
@@ -263,14 +253,25 @@ const WrongAnswerImage = styled.Image`
     width: 100%;
     height: 100%;
 `
-
+const CorrectAnswerContainer = styled(Animated.createAnimatedComponent(View))`
+    position: absolute;
+    top: -40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+    /* border: 1px solid red; */
+    /* z-index: 15; */
+`
+const CorrectAnswerImage = styled.Image`
+    width: 100%;
+    height: 100%;
+`
 // ----------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
     //useState
     const [refresh, setRefresh] = useState(true);
     const [clearModalToggle, setClearModalToggle] = useState(false);
-    const [imageToggle, setImageToggle] = useState(false)
     const [textToggle, setTextToggle] = useState(false)
     const [questionMarkBackground, setQuestionMarkBackground] = useState(true);
     const [questionMark, setQuestionMark] = useState(true);
@@ -287,6 +288,7 @@ export const WordCardLevel = (props) => {
     const defaultAnimated1 = useRef(new Animated.Value(1)).current;
     const position = useRef(new Animated.Value(0)).current;
     const secondImageOpacity = useRef(new Animated.Value(0)).current;
+    const checkMarkValue = useRef(new Animated.Value(0)).current;
     //interpolate
     const scaleControl = position.interpolate({
         inputRange:[-170,0,170,],
@@ -328,6 +330,17 @@ export const WordCardLevel = (props) => {
         delay:1700,
         useNativeDriver:true
     })
+
+    const checkMarkOn = Animated.spring(checkMarkValue, {
+        toValue:1,
+        // delay:500,
+        useNativeDriver:true
+    })
+    const checkMarkOff = Animated.spring(checkMarkValue, {
+        toValue:0,
+        delay:300,
+        useNativeDriver:true
+    })
     //panResponder
     const panResponder = useRef(
         PanResponder.create({
@@ -352,8 +365,8 @@ export const WordCardLevel = (props) => {
                     setDistractorWindowBackground(true),
                     setTimeout(function() {
                         setDistractorWindow(true)
-                    },80),
-                    setLv3ClickBlockerOn(true)
+                    },80)
+                    // setLv3ClickBlockerOn(true)
                 )}
                 Animated.parallel([onPressOut,tensionAnimated]).start();
             }
@@ -362,21 +375,19 @@ export const WordCardLevel = (props) => {
     const secondImagePan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
         onPanResponderStart:()=>{
-            // console.log('1')
+            console.log('1')
             Animated.sequence([secondImageOn,secondImageOff]).start();
             // secondImageOn.start();
-        },
-        onPanResponderRelease:()=>{
-            // console.log('2')
-            // secondImageOff.start();
+        }
+    })).current
+    const checkMarkPan = useRef(PanResponder.create({
+        onStartShouldSetPanResponder:()=>true,
+        onPanResponderStart:()=>{
+            
+            Animated.sequence([checkMarkOn,checkMarkOff]).start();
         }
     })).current
     // modal
-    // 터치시 이미지 변경 및 오디오출력 함수
-    const imageModalToggle = () => {
-        setImageToggle(true)
-        setClickBlockerToggle(true)
-    }
     //터치시 텍스트 변경 함수
     const textModalToggle = () => {
         setTextToggle(true)
@@ -385,6 +396,9 @@ export const WordCardLevel = (props) => {
     //마지막 카드에서 출력되는 모달창, 다시하기버튼, 다음레벨 버튼
     const lastListModalOn = () => {
         setClearModalToggle((prev) => !prev)
+        playSound(require("../asset/audio/LastListModal.mp3"))
+        console.log(props.level)
+        
     };
     // 재시작버튼
     const restartLevelBtn = () => {
@@ -427,12 +441,6 @@ export const WordCardLevel = (props) => {
         }
     }
 //setTimeout / clearTimeout
-    // 이미지 터치시 시작되는 Timeout
-    const imageChangeTimeout = useRef(null); 
-    useEffect(()=>{
-        imageChangeTimeout.current = setTimeout(() => {setImageToggle(false), setClickBlockerToggle(false)},1700)
-        return() => clearTimeout(imageChangeTimeout.current)
-    },[imageToggle])
     // 텍스트 터치시 시작되는 Timeout
     const textChangeTimeout = useRef(null); 
     useEffect(()=>{
@@ -497,19 +505,19 @@ export const WordCardLevel = (props) => {
                             console.log('정답')
                             setDistractorWindowBackground(false)
                             setDistractorWindow(false)
-                            setLv3ClickBlockerOn(false)
+                            // setLv3ClickBlockerOn(false)
                             textModalToggle()
                             playSound(e.SoundKOR)
                         }else{
                             console.log('오답')
                             playSound(e.SoundImage)
                             setWrongImage(true)
-                            setWrongImageSrc(e.image)
+                            setWrongImageSrc(e.image2)
                             setWrongImageBgColor(e.bgColor)
                         }
                     }
                     // 정답입력전에는 터치못하도록, 정답시 화면에서 지워주고 오답시 해당버튼이미지보여줄 모달창 구현하기
-
+                    // console.log(item.nameKOR == numArray[0].nameKOR)
                     return (
                     
                     <CardSection style={{width:SCREEN_WIDTH}}> 
@@ -550,19 +558,19 @@ export const WordCardLevel = (props) => {
                             <CardContents style={{flex:props.level == "word3LV" ? 2 : 1}}>
                                 <CardName>
                                     {/* type에 따라 한글/영어 등 만 보이도록 */}
-                                    {type == "nameKOR" && (<CardNameText>{item.nameKOR}</CardNameText>)}
+                                    {type == "KOR" && (<CardNameText>{item.nameKOR}</CardNameText>)}
                                     {type == "ENG" && (<CardNameText>{item.nameENG}</CardNameText>)}
                                     {/* {type == "ENG" && (<CardNameText>{item.nameENG}</CardNameText>)} */}
                                     
                                     {/* type에 따라 한글을 읽어주는지, 영어를 읽어주는지 */}
-                                    {type == "nameKOR" && (<TextAudioBtn onPress={()=>{textModalToggle(), playSound(item.SoundKOR)}} />)}
+                                    {type == "KOR" && (<TextAudioBtn onPress={()=>{textModalToggle(), playSound(item.SoundKOR)}} />)}
                                     {type == "ENG" && (<TextAudioBtn onPress={()=>{textModalToggle(), playSound(item.SoundENG)}} />)}
                                     
                                     {/* 터치시 텍스트 색깔을 바꿔주는 모달 */}
                                     {textToggle && (
                                         <CardNameModal>
-                                            {type == "nameKOR" && (<CardNameModalText>{item.nameKOR}</CardNameModalText>)}
-                                            {type == "ENG" && (<CardNameModalText>{item.nameENG}</CardNameModalText>)}
+                                            {type == "KOR" && (<CardNameModalText style={{color:item.bgColor}}>{item.nameKOR}</CardNameModalText>)}
+                                            {type == "ENG" && (<CardNameModalText style={{color:item.bgColor}}>{item.nameENG}</CardNameModalText>)}
                                             {/* <CardNameModalBox></CardNameModalBox> */}
                                         </CardNameModal>
                                     )}
@@ -574,7 +582,7 @@ export const WordCardLevel = (props) => {
                                         >
                                             {props.level == "word2LV" && questionMark && (
                                                 <>
-                                                {type == "nameKOR" && (
+                                                {type == "KOR" && (
                                                     <QuestionMarkBtn onPress={()=>{setQuestionMark(false), setQuestionMarkBackground(false),textModalToggle(), playSound(item.SoundKOR)}} >    
                                                         <QuestionMarkImage source={item.questionMarkImage} resizeMode="contain"/>
                                                     </QuestionMarkBtn>                                                    
@@ -589,19 +597,54 @@ export const WordCardLevel = (props) => {
                                             )}
                                         </QuestionMarkBg>
                                     )}
-                                    {props.level == "word3LV" && distractorWindowBackground &&(
-                                        <>
+                                    {props.level == "word3LV" &&(
+                                    <>
+                                        {distractorWindowBackground&&(
                                             <DistractorContainer>
                                                 {distractorWindow && (
                                                 <>
-                                                <DistractorRow>
-                                                    <Distractor  onPress={()=>{ClickSound(),answerCheck(numArray[0], console.log(type))}}><DistractorText>{numArray[0].nameKOR}</DistractorText></Distractor>
-                                                    <Distractor  onPress={()=>{ClickSound(),answerCheck(numArray[1])}}><DistractorText>{numArray[1].nameKOR}</DistractorText></Distractor>
-                                                </DistractorRow>
-                                                <DistractorRow>
-                                                    <Distractor  onPress={()=>{ClickSound(),answerCheck(numArray[2])}}><DistractorText>{numArray[2].nameKOR}</DistractorText></Distractor>
-                                                    <Distractor  onPress={()=>{ClickSound(),answerCheck(numArray[3])}}><DistractorText>{numArray[3].nameKOR}</DistractorText></Distractor>
-                                                </DistractorRow>
+                                                {type == "KOR" && (
+                                                <>
+                                                    <DistractorRow>
+                                                        {/* 선택지1번버튼 */}
+                                                        {item.nameKOR == numArray[0].nameKOR && (<Distractor {...checkMarkPan.panHandlers} onPress={()=>{ClickSound(),answerCheck(numArray[0])}}><DistractorText>{numArray[0].nameKOR}</DistractorText></Distractor>)}
+                                                        {item.nameKOR !== numArray[0].nameKOR && (<Distractor onPress={()=>{ClickSound(),answerCheck(numArray[0])}}><DistractorText>{numArray[0].nameKOR}</DistractorText></Distractor>)}
+                                                        {/* 선택지 2번 */}
+                                                        {item.nameKOR == numArray[1].nameKOR && (<Distractor {...checkMarkPan.panHandlers} onPress={()=>{ClickSound(),answerCheck(numArray[1])}}><DistractorText>{numArray[1].nameKOR}</DistractorText></Distractor>)}
+                                                        {item.nameKOR !== numArray[1].nameKOR && (<Distractor onPress={()=>{ClickSound(),answerCheck(numArray[1])}}><DistractorText>{numArray[1].nameKOR}</DistractorText></Distractor>)}
+                                                    </DistractorRow>
+                                                    <DistractorRow>
+                                                        {/* 선택지3번버튼 */}
+                                                        {item.nameKOR == numArray[2].nameKOR && (<Distractor {...checkMarkPan.panHandlers} onPress={()=>{ClickSound(),answerCheck(numArray[2])}}><DistractorText>{numArray[2].nameKOR}</DistractorText></Distractor>)}
+                                                        {item.nameKOR !== numArray[2].nameKOR && (<Distractor onPress={()=>{ClickSound(),answerCheck(numArray[2])}}><DistractorText>{numArray[2].nameKOR}</DistractorText></Distractor>)}
+                                                        {/* 선택지 4번 */}
+                                                        {item.nameKOR == numArray[3].nameKOR && (<Distractor {...checkMarkPan.panHandlers} onPress={()=>{ClickSound(),answerCheck(numArray[3])}}><DistractorText>{numArray[3].nameKOR}</DistractorText></Distractor>)}
+                                                        {item.nameKOR !== numArray[3].nameKOR && (<Distractor onPress={()=>{ClickSound(),answerCheck(numArray[3])}}><DistractorText>{numArray[3].nameKOR}</DistractorText></Distractor>)}
+                                                    </DistractorRow>
+                                                </>
+                                                )}
+                                                {type == "ENG" && (
+                                                <>
+                                                    <DistractorRow>
+                                                        {/* 선택지1번버튼 */}
+                                                        {item.nameENG == numArray[0].nameENG && (<Distractor {...checkMarkPan.panHandlers} onPress={()=>{ClickSound(),answerCheck(numArray[0])}}><DistractorText>{numArray[0].nameENG}</DistractorText></Distractor>)}
+                                                        {item.nameENG !== numArray[0].nameENG && (<Distractor onPress={()=>{ClickSound(),answerCheck(numArray[0])}}><DistractorText>{numArray[0].nameENG}</DistractorText></Distractor>)}
+                                                        {/* 선택지 2번 */}
+                                                        {item.nameENG == numArray[1].nameENG && (<Distractor {...checkMarkPan.panHandlers} onPress={()=>{ClickSound(),answerCheck(numArray[1])}}><DistractorText>{numArray[1].nameENG}</DistractorText></Distractor>)}
+                                                        {item.nameENG !== numArray[1].nameENG && (<Distractor onPress={()=>{ClickSound(),answerCheck(numArray[1])}}><DistractorText>{numArray[1].nameENG}</DistractorText></Distractor>)}
+                                                    </DistractorRow>
+                                                    <DistractorRow>
+                                                        {/* 선택지3번버튼 */}
+                                                        {item.nameENG == numArray[2].nameENG && (<Distractor {...checkMarkPan.panHandlers} onPress={()=>{ClickSound(),answerCheck(numArray[2])}}><DistractorText>{numArray[2].nameENG}</DistractorText></Distractor>)}
+                                                        {item.nameENG !== numArray[2].nameENG && (<Distractor onPress={()=>{ClickSound(),answerCheck(numArray[2])}}><DistractorText>{numArray[2].nameENG}</DistractorText></Distractor>)}
+                                                        {/* 선택지 4번 */}
+                                                        {item.nameENG == numArray[3].nameENG && (<Distractor {...checkMarkPan.panHandlers} onPress={()=>{ClickSound(),answerCheck(numArray[3])}}><DistractorText>{numArray[3].nameENG}</DistractorText></Distractor>)}
+                                                        {item.nameENG !== numArray[3].nameENG && (<Distractor onPress={()=>{ClickSound(),answerCheck(numArray[3])}}><DistractorText>{numArray[3].nameENG}</DistractorText></Distractor>)}
+                                                    </DistractorRow>
+                                                </>
+                                                )}
+                                                
+                                                
                                                 {wrongImage && (
                                                 <WrongAnswerContainer style={{backgroundColor:wrongImageBgColor}}>
                                                     <WrongAnswerImage source={wrongImageSrc} resizeMode="contain" />
@@ -609,13 +652,12 @@ export const WordCardLevel = (props) => {
                                                 )}
                                                 </>
                                                 )}
-                                                {/* {lv3ClickAlertWindow && (
-                                                    <LV3ClickAlert onPress={()=>{setLv3ClickAlertWindow(false)}}>
-                                                        <Text>정답먼저!</Text>
-                                                    </LV3ClickAlert>
-                                                )} */}
                                             </DistractorContainer>
-                                        </> 
+                                        )}
+                                        <CorrectAnswerContainer style={{transform:[{scale:checkMarkValue}]}}>
+                                            <CorrectAnswerImage source={require("../asset/images/Check.png")} />
+                                        </CorrectAnswerContainer>
+                                    </> 
                                     )}
                                     
                                 </CardName>
@@ -641,16 +683,18 @@ export const WordCardLevel = (props) => {
                             onPressIn={() => ClickSound()}
                             onPressOut={() => restartLevelBtn()}
                         >
-                            {type == "nameKOR" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
+                            {type == "KOR" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
                             {type == "ENG" && (<RepeatLevelText>Again !</RepeatLevelText>)}
                         </RepeatLevel>
+                        { props.level !== "word3LV" && (
                         <NextLevel 
                             onPressIn={()=> ClickSound()}
                             onPressOut={()=> nextLevelBtn(props.level)}
                         >
-                            {type == "nameKOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
+                            {type == "KOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
                             {type == "ENG" && (<NextLevelText>Next Level !</NextLevelText>)}
                         </NextLevel>
+                        )}
                     </ClearModal>
                 </ClearModalContainer>  
             )} 

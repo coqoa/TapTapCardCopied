@@ -346,7 +346,7 @@ const WordPlay = ({route, navigation}) => {
                         if(cardSelector === "word1LV") return <StarViewImage1 source={require("../asset/images/Star1.png")} resizeMode="contain" />
                         else if(cardSelector=="word2LV") return <StarViewImage1 source={require("../asset/images/Star2.png")} resizeMode="contain" />
                         else if(cardSelector=="word3LV") return <StarViewImage1 source={require("../asset/images/Star3.png")} resizeMode="contain" />
-                        else if(cardSelector==undefined){ return setCardSelector('word3LV')
+                        else if(cardSelector==undefined){ return setCardSelector('word1LV')
                         } else {
                             return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>
                         }})()}

@@ -146,7 +146,7 @@ const Menu = ({navigation}) => {
                 <WordKorBtn 
                     style={{transform: [{scale:KorBtnAnimation}]}}
                     onPressIn={() => (ClickSound(), KorScaleToggle(0.8))}
-                    onPressOut={() => {BtnClick("nameKOR"),KorScaleToggle(1)}}
+                    onPressOut={() => {BtnClick("KOR"),KorScaleToggle(1)}}
                 >
                     <WordSelectText>한글</WordSelectText>
                 </WordKorBtn>

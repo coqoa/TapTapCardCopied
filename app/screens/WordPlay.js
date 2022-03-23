@@ -245,50 +245,51 @@ const WordPlay = ({route, navigation}) => {
     const goBackPan = useRef(
         PanResponder.create({
             onStartShouldSetPanResponder: () => true,
-            onPanResponderStart:() => {
-                if(JSON.stringify(goBackModalScale) == 0){goBackModalScale.setValue(1)}
-                else{goBackModalScale.setValue(0)}
-            },
+            // onPanResponderStart:() => {
+            //     if(JSON.stringify(goBackModalScale) == 0){goBackModalScale.setValue(1)}
+            //     else{goBackModalScale.setValue(0)}
+            // },
             onPanResponderGrant:() => {
                 ClickSound()
                 goBackBtnScale.setValue(0.8)
             },
             onPanResponderRelease:()=>{
+                goBack()
                 goBackBtnScale.setValue(1)
             }            
         })
     ).current
-    // 뒤로가기선택지
-    const goBackDistractorScale = useRef(new Animated.Value(1)).current
-    const goBackDistractorPan = useRef(
-        PanResponder.create({
-            onStartShouldSetPanResponder: () => true,
-            onPanResponderGrant:() => {
-                ClickSound()
-                goBackDistractorScale.setValue(0.8)
-            },
-            onPanResponderRelease:()=>{
-                goBackDistractorScale.setValue(1)
-                goBack()
-                goBackModalScale.setValue(0)
-            }            
-        })
-    ).current
-    //그냥있기 선택지
-    const stayDistractorScale = useRef(new Animated.Value(1)).current
-    const stayDistractorPan = useRef(
-        PanResponder.create({
-            onStartShouldSetPanResponder: () => true,
-            onPanResponderGrant:() => {
-                stayDistractorScale.setValue(0.8)
-                ClickSound()
-            },
-            onPanResponderRelease:()=>{
-                stayDistractorScale.setValue(1)
-                goBackModalScale.setValue(0)
-            }            
-        })
-    ).current
+    // // 뒤로가기선택지
+    // const goBackDistractorScale = useRef(new Animated.Value(1)).current
+    // const goBackDistractorPan = useRef(
+    //     PanResponder.create({
+    //         onStartShouldSetPanResponder: () => true,
+    //         onPanResponderGrant:() => {
+    //             ClickSound()
+    //             goBackDistractorScale.setValue(0.8)
+    //         },
+    //         onPanResponderRelease:()=>{
+    //             goBackDistractorScale.setValue(1)
+    //             goBack()
+    //             goBackModalScale.setValue(0)
+    //         }            
+    //     })
+    // ).current
+    // //그냥있기 선택지
+    // const stayDistractorScale = useRef(new Animated.Value(1)).current
+    // const stayDistractorPan = useRef(
+    //     PanResponder.create({
+    //         onStartShouldSetPanResponder: () => true,
+    //         onPanResponderGrant:() => {
+    //             stayDistractorScale.setValue(0.8)
+    //             ClickSound()
+    //         },
+    //         onPanResponderRelease:()=>{
+    //             stayDistractorScale.setValue(1)
+    //             goBackModalScale.setValue(0)
+    //         }            
+    //     })
+    // ).current
 
 
     // mainScreenRender를 false로 만들면 실행되는 리렌더코드(clearTimeout해준다)
@@ -403,7 +404,7 @@ const WordPlay = ({route, navigation}) => {
                 </MenuModalContainer>
             </MenuModalBg>
 
-            <GoBackModalBg 
+            {/* <GoBackModalBg 
             style={{
                 position:"absolute", width:SCREEN_WIDTH, height:SCREEN_HEIGHT, backgroundColor:"rgba(0,0,0,0)",
                 transform:[{scale:goBackModalScale}]
@@ -432,7 +433,7 @@ const WordPlay = ({route, navigation}) => {
                         </ModalBtn>
                     </GoBackModal>
                 </GoBackModalContainer>
-            </GoBackModalBg>
+            </GoBackModalBg> */}
             
             </Shell>
         )

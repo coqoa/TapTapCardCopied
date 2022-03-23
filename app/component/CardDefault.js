@@ -59,7 +59,7 @@ const LV3ClickBlocker = styled.Pressable`
     align-items: center;
     justify-content: center;
     z-index: 11;
-    /* background-color: rgba(0,0,0,0.1); */
+    background-color: rgba(0,0,0,0.3);
 `
 const LV3ClickAlert = styled.Pressable`
 position: absolute;
@@ -69,7 +69,7 @@ border-radius: 30px;
 align-items: center;
 justify-content: center;
 background-color: white;
-box-shadow:2px 2px 5px rgba(0,0,0,0.3);
+box-shadow:2px 2px 5px rgba(0,0,0,0.8);
 `
 const CardImg = styled.Image`
     flex: 1;
@@ -84,7 +84,7 @@ const ClickBlocker = styled.View`
     /* background-color: rgba(0,0,0,0.5); */
 `
 
-const CardImgShellModal = styled.View`
+const CardImgShellModal = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     left: 0px;
     top: 0px;
@@ -150,13 +150,14 @@ const QuestionMarkImage = styled.Image`
     width: 100%;
     height: 100%;
 `
-const ImageAudioBtn = styled.TouchableOpacity`
+const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
-    width: 100%;
-    height: 90%;
+    width: 60%;
+    height: 70%;
     border-radius: 150px;
-    /* background-color: rgba(0,0,0,0.1); */
     z-index: 1;
+    background-color: rgba(0,0,0,0);
+    /* border: 1px solid black; */
 `
 const TextAudioBtn = styled.TouchableOpacity`
     position: absolute;
@@ -281,11 +282,11 @@ export const WordCardLevel = (props) => {
     const [wrongImageBgColor, setWrongImageBgColor] = useState("")
     const [lv3ClickBlockerOn, setLv3ClickBlockerOn] = useState(true)
     const [lv3ClickAlertWindow, setLv3ClickAlertWindow] = useState(false);
-    
 
     //Values
-    const scale = useRef(new Animated.Value(1)).current;
+    const defaultAnimated1 = useRef(new Animated.Value(1)).current;
     const position = useRef(new Animated.Value(0)).current;
+    const secondImageOpacity = useRef(new Animated.Value(0)).current;
     //interpolate
     const scaleControl = position.interpolate({
         inputRange:[-170,0,170,],
@@ -310,12 +311,21 @@ export const WordCardLevel = (props) => {
         restDisplacementThreshold:1,
         useNativeDriver:true,
     });
-    const onPressIn =  Animated.spring(scale, {
+    const onPressIn =  Animated.spring(defaultAnimated1, {
         toValue:0.9,
         useNativeDriver:true
     })
-    const onPressOut = Animated.spring(scale, {
+    const onPressOut = Animated.spring(defaultAnimated1, {
         toValue:1,
+        useNativeDriver:true
+    })
+    const secondImageOn = Animated.timing(secondImageOpacity, {
+        toValue:1,
+        useNativeDriver:true
+    })
+    const secondImageOff = Animated.timing(secondImageOpacity, {
+        toValue:0,
+        delay:1700,
         useNativeDriver:true
     })
     //panResponder
@@ -349,7 +359,18 @@ export const WordCardLevel = (props) => {
             }
         })
     ).current
-
+    const secondImagePan = useRef(PanResponder.create({
+        onStartShouldSetPanResponder:()=>true,
+        onPanResponderStart:()=>{
+            // console.log('1')
+            Animated.sequence([secondImageOn,secondImageOff]).start();
+            // secondImageOn.start();
+        },
+        onPanResponderRelease:()=>{
+            // console.log('2')
+            // secondImageOff.start();
+        }
+    })).current
     // modal
     // 터치시 이미지 변경 및 오디오출력 함수
     const imageModalToggle = () => {
@@ -505,15 +526,21 @@ export const WordCardLevel = (props) => {
                             
                             <CardImgShell style={{backgroundColor:item.bgColor}}>
                                 <CardImg source={item.image} resizeMode="contain"></CardImg>
-                                <ImageAudioBtn onPress={()=>{imageModalToggle(), playSound(item.SoundImage)}} />
-                                {imageToggle && (
-                                    <CardImgShellModal style={{backgroundColor: item.bgColor}}>
-                                            <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
-                                        </CardImgShellModal>
-                                )} 
-                                {lv3ClickBlockerOn &&(
+                                <ImageAudioBtn 
+                                {...secondImagePan.panHandlers}
+                                onPress={()=>playSound(item.SoundImage)}
+                                />
+                                <CardImgShellModal 
+                                    style={{
+                                        backgroundColor: item.bgColor, 
+                                        opacity:secondImageOpacity}}
+                                >
+                                        <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
+                                </CardImgShellModal>
+
+                                {/* {lv3ClickBlockerOn &&(
                                     <LV3ClickBlocker onPress={()=>{setLv3ClickAlertWindow(prev => !prev)}} />
-                                )}
+                                )} */}
                             </CardImgShell>
                             {/* 이미지 터치시 출력되는 세컨드이미지 */}
                             
@@ -582,11 +609,11 @@ export const WordCardLevel = (props) => {
                                                 )}
                                                 </>
                                                 )}
-                                                {lv3ClickAlertWindow && (
+                                                {/* {lv3ClickAlertWindow && (
                                                     <LV3ClickAlert onPress={()=>{setLv3ClickAlertWindow(false)}}>
                                                         <Text>정답먼저!</Text>
                                                     </LV3ClickAlert>
-                                                )}
+                                                )} */}
                                             </DistractorContainer>
                                         </> 
                                     )}

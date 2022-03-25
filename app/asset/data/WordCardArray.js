@@ -6,6 +6,7 @@ export const WordCardArray = [
         "id" : 0, 
         "image" : require("../images/Animal/Cow1.png"), 
         "image2" : require("../images/Animal/Cow2.png"), 
+        "realImage" : require("../images/RealPicture/RealCow1.jpg"), 
         "bgColor" : colors.TOMATO, 
         "nameKOR" : "소",
         "nameENG" : "Cow",
@@ -13,7 +14,7 @@ export const WordCardArray = [
         "questionMarkImage" : require("../images/QuestionMark.png"),
         "SoundImage" : require("../audio/Animal/Cow.mp3"),
         "SoundKOR" : require("../audio/CowKOR.mp3"),
-        "SoundENG" : require("../audio/CowENG.mp3")
+        "SoundENG" : require("../audio/CowENG.mp3"),
 
     }, 
     {
@@ -27,7 +28,8 @@ export const WordCardArray = [
         "questionMarkImage" : require("../images/QuestionMark.png"),
         "SoundImage" : require("../audio/Animal/Lion.wav"),
         "SoundKOR" : require("../audio/LionKOR.mp3"),
-        "SoundENG" : require("../audio/LionENG.mp3")
+        "SoundENG" : require("../audio/LionENG.mp3"),
+        
     }, 
     {
         "id" : 2, 
@@ -40,7 +42,7 @@ export const WordCardArray = [
         "questionMarkImage" : require("../images/QuestionMark.png"),
         "SoundImage" : require("../audio/Animal/Mouse.mp3"),
         "SoundKOR" : require("../audio/LionKOR.mp3"),
-        "SoundENG" : require("../audio/LionENG.mp3")
+        "SoundENG" : require("../audio/LionENG.mp3"),
     }, 
     {
         "id" : 3, 
@@ -53,7 +55,7 @@ export const WordCardArray = [
         "questionMarkImage" : require("../images/QuestionMark.png"),
         "SoundImage" : require("../audio/Animal/Pig.wav"),
         "SoundKOR" : require("../audio/CowKOR.mp3"),
-        "SoundENG" : require("../audio/CowENG.mp3")
+        "SoundENG" : require("../audio/CowENG.mp3"),
     }, 
     {
         "id" : 4, 
@@ -66,7 +68,7 @@ export const WordCardArray = [
         "questionMarkImage" : require("../images/QuestionMark.png"),
         "SoundImage" : require("../audio/Animal/Sheep.mp3"),
         "SoundKOR" : require("../audio/CowKOR.mp3"),
-        "SoundENG" : require("../audio/CowENG.mp3")
+        "SoundENG" : require("../audio/CowENG.mp3"),
     }, 
     {
         "id" : 5, 
@@ -79,7 +81,7 @@ export const WordCardArray = [
         "questionMarkImage" : require("../images/QuestionMark.png"),
         "SoundImage" : require("../audio/Animal/Whale.mp3"),
         "SoundKOR" : require("../audio/WhaleKOR.mp3"),
-        "SoundENG" : require("../audio/WhaleENG.mp3")
+        "SoundENG" : require("../audio/WhaleENG.mp3"),
     }, 
 ]
 

@@ -360,11 +360,13 @@ const WordPlay = ({route, navigation}) => {
 
             </Top>
             </TopContainer>
+
             {mainScreenRender && (
             <Main>
                 {(()=>{ return ( <WordCardLevel level={cardSelector} getData={getData} type={type} /> )})()}
             </Main>
             )}
+            
             {/* 햄버거바 터치시 출력되는 모달 */}
             <MenuModalBg 
             style={{

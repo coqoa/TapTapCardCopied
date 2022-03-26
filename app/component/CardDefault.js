@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useCallback, useRef} from "react"
 import { Audio } from 'expo-av';
-import {View, Dimensions, FlatList, Animated, Easing, TouchableOpacity, Pressable, PanResponder,Text, TextInput, Button } from "react-native";
+import {View, Dimensions, FlatList, Animated, Easing, TouchableOpacity, Pressable, PanResponder,Text, TextInput, Button, ScrollView } from "react-native";
 import styled from "styled-components"
 import { WordCardArray } from "../asset/data/WordCardArray";
 import { colors } from "./color";
@@ -18,14 +18,12 @@ const CardSection = styled.View`
 `
 const Card = styled(Animated.createAnimatedComponent(View))`
     width: 80%;
-    /* top: 1%; */
     height: 100%;
     padding: 0px 15px;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
     box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
-    /* border: 2px solid ${colors.REALDARKGRAY}; */
 `
 const CardImgShell = styled.View`
     align-items: center;
@@ -41,14 +39,6 @@ const CardImg = styled.Image`
     flex: 1;
     width: 100%;
 `
-const ClickBlocker = styled.View`
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    /* background-color: rgba(0,0,0,0.5); */
-`
 const ClickBlock = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     left: 0;
@@ -56,6 +46,7 @@ const ClickBlock = styled(Animated.createAnimatedComponent(View))`
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
+    z-index: 1;
 `
 const CardImgShellModal = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
@@ -71,22 +62,18 @@ const CardImg2 = styled(CardImg)`
 const CardContents = styled.View`
     width: 100%;
     z-index: 15;
-    /* margin-bottom: 15px; */
     `
 const CardName = styled.View`
     flex:1;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid black; */
     `
 const CardNameText = styled.Text`
-    /* width: 80px; */
     height: 90px;
     text-align: center;
     font-size: 90px;
     font-family: 'SDChild';
     color: ${colors.REALDARKGRAY};
-    /* border: 1px solid black; */
 `
 const CardNameModal = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
@@ -104,7 +91,6 @@ const QuestionMarkBg = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     width: 100%;
     height: 100%;
-    /* border-radius: 100px; */
     background-color: ${colors.BEIGE};
     border: 1px solid red;
     z-index: 2;
@@ -124,7 +110,6 @@ const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     border-radius: 150px;
     z-index: 1;
     background-color: rgba(0,0,0,0);
-    /* border: 1px solid black; */
 `
 const TextAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
@@ -138,7 +123,6 @@ const ClearModalContainer = styled.View`
     position: absolute;
     width: 100%;
     height: 100%;
-    /* background-color: rgba(0,0,0,0.1); */
     left: 0px;
     top: 0px;
     align-items: center;
@@ -189,7 +173,6 @@ const DistractorContainer = styled(Animated.createAnimatedComponent(View))`
     align-items: center;
     background-color: ${colors.BEIGE};
     z-index: 3;
-    /* border: 1px solid red; */
     `
 const DistractorRow = styled.View`
     flex-direction: row;
@@ -221,20 +204,6 @@ const DistractorText = styled.Text`
     font-size: 45px;
     color: ${colors.REALDARKGRAY};
     `
-const WrongAnswerContainer = styled(Animated.createAnimatedComponent(View))`
-    position: absolute;
-    width: 100%;
-    height: 95%;
-    bottom: 5%;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-
-`
-const WrongAnswerImage = styled.Image`
-    width: 100%;
-    height: 100%;
-`
 const CorrectAnswerContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     top: -40px;
@@ -254,7 +223,6 @@ const RealPictureBtn = styled(Animated.createAnimatedComponent(Pressable))`
     right: 5px;
     border-radius: 50px;
     background-color: white;
-    /* border: 3px solid black; */
     box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
     z-index: 49;
     align-items: center;
@@ -269,32 +237,46 @@ const RealPictureBtnBG = styled.Image`
     width: 80%;
     height: 80%;
 `
-const RealPictureContainer = styled(Animated.createAnimatedComponent(Pressable))`
+
+const RealPictureContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     z-index: 50;
     align-items: center;
-    justify-content: flex-start;
-    width: 90%;
+    width: 100%;
     height: 100%;
-    /* background-color: rgba(0,0,0,0.1); */
-    justify-content: center;
+`
+const RealPictureExitBtn =styled(Animated.createAnimatedComponent(Pressable))`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: red;
+    z-index: 2;
+`
+const RealPictureScrollView = styled.ScrollView`
+    background-color: ${colors.mainBgColor};
+    /* border: 1px solid green; */
+    /* z-index: 100; */
+`
+const PictureImageShell = styled.View`
+    /* justify-content: flex-start; */
+    border: 1px solid ${colors.REALLIGHTGRAY};
     align-items: center;
-`
-const RealPictureSection = styled.View`
-    width: 100%;
-    height: 100%;
-    border: 1px solid green;
-`
+    border-radius: 20px;
+    `
 const PictureImage = styled.Image`
-    width: 100%;
-    height: 100%;
+width: 100%;
+height: 100%;
+border-radius: 20px;
+
 `
 const ViewWrong = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 45px;
-    /* border: 1px solid green; */
     `
 const ViewWrongImage = styled.Image`
 background-color: transparent;
@@ -309,17 +291,9 @@ export const WordCardLevel = (props) => {
     //useState
     const [refresh, setRefresh] = useState(true);
     const [clearModalToggle, setClearModalToggle] = useState(false);
-    const [textToggle, setTextToggle] = useState(false)
-    // const [questionMarkBackground, setQuestionMarkBackground] = useState(true);
-    // const [questionMark, setQuestionMark] = useState(true);
-    const [clickBlockerToggle, setClickBlockerToggle] = useState(false)
     const [distractorWindowBackground, setDistractorWindowBackground] = useState(true);
     const [distractorWindow, setDistractorWindow] = useState(true);
-    // const [wrongImage, setWrongImage] = useState(false)
-    // const [wrongImageSrc, setWrongImageSrc] = useState("")
-    // const [wrongImageBgColor, setWrongImageBgColor] = useState("")
     const [scrollOn, setScrollOn] = useState(true)
-
     // AnimatedValues & panResponder
     // 카드애니메이션
     const position = useRef(new Animated.Value(0)).current;
@@ -364,7 +338,6 @@ export const WordCardLevel = (props) => {
                 {props.level == "word2LV" && (
                     setTimeout(function(){
                         questionOpacity.setValue(1)
-                        // questionScale.setValue(1)
                     },70)
                 ) }
                 {props.level == "word3LV" && (
@@ -372,8 +345,6 @@ export const WordCardLevel = (props) => {
                     setTimeout(function() {
                         setDistractorWindow(true)
                     },80)
-                    // ,
-                    // setScrollOn(false)
                 )}
                 Animated.parallel([onPressOut,tensionAnimated]).start();
             }
@@ -409,8 +380,6 @@ export const WordCardLevel = (props) => {
     })
     const secondTextPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
-        // onPanResponderStart:()=>{
-        // },
         onPanResponderEnd:()=>{
             Animated.sequence([secondTextOn, secondTextOff]).start();
         }
@@ -421,11 +390,6 @@ export const WordCardLevel = (props) => {
         toValue:0,
         useNativeDriver:true
     })
-    // const questionScale = useRef(new Animated.Value(1)).current;
-    // const questionScalePress = Animated.timing(questionScale,{
-    //     toValue:0,
-    //     useNativeDriver:true
-    // })
     const questionPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
         onPanResponderStart:()=>{Animated.parallel([questionOpacityPress,
@@ -475,6 +439,7 @@ export const WordCardLevel = (props) => {
     const pictureClosePan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
         onPanResponderStart:()=>{
+            // console.log('asd')
         Animated.parallel([pictureContainerModalOff,pictureOpacityOff]).start();
         }
     })).current
@@ -482,16 +447,6 @@ export const WordCardLevel = (props) => {
     // 3LV 정답체크부분
     // 클릭블로커
     const clickBlockerValue = useRef(new Animated.Value(0)).current
-    const clickBlockerOn = Animated.timing(clickBlockerValue, {
-        toValue:1,
-        useNativeDriver:true,
-        duration:10
-    })
-    const clickBlockerOff = Animated.timing(clickBlockerValue, {
-        toValue:0,
-        useNativeDriver:true,
-        duration:10
-    })
     const clickBlockerFunc = () =>{
         clickBlockerValue.setValue(1),
         setTimeout(function(){
@@ -518,32 +473,8 @@ export const WordCardLevel = (props) => {
         useNativeDriver:true
     })
     
-    // const wrongAnswerValue = useRef(new Animated.Value(0)).current;
-    // const wrongMarkOn = Animated.timing(wrongAnswerValue, {
-    //     toValue:1,
-    //     duration:10,
-    //     easing:Easing.bounce,
-    //     useNativeDriver:true
-    // })
-    // const wrongMarkOff = Animated.timing(wrongAnswerValue, {
-    //     toValue:0,
-    //     duration:10,
-    //     easing:Easing.bounce,
-    //     delay:1700,
-    //     useNativeDriver:true
-    // })
     // 1번 선택지
     const distractorBtn1 = useRef(new Animated.Value(1)).current;
-    // const distractorBtn1PressIn = Animated.timing(distractorBtn1,{
-    //     toValue:0.8,
-    //     duration:50,
-    //     useNativeDriver:true
-    // })
-    // const distractorBtn1PressOut= Animated.timing(distractorBtn1,{
-    //     toValue:1,
-    //     duration:50,
-    //     useNativeDriver:true
-    // })
     // 1번 정답
     const distractorBtn1Pan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
@@ -585,16 +516,6 @@ export const WordCardLevel = (props) => {
 
     // 2번 선택지
     const distractorBtn2 = useRef(new Animated.Value(1)).current;
-    // const distractorBtn2PressIn = Animated.timing(distractorBtn2,{
-    //     toValue:0.8,
-    //     duration:50,
-    //     useNativeDriver:true
-    // })
-    // const distractorBtn2PressOut= Animated.timing(distractorBtn2,{
-    //     toValue:1,
-    //     duration:50,
-    //     useNativeDriver:true
-    // })
     // 2번 정답
     const distractorBtn2Pan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
@@ -635,16 +556,6 @@ export const WordCardLevel = (props) => {
 
     // 3번 선택지
     const distractorBtn3 = useRef(new Animated.Value(1)).current;
-    // const distractorBtn3PressIn = Animated.timing(distractorBtn3,{
-    //     toValue:0.8,
-    //     duration:50,
-    //     useNativeDriver:true
-    // })
-    // const distractorBtn3PressOut= Animated.timing(distractorBtn3,{
-    //     toValue:1,
-    //     duration:50,
-    //     useNativeDriver:true
-    // })
     // 3번 정답
     const distractorBtn3Pan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
@@ -686,16 +597,6 @@ export const WordCardLevel = (props) => {
 
     // 4번 선택지
     const distractorBtn4 = useRef(new Animated.Value(1)).current;
-    // const distractorBtn4PressIn = Animated.timing(distractorBtn4,{
-    //     toValue:0.8,
-    //     duration:50,
-    //     useNativeDriver:true
-    // })
-    // const distractorBtn4PressOut= Animated.timing(distractorBtn4,{
-    //     toValue:1,
-    //     duration:50,
-    //     useNativeDriver:true
-    // })
     // 4번 정답
     const distractorBtn4Pan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
@@ -734,12 +635,6 @@ export const WordCardLevel = (props) => {
         }
     })).current
     
-    // modal
-    //터치시 텍스트 변경 함수
-    const textModalToggle = () => {
-        setTextToggle(true)
-        setClickBlockerToggle(true)
-    }
     //마지막 카드에서 출력되는 모달창, 다시하기버튼, 다음레벨 버튼
     const lastListModalOn = () => {
         setClearModalToggle((prev) => !prev)
@@ -769,7 +664,6 @@ export const WordCardLevel = (props) => {
     
     // 오디오출력, props를 받아서 해당 파일을 출력해줌
     const playSound = async(e) => {
-        // console.log(e)
         const sound = new Audio.Sound();
         try {    
             // 저장한 path로 음원 파일 불러오기 
@@ -788,20 +682,6 @@ export const WordCardLevel = (props) => {
         }
     }
 //setTimeout / clearTimeout
-    // 텍스트 터치시 시작되는 Timeout
-    const textChangeTimeout = useRef(null); 
-    useEffect(()=>{
-        textChangeTimeout.current = setTimeout(() => {setTextToggle(false), setClickBlockerToggle(false)},1000)
-        return() => clearTimeout(textChangeTimeout.current)
-    },[textToggle])
-
-    // 3레벨 오답처리  Timeout
-    // const wrongImageTimeout = useRef(null); 
-    // useEffect(()=>{
-    //     wrongImageTimeout.current = setTimeout(() => {setWrongImage(false)},1800)
-    //     return() => clearTimeout(wrongImageTimeout.current)
-    // },[wrongImage])
-
     // 새로고침
     const refreshTimeout = useRef(null); 
     useEffect(()=>{
@@ -810,10 +690,6 @@ export const WordCardLevel = (props) => {
     },[refresh])
 
     const levelConsole = () => {
-        // 1LV에서는 cardlist 스크롤 작동, 그외는 조건을 풀어야 작동 (2레벨은 물음표가 없어져야, 3레벨은 정답을 맞춰야)
-        // useEffect(()=>{
-        //     {props.level == "word1LV" ? setScrollOn(true) : null}
-        // },[])
         return(
             <View  style={{alignItems:"center", justifyContent:"center"}}>
             {/* 카드부분 */}
@@ -887,16 +763,24 @@ export const WordCardLevel = (props) => {
                             default:
                                 return
                     }}
-
-                    
+                    const PictureImageData = (e) => {
+                        return(
+                            <PictureImageShell style={{width:SCREEN_WIDTH}}><PictureImage source={e} resizeMode="cover" /></PictureImageShell>
+                        )
+                    }
                     return (
                     <CardSection style={{width:SCREEN_WIDTH}}> 
                         
                         {/* 실사 모달창 */}
-                        <RealPictureContainer {...pictureClosePan.panHandlers} style={{opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
-                            <RealPictureSection>
-                                <PictureImage source={item.realImage} resizeMode="contain" />
-                            </RealPictureSection>
+                        <RealPictureContainer style={{opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
+                            <RealPictureExitBtn  {...pictureClosePan.panHandlers} onPress={()=>setScrollOn(true)} ></RealPictureExitBtn>
+                            <RealPictureScrollView style={{width:SCREEN_WIDTH}}  pagingEnabled horizontal>
+                                {PictureImageData(item.realImage1)}
+                                {PictureImageData(item.realImage2)}
+                                {PictureImageData(item.realImage3)}
+                                {PictureImageData(item.realImage4)}
+                                {PictureImageData(item.realImage5)}
+                            </RealPictureScrollView>
                         </RealPictureContainer>
                         {/* 카드전체스타일 */}
                         <Card style={{
@@ -909,6 +793,8 @@ export const WordCardLevel = (props) => {
                             <RealPictureBtn
                             {...pictureOpenPan.panHandlers}
                             style={{transform:[{scale:pictureBtnScale}]}}
+                            onPress={()=>{setScrollOn(false)}}
+                            // onPress={()=>{clickBlockerValue.setValue(1)}}
                             >
                                 <Text>사진</Text>
                                 {/* <RealPictureContainer> */}
@@ -939,21 +825,16 @@ export const WordCardLevel = (props) => {
                                     <CardNameText>{itemName()}</CardNameText>
                                     
                                     {/* type에 따라 한글을 읽어주는지, 영어를 읽어주는지 */}
-                                    {/* <TextAudioBtn {...secondTextPan.panHandlers} onPress={()=>{textModalToggle(), playSound(itemAudio())}} /> */}
                                     <TextAudioBtn {...secondTextPan.panHandlers}
                                     onPressOut={()=>{playSound(itemAudio()),clickBlockerFunc()}} />
                                     
                                     {/* 터치시 텍스트 색깔을 바꿔주는 모달 */}
-                                    {/* {textToggle && ( */}
                                     <CardNameModal style={{opacity:secondTextOpacity}}>
                                         <CardNameModalText style={{color:item.bgColor}}>{itemName()}</CardNameModalText>
                                     </CardNameModal>
-                                    {/* )} */}
 
                                     {/* 2레벨에서만 사용되는 물음표 박스 컴포넌트 */}
-                                    {/* {props.level == "word2LV" && questionMarkBackground && ( */}
                                     {props.level == "word2LV" && (
-                                        // <QuestionMarkBg style={{transform:[{scale:questionScale}]}}>
                                         <QuestionMarkBg style={{opacity:questionOpacity}}>
                                             <QuestionMarkBtn {...questionPan.panHandlers} onPress={() => {playSound(itemAudio())} } >    
                                                 <QuestionMarkImage source={item.questionMarkImage} resizeMode="contain"/>
@@ -1017,13 +898,6 @@ export const WordCardLevel = (props) => {
                                                             </Distractor>
                                                         )}
                                                     </DistractorRow>
-                                                {/* 오답체크 */}
-                                                {/* {wrongImage && (
-                                                <WrongAnswerContainer style={{backgroundColor:wrongImageBgColor}}>
-                                                    <WrongAnswerImage source={wrongImageSrc} resizeMode="contain" />
-                                                </WrongAnswerContainer>
-                                                )} */}
-
                                                 </>
                                                 )}
                                             </DistractorContainer>
@@ -1042,9 +916,6 @@ export const WordCardLevel = (props) => {
                 }}
                 />
             <ClickBlock style={{transform:[{scale:clickBlockerValue}]}} />
-            {/* {props.level == "word3LV" && (<ClickBlock style={{transform:[{scale:clickBlockerValue}]}} />)} */}
-            
-            {clickBlockerToggle && (<ClickBlocker />)}
             </>
             )}
             {/* 마지막리스트 도달하면 열리는 모달창 */}

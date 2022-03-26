@@ -1,6 +1,6 @@
 import React from "react";
 import {createNativeStackNavigator} from "@react-navigation/native-stack" 
-import { Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView, Dimensions, Pressable} from "react-native";
+import { Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView, Dimensions, Pressable, ScrollView} from "react-native";
 import styled from "styled-components/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
@@ -16,10 +16,12 @@ const TextContainer = styled.View`
     /* background-color: blue; */
 `
 
-const TextBox = styled.TextInput`
-    width: 100px;
-    height: 50px;
+const ExamBox = styled.ScrollView`
     border: 1px solid black;
+`
+const ExamView = styled.View`
+    background-color: white;
+    margin: 10px;
 `
 const Login = ({navigation}) => {
     return(
@@ -30,7 +32,6 @@ const Login = ({navigation}) => {
     contentContainerStyle={{ height: -30 }}
     resetScrollToCoords={{ x: 0, y: 0 }}
     scrollEnabled={true}
-    enableAutomaticScroll={true}
     >
     <View style={{flex: 1,alignItems:"center", justifyContent:"center"}}>
 
@@ -42,27 +43,13 @@ const Login = ({navigation}) => {
         <View style={{width: 100,flex:1, backgroundColor:"tomato"}} >
             <Text onPress={() => navigation.navigate("Signup")}>Signup</Text>
         </View>
-        <View style={{flex:1}}>
-            <TextContainer>
-       
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                <TextBox placeholder={'asd'} />
-                
-        
-            </TextContainer>
-        </View>
+        <ExamBox styled={{width:SCREEN_WIDTH, height:500}} >
+            <ExamView style={{width:SCREEN_WIDTH, height:30}}><Text>123123</Text></ExamView>
+            <ExamView style={{width:SCREEN_WIDTH, height:30}}><Text>123123</Text></ExamView>
+            <ExamView style={{width:SCREEN_WIDTH, height:30}}><Text>123123</Text></ExamView>
+            <ExamView style={{width:SCREEN_WIDTH, height:30}}><Text>123123</Text></ExamView>
+            <ExamView style={{width:SCREEN_WIDTH, height:30}}><Text>123123</Text></ExamView>
+        </ExamBox>
         
     </View>
     </KeyboardAwareScrollView>

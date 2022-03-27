@@ -45,7 +45,7 @@ const ClickBlock = styled(Animated.createAnimatedComponent(View))`
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0);
     z-index: 1;
 `
 const CardImgShellModal = styled(Animated.createAnimatedComponent(View))`
@@ -89,10 +89,10 @@ const CardNameModalText = styled(CardNameText)``
 
 const QuestionMarkBg = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     background-color: ${colors.BEIGE};
-    border: 1px solid red;
+    /* border: 1px solid red; */
     z-index: 2;
 `
 const QuestionMarkBtn = styled(Animated.createAnimatedComponent(Pressable))`
@@ -116,7 +116,7 @@ const TextAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     width: 50%;
     height: 70%;
     border-radius: 80px;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0);
     z-index: 1;
 `
 const ClearModalContainer = styled.View`
@@ -190,15 +190,10 @@ const Distractor = styled(Animated.createAnimatedComponent(Pressable))`
     border-radius: 45px;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
-    background-color: rgba(255,255,255, 0.8);
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    background-color: rgba(255,255,255, 0.6);
     z-index: 100;
     `
-const DistractorBtnImage = styled.Image`
-position: absolute;
-    width: 100%;
-    height: 100%;
-`
 const DistractorText = styled.Text`
     font-family: 'SDChild';
     font-size: 45px;
@@ -217,25 +212,28 @@ const CorrectAnswerImage = styled.Image`
 `
 const RealPictureBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     top: 5px;
     right: 5px;
-    border-radius: 50px;
-    background-color: white;
-    box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
     z-index: 49;
     align-items: center;
     justify-content: center;
-`
+    `
+
 const RealPictureBtnBGContainer = styled.View`
     width: 80%;
     height: 80%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    justify-content: center;
+    align-items: center;
 `
 const RealPictureBtnBG = styled.Image`
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
 `
 
 const RealPictureContainer = styled(Animated.createAnimatedComponent(View))`
@@ -250,10 +248,16 @@ const RealPictureExitBtn =styled(Animated.createAnimatedComponent(Pressable))`
     top: 10px;
     right: 10px;
     width: 50px;
-    height: 50px;
-    border-radius: 100px;
-    background-color: red;
+    height: 35px;
+    border-radius: 40px;
+    background-color: rgba(255,255,255,0.4);
+    justify-content: center;
+    align-items: center;
     z-index: 2;
+`
+const RealPictureExitBtnImage = styled.ImageBackground`
+    width: 40%;
+    height: 40%;
 `
 const RealPictureScrollView = styled.ScrollView`
     background-color: ${colors.mainBgColor};
@@ -451,7 +455,7 @@ export const WordCardLevel = (props) => {
         clickBlockerValue.setValue(1),
         setTimeout(function(){
             clickBlockerValue.setValue(0)
-        },800)
+        },1000)
     }
     
     // 선택지 모달창
@@ -493,15 +497,14 @@ export const WordCardLevel = (props) => {
     const wrongImageValue1 = useRef(new Animated.Value(0)).current
     const wrongImageOn1 = Animated.spring(wrongImageValue1,{
         toValue:1,
-        friction:5,
-        tension:100,
+        friction:6,
+        tension:70,
         useNativeDriver:true
     })
-    const wrongImageOff1 = Animated.spring(wrongImageValue1,{
+    const wrongImageOff1 = Animated.timing(wrongImageValue1,{
         toValue:0,
-        delay:1000,
-        friction:5,
-        tension:100,
+        delay:700,
+        duration:50,
         useNativeDriver:true
     })
     const distractorBtn1PanWrong = useRef(PanResponder.create({
@@ -533,15 +536,14 @@ export const WordCardLevel = (props) => {
     const wrongImageValue2 = useRef(new Animated.Value(0)).current
     const wrongImageOn2 = Animated.spring(wrongImageValue2,{
         toValue:1,
-        friction:5,
-        tension:100,
+        friction:6,
+        tension:70,
         useNativeDriver:true
     })
-    const wrongImageOff2 = Animated.spring(wrongImageValue2,{
+    const wrongImageOff2 = Animated.timing(wrongImageValue2,{
         toValue:0,
-        delay:1000,
-        friction:5,
-        tension:100,
+        delay:700,
+        duration:50,
         useNativeDriver:true
     })
     const distractorBtn2PanWrong = useRef(PanResponder.create({
@@ -573,15 +575,14 @@ export const WordCardLevel = (props) => {
     const wrongImageValue3 = useRef(new Animated.Value(0)).current
     const wrongImageOn3 = Animated.spring(wrongImageValue3,{
         toValue:1,
-        friction:5,
-        tension:100,
+        friction:6,
+        tension:70,
         useNativeDriver:true
     })
-    const wrongImageOff3 = Animated.spring(wrongImageValue3,{
+    const wrongImageOff3 = Animated.timing(wrongImageValue3,{
         toValue:0,
-        delay:1000,
-        friction:5,
-        tension:100,
+        delay:700,
+        duration:50,
         useNativeDriver:true
     })
     const distractorBtn3PanWrong = useRef(PanResponder.create({
@@ -614,15 +615,14 @@ export const WordCardLevel = (props) => {
     const wrongImageValue4 = useRef(new Animated.Value(0)).current
     const wrongImageOn4 = Animated.spring(wrongImageValue4,{
         toValue:1,
-        friction:3,
-        tension:100,
+        friction:6,
+        tension:70,
         useNativeDriver:true
     })
-    const wrongImageOff4 = Animated.spring(wrongImageValue4,{
+    const wrongImageOff4 = Animated.timing(wrongImageValue4,{
         toValue:0,
-        delay:1000,
-        friction:3,
-        tension:100,
+        delay:700,
+        duration:50,
         useNativeDriver:true
     })
     const distractorBtn4PanWrong = useRef(PanResponder.create({
@@ -773,7 +773,9 @@ export const WordCardLevel = (props) => {
                         
                         {/* 실사 모달창 */}
                         <RealPictureContainer style={{opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
-                            <RealPictureExitBtn  {...pictureClosePan.panHandlers} onPress={()=>setScrollOn(true)} ></RealPictureExitBtn>
+                            <RealPictureExitBtn  {...pictureClosePan.panHandlers} onPress={()=>setScrollOn(true)} >
+                                <RealPictureExitBtnImage source={require("../asset/images/RealPictureExitBtn.png")} resizeMode="contain" />
+                            </RealPictureExitBtn>
                             <RealPictureScrollView style={{width:SCREEN_WIDTH}}  pagingEnabled horizontal>
                                 {PictureImageData(item.realImage1)}
                                 {PictureImageData(item.realImage2)}
@@ -796,10 +798,10 @@ export const WordCardLevel = (props) => {
                             onPress={()=>{setScrollOn(false)}}
                             // onPress={()=>{clickBlockerValue.setValue(1)}}
                             >
-                                <Text>사진</Text>
-                                {/* <RealPictureContainer> */}
-                                    {/* <RealPictureBtnBG source={item.realImage} resizeMode="contain" /> */}
-                                {/* </RealPictureContainer> */}
+                                {/* <Text>사진</Text> */}
+                                <RealPictureBtnBGContainer>
+                                    <RealPictureBtnBG source={require("../asset/images/RealPictureBtn.png")} resizeMode="contain" />
+                                </RealPictureBtnBGContainer>
                             </RealPictureBtn>
 
                             {/* 카드 이미지 부분 */}
@@ -851,12 +853,10 @@ export const WordCardLevel = (props) => {
                                                         {/* 선택지 1번 */}
                                                         {itemName() == distractorName(0) ? (
                                                             <Distractor {...distractorBtn1Pan.panHandlers} style={{transform:[{scale:distractorBtn1}]}} onPressIn={()=> distractorBtn1.setValue(0.8) } onPressOut={() => {distractorBtn1.setValue(1), playSound(distractorAudio(0)),clickBlockerFunc()}}>
-                                                                {/* <DistractorBtnImage source={require("../asset/images/DistractorButton.png")} /> */}
                                                                 <DistractorText>{distractorName(0)}</DistractorText>
                                                             </Distractor>
                                                         ):(
                                                             <Distractor {...distractorBtn1PanWrong.panHandlers} style={{transform:[{scale:distractorBtn1}]}} onPressIn={()=>distractorBtn1.setValue(0.8)} onPressOut={() => {distractorBtn1.setValue(1), playSound(numArray[0].SoundImage),clickBlockerFunc()}}>
-                                                                {/* <DistractorBtnImage source={require("../asset/images/DistractorButton.png")} /> */}
                                                                 <DistractorText>{distractorName(0)}</DistractorText>
                                                                 <ViewWrong style={{backgroundColor:numArray[0].bgColor ,transform:[{scale:wrongImageValue1}]}}><ViewWrongImage source={numArray[0].image} resizeMode="contain" /></ViewWrong>
                                                             </Distractor>

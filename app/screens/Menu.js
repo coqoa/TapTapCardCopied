@@ -1,7 +1,9 @@
-import React,{ useState } from "react";
+import React,{ useState, useRef } from "react";
 import styled from "styled-components";
+import {Animated, Pressable } from "react-native";
 import { Audio } from 'expo-av';
 import { colors } from "../component/color";
+import { transform } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 // const Shell = styled.View`
 //     flex: 1;
@@ -18,7 +20,7 @@ const MenuBoxShell = styled.View`
     justify-content: center;
     align-items: center;
 `
-    const MenuBox = styled.Pressable`
+    const MenuBox = styled(Animated.createAnimatedComponent(Pressable))`
         background-color: white;
         width: 250px;
         height: 80px;
@@ -33,7 +35,7 @@ const MenuBoxShell = styled.View`
         font-family: 'SDChild';
     `
 
-const WordSelectModalBG = styled.Pressable`
+const WordSelectModalBG = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     width: 100%;
     height: 100%;
@@ -56,7 +58,7 @@ const WordSelectTitle = styled.View`
     justify-content: center;
     font-family: 'SDChild';
 `
-const WordKorBtn = styled.Pressable`
+const WordKorBtn = styled(Animated.createAnimatedComponent(Pressable))`
     width: 200px;
     height: 60px;
     border-radius: 20px;
@@ -85,22 +87,8 @@ const WordSelectTitleText = styled(WordSelectText)`
 // -------------------------------------------------------------------------------------------------
 
 const Menu = ({navigation}) => {
-    const [wordSelectModal, setWordSelectModal] = useState(false)
     
-    const BtnClick = (e) => {
-        setWordSelectModal(false)
-        navigation.navigate('WordPlay',{type:e}) 
-    }
-    const playBtnSound = async(e) => {
-        const sound = new Audio.Sound();
-      try {    
-      	// 저장한 path로 음원 파일 불러오기 
-        await sound.loadAsync(e);
-        // 음원 재생하기 
-        await sound.playAsync();
-      } catch (error) {
-     }
-    }
+    
     const ClickSound = async() => {
         const sound = new Audio.Sound();
       try {    
@@ -111,55 +99,58 @@ const Menu = ({navigation}) => {
     }
 
     //Btn Animation
-    //단어놀이버튼
-    const [wordPlayBtnAnimation, setWordPlayBtnAnimation] = useState(1)
-    const wordPlayScaleToggle = (e) =>{setWordPlayBtnAnimation(e)}
-    // 한글버튼
-    const [KorBtnAnimation, setKorBtnAnimation] = useState(1)
-    const KorScaleToggle = (e) =>{setKorBtnAnimation(e)}
-    // 영어버튼
-    const [EngBtnAnimation, setEngBtnAnimation] = useState(1)
-    const EngScaleToggle = (e) =>{setEngBtnAnimation(e)}
+    const wordSelectModal = useRef(new Animated.Value(0)).current;
 
+    // 동물버튼
+    const wordPlayBtnAnimation = useRef(new Animated.Value(1)).current;
+    // 한글버튼
+    const KorBtnAnimation = useRef(new Animated.Value(1)).current;
+    // 영어버튼
+    const EngBtnAnimation = useRef(new Animated.Value(1)).current;
+
+    // WordPlay.js props 전달함수
+    const BtnClick = (e) => {
+        wordSelectModal.setValue(0)
+        navigation.navigate('WordPlay',{type:e}) 
+    }
     return(
     // <Shell>
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
         <MenuBoxShell>
             <MenuBox 
                 style={{transform: [{scale:wordPlayBtnAnimation}]}}
-                onPressIn={() => {ClickSound(), wordPlayScaleToggle(0.8)}}
-                onPressOut={() => (setWordSelectModal(true),wordPlayScaleToggle(1))}
+                onPressIn={() => {ClickSound(), wordPlayBtnAnimation.setValue(0.9)}}
+                onPressOut={() => (wordSelectModal.setValue(1),wordPlayBtnAnimation.setValue(1))}
             >
-                <MenuText>단어 놀이</MenuText>
+                <MenuText>동물</MenuText>
             </MenuBox>
             <MenuBox>
                 <MenuText>수학 놀이</MenuText>
             </MenuBox>
             
         </MenuBoxShell>
-        {/* Menu터치시 출력될 모달 */}
-        {wordSelectModal && (
-        // 모달컨테이너를 제외한 전체화면 : 터치시 모달 닫기위해 구현
-        <WordSelectModalBG onPress={()=>setWordSelectModal(false)}>
+
+        {/* 동물 세부메뉴 */}
+        {/*  모달컨테이너를 제외한 전체화면 : 터치시 모달 닫기위해 구현 */}
+        <WordSelectModalBG style={{transform:[{scale:wordSelectModal}]}} onPress={()=>wordSelectModal.setValue(0)}>
             <WordSelectContainer>
                 <WordSelectTitle><WordSelectTitleText>단어놀이</WordSelectTitleText></WordSelectTitle>
                 <WordKorBtn 
                     style={{transform: [{scale:KorBtnAnimation}]}}
-                    onPressIn={() => (ClickSound(), KorScaleToggle(0.8))}
-                    onPressOut={() => {BtnClick("KOR"),KorScaleToggle(1)}}
+                    onPressIn={() => (ClickSound(), KorBtnAnimation.setValue(0.9))}
+                    onPressOut={() => {BtnClick("AnimalKOR"),KorBtnAnimation.setValue(1)}}
                 >
                     <WordSelectText>한글</WordSelectText>
                 </WordKorBtn>
                 <WordEngBtn 
                 style={{transform: [{scale:EngBtnAnimation}]}}
-                onPressIn={() => {ClickSound(),EngScaleToggle(0.8)}}
-                onPressOut={() => {BtnClick("ENG"),EngScaleToggle(1)}}
+                onPressIn={() => {ClickSound(),EngBtnAnimation.setValue(0.9)}}
+                onPressOut={() => {BtnClick("AnimalENG"),EngBtnAnimation.setValue(1)}}
                 >
                     <WordSelectText>영어</WordSelectText>
                 </WordEngBtn>
             </WordSelectContainer>
         </WordSelectModalBG>
-        )}
     </BG>
     // </Shell>
     )

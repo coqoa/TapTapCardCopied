@@ -1,18 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
-import {View, Text, Dimensions, PanResponder, Animated, Pressable, TouchableOpacity } from "react-native";
+import {View, Text, Dimensions, PanResponder, Animated, Pressable, TouchableOpacity ,ActivityIndicator} from "react-native";
 import { Audio } from 'expo-av';
 import styled from "styled-components";
 import { colors } from "../component/color";
 import { WordCardLevel } from "../component/CardDefault";
 
+
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
-// const Loader = styled.View`
-//     flex: 1;
-//     justify-content: center;
-//     align-items: center;
-// `;
+const Loader = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`;
+
 const Shell = styled.View`
     flex: 1;
     background-color: ${colors.mainBgColor};
@@ -52,10 +54,6 @@ const GoBack = styled(Animated.createAnimatedComponent(View))`
     justify-content: center;
     z-index: 30;
 `
-const GoBackBtn = styled.Pressable`
-    width: 100%;
-    height: 100%;
-`
 const GoBackBtnImage = styled.Image`
     width: 100%;
     height: 100%;
@@ -78,7 +76,6 @@ const Menu =  styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     width: 55px;
     height: 55px;
-    /* top: 3px; */
     right: 0px;
     align-items: center;
     justify-content: center;
@@ -96,8 +93,6 @@ const MenuModalBg = styled(Animated.createAnimatedComponent(TouchableOpacity))`
 `
 const MenuModalContainer = styled.View`
     position: absolute;
-    /* bottom: 14%; */
-    /* right: 10px; */
     top: 10%;
     width: 60%;
     height: 25%;
@@ -124,45 +119,6 @@ const StarViewImage = styled.ImageBackground`
     width: 100%;
     height: 100%;
 `
-const GoBackModalBg = styled.TouchableOpacity`
-    z-index: 35;
-    align-items: center;
-    justify-content: center;
-`
-const GoBackModalContainer = styled.View`
-    position: absolute;
-    bottom: 14%;
-    width: 55%;
-    height: 25%;
-    border-radius: 20px;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255,255,255,0.9);
-    box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
-`
-const GoBackModal = styled.View`
-    width: 95%;
-    height: 90%;
-    align-items: center;
-    justify-content: center;
-`
-const ModalBtn = styled(Animated.createAnimatedComponent(View))`
-    flex: 1;
-    width: 90%;
-    height: 90%;
-    align-items: center;
-    justify-content: center;
-    margin: 5px;
-    border-radius: 15px;
-    box-shadow: 0px 1px 3px rgba(0,0,0,0.3); 
-    background-color: rgba(255,255,255, 0.9);
-    `
-const GoBackText = styled.Text`
-    font-size: 25px;
-    font-family: 'SDChild';
-    color : white;
-`
-
 
 const WordPlay = ({route, navigation}) => {
 
@@ -241,14 +197,9 @@ const WordPlay = ({route, navigation}) => {
 
     // 뒤로가기 버튼
     const goBackBtnScale = useRef(new Animated.Value(1)).current
-    const goBackModalScale = useRef(new Animated.Value(0)).current
     const goBackPan = useRef(
         PanResponder.create({
             onStartShouldSetPanResponder: () => true,
-            // onPanResponderStart:() => {
-            //     if(JSON.stringify(goBackModalScale) == 0){goBackModalScale.setValue(1)}
-            //     else{goBackModalScale.setValue(0)}
-            // },
             onPanResponderGrant:() => {
                 ClickSound()
                 goBackBtnScale.setValue(0.8)
@@ -259,38 +210,6 @@ const WordPlay = ({route, navigation}) => {
             }            
         })
     ).current
-    // // 뒤로가기선택지
-    // const goBackDistractorScale = useRef(new Animated.Value(1)).current
-    // const goBackDistractorPan = useRef(
-    //     PanResponder.create({
-    //         onStartShouldSetPanResponder: () => true,
-    //         onPanResponderGrant:() => {
-    //             ClickSound()
-    //             goBackDistractorScale.setValue(0.8)
-    //         },
-    //         onPanResponderRelease:()=>{
-    //             goBackDistractorScale.setValue(1)
-    //             goBack()
-    //             goBackModalScale.setValue(0)
-    //         }            
-    //     })
-    // ).current
-    // //그냥있기 선택지
-    // const stayDistractorScale = useRef(new Animated.Value(1)).current
-    // const stayDistractorPan = useRef(
-    //     PanResponder.create({
-    //         onStartShouldSetPanResponder: () => true,
-    //         onPanResponderGrant:() => {
-    //             stayDistractorScale.setValue(0.8)
-    //             ClickSound()
-    //         },
-    //         onPanResponderRelease:()=>{
-    //             stayDistractorScale.setValue(1)
-    //             goBackModalScale.setValue(0)
-    //         }            
-    //     })
-    // ).current
-
 
     // mainScreenRender를 false로 만들면 실행되는 리렌더코드(clearTimeout해준다)
     const rerenderTimeout = useRef(null); 
@@ -323,6 +242,8 @@ const WordPlay = ({route, navigation}) => {
         } catch (error) {
         }
     }
+
+    
     return( 
         // loading ? (
         //     <Loader>
@@ -405,39 +326,8 @@ const WordPlay = ({route, navigation}) => {
                     </MenuModal>
                 </MenuModalContainer>
             </MenuModalBg>
-
-            {/* <GoBackModalBg 
-            style={{
-                position:"absolute", width:SCREEN_WIDTH, height:SCREEN_HEIGHT, backgroundColor:"rgba(0,0,0,0)",
-                transform:[{scale:goBackModalScale}]
-            }} 
-            onPress={()=>goBackModalScale.setValue(0)}
-            >
-                <GoBackModalContainer>
-                    <GoBackModal>
-                        <ModalBtn 
-                        {...goBackDistractorPan.panHandlers}
-                        style={{
-                            backgroundColor:colors.BLUE, 
-                            transform:[{scale:goBackDistractorScale}]
-                            }}
-                        >
-                            <GoBackText>메뉴로 가실?</GoBackText>
-                        </ModalBtn>
-                        <ModalBtn 
-                        {...stayDistractorPan.panHandlers}
-                        style={{
-                            backgroundColor:colors.REDORANGE, 
-                            transform:[{scale:stayDistractorScale}]
-                            }}
-                        >
-                            <GoBackText>그냥 여기있으실?</GoBackText>
-                        </ModalBtn>
-                    </GoBackModal>
-                </GoBackModalContainer>
-            </GoBackModalBg> */}
-            
             </Shell>
         )
+    // )
 }
 export default WordPlay;

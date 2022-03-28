@@ -218,7 +218,7 @@ const RealPictureBtn = styled(Animated.createAnimatedComponent(Pressable))`
     right: 5px;
     border-radius: 10px;
     background-color: rgba(255,255,255,0.8);
-    box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.4);
     z-index: 49;
     align-items: center;
     justify-content: center;
@@ -227,11 +227,13 @@ const RealPictureBtn = styled(Animated.createAnimatedComponent(Pressable))`
 const RealPictureBtnBGContainer = styled.View`
     width: 80%;
     height: 80%;
-    /* border: 1px solid red; */
     justify-content: center;
     align-items: center;
-`
+    `
 const RealPictureBtnBG = styled.Image`
+/* border: 1px solid red; */
+border-radius: 10px;
+
     width: 100%;
     height: 100%;
 `
@@ -417,6 +419,7 @@ export const WordCardLevel = (props) => {
     const pictureContainerScale = useRef(new Animated.Value(0)).current
     const pictureContainerModalOn = Animated.spring(pictureContainerScale,{
         toValue:1,
+        // duration:200,
         useNativeDriver:true
     })
     const pictureContainerModalOff = Animated.spring(pictureContainerScale,{
@@ -435,16 +438,29 @@ export const WordCardLevel = (props) => {
     const pictureOpenPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
         onPanResponderStart:()=>{
-            Animated.sequence([pictureBtnPressIn, pictureBtnPressOut, 
-                Animated.parallel([pictureContainerModalOn, pictureOpacityOn])
-            ]).start();
+            // Animated.sequence([pictureBtnPressIn, 
+                Animated.parallel([pictureContainerModalOn, pictureOpacityOn]).start();
         }
     })).current
+
+    const pictureCloseBtnScale = useRef(new Animated.Value(1)).current
+    const pictureCloseBtnPressIn = Animated.timing(pictureCloseBtnScale,{
+        toValue:0.8,
+        duration:100,
+        useNativeDriver:true
+    })
+    const pictureCloseBtnPressOut = Animated.timing(pictureCloseBtnScale,{
+        toValue:1,
+        duration:100,
+        delay:50,
+        useNativeDriver:true
+    })
     const pictureClosePan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
         onPanResponderStart:()=>{
             // console.log('asd')
-        Animated.parallel([pictureContainerModalOff,pictureOpacityOff]).start();
+        Animated.sequence([pictureCloseBtnPressIn, pictureCloseBtnPressOut,
+            Animated.parallel([pictureContainerModalOff,pictureOpacityOff])]).start();
         }
     })).current
 
@@ -689,15 +705,23 @@ export const WordCardLevel = (props) => {
         return() => clearTimeout(refreshTimeout.current)
     },[refresh])
 
+    // FlatList data 분배기
+    const arrayAlloter = (e) => {
+        if(e=="AnimalKOR" || "AnimalENG"){
+            console.log('동물')
+            return WordCardArray
+        }
+    }
     const levelConsole = () => {
         return(
             <View  style={{alignItems:"center", justifyContent:"center"}}>
             {/* 카드부분 */}
             {refresh && (
             <>
+            
             <CardList
                 {...panResponder.panHandlers}
-                data={WordCardArray}
+                data={arrayAlloter(type)}
                 pagingEnabled
                 scrollEnabled={scrollOn}
                 horizontal
@@ -725,18 +749,18 @@ export const WordCardLevel = (props) => {
                         //type에 따라 다른 값 출력
                     const itemName = () => {
                         switch(type){
-                            case "KOR":
+                            case "AnimalKOR":
                                 return item.nameKOR;
-                            case "ENG":
+                            case "AnimalENG":
                                 return item.nameENG;
                             default:
                                 return
                     }}
                     const itemAudio = () => {
                         switch(type){
-                            case "KOR":
+                            case "AnimalKOR":
                                 return item.SoundKOR;
-                            case "ENG":
+                            case "AnimalENG":
                                 return item.SoundENG;
                             default:
                                 return
@@ -745,9 +769,9 @@ export const WordCardLevel = (props) => {
                     //선택지 이름
                     const distractorName = (e) =>{
                         switch(type){
-                            case "KOR":
+                            case "AnimalKOR":
                                 return numArray[e].nameKOR;
-                            case "ENG":
+                            case "AnimalENG":
                                 return numArray[e].nameENG;
                             default:
                                 return
@@ -756,9 +780,9 @@ export const WordCardLevel = (props) => {
                     // 선택지 오디오
                     const distractorAudio = (e) => {
                         switch(type){
-                            case "KOR":
+                            case "AnimalKOR":
                                 return numArray[e].SoundKOR;
-                            case "ENG":
+                            case "AnimalENG":
                                 return numArray[e].SoundENG;
                             default:
                                 return
@@ -773,7 +797,7 @@ export const WordCardLevel = (props) => {
                         
                         {/* 실사 모달창 */}
                         <RealPictureContainer style={{opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
-                            <RealPictureExitBtn  {...pictureClosePan.panHandlers} onPress={()=>setScrollOn(true)} >
+                            <RealPictureExitBtn  {...pictureClosePan.panHandlers} onPressIn={()=>{ClickSound()}} onPressOut={()=>{setScrollOn(true)}} style={{transform:[{scale:pictureCloseBtnScale}]}}>
                                 <RealPictureExitBtnImage source={require("../asset/images/RealPictureExitBtn.png")} resizeMode="contain" />
                             </RealPictureExitBtn>
                             <RealPictureScrollView style={{width:SCREEN_WIDTH}}  pagingEnabled horizontal>
@@ -795,13 +819,20 @@ export const WordCardLevel = (props) => {
                             <RealPictureBtn
                             {...pictureOpenPan.panHandlers}
                             style={{transform:[{scale:pictureBtnScale}]}}
-                            onPress={()=>{setScrollOn(false)}}
+                            onPressIn={()=>{ClickSound(), pictureBtnScale.setValue(0.8)}}
+                            onPressOut={()=>{setScrollOn(false), pictureBtnScale.setValue(1)}}
                             // onPress={()=>{clickBlockerValue.setValue(1)}}
                             >
                                 {/* <Text>사진</Text> */}
-                                <RealPictureBtnBGContainer>
+                                {/* <RealPictureBtnBGContainer>
                                     <RealPictureBtnBG source={require("../asset/images/RealPictureBtn.png")} resizeMode="contain" />
+                                </RealPictureBtnBGContainer> */}
+                                <RealPictureBtnBGContainer>
+                                    <RealPictureBtnBG source={item.realImage1} resizeMode="cover" />
                                 </RealPictureBtnBGContainer>
+
+                                {/* <Ionicons name="ios-image-outline" size={24} color="black" /> */}
+
                             </RealPictureBtn>
 
                             {/* 카드 이미지 부분 */}
@@ -927,16 +958,16 @@ export const WordCardLevel = (props) => {
                             onPressIn={() => ClickSound()}
                             onPressOut={() => restartLevelBtn()}
                         >
-                            {type == "KOR" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
-                            {type == "ENG" && (<RepeatLevelText>Again !</RepeatLevelText>)}
+                            {type == "AnimalKOR" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
+                            {type == "AnimalENG" && (<RepeatLevelText>Again !</RepeatLevelText>)}
                         </RepeatLevel>
                         { props.level !== "word3LV" && (
                         <NextLevel 
                             onPressIn={()=> ClickSound()}
                             onPressOut={()=> nextLevelBtn(props.level)}
                         >
-                            {type == "KOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
-                            {type == "ENG" && (<NextLevelText>Next Level !</NextLevelText>)}
+                            {type == "AnimalKOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
+                            {type == "AnimalENG" && (<NextLevelText>Next Level !</NextLevelText>)}
                         </NextLevel>
                         )}
                     </ClearModal>

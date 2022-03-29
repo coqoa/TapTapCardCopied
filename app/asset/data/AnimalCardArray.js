@@ -1,7 +1,7 @@
 import { colors } from "../../component/color"
 
 
-export const WordCardArray = [
+export const AnimalCardArray = [
     {
         "id" : 0, 
         "image" : require("../images/Animal/Cow1.png"), 

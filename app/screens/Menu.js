@@ -1,6 +1,6 @@
 import React,{ useState, useRef } from "react";
 import styled from "styled-components";
-import {Animated, Pressable } from "react-native";
+import {Animated, Pressable, View} from "react-native";
 import { Audio } from 'expo-av';
 import { colors } from "../component/color";
 import { transform } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
@@ -35,14 +35,14 @@ const MenuBoxShell = styled.View`
         font-family: 'SDChild';
     `
 
-const WordSelectModalBG = styled(Animated.createAnimatedComponent(Pressable))`
+const SelectModalBG = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     width: 100%;
     height: 100%;
     align-items: center;
     justify-content: center;
 `
-const WordSelectContainer = styled.View`
+const SelectContainer = styled(Animated.createAnimatedComponent(View))`
     width: 250px;
     height: 270px;
     background-color: white;
@@ -101,8 +101,11 @@ const Menu = ({navigation}) => {
     //Btn Animation
     const wordSelectModal = useRef(new Animated.Value(0)).current;
 
+    // 가나다버튼
+    const ganadaBtnAnimation = useRef(new Animated.Value(1)).current;
     // 동물버튼
     const wordPlayBtnAnimation = useRef(new Animated.Value(1)).current;
+    const animalSelectScale = useRef(new Animated.Value(0)).current
     // 한글버튼
     const KorBtnAnimation = useRef(new Animated.Value(1)).current;
     // 영어버튼
@@ -117,24 +120,36 @@ const Menu = ({navigation}) => {
     // <Shell>
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
         <MenuBoxShell>
+            <MenuBox
+                style={{transform: [{scale:ganadaBtnAnimation}]}}
+                onPressIn={() => {ClickSound(), ganadaBtnAnimation.setValue(0.9)}}
+                onPressOut={() => (BtnClick("ganada"),ganadaBtnAnimation.setValue(1))}
+            >
+                    <MenuText>가나다</MenuText>
+            </MenuBox>
+            <MenuBox>
+                    <MenuText>ABC</MenuText>
+            </MenuBox>
+            <MenuBox>
+                    <MenuText>숫자</MenuText>
+            </MenuBox>
             <MenuBox 
                 style={{transform: [{scale:wordPlayBtnAnimation}]}}
                 onPressIn={() => {ClickSound(), wordPlayBtnAnimation.setValue(0.9)}}
-                onPressOut={() => (wordSelectModal.setValue(1),wordPlayBtnAnimation.setValue(1))}
+                onPressOut={() => (wordSelectModal.setValue(1), animalSelectScale.setValue(1) ,wordPlayBtnAnimation.setValue(1))}
             >
                 <MenuText>동물</MenuText>
             </MenuBox>
-            <MenuBox>
-                <MenuText>수학 놀이</MenuText>
-            </MenuBox>
+            
             
         </MenuBoxShell>
 
         {/* 동물 세부메뉴 */}
         {/*  모달컨테이너를 제외한 전체화면 : 터치시 모달 닫기위해 구현 */}
-        <WordSelectModalBG style={{transform:[{scale:wordSelectModal}]}} onPress={()=>wordSelectModal.setValue(0)}>
-            <WordSelectContainer>
-                <WordSelectTitle><WordSelectTitleText>단어놀이</WordSelectTitleText></WordSelectTitle>
+        <SelectModalBG style={{transform:[{scale:wordSelectModal}]}} onPress={()=>{wordSelectModal.setValue(0), animalSelectScale.setValue(0)}}>
+
+            <SelectContainer style={{transform:[{scale:animalSelectScale}]}}>
+                <WordSelectTitle><WordSelectTitleText>동물</WordSelectTitleText></WordSelectTitle>
                 <WordKorBtn 
                     style={{transform: [{scale:KorBtnAnimation}]}}
                     onPressIn={() => (ClickSound(), KorBtnAnimation.setValue(0.9))}
@@ -149,8 +164,8 @@ const Menu = ({navigation}) => {
                 >
                     <WordSelectText>영어</WordSelectText>
                 </WordEngBtn>
-            </WordSelectContainer>
-        </WordSelectModalBG>
+            </SelectContainer>
+        </SelectModalBG>
     </BG>
     // </Shell>
     )

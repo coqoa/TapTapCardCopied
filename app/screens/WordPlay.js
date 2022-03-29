@@ -87,6 +87,8 @@ const MenuBtnImage = styled.ImageBackground`
 `
 
 const MenuModalBg = styled(Animated.createAnimatedComponent(TouchableOpacity))`
+    position: absolute;
+    background-color: rgba(0,0,0,0);
     z-index: 35;
     align-items: center;
     justify-content: center;
@@ -106,7 +108,7 @@ const MenuModal = styled.View`
     width: 90%;
     height: 90%;
 `
-const LevelBtn = styled(Animated.createAnimatedComponent(View))`
+const LevelBtn = styled(Animated.createAnimatedComponent(Pressable))`
     flex: 1;
     align-items: center;
     justify-content: center;
@@ -125,6 +127,7 @@ const WordPlay = ({route, navigation}) => {
     const [loading, setLoading] = useState(true);
     const [cardSelector, setCardSelector] = useState();
     const [mainScreenRender, setMainScreenRender] = useState(false)
+    const [typeCheckRes, setTypeCheckRes] = useState("")
     
     //버튼애니메이션 & 상호작용
     //햄버거 바 버튼
@@ -136,9 +139,9 @@ const WordPlay = ({route, navigation}) => {
             onPanResponderStart:() => {
                 if(JSON.stringify(menuModalScale) == 0){menuModalScale.setValue(1)}
                 else{menuModalScale.setValue(0)}
-                ClickSound()
             },
             onPanResponderGrant:() => {
+                    ClickSound()
                 menuBtnScale.setValue(0.8)
             },
             onPanResponderRelease:()=>{
@@ -148,52 +151,52 @@ const WordPlay = ({route, navigation}) => {
     ).current
     // 1레벨선택버튼
     const level1Scale = useRef(new Animated.Value(1)).current
-    const level1Pan = useRef(
-        PanResponder.create({
-            onStartShouldSetPanResponder: () => true,
-            onPanResponderGrant:() => {
-                ClickSound()
-                level1Scale.setValue(0.8)
-            },
-            onPanResponderRelease:()=>{
-                cardCheck("word1LV")
-                menuModalScale.setValue(0)
-                level1Scale.setValue(1)
-            }            
-        })
-    ).current
+    // const level1Pan = useRef(
+    //     PanResponder.create({
+    //         onStartShouldSetPanResponder: () => true,
+    //         onPanResponderStart:() => {
+    //             ClickSound()
+    //             level1Scale.setValue(0.8)
+    //         },
+    //         onPanResponderEnd:()=>{
+    //             cardCheck("word1LV")
+    //             menuModalScale.setValue(0)
+    //             level1Scale.setValue(1)
+    //         }            
+    //     })
+    // ).current
     // 2레벨선택버튼
     const level2Scale = useRef(new Animated.Value(1)).current
-    const level2Pan = useRef(
-        PanResponder.create({
-            onStartShouldSetPanResponder: () => true,
-            onPanResponderGrant:() => {
-                ClickSound()
-                level2Scale.setValue(0.8)
-            },
-            onPanResponderRelease:()=>{
-                cardCheck("word2LV")
-                menuModalScale.setValue(0)
-                level2Scale.setValue(1)
-            }            
-        })
-    ).current
+    // const level2Pan = useRef(
+    //     PanResponder.create({
+    //         onStartShouldSetPanResponder: () => true,
+    //         onPanResponderStart:() => {
+    //             ClickSound()
+    //             level2Scale.setValue(0.8)
+    //         },
+    //         onPanResponderEnd:()=>{
+    //             cardCheck("word2LV")
+    //             menuModalScale.setValue(0)
+    //             level2Scale.setValue(1)
+    //         }            
+    //     })
+    // ).current
     // 3레벨선택버튼
     const level3Scale = useRef(new Animated.Value(1)).current
-    const level3Pan = useRef(
-        PanResponder.create({
-            onStartShouldSetPanResponder: () => true,
-            onPanResponderGrant:() => {
-                ClickSound()
-                level3Scale.setValue(0.8)
-            },
-            onPanResponderRelease:()=>{
-                cardCheck("word3LV")
-                menuModalScale.setValue(0)
-                level3Scale.setValue(1)
-            }            
-        })
-    ).current
+    // const level3Pan = useRef(
+    //     PanResponder.create({
+    //         onStartShouldSetPanResponder: () => true,
+    //         onPanResponderStart:() => {
+    //             ClickSound()
+    //             level3Scale.setValue(0.8)
+    //         },
+    //         onPanResponderEnd:()=>{
+    //             cardCheck("word3LV")
+    //             menuModalScale.setValue(0)
+    //             level3Scale.setValue(1)
+    //         }            
+    //     })
+    // ).current
 
     // 뒤로가기 버튼
     const goBackBtnScale = useRef(new Animated.Value(1)).current
@@ -242,9 +245,22 @@ const WordPlay = ({route, navigation}) => {
         } catch (error) {
         }
     }
+    const typeCheck = (e) => {
+        if(e=="AnimalKOR"){
+            return setTypeCheckRes("Animal")
+        }else if (e=="AnimalENG"){
+            return setTypeCheckRes("Animal")
+        }else if (e=="ganada"){
+            return setTypeCheckRes("ganada")
+        }
+    }
 
+    useEffect(()=>{
+        typeCheck(type)
+    },[])
     
     return( 
+        
         // loading ? (
         //     <Loader>
         //         <ActivityIndicator />
@@ -252,6 +268,7 @@ const WordPlay = ({route, navigation}) => {
         // ) : (
             
             <Shell>
+                {/* {console.log(type)} */}
                 {/* 카드를 출력되는 부분은 CardDefault 컴포넌트를 불러와서 사용함 */}
             
             <TopContainer>
@@ -290,41 +307,61 @@ const WordPlay = ({route, navigation}) => {
             
             {/* 햄버거바 터치시 출력되는 모달 */}
             <MenuModalBg 
-            style={{
-                position:"absolute", width:SCREEN_WIDTH, height:SCREEN_HEIGHT, backgroundColor:"rgba(0,0,0,0)",
-                transform: [{scale:menuModalScale}]
-            }}
+            style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT,transform: [{scale:menuModalScale}]}}
             onPress={() => menuModalScale.setValue(0)}
             >
                 <MenuModalContainer>
                     <MenuModal>
-                        {/* 1레벨이 아닌 이미지가 출력되도록 바꿀예정 */}
-                        <LevelBtn 
-                            {...level1Pan.panHandlers}
-                            style={{
-                                backgroundColor: colors.BLUE,
-                                transform: [{scale:level1Scale}]}}
-                        >
+                        {typeCheckRes == "Animal" && (
+                            <>
+                            <LevelBtn 
+                            // {...level1Pan.panHandlers}
+                            style={{backgroundColor: colors.BLUE, transform: [{scale:level1Scale}]}}
+                            onPressIn={()=>{ClickSound(), level1Scale.setValue(0.8)}}
+                            onPressOut={()=>{cardCheck("word1LV"), menuModalScale.setValue(0), level1Scale.setValue(1)}}
+                            >
                             <StarViewImage source={require("../asset/images/Star1.png")} resizeMode="contain" />
-                        </LevelBtn>
-                        <LevelBtn 
-                            {...level2Pan.panHandlers}
-                            style={{
-                                backgroundColor: colors.REDORANGE,
-                                transform: [{scale:level2Scale}]}}
-                        >
+                            </LevelBtn>
+                            <LevelBtn 
+                            // {...level2Pan.panHandlers}
+                            style={{backgroundColor: colors.REDORANGE, transform: [{scale:level2Scale}]}}
+                            onPressIn={()=>{ClickSound(), level2Scale.setValue(0.8)}}
+                            onPressOut={()=>{cardCheck("word2LV"), menuModalScale.setValue(0), level2Scale.setValue(1)}}
+                            >
                             <StarViewImage source={require("../asset/images/Star2.png")} resizeMode="contain" />
-                        </LevelBtn>
-                        <LevelBtn 
-                            {...level3Pan.panHandlers}
-                            style={{
-                                backgroundColor: colors.DARKOLIVE,
-                                transform: [{scale:level3Scale}]}}
-                        >
+                            </LevelBtn>
+                            <LevelBtn 
+                            // {...level3Pan.panHandlers}
+                            style={{backgroundColor: colors.DARKOLIVE, transform: [{scale:level3Scale}]}}
+                            onPressIn={()=>{ClickSound(), level3Scale.setValue(0.8)}}
+                            onPressOut={()=>{cardCheck("word3LV"), menuModalScale.setValue(0), level3Scale.setValue(1)}}
+                            >
                             <StarViewImage source={require("../asset/images/Star3.png")} resizeMode="contain" />
-                        </LevelBtn>
+                            </LevelBtn>
+                            </>
+                        )}
+                        {typeCheckRes == "ganada" && (
+                            <>
+                            <LevelBtn 
+                            style={{backgroundColor: colors.BLUE, transform: [{scale:level1Scale}]}}
+                            onPressIn={()=>{ClickSound(), level1Scale.setValue(0.8)}}
+                            onPressOut={()=>{cardCheck("word1LV"), menuModalScale.setValue(0), level1Scale.setValue(1)}}
+                            >
+                            <Text>자음</Text>
+                            </LevelBtn>
+                            <LevelBtn 
+                            style={{backgroundColor: colors.REDORANGE, transform: [{scale:level2Scale}]}}
+                            onPressIn={()=>{ClickSound(), level2Scale.setValue(0.8)}}
+                            onPressOut={()=>{cardCheck("word2LV"), menuModalScale.setValue(0), level2Scale.setValue(1)}}
+                            >
+                            <Text>모음</Text>
+                            </LevelBtn>
+                            </>
+                        )}
+                       
                     </MenuModal>
                 </MenuModalContainer>
+                
             </MenuModalBg>
             </Shell>
         )

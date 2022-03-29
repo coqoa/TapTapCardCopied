@@ -2,10 +2,12 @@ import React, {useState, useEffect, useCallback, useRef} from "react"
 import { Audio } from 'expo-av';
 import {View, Dimensions, FlatList, Animated, Easing, TouchableOpacity, Pressable, PanResponder,Text, TextInput, Button, ScrollView } from "react-native";
 import styled from "styled-components"
-import { WordCardArray } from "../asset/data/WordCardArray";
 import { colors } from "./color";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { AnimalCardArray } from "../asset/data/AnimalCardArray";
+import { WordArrayKOR } from "../asset/data/WordArrayKOR";
 //Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -291,6 +293,28 @@ background-color: transparent;
     z-index: 100;
     border-radius: 15px;
 `
+//가나다관련
+const GanadaNameContainer = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`
+const GanadaNameShell = styled.View`
+    flex-direction:row;
+`
+const GanadaNameContents = styled.TouchableOpacity`
+    
+    flex: 1;
+    height: 30px;
+    border-radius: 10px;
+    margin: 2px;
+    border:1px solid black;
+`
+const GanadaNameText = styled.Text`
+    text-align: center;
+    font-family: "SDChild";
+    font-size: 30px;
+`
 // ---------------------------------------------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
@@ -365,7 +389,7 @@ export const WordCardLevel = (props) => {
     })
     const secondImageOff = Animated.timing(secondImageOpacity, {
         toValue:0,
-        delay:1700,
+        delay:500,
         useNativeDriver:true
     })
     const secondImagePan = useRef(PanResponder.create({
@@ -707,9 +731,14 @@ export const WordCardLevel = (props) => {
 
     // FlatList data 분배기
     const arrayAlloter = (e) => {
-        if(e=="AnimalKOR" || "AnimalENG"){
-            console.log('동물')
-            return WordCardArray
+        if(e=="AnimalKOR"){
+            // console.log(e)
+            return AnimalCardArray
+        }else if(e == "AnimalENG"){
+            return AnimalCardArray
+        }else if(e=="ganada"){
+            // console.log(e)
+            return WordArrayKOR
         }
     }
     const levelConsole = () => {
@@ -718,7 +747,7 @@ export const WordCardLevel = (props) => {
             {/* 카드부분 */}
             {refresh && (
             <>
-            
+            {/* {console.log(arrayAlloter(type))} */}
             <CardList
                 {...panResponder.panHandlers}
                 data={arrayAlloter(type)}
@@ -729,17 +758,20 @@ export const WordCardLevel = (props) => {
                 onEndReached={lastListModalOn}
                 onEndReachedThreshold={-0.1}
                 renderItem = {({item})=>{
+
+                    // {console.log(WordArrayKOR)}
+                    // {console.log(arrayAlloter(type) == AnimalCardArray)}
                     // 무작위배열만들기
                     const numberArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
                     // 배열마다 무작위 숫자 부여
-                    const mapArray = numberArray.map(item => item*Math.floor(Math.random()*WordCardArray.length)) 
+                    const mapArray = numberArray.map(item => item*Math.floor(Math.random()*AnimalCardArray.length)) 
                     //동일한 숫자 제거
                     const mapArraySort = Array.from(new Set(mapArray))
                     // 해당카드의 id는 제거한다(중복방지)
                     const filterMapArray = mapArraySort.filter(function(element){
                         return element !== item.id
                     });
-                    const numArray =  [item, WordCardArray[filterMapArray[0]], WordCardArray[filterMapArray[1]], WordCardArray[filterMapArray[2]]]
+                    const numArray =  [item, AnimalCardArray[filterMapArray[0]], AnimalCardArray[filterMapArray[1]], AnimalCardArray[filterMapArray[2]]]
                     // 배열 섞기
                     function shuffle(array) {
                         array.sort(() => Math.random() - 0.5);
@@ -792,10 +824,19 @@ export const WordCardLevel = (props) => {
                             <PictureImageShell style={{width:SCREEN_WIDTH}}><PictureImage source={e} resizeMode="cover" /></PictureImageShell>
                         )
                     }
+
+                    // 가나다버튼
+                    const ganadaBtn = (e,j) =>{
+                        return(
+                            <GanadaNameContents onPress={()=>{playSound(e)}}><GanadaNameText>{j}</GanadaNameText></GanadaNameContents>
+                        )
+                    }
+
                     return (
                     <CardSection style={{width:SCREEN_WIDTH}}> 
                         
                         {/* 실사 모달창 */}
+                        {arrayAlloter(type) == AnimalCardArray && (
                         <RealPictureContainer style={{opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
                             <RealPictureExitBtn  {...pictureClosePan.panHandlers} onPressIn={()=>{ClickSound()}} onPressOut={()=>{setScrollOn(true)}} style={{transform:[{scale:pictureCloseBtnScale}]}}>
                                 <RealPictureExitBtnImage source={require("../asset/images/RealPictureExitBtn.png")} resizeMode="contain" />
@@ -808,6 +849,7 @@ export const WordCardLevel = (props) => {
                                 {PictureImageData(item.realImage5)}
                             </RealPictureScrollView>
                         </RealPictureContainer>
+                        )}
                         {/* 카드전체스타일 */}
                         <Card style={{
                             backgroundColor : colors.BEIGE,
@@ -816,24 +858,19 @@ export const WordCardLevel = (props) => {
                         }}>
 
                             {/* 실사모달버튼 */}
-                            <RealPictureBtn
-                            {...pictureOpenPan.panHandlers}
-                            style={{transform:[{scale:pictureBtnScale}]}}
-                            onPressIn={()=>{ClickSound(), pictureBtnScale.setValue(0.8)}}
-                            onPressOut={()=>{setScrollOn(false), pictureBtnScale.setValue(1)}}
-                            // onPress={()=>{clickBlockerValue.setValue(1)}}
-                            >
-                                {/* <Text>사진</Text> */}
-                                {/* <RealPictureBtnBGContainer>
-                                    <RealPictureBtnBG source={require("../asset/images/RealPictureBtn.png")} resizeMode="contain" />
-                                </RealPictureBtnBGContainer> */}
-                                <RealPictureBtnBGContainer>
-                                    <RealPictureBtnBG source={item.realImage1} resizeMode="cover" />
-                                </RealPictureBtnBGContainer>
-
-                                {/* <Ionicons name="ios-image-outline" size={24} color="black" /> */}
-
-                            </RealPictureBtn>
+                            {arrayAlloter(type) == AnimalCardArray && (
+                                <RealPictureBtn
+                                {...pictureOpenPan.panHandlers}
+                                style={{transform:[{scale:pictureBtnScale}]}}
+                                onPressIn={()=>{ClickSound(), pictureBtnScale.setValue(0.8)}}
+                                onPressOut={()=>{setScrollOn(false), pictureBtnScale.setValue(1)}}
+                                >
+                                    <RealPictureBtnBGContainer>
+                                        <RealPictureBtnBG source={item.realImage1} resizeMode="cover" />
+                                    </RealPictureBtnBGContainer>
+                                </RealPictureBtn>
+                            )}
+                                
 
                             {/* 카드 이미지 부분 */}
                             <CardImgShell style={{backgroundColor:item.bgColor}}>
@@ -855,90 +892,122 @@ export const WordCardLevel = (props) => {
                             {/* 카드 텍스트 부분 */}
                             <CardContents style={{flex:props.level == "word3LV" ? 2 : 1}}>
                                 <CardName>
-                                    <CardNameText>{itemName()}</CardNameText>
-                                    
-                                    {/* type에 따라 한글을 읽어주는지, 영어를 읽어주는지 */}
-                                    <TextAudioBtn {...secondTextPan.panHandlers}
-                                    onPressOut={()=>{playSound(itemAudio()),clickBlockerFunc()}} />
-                                    
-                                    {/* 터치시 텍스트 색깔을 바꿔주는 모달 */}
-                                    <CardNameModal style={{opacity:secondTextOpacity}}>
-                                        <CardNameModalText style={{color:item.bgColor}}>{itemName()}</CardNameModalText>
-                                    </CardNameModal>
 
-                                    {/* 2레벨에서만 사용되는 물음표 박스 컴포넌트 */}
-                                    {props.level == "word2LV" && (
-                                        <QuestionMarkBg style={{opacity:questionOpacity}}>
-                                            <QuestionMarkBtn {...questionPan.panHandlers} onPress={() => {playSound(itemAudio())} } >    
-                                                <QuestionMarkImage source={item.questionMarkImage} resizeMode="contain"/>
-                                            </QuestionMarkBtn>                                                    
-                                        </QuestionMarkBg>
-                                    )}
-                                    {props.level == "word3LV" &&(
-                                    <>
-                                        {distractorWindowBackground&&(
-                                            <DistractorContainer style={{opacity:distractorContainerValue, transform:[{scale:distractorContainerValue}]}}>
-                                                {distractorWindow && (
-                                                <>
-                                                    <DistractorRow>
-                                                        {/* 선택지 1번 */}
-                                                        {itemName() == distractorName(0) ? (
-                                                            <Distractor {...distractorBtn1Pan.panHandlers} style={{transform:[{scale:distractorBtn1}]}} onPressIn={()=> distractorBtn1.setValue(0.8) } onPressOut={() => {distractorBtn1.setValue(1), playSound(distractorAudio(0)),clickBlockerFunc()}}>
-                                                                <DistractorText>{distractorName(0)}</DistractorText>
-                                                            </Distractor>
-                                                        ):(
-                                                            <Distractor {...distractorBtn1PanWrong.panHandlers} style={{transform:[{scale:distractorBtn1}]}} onPressIn={()=>distractorBtn1.setValue(0.8)} onPressOut={() => {distractorBtn1.setValue(1), playSound(numArray[0].SoundImage),clickBlockerFunc()}}>
-                                                                <DistractorText>{distractorName(0)}</DistractorText>
-                                                                <ViewWrong style={{backgroundColor:numArray[0].bgColor ,transform:[{scale:wrongImageValue1}]}}><ViewWrongImage source={numArray[0].image} resizeMode="contain" /></ViewWrong>
-                                                            </Distractor>
-                                                        )}
-
-                                                        {/* 선택지 2번 */}
-                                                        {itemName() == distractorName(1) ? (
-                                                            <Distractor {...distractorBtn2Pan.panHandlers} style={{transform:[{scale:distractorBtn2}]}} onPressIn={()=> distractorBtn2.setValue(0.8) } onPressOut={() => {distractorBtn2.setValue(1), playSound(distractorAudio(1)),clickBlockerFunc()}}>
-                                                                <DistractorText>{distractorName(1)}</DistractorText>
-                                                            </Distractor>
-                                                        ):(
-                                                            <Distractor {...distractorBtn2PanWrong.panHandlers} style={{transform:[{scale:distractorBtn2}]}} onPressIn={()=>distractorBtn2.setValue(0.8)} onPressOut={() => {distractorBtn2.setValue(1), playSound(numArray[1].SoundImage),clickBlockerFunc()}}>
-                                                                <DistractorText>{distractorName(1)}</DistractorText>
-                                                                <ViewWrong style={{backgroundColor:numArray[1].bgColor ,transform:[{scale:wrongImageValue2}]}}><ViewWrongImage source={numArray[1].image} resizeMode="contain" /></ViewWrong>
-                                                            </Distractor>
-                                                        )}
-                                                    </DistractorRow>
-                                                    <DistractorRow>
-                                                        {/* 선택지 3번 */}
-                                                        {itemName() == distractorName(2) ? (
-                                                            <Distractor {...distractorBtn3Pan.panHandlers} style={{transform:[{scale:distractorBtn3}]}} onPressIn={()=> distractorBtn3.setValue(0.8) } onPressOut={() => {distractorBtn3.setValue(1), playSound(distractorAudio(2)),clickBlockerFunc()}}>
-                                                                <DistractorText>{distractorName(2)}</DistractorText>
-                                                            </Distractor>
-                                                        ):(
-                                                            <Distractor {...distractorBtn3PanWrong.panHandlers} style={{transform:[{scale:distractorBtn3}]}} onPressIn={()=>distractorBtn3.setValue(0.8)} onPressOut={() => {distractorBtn3.setValue(1), playSound(numArray[2].SoundImage),clickBlockerFunc()}}>
-                                                                <DistractorText>{distractorName(2)}</DistractorText>
-                                                                <ViewWrong style={{backgroundColor:numArray[2].bgColor ,transform:[{scale:wrongImageValue3}]}}><ViewWrongImage source={numArray[2].image} resizeMode="contain" /></ViewWrong>
-                                                            </Distractor>
-                                                        )}
-                                                        {/* 선택지 4번 */}
-                                                        {itemName() == distractorName(3) ? (
-                                                            <Distractor {...distractorBtn4Pan.panHandlers} style={{transform:[{scale:distractorBtn4}]}} onPressIn={()=> distractorBtn4.setValue(0.8) } onPressOut={() => {distractorBtn4.setValue(1), playSound(distractorAudio(3)),clickBlockerFunc()}}>
-                                                                <DistractorText>{distractorName(3)}</DistractorText>
-                                                            </Distractor>
-                                                        ):(
-                                                            <Distractor {...distractorBtn4PanWrong.panHandlers} style={{transform:[{scale:distractorBtn4}]}} onPressIn={()=>distractorBtn4.setValue(0.8)} onPressOut={() => {distractorBtn4.setValue(1), playSound(numArray[3].SoundImage),clickBlockerFunc()}}>
-                                                                <DistractorText>{distractorName(3)}</DistractorText>
-                                                                <ViewWrong style={{backgroundColor:numArray[3].bgColor ,transform:[{scale:wrongImageValue4}]}}><ViewWrongImage source={numArray[3].image} resizeMode="contain" /></ViewWrong>
-                                                            </Distractor>
-                                                        )}
-                                                    </DistractorRow>
-                                                </>
-                                                )}
-                                            </DistractorContainer>
+                                    {arrayAlloter(type) == WordArrayKOR && (
+                                    <GanadaNameContainer>
+                                        <GanadaNameShell>
+                                            {ganadaBtn(item.SoundItem1, item.item1)}
+                                            {ganadaBtn(item.SoundItem2, item.item2)}
+                                            {ganadaBtn(item.SoundItem3, item.item3)}
+                                            {ganadaBtn(item.SoundItem4, item.item4)}
+                                            {ganadaBtn(item.SoundItem5, item.item5)}
+                                        </GanadaNameShell>
+                                        <GanadaNameShell>
+                                            {ganadaBtn(item.SoundItem6, item.item6)}
+                                            {ganadaBtn(item.SoundItem7, item.item7)}
+                                            {ganadaBtn(item.SoundItem8, item.item8)}
+                                            {ganadaBtn(item.SoundItem9, item.item9)}
+                                            {ganadaBtn(item.SoundItem10, item.item10)}
+                                        </GanadaNameShell>
+                                        {item.item11!==undefined &&(
+                                        <GanadaNameShell>
+                                            {ganadaBtn(item.SoundItem11, item.item11)}
+                                            {ganadaBtn(item.SoundItem12, item.item12)}
+                                            {ganadaBtn(item.SoundItem13, item.item13)}
+                                            {ganadaBtn(item.SoundItem14, item.item14)}
+                                        </GanadaNameShell>
                                         )}
-                                        {/* 정답체크 */}
-                                        <CorrectAnswerContainer style={{transform:[{scale:correctAnswerMarkValue}]}}>
-                                            <CorrectAnswerImage source={require("../asset/images/Check.png")} />
-                                        </CorrectAnswerContainer>
-                                    </> 
+                                    </GanadaNameContainer>
                                     )}
+                                    {arrayAlloter(type) == AnimalCardArray && (
+                                    <>
+                                        <CardNameText>{itemName()}</CardNameText>
+                                    
+                                        {/* type에 따라 한글을 읽어주는지, 영어를 읽어주는지 */}
+                                        <TextAudioBtn {...secondTextPan.panHandlers}
+                                        onPressOut={()=>{playSound(itemAudio()),clickBlockerFunc()}} />
+                                        
+                                        {/* 터치시 텍스트 색깔을 바꿔주는 모달 */}
+                                        <CardNameModal style={{opacity:secondTextOpacity}}>
+                                            <CardNameModalText style={{color:item.bgColor}}>{itemName()}</CardNameModalText>
+                                        </CardNameModal>
+
+                                        {/* 2레벨에서만 사용되는 물음표 박스 컴포넌트 */}
+                                        {props.level == "word2LV" && (
+                                            <QuestionMarkBg style={{opacity:questionOpacity}}>
+                                                <QuestionMarkBtn {...questionPan.panHandlers} onPress={() => {playSound(itemAudio())} } >    
+                                                    <QuestionMarkImage source={item.questionMarkImage} resizeMode="contain"/>
+                                                </QuestionMarkBtn>                                                    
+                                            </QuestionMarkBg>
+                                        )}
+                                        {props.level == "word3LV" &&(
+                                        <>
+                                            {distractorWindowBackground&&(
+                                                <DistractorContainer style={{opacity:distractorContainerValue, transform:[{scale:distractorContainerValue}]}}>
+                                                    {distractorWindow && (
+                                                    <>
+                                                        <DistractorRow>
+                                                            {/* 선택지 1번 */}
+                                                            {itemName() == distractorName(0) ? (
+                                                                <Distractor {...distractorBtn1Pan.panHandlers} style={{transform:[{scale:distractorBtn1}]}} onPressIn={()=> distractorBtn1.setValue(0.8) } onPressOut={() => {distractorBtn1.setValue(1), playSound(distractorAudio(0)),clickBlockerFunc()}}>
+                                                                    <DistractorText>{distractorName(0)}</DistractorText>
+                                                                </Distractor>
+                                                            ):(
+                                                                <Distractor {...distractorBtn1PanWrong.panHandlers} style={{transform:[{scale:distractorBtn1}]}} onPressIn={()=>distractorBtn1.setValue(0.8)} onPressOut={() => {distractorBtn1.setValue(1), playSound(numArray[0].SoundImage),clickBlockerFunc()}}>
+                                                                    <DistractorText>{distractorName(0)}</DistractorText>
+                                                                    <ViewWrong style={{backgroundColor:numArray[0].bgColor ,transform:[{scale:wrongImageValue1}]}}><ViewWrongImage source={numArray[0].image} resizeMode="contain" /></ViewWrong>
+                                                                </Distractor>
+                                                            )}
+
+                                                            {/* 선택지 2번 */}
+                                                            {itemName() == distractorName(1) ? (
+                                                                <Distractor {...distractorBtn2Pan.panHandlers} style={{transform:[{scale:distractorBtn2}]}} onPressIn={()=> distractorBtn2.setValue(0.8) } onPressOut={() => {distractorBtn2.setValue(1), playSound(distractorAudio(1)),clickBlockerFunc()}}>
+                                                                    <DistractorText>{distractorName(1)}</DistractorText>
+                                                                </Distractor>
+                                                            ):(
+                                                                <Distractor {...distractorBtn2PanWrong.panHandlers} style={{transform:[{scale:distractorBtn2}]}} onPressIn={()=>distractorBtn2.setValue(0.8)} onPressOut={() => {distractorBtn2.setValue(1), playSound(numArray[1].SoundImage),clickBlockerFunc()}}>
+                                                                    <DistractorText>{distractorName(1)}</DistractorText>
+                                                                    <ViewWrong style={{backgroundColor:numArray[1].bgColor ,transform:[{scale:wrongImageValue2}]}}><ViewWrongImage source={numArray[1].image} resizeMode="contain" /></ViewWrong>
+                                                                </Distractor>
+                                                            )}
+                                                        </DistractorRow>
+                                                        <DistractorRow>
+                                                            {/* 선택지 3번 */}
+                                                            {itemName() == distractorName(2) ? (
+                                                                <Distractor {...distractorBtn3Pan.panHandlers} style={{transform:[{scale:distractorBtn3}]}} onPressIn={()=> distractorBtn3.setValue(0.8) } onPressOut={() => {distractorBtn3.setValue(1), playSound(distractorAudio(2)),clickBlockerFunc()}}>
+                                                                    <DistractorText>{distractorName(2)}</DistractorText>
+                                                                </Distractor>
+                                                            ):(
+                                                                <Distractor {...distractorBtn3PanWrong.panHandlers} style={{transform:[{scale:distractorBtn3}]}} onPressIn={()=>distractorBtn3.setValue(0.8)} onPressOut={() => {distractorBtn3.setValue(1), playSound(numArray[2].SoundImage),clickBlockerFunc()}}>
+                                                                    <DistractorText>{distractorName(2)}</DistractorText>
+                                                                    <ViewWrong style={{backgroundColor:numArray[2].bgColor ,transform:[{scale:wrongImageValue3}]}}><ViewWrongImage source={numArray[2].image} resizeMode="contain" /></ViewWrong>
+                                                                </Distractor>
+                                                            )}
+                                                            {/* 선택지 4번 */}
+                                                            {itemName() == distractorName(3) ? (
+                                                                <Distractor {...distractorBtn4Pan.panHandlers} style={{transform:[{scale:distractorBtn4}]}} onPressIn={()=> distractorBtn4.setValue(0.8) } onPressOut={() => {distractorBtn4.setValue(1), playSound(distractorAudio(3)),clickBlockerFunc()}}>
+                                                                    <DistractorText>{distractorName(3)}</DistractorText>
+                                                                </Distractor>
+                                                            ):(
+                                                                <Distractor {...distractorBtn4PanWrong.panHandlers} style={{transform:[{scale:distractorBtn4}]}} onPressIn={()=>distractorBtn4.setValue(0.8)} onPressOut={() => {distractorBtn4.setValue(1), playSound(numArray[3].SoundImage),clickBlockerFunc()}}>
+                                                                    <DistractorText>{distractorName(3)}</DistractorText>
+                                                                    <ViewWrong style={{backgroundColor:numArray[3].bgColor ,transform:[{scale:wrongImageValue4}]}}><ViewWrongImage source={numArray[3].image} resizeMode="contain" /></ViewWrong>
+                                                                </Distractor>
+                                                            )}
+                                                        </DistractorRow>
+                                                    </>
+                                                    )}
+                                                </DistractorContainer>
+                                            )}
+                                            {/* 정답체크 */}
+                                            <CorrectAnswerContainer style={{transform:[{scale:correctAnswerMarkValue}]}}>
+                                                <CorrectAnswerImage source={require("../asset/images/Check.png")} />
+                                            </CorrectAnswerContainer>
+                                        </> 
+                                        )}
+                                    </>
+                                    )}
+                                    
                                 </CardName>
                             </CardContents>
                         </Card>

@@ -7,7 +7,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { AnimalCardArray } from "../asset/data/AnimalCardArray";
-import { WordArrayKOR } from "../asset/data/WordArrayKOR";
+import { KorArrayConsonant, KorArrayVowel } from "../asset/data/WordArrayKOR";
+import { Alphabet } from "../asset/data/Alphabet";
 //Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -306,14 +307,15 @@ const GanadaNameContents = styled.TouchableOpacity`
     
     flex: 1;
     height: 30px;
-    border-radius: 10px;
     margin: 2px;
-    border:1px solid black;
+    border-radius: 10px;
+    /* border:0.3px solid ${colors.LIGHTGRAY}; */
 `
 const GanadaNameText = styled.Text`
     text-align: center;
     font-family: "SDChild";
     font-size: 30px;
+    color: ${colors.DARKGRAY};
 `
 // ---------------------------------------------------------------------------------------------------------------------
 
@@ -394,7 +396,7 @@ export const WordCardLevel = (props) => {
     })
     const secondImagePan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
-        onPanResponderStart:()=>{Animated.sequence([secondImageOn,secondImageOff]).start();}
+        onPanResponderEnd:()=>{Animated.sequence([secondImageOn,secondImageOff]).start();}
     })).current
 
     // 텍스트클릭 애니메이션
@@ -737,8 +739,13 @@ export const WordCardLevel = (props) => {
         }else if(e == "AnimalENG"){
             return AnimalCardArray
         }else if(e=="ganada"){
-            // console.log(e)
-            return WordArrayKOR
+            if(props.level == "Consonant"){
+                return KorArrayConsonant
+            }else if (props.level == "Vowel"){
+                return KorArrayVowel
+            }
+        }else if(e=="Language"){
+            return Alphabet
         }
     }
     const levelConsole = () => {
@@ -785,6 +792,8 @@ export const WordCardLevel = (props) => {
                                 return item.nameKOR;
                             case "AnimalENG":
                                 return item.nameENG;
+                            case "Language":
+                                return item.nameKOR;
                             default:
                                 return
                     }}
@@ -794,6 +803,8 @@ export const WordCardLevel = (props) => {
                                 return item.SoundKOR;
                             case "AnimalENG":
                                 return item.SoundENG;
+                            case "Language":
+                                return item.SoundKOR;
                             default:
                                 return
                     }}
@@ -850,6 +861,7 @@ export const WordCardLevel = (props) => {
                             </RealPictureScrollView>
                         </RealPictureContainer>
                         )}
+
                         {/* 카드전체스타일 */}
                         <Card style={{
                             backgroundColor : colors.BEIGE,
@@ -893,7 +905,8 @@ export const WordCardLevel = (props) => {
                             <CardContents style={{flex:props.level == "word3LV" ? 2 : 1}}>
                                 <CardName>
 
-                                    {arrayAlloter(type) == WordArrayKOR && (
+                                    {/* {arrayAlloter(type) == KorArrayConsonant && ( */}
+                                    {type == "ganada" && (
                                     <GanadaNameContainer>
                                         <GanadaNameShell>
                                             {ganadaBtn(item.SoundItem1, item.item1)}
@@ -915,11 +928,14 @@ export const WordCardLevel = (props) => {
                                             {ganadaBtn(item.SoundItem12, item.item12)}
                                             {ganadaBtn(item.SoundItem13, item.item13)}
                                             {ganadaBtn(item.SoundItem14, item.item14)}
+                                            {ganadaBtn()}
                                         </GanadaNameShell>
                                         )}
                                     </GanadaNameContainer>
                                     )}
-                                    {arrayAlloter(type) == AnimalCardArray && (
+
+                                    {/* {arrayAlloter(type) == AnimalCardArray && ( */}
+                                    {type !== "ganada" && (
                                     <>
                                         <CardNameText>{itemName()}</CardNameText>
                                     
@@ -929,7 +945,7 @@ export const WordCardLevel = (props) => {
                                         
                                         {/* 터치시 텍스트 색깔을 바꿔주는 모달 */}
                                         <CardNameModal style={{opacity:secondTextOpacity}}>
-                                            <CardNameModalText style={{color:item.bgColor}}>{itemName()}</CardNameModalText>
+                                            <CardNameModalText style={{color:item.textColor}}>{itemName()}</CardNameModalText>
                                         </CardNameModal>
 
                                         {/* 2레벨에서만 사용되는 물음표 박스 컴포넌트 */}
@@ -1029,8 +1045,19 @@ export const WordCardLevel = (props) => {
                         >
                             {type == "AnimalKOR" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
                             {type == "AnimalENG" && (<RepeatLevelText>Again !</RepeatLevelText>)}
+                            {type == "ganada" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
+                            {type == "Language" && (<RepeatLevelText>다시 하기 !</RepeatLevelText>)}
                         </RepeatLevel>
-                        { props.level !== "word3LV" && (
+                        { props.level == "word1LV" && (
+                        <NextLevel 
+                            onPressIn={()=> ClickSound()}
+                            onPressOut={()=> nextLevelBtn(props.level)}
+                        >
+                            {type == "AnimalKOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
+                            {type == "AnimalENG" && (<NextLevelText>Next Level !</NextLevelText>)}
+                        </NextLevel>
+                        )}
+                        { props.level == "word2LV" && (
                         <NextLevel 
                             onPressIn={()=> ClickSound()}
                             onPressOut={()=> nextLevelBtn(props.level)}

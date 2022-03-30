@@ -103,6 +103,8 @@ const Menu = ({navigation}) => {
 
     // 가나다버튼
     const ganadaBtnAnimation = useRef(new Animated.Value(1)).current;
+    // ABC버튼
+    const languageBtnAnimation = useRef(new Animated.Value(1)).current;
     // 동물버튼
     const wordPlayBtnAnimation = useRef(new Animated.Value(1)).current;
     const animalSelectScale = useRef(new Animated.Value(0)).current
@@ -127,7 +129,11 @@ const Menu = ({navigation}) => {
             >
                     <MenuText>가나다</MenuText>
             </MenuBox>
-            <MenuBox>
+            <MenuBox
+            style={{transform: [{scale:languageBtnAnimation}]}}
+            onPressIn={() => {ClickSound(), languageBtnAnimation.setValue(0.9)}}
+            onPressOut={() => (BtnClick("Language"),languageBtnAnimation.setValue(1))}
+            >
                     <MenuText>ABC</MenuText>
             </MenuBox>
             <MenuBox>

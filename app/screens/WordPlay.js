@@ -71,6 +71,14 @@ const StarViewImage1 = styled.ImageBackground`
     width: 100%;
     height: 100%;
 `
+const MenuText = styled.Text`
+    top: 3px;
+    font-size: 35px;
+    font-family: "SDChild";
+    color: ${colors.REALDARKGRAY};
+    /* border: 1px solid gray; */
+    /* text-align: center; */
+`
 
 const Menu =  styled(Animated.createAnimatedComponent(View))`
     position: absolute;
@@ -112,10 +120,15 @@ const LevelBtn = styled(Animated.createAnimatedComponent(Pressable))`
     flex: 1;
     align-items: center;
     justify-content: center;
-    margin: 2px;
+    margin: 5px;
     padding: 5px;
     border-radius: 15px;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+`
+const ModalMenuText =styled.Text`
+    font-size: 30px;
+    font-family: "SDChild";
+    color: white;
 `
 const StarViewImage = styled.ImageBackground`
     width: 100%;
@@ -151,52 +164,76 @@ const WordPlay = ({route, navigation}) => {
     ).current
     // 1레벨선택버튼
     const level1Scale = useRef(new Animated.Value(1)).current
-    // const level1Pan = useRef(
-    //     PanResponder.create({
-    //         onStartShouldSetPanResponder: () => true,
-    //         onPanResponderStart:() => {
-    //             ClickSound()
-    //             level1Scale.setValue(0.8)
-    //         },
-    //         onPanResponderEnd:()=>{
-    //             cardCheck("word1LV")
-    //             menuModalScale.setValue(0)
-    //             level1Scale.setValue(1)
-    //         }            
-    //     })
-    // ).current
+    const btn1PressIn = Animated.timing(level1Scale,{
+        toValue:0.8,
+        duration:100,
+        useNativeDriver:true
+    })
+    const btn1PressOut = Animated.timing(level1Scale,{
+        toValue:1,
+        duration:100,
+        useNativeDriver:true
+    })
+    const level1Pan = useRef(
+        PanResponder.create({
+            onStartShouldSetPanResponder: () => true,
+            onPanResponderStart:() => {
+                ClickSound()
+                Animated.sequence([btn1PressIn,btn1PressOut]).start()
+            },
+            onPanResponderEnd:()=>{
+                menuModalScale.setValue(0)
+            }            
+        })
+    ).current
     // 2레벨선택버튼
     const level2Scale = useRef(new Animated.Value(1)).current
-    // const level2Pan = useRef(
-    //     PanResponder.create({
-    //         onStartShouldSetPanResponder: () => true,
-    //         onPanResponderStart:() => {
-    //             ClickSound()
-    //             level2Scale.setValue(0.8)
-    //         },
-    //         onPanResponderEnd:()=>{
-    //             cardCheck("word2LV")
-    //             menuModalScale.setValue(0)
-    //             level2Scale.setValue(1)
-    //         }            
-    //     })
-    // ).current
+    const btn2PressIn = Animated.timing(level2Scale,{
+        toValue:0.8,
+        duration:100,
+        useNativeDriver:true
+    })
+    const btn2PressOut = Animated.timing(level2Scale,{
+        toValue:1,
+        duration:100,
+        useNativeDriver:true
+    })
+    const level2Pan = useRef(
+        PanResponder.create({
+            onStartShouldSetPanResponder: () => true,
+            onPanResponderStart:() => {
+                ClickSound()
+                Animated.sequence([btn2PressIn,btn2PressOut]).start()
+            },
+            onPanResponderEnd:()=>{
+                menuModalScale.setValue(0)
+            }            
+        })
+    ).current
     // 3레벨선택버튼
     const level3Scale = useRef(new Animated.Value(1)).current
-    // const level3Pan = useRef(
-    //     PanResponder.create({
-    //         onStartShouldSetPanResponder: () => true,
-    //         onPanResponderStart:() => {
-    //             ClickSound()
-    //             level3Scale.setValue(0.8)
-    //         },
-    //         onPanResponderEnd:()=>{
-    //             cardCheck("word3LV")
-    //             menuModalScale.setValue(0)
-    //             level3Scale.setValue(1)
-    //         }            
-    //     })
-    // ).current
+    const btn3PressIn = Animated.timing(level3Scale,{
+        toValue:0.8,
+        duration:100,
+        useNativeDriver:true
+    })
+    const btn3PressOut = Animated.timing(level3Scale,{
+        toValue:1,
+        duration:100,
+        useNativeDriver:true
+    })
+    const level3Pan = useRef(
+        PanResponder.create({
+            onStartShouldSetPanResponder: () => true,
+            onPanResponderStart:() => {
+                ClickSound()
+                Animated.sequence([btn3PressIn,btn3PressOut]).start()
+            },
+            onPanResponderEnd:()=>{
+                menuModalScale.setValue(0)
+            }            
+        })
+    ).current
 
     // 뒤로가기 버튼
     const goBackBtnScale = useRef(new Animated.Value(1)).current
@@ -252,6 +289,8 @@ const WordPlay = ({route, navigation}) => {
             return setTypeCheckRes("Animal")
         }else if (e=="ganada"){
             return setTypeCheckRes("ganada")
+        }else if (e=="Language"){
+            return setTypeCheckRes("Language")
         }
     }
 
@@ -259,8 +298,8 @@ const WordPlay = ({route, navigation}) => {
         typeCheck(type)
     },[])
     
+    // {console.log(route)}
     return( 
-        
         // loading ? (
         //     <Loader>
         //         <ActivityIndicator />
@@ -280,14 +319,36 @@ const WordPlay = ({route, navigation}) => {
                     <GoBackBtnImage source={require("../asset/images/goBack1.png")} />
                 </GoBack>
                 <Star>
-                    {(()=>{
-                        if(cardSelector === "word1LV") return <StarViewImage1 source={require("../asset/images/Star1.png")} resizeMode="contain" />
-                        else if(cardSelector=="word2LV") return <StarViewImage1 source={require("../asset/images/Star2.png")} resizeMode="contain" />
-                        else if(cardSelector=="word3LV") return <StarViewImage1 source={require("../asset/images/Star3.png")} resizeMode="contain" />
-                        else if(cardSelector==undefined){ return setCardSelector('word1LV')
-                        } else {
-                            return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>
+                    {typeCheckRes == "Animal" && (
+                    <>
+                        {(()=>{
+                            if(cardSelector === "word1LV") return <StarViewImage1 source={require("../asset/images/Star1.png")} resizeMode="contain" />
+                            else if(cardSelector=="word2LV") return <StarViewImage1 source={require("../asset/images/Star2.png")} resizeMode="contain" />
+                            else if(cardSelector=="word3LV") return <StarViewImage1 source={require("../asset/images/Star3.png")} resizeMode="contain" />
+                            else if(cardSelector==undefined){ return setCardSelector('word1LV')
+                            } else {
+                                return <StarViewImage source={require("../asset/images/Star1.png")}></StarViewImage>
                         }})()}
+                    </>
+                    )}
+                    {typeCheckRes == "ganada" && (
+                        <>
+                            {(()=>{
+                            if(cardSelector === "Consonant") {return <MenuText>자 음</MenuText>}
+                            else if(cardSelector=="Vowel") {return <MenuText>모 음</MenuText>}
+                            else if(cardSelector==undefined){ return setCardSelector('Consonant')}
+                        })()}
+                        </>
+                    )}
+                     {typeCheckRes == "Language" && (
+                        <>
+                            {(()=>{
+                            if(cardSelector === "Alphabet") {return <MenuText>알파벳</MenuText>}
+                            else if(cardSelector==undefined){ return setCardSelector('Alphabet')}
+                        })()}
+                        </>
+                    )}
+                        
                 </Star>
                 <Menu 
                     {...menuPan.panHandlers} 
@@ -315,26 +376,23 @@ const WordPlay = ({route, navigation}) => {
                         {typeCheckRes == "Animal" && (
                             <>
                             <LevelBtn 
-                            // {...level1Pan.panHandlers}
+                            {...level1Pan.panHandlers}
                             style={{backgroundColor: colors.BLUE, transform: [{scale:level1Scale}]}}
-                            onPressIn={()=>{ClickSound(), level1Scale.setValue(0.8)}}
-                            onPressOut={()=>{cardCheck("word1LV"), menuModalScale.setValue(0), level1Scale.setValue(1)}}
+                            onPressOut={()=>{cardCheck("word1LV")}}
                             >
                             <StarViewImage source={require("../asset/images/Star1.png")} resizeMode="contain" />
                             </LevelBtn>
                             <LevelBtn 
-                            // {...level2Pan.panHandlers}
+                            {...level2Pan.panHandlers}
                             style={{backgroundColor: colors.REDORANGE, transform: [{scale:level2Scale}]}}
-                            onPressIn={()=>{ClickSound(), level2Scale.setValue(0.8)}}
-                            onPressOut={()=>{cardCheck("word2LV"), menuModalScale.setValue(0), level2Scale.setValue(1)}}
+                            onPressOut={()=>{cardCheck("word2LV")}}
                             >
                             <StarViewImage source={require("../asset/images/Star2.png")} resizeMode="contain" />
                             </LevelBtn>
                             <LevelBtn 
-                            // {...level3Pan.panHandlers}
+                            {...level3Pan.panHandlers}
                             style={{backgroundColor: colors.DARKOLIVE, transform: [{scale:level3Scale}]}}
-                            onPressIn={()=>{ClickSound(), level3Scale.setValue(0.8)}}
-                            onPressOut={()=>{cardCheck("word3LV"), menuModalScale.setValue(0), level3Scale.setValue(1)}}
+                            onPressOut={()=>{cardCheck("word3LV")}}
                             >
                             <StarViewImage source={require("../asset/images/Star3.png")} resizeMode="contain" />
                             </LevelBtn>
@@ -343,19 +401,30 @@ const WordPlay = ({route, navigation}) => {
                         {typeCheckRes == "ganada" && (
                             <>
                             <LevelBtn 
-                            style={{backgroundColor: colors.BLUE, transform: [{scale:level1Scale}]}}
-                            onPressIn={()=>{ClickSound(), level1Scale.setValue(0.8)}}
-                            onPressOut={()=>{cardCheck("word1LV"), menuModalScale.setValue(0), level1Scale.setValue(1)}}
+                            {...level1Pan.panHandlers}
+                            style={{backgroundColor: colors.LIGHTPINK, transform: [{scale:level1Scale}]}}
+                            onPressOut={()=>{cardCheck("Consonant")}}
                             >
-                            <Text>자음</Text>
+                            <ModalMenuText>자 음</ModalMenuText>
                             </LevelBtn>
                             <LevelBtn 
-                            style={{backgroundColor: colors.REDORANGE, transform: [{scale:level2Scale}]}}
-                            onPressIn={()=>{ClickSound(), level2Scale.setValue(0.8)}}
-                            onPressOut={()=>{cardCheck("word2LV"), menuModalScale.setValue(0), level2Scale.setValue(1)}}
+                            {...level2Pan.panHandlers}
+                            style={{backgroundColor: colors.LIGHTNAVY, transform: [{scale:level2Scale}]}}
+                            onPressOut={()=>{cardCheck("Vowel")}}
                             >
-                            <Text>모음</Text>
+                            <ModalMenuText>모 음</ModalMenuText>
                             </LevelBtn>
+                            </>
+                        )}
+                        {typeCheckRes == "Language" && (
+                            <>
+                            {/* <LevelBtn 
+                            {...level1Pan.panHandlers}
+                            style={{backgroundColor: colors.LIGHTPINK, transform: [{scale:level1Scale}]}}
+                            onPressOut={()=>{cardCheck("Alphabet")}}
+                            >
+                            <ModalMenuText>알파벳</ModalMenuText>
+                            </LevelBtn> */}
                             </>
                         )}
                        

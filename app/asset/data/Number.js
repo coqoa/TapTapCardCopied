@@ -10,7 +10,7 @@ export const Number = [
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+
     }, 
     {
         "id" : "1", 

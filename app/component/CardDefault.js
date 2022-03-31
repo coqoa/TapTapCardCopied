@@ -389,11 +389,13 @@ export const WordCardLevel = (props) => {
     const secondImageOpacity = useRef(new Animated.Value(0)).current;
     const secondImageOn = Animated.timing(secondImageOpacity, {
         toValue:1,
+        duration:500,
         useNativeDriver:true
     })
     const secondImageOff = Animated.timing(secondImageOpacity, {
         toValue:0,
-        delay:500,
+        duration:500,
+        delay:100,
         useNativeDriver:true
     })
     const secondImagePan = useRef(PanResponder.create({
@@ -405,11 +407,13 @@ export const WordCardLevel = (props) => {
     const secondTextOpacity = useRef(new Animated.Value(0)).current;
     const secondTextOn = Animated.timing(secondTextOpacity,{
         toValue:1,
+        duration:700,
         useNativeDriver:true
     })
     const secondTextOff = Animated.timing(secondTextOpacity,{
         toValue:0,
-        delay:1000,
+        duration:700,
+        delay:100,
         useNativeDriver:true
     })
     const secondTextPan = useRef(PanResponder.create({
@@ -804,7 +808,7 @@ export const WordCardLevel = (props) => {
                             case "AnimalENG":
                                 return item.SoundENG;
                             case "Language":
-                                return item.SoundKOR;
+                                return item.SoundImage;
                             case "Number":
                                 return item.SoundKOR;
                             default:

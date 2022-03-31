@@ -105,6 +105,8 @@ const Menu = ({navigation}) => {
     const ganadaBtnAnimation = useRef(new Animated.Value(1)).current;
     // ABC버튼
     const languageBtnAnimation = useRef(new Animated.Value(1)).current;
+    // 숫자버튼
+    const numberBtnAnimation = useRef(new Animated.Value(1)).current;
     // 동물버튼
     const wordPlayBtnAnimation = useRef(new Animated.Value(1)).current;
     const animalSelectScale = useRef(new Animated.Value(0)).current
@@ -136,7 +138,11 @@ const Menu = ({navigation}) => {
             >
                     <MenuText>ABC</MenuText>
             </MenuBox>
-            <MenuBox>
+            <MenuBox
+            style={{transform: [{scale:numberBtnAnimation}]}}
+            onPressIn={() => {ClickSound(), numberBtnAnimation.setValue(0.9)}}
+            onPressOut={() => (BtnClick("Number"),numberBtnAnimation.setValue(1))}
+            >
                     <MenuText>숫자</MenuText>
             </MenuBox>
             <MenuBox 

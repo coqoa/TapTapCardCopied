@@ -39,7 +39,7 @@ export const colors = {
 
     LIGHTREDPURPLE:"#FBC7FF",
     REDPURPLE:"#F79AFF",
-    DARKREDPURPLE:"#F362FF",
+    DARKREDPURPLE:"#E558E5",
 
     LIGHTPINK:"#FFB1DB",
     PINK:"#FF8BCA",

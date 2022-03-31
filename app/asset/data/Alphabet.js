@@ -43,7 +43,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/E.png"), 
         "image2" : require("../images/Alphabet/E1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.PASTELORANGE,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -52,7 +52,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/F.png"), 
         "image2" : require("../images/Alphabet/F1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKBROWN,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -61,7 +61,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/G.png"), 
         "image2" : require("../images/Alphabet/G1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.OLIVE,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -70,7 +70,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/H.png"), 
         "image2" : require("../images/Alphabet/H1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.SEABLUE,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -79,7 +79,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/I.png"), 
         "image2" : require("../images/Alphabet/I1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKPASTELPINK,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -88,7 +88,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/J.png"), 
         "image2" : require("../images/Alphabet/J1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKGREEN,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -97,7 +97,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/K.png"), 
         "image2" : require("../images/Alphabet/K1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKREDBRICK,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -106,7 +106,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/L.png"), 
         "image2" : require("../images/Alphabet/L1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKGREENBLUE,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -115,7 +115,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/M.png"), 
         "image2" : require("../images/Alphabet/M1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKPINK,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -124,7 +124,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/N.png"), 
         "image2" : require("../images/Alphabet/N1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKREDPURPLE,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -133,7 +133,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/O.png"), 
         "image2" : require("../images/Alphabet/O1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKREDORANGE,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -142,7 +142,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/P.png"), 
         "image2" : require("../images/Alphabet/P1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.NAVY,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -151,7 +151,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/Q.png"), 
         "image2" : require("../images/Alphabet/Q1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKPASTELGREEN,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -160,7 +160,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/R.png"), 
         "image2" : require("../images/Alphabet/R1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.TOMATO,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -169,7 +169,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/S.png"), 
         "image2" : require("../images/Alphabet/S1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.GREENBLUE,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -178,7 +178,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/T.png"), 
         "image2" : require("../images/Alphabet/T1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKPASTELORANGE,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -187,7 +187,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/U.png"), 
         "image2" : require("../images/Alphabet/U1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKSEABLUE,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -196,7 +196,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/V.png"), 
         "image2" : require("../images/Alphabet/V1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.GRAY,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -205,7 +205,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/W.png"), 
         "image2" : require("../images/Alphabet/W1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKOLIVE,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -214,7 +214,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/X.png"), 
         "image2" : require("../images/Alphabet/X1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.DARKGRAY,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -223,7 +223,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/Y.png"), 
         "image2" : require("../images/Alphabet/Y1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.BROWN,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     {
@@ -232,7 +232,7 @@ export const Alphabet = [
         "image" : require("../images/Alphabet/Z.png"), 
         "image2" : require("../images/Alphabet/Z1.png"), 
         "bgColor" : "white",
-        "textColor" : colors.PASTELGREEN,
+        "textColor" : colors.PURPLE,
         "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
     }, 
     

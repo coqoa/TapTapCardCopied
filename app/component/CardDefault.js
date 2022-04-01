@@ -66,7 +66,7 @@ const CardImg2 = styled(CardImg)`
 const CardContents = styled.View`
     width: 100%;
     z-index: 15;
-    `
+`
 const CardName = styled.View`
     flex:1;
     align-items: center;
@@ -96,7 +96,6 @@ const QuestionMarkBg = styled(Animated.createAnimatedComponent(View))`
     width: 90%;
     height: 90%;
     background-color: ${colors.BEIGE};
-    /* border: 1px solid red; */
     z-index: 2;
 `
 const QuestionMarkBtn = styled(Animated.createAnimatedComponent(Pressable))`
@@ -177,7 +176,7 @@ const DistractorContainer = styled(Animated.createAnimatedComponent(View))`
     align-items: center;
     background-color: ${colors.BEIGE};
     z-index: 3;
-    `
+`
 const DistractorRow = styled.View`
     flex-direction: row;
     width: 100%;
@@ -186,7 +185,7 @@ const DistractorRow = styled.View`
     justify-content: center;
     align-items: center;
     background-color: ${colors.BEIGE};
-    `
+`
 const Distractor = styled(Animated.createAnimatedComponent(Pressable))`
     width: 48%;
     height: 90%;
@@ -197,12 +196,12 @@ const Distractor = styled(Animated.createAnimatedComponent(Pressable))`
     box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
     background-color: rgba(255,255,255, 0.6);
     z-index: 100;
-    `
+`
 const DistractorText = styled.Text`
     font-family: 'SDChild';
     font-size: 45px;
     color: ${colors.REALDARKGRAY};
-    `
+`
 const CorrectAnswerContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     top: -40px;
@@ -226,7 +225,7 @@ const RealPictureBtn = styled(Animated.createAnimatedComponent(Pressable))`
     z-index: 49;
     align-items: center;
     justify-content: center;
-    `
+`
 
 const RealPictureBtnBGContainer = styled.View`
     width: 80%;
@@ -235,9 +234,7 @@ const RealPictureBtnBGContainer = styled.View`
     align-items: center;
     `
 const RealPictureBtnBG = styled.Image`
-/* border: 1px solid red; */
-border-radius: 10px;
-
+    border-radius: 10px;
     width: 100%;
     height: 100%;
 `
@@ -267,15 +264,12 @@ const RealPictureExitBtnImage = styled.ImageBackground`
 `
 const RealPictureScrollView = styled.ScrollView`
     background-color: ${colors.mainBgColor};
-    /* border: 1px solid green; */
-    /* z-index: 100; */
 `
 const PictureImageShell = styled.View`
-    /* justify-content: flex-start; */
     border: 1px solid ${colors.REALLIGHTGRAY};
     align-items: center;
     border-radius: 20px;
-    `
+`
 const PictureImage = styled.Image`
 width: 100%;
 height: 100%;
@@ -305,12 +299,10 @@ const GanadaNameShell = styled.View`
     flex-direction:row;
 `
 const GanadaNameContents = styled.TouchableOpacity`
-    
     flex: 1;
     height: 30px;
     margin: 2px;
     border-radius: 10px;
-    /* border:0.3px solid ${colors.LIGHTGRAY}; */
 `
 const GanadaNameText = styled.Text`
     text-align: center;
@@ -343,7 +335,7 @@ export const WordCardLevel = (props) => {
     const rotation = position.interpolate({
         inputRange:[-200,0, 200],
         outputRange:["-15deg","0deg" ,"15deg"],
-        extrapolate: "clamp" // 범위에서 넘어가면 interpolate를 어떻게 처리할지 ?
+        extrapolate: "clamp" 
     });
     const tensionAnimated = Animated.spring(position, {
         tension:10,
@@ -353,18 +345,8 @@ export const WordCardLevel = (props) => {
         useNativeDriver:true,
     });
 
-    // const defaultAnimated1 = useRef(new Animated.Value(1)).current;
-    // const onPressIn =  Animated.spring(defaultAnimated1, {
-    //     toValue:0.9,
-    //     useNativeDriver:true
-    // })
-    // const onPressOut = Animated.spring(defaultAnimated1, {
-    //     toValue:1,
-    //     useNativeDriver:true
-    // })
     const panResponder = useRef(PanResponder.create({
             onStartShouldSetPanResponder: () => true,
-            // onPanResponderGrant:() => {onPressIn.start();}, 
             onPanResponderMove:(_,{dx}) => {position.setValue(dx)}, 
             onPanResponderRelease: () => {
                 playSound(require("../asset/audio/CardPass.mp3"))
@@ -380,7 +362,6 @@ export const WordCardLevel = (props) => {
                     },80)
                 )}
                 tensionAnimated.start();
-                // Animated.parallel([onPressOut,tensionAnimated]).start();
             }
         })
     ).current
@@ -436,22 +417,9 @@ export const WordCardLevel = (props) => {
     })).current
      // 실사 애니메이션
     const pictureBtnScale = useRef(new Animated.Value(1)).current
-    const pictureBtnPressIn = Animated.timing(pictureBtnScale,{
-        toValue:0.8,
-        duration:100,
-        useNativeDriver:true
-    })
-    const pictureBtnPressOut = Animated.timing(pictureBtnScale,{
-        toValue:1,
-        duration:100,
-        delay:50,
-        useNativeDriver:true
-    })
-
     const pictureContainerScale = useRef(new Animated.Value(0)).current
     const pictureContainerModalOn = Animated.spring(pictureContainerScale,{
         toValue:1,
-        // duration:200,
         useNativeDriver:true
     })
     const pictureContainerModalOff = Animated.spring(pictureContainerScale,{
@@ -470,8 +438,7 @@ export const WordCardLevel = (props) => {
     const pictureOpenPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
         onPanResponderStart:()=>{
-            // Animated.sequence([pictureBtnPressIn, 
-                Animated.parallel([pictureContainerModalOn, pictureOpacityOn]).start();
+            Animated.parallel([pictureContainerModalOn, pictureOpacityOn]).start();
         }
     })).current
 
@@ -490,7 +457,6 @@ export const WordCardLevel = (props) => {
     const pictureClosePan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
         onPanResponderStart:()=>{
-            // console.log('asd')
         Animated.sequence([pictureCloseBtnPressIn, pictureCloseBtnPressOut,
             Animated.parallel([pictureContainerModalOff,pictureOpacityOff])]).start();
         }
@@ -629,30 +595,6 @@ export const WordCardLevel = (props) => {
         </Distractor>
         )
     }
-    
-    
-    // {itemName() == distractorName(0) ? (
-    //     <Distractor {...distractorBtn1Pan.panHandlers} style={{transform:[{scale:distractorBtn1}]}} onPressIn={()=> distractorBtn1.setValue(0.8) } onPressOut={() => {distractorBtn1.setValue(1), playSound(distractorAudio(0)),clickBlockerFunc()}}>
-    //         <DistractorText>{distractorName(0)}</DistractorText>
-    //     </Distractor>
-    // ):(
-    //     <Distractor {...distractorBtn1PanWrong.panHandlers} style={{transform:[{scale:distractorBtn1}]}} onPressIn={()=>distractorBtn1.setValue(0.8)} onPressOut={() => {distractorBtn1.setValue(1), playSound(numArray[0].SoundImage),clickBlockerFunc()}}>
-    //         <DistractorText>{distractorName(0)}</DistractorText>
-    //         <ViewWrong style={{backgroundColor:numArray[0].bgColor ,transform:[{scale:wrongImageValue1}]}}><ViewWrongImage source={numArray[0].image} resizeMode="contain" /></ViewWrong>
-    //     </Distractor>
-    // )}
-
-    {/* 선택지 2번 */}
-    // {itemName() == distractorName(1) ? (
-    //     <Distractor {...distractorBtn2Pan.panHandlers} style={{transform:[{scale:distractorBtn2}]}} onPressIn={()=> distractorBtn2.setValue(0.8) } onPressOut={() => {distractorBtn2.setValue(1), playSound(distractorAudio(1)),clickBlockerFunc()}}>
-    //         <DistractorText>{distractorName(1)}</DistractorText>
-    //     </Distractor>
-    // ):(
-    //     <Distractor {...distractorBtn2PanWrong.panHandlers} style={{transform:[{scale:distractorBtn2}]}} onPressIn={()=>distractorBtn2.setValue(0.8)} onPressOut={() => {distractorBtn2.setValue(1), playSound(numArray[1].SoundImage),clickBlockerFunc()}}>
-    //         <DistractorText>{distractorName(1)}</DistractorText>
-    //         <ViewWrong style={{backgroundColor:numArray[1].bgColor ,transform:[{scale:wrongImageValue2}]}}><ViewWrongImage source={numArray[1].image} resizeMode="contain" /></ViewWrong>
-    //     </Distractor>
-    // )}
 
     //마지막 카드에서 출력되는 모달창, 다시하기버튼, 다음레벨 버튼
     const lastListModalOn = () => {
@@ -672,7 +614,6 @@ export const WordCardLevel = (props) => {
             props.getData('word2LV')
         }else if(e=='word2LV'){
             props.getData('word3LV')
-        
         }else if(e=='0~10'){
             props.getData('11~20')
         }else if(e=='11~20'){
@@ -691,7 +632,6 @@ export const WordCardLevel = (props) => {
             props.getData('81~90')
         }else if(e=='81~90'){
             props.getData('91~100')
-
         }else{
             null
         }
@@ -810,7 +750,7 @@ export const WordCardLevel = (props) => {
                             case "Language":
                                 return item.SoundImage;
                             case "Number":
-                                return item.SoundKOR;
+                                return item.SoundImage;
                             default:
                                 return
                     }}

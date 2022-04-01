@@ -76,8 +76,6 @@ const MenuText = styled.Text`
     font-size: 35px;
     font-family: "SDChild";
     color: ${colors.REALDARKGRAY};
-    /* border: 1px solid gray; */
-    /* text-align: center; */
 `
 
 const Menu =  styled(Animated.createAnimatedComponent(Pressable))`
@@ -137,16 +135,6 @@ const LevelBtn = styled(Animated.createAnimatedComponent(Pressable))`
     border-radius: 15px;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
     `
-// const LevelBtnTouchable = styled.TouchableOpacity`
-//     width: 80%;
-//     height: 50px;
-//     margin: 5px;
-//     padding: 5px;
-//     border-radius: 15px;
-//     box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
-//     align-items: center;
-//     justify-content: center;
-// `
 const ModalMenuText =styled.Text`
     font-size: 30px;
     font-family: "SDChild";
@@ -223,6 +211,8 @@ const WordPlay = ({route, navigation}) => {
 
     const ganada1Pan = btnPan("Consonant")
     const ganada2Pan = btnPan("Vowel")
+
+    const alphabetPan= btnPan("Alphabet")
 
     const numberAllPan = btnPan("All")
     const number0Pan = btnPan("0~10")
@@ -411,7 +401,7 @@ const WordPlay = ({route, navigation}) => {
             {/* 햄버거바 터치시 출력되는 모달 */}
             <MenuModalBg 
             style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT,transform: [{scale:menuModalScale}]}}
-            onPress={() => (menuModalScale.setValue(0), containerScale.setValue(0))}
+            onPressOut={() => ( containerScale.setValue(0), menuModalScale.setValue(0))}
             />
                 <MenuModalContainer style={{transform:[{scale:containerScale}]}}>
 
@@ -448,51 +438,12 @@ const WordPlay = ({route, navigation}) => {
                         )}
                         {typeCheckRes == "Language" && (
                             <>
+                                {ganadaDistractor(alphabetPan.panHandlers, colors.LIGHTPINK, level1Scale, "알파벳")}
                             </>
                         )}
                     </MenuModal>
                 )}
-
-                    {/* <MenuModalScrollView
-                    contentContainerStyle = {{backgroundColor:"gray", alignItems:"center"}}
-                    >
-                        {typeCheckRes == "Animal" && (
-                            <>
-                            {animalDistractor(animal1Pan.panHandlers,colors.BLUE,level1Scale,require("../asset/images/Star1.png"))}
-                            {animalDistractor(animal2Pan.panHandlers,colors.REDORANGE,level2Scale,require("../asset/images/Star2.png"))}
-                            {animalDistractor(animal3Pan.panHandlers,colors.DARKOLIVE,level3Scale,require("../asset/images/Star3.png"))}
-                            </>
-                        )}
-                        {typeCheckRes == "ganada" && (
-                            <>
-                            {ganadaDistractor(ganada1Pan.panHandlers, colors.LIGHTPINK, level1Scale, "자 음")}
-                            {ganadaDistractor(ganada2Pan.panHandlers, colors.LIGHTNAVY, level2Scale, "모 음")}
-                            </>
-                        )}
-                        {typeCheckRes == "Language" && (
-                            <>
-                            </>
-                        )}
-                        {typeCheckRes == "Number" && (
-                        <>
-                            {numberDistractor(numberAllPan.panHandlers, colors.LIGHTPINK, level1Scale, "숫 자")}
-                            {numberDistractor(number0Pan.panHandlers, colors.LIGHTPINK, level2Scale, "0~10")}
-                            {numberDistractor(number1Pan.panHandlers, colors.LIGHTPINK, level3Scale, "11~20")}
-                            {numberDistractor(number2Pan.panHandlers, colors.LIGHTPINK, level4Scale, "21~30")}
-                            {numberDistractor(number3Pan.panHandlers, colors.LIGHTPINK, level5Scale, "31~40")}
-                            {numberDistractor(number4Pan.panHandlers, colors.LIGHTPINK, level6Scale, "41~50")}
-                            {numberDistractor(number5Pan.panHandlers, colors.LIGHTPINK, level7Scale, "51~60")}
-                            {numberDistractor(number6Pan.panHandlers, colors.LIGHTPINK, level8Scale, "61~70")}
-                            {numberDistractor(number7Pan.panHandlers, colors.LIGHTPINK, level9Scale, "71~80")}
-                            {numberDistractor(number8Pan.panHandlers, colors.LIGHTPINK, level10Scale, "81~90")}
-                            {numberDistractor(number9Pan.panHandlers, colors.LIGHTPINK, level11Scale, "91~100")}
-                        </>
-                        )}
-                       
-                    </MenuModalScrollView> */}
                 </MenuModalContainer>
-                
-            {/* </MenuModalBg> */}
             </Shell>
         )
     // )

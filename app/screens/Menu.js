@@ -1,13 +1,9 @@
-import React,{ useState, useRef } from "react";
+import React,{ useRef } from "react";
 import styled from "styled-components";
 import {Animated, Pressable, View} from "react-native";
 import { Audio } from 'expo-av';
 import { colors } from "../component/color";
-import { transform } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
-// const Shell = styled.View`
-//     flex: 1;
-// `
 const BG = styled.ImageBackground`
     flex: 1;
     width: 100%;
@@ -62,15 +58,11 @@ const WordKorBtn = styled(Animated.createAnimatedComponent(Pressable))`
     width: 200px;
     height: 60px;
     border-radius: 20px;
-    background-color: ${colors.BLUE};
     align-items: center;
     justify-content: center;
     margin: 10px;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 
-`
-const WordEngBtn = styled(WordKorBtn)`
-    background-color: ${colors.REDORANGE};
 `
 const WordSelectText = styled.Text`
     font-size: 32px;
@@ -97,10 +89,7 @@ const Menu = ({navigation}) => {
       } catch (error) {
      }
     }
-
-    //Btn Animation
-    const wordSelectModal = useRef(new Animated.Value(0)).current;
-
+    // 메뉴 모달창 관련 버튼애니메이션
     // 가나다버튼
     const ganadaBtnAnimation = useRef(new Animated.Value(1)).current;
     // ABC버튼
@@ -109,77 +98,71 @@ const Menu = ({navigation}) => {
     const numberBtnAnimation = useRef(new Animated.Value(1)).current;
     // 동물버튼
     const wordPlayBtnAnimation = useRef(new Animated.Value(1)).current;
+    // 동물버튼 모달창
     const animalSelectScale = useRef(new Animated.Value(0)).current
+    // 동물 버튼 모달창 외부 클릭했을때 모달창을 닫기위한 Animated
+    const animalModalScale = useRef(new Animated.Value(0)).current;
     // 한글버튼
     const KorBtnAnimation = useRef(new Animated.Value(1)).current;
     // 영어버튼
     const EngBtnAnimation = useRef(new Animated.Value(1)).current;
 
-    // WordPlay.js props 전달함수
+    //메뉴 버튼 애니메이션 & 실행함수
+    const btnFunc = (a,b,c) => {
+        return(
+            <MenuBox
+                style={{transform: [{scale:a}]}}
+                onPressIn={() => {ClickSound(), a.setValue(0.9)}}
+                onPressOut={() => (BtnClick(b),a.setValue(1))}
+            >
+                    <MenuText>{c}</MenuText>
+            </MenuBox>
+        )
+    }
+    // 모달창 내부 버튼 애니메이션 & 실행함수
+    const modalBtnFunc = (a,b,c,d) => {
+        return(
+                <WordKorBtn 
+                    style={{transform: [{scale:a}], backgroundColor:b}}
+                    onPressIn={() => (ClickSound(), a.setValue(0.9))}
+                    onPressOut={() => {BtnClick(c),a.setValue(1)}}
+                >
+                    <WordSelectText>{d}</WordSelectText>
+                </WordKorBtn>
+        )
+    }
+    // WordPlay.js에 props 전달하는 함수
     const BtnClick = (e) => {
-        wordSelectModal.setValue(0)
+        animalModalScale.setValue(0)
         navigation.navigate('WordPlay',{type:e}) 
     }
     return(
-    // <Shell>
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
         <MenuBoxShell>
-            <MenuBox
-                style={{transform: [{scale:ganadaBtnAnimation}]}}
-                onPressIn={() => {ClickSound(), ganadaBtnAnimation.setValue(0.9)}}
-                onPressOut={() => (BtnClick("ganada"),ganadaBtnAnimation.setValue(1))}
-            >
-                    <MenuText>가나다</MenuText>
-            </MenuBox>
-            <MenuBox
-            style={{transform: [{scale:languageBtnAnimation}]}}
-            onPressIn={() => {ClickSound(), languageBtnAnimation.setValue(0.9)}}
-            onPressOut={() => (BtnClick("Language"),languageBtnAnimation.setValue(1))}
-            >
-                    <MenuText>ABC</MenuText>
-            </MenuBox>
-            <MenuBox
-            style={{transform: [{scale:numberBtnAnimation}]}}
-            onPressIn={() => {ClickSound(), numberBtnAnimation.setValue(0.9)}}
-            onPressOut={() => (BtnClick("Number"),numberBtnAnimation.setValue(1))}
-            >
-                    <MenuText>숫자</MenuText>
-            </MenuBox>
+            {btnFunc(ganadaBtnAnimation,"ganada","가나다")}
+            {btnFunc(languageBtnAnimation,"Language","ABC")}
+            {btnFunc(numberBtnAnimation,"Number","숫자")}
             <MenuBox 
                 style={{transform: [{scale:wordPlayBtnAnimation}]}}
                 onPressIn={() => {ClickSound(), wordPlayBtnAnimation.setValue(0.9)}}
-                onPressOut={() => (wordSelectModal.setValue(1), animalSelectScale.setValue(1) ,wordPlayBtnAnimation.setValue(1))}
+                onPressOut={() => (animalModalScale.setValue(1), animalSelectScale.setValue(1) ,wordPlayBtnAnimation.setValue(1))}
             >
                 <MenuText>동물</MenuText>
             </MenuBox>
-            
-            
         </MenuBoxShell>
 
-        {/* 동물 세부메뉴 */}
+        {/* 동물 모달창 세부사항 */}
         {/*  모달컨테이너를 제외한 전체화면 : 터치시 모달 닫기위해 구현 */}
-        <SelectModalBG style={{transform:[{scale:wordSelectModal}]}} onPress={()=>{wordSelectModal.setValue(0), animalSelectScale.setValue(0)}}>
+        <SelectModalBG style={{transform:[{scale:animalModalScale}]}} onPress={()=>{animalModalScale.setValue(0), animalSelectScale.setValue(0)}}>
 
             <SelectContainer style={{transform:[{scale:animalSelectScale}]}}>
                 <WordSelectTitle><WordSelectTitleText>동물</WordSelectTitleText></WordSelectTitle>
-                <WordKorBtn 
-                    style={{transform: [{scale:KorBtnAnimation}]}}
-                    onPressIn={() => (ClickSound(), KorBtnAnimation.setValue(0.9))}
-                    onPressOut={() => {BtnClick("AnimalKOR"),KorBtnAnimation.setValue(1)}}
-                >
-                    <WordSelectText>한글</WordSelectText>
-                </WordKorBtn>
-                <WordEngBtn 
-                style={{transform: [{scale:EngBtnAnimation}]}}
-                onPressIn={() => {ClickSound(),EngBtnAnimation.setValue(0.9)}}
-                onPressOut={() => {BtnClick("AnimalENG"),EngBtnAnimation.setValue(1)}}
-                >
-                    <WordSelectText>영어</WordSelectText>
-                </WordEngBtn>
+
+                {modalBtnFunc(KorBtnAnimation,colors.BLUE,"AnimalKOR","한글")}
+                {modalBtnFunc(EngBtnAnimation,colors.REDORANGE,"AnimalENG","영어")}
             </SelectContainer>
         </SelectModalBG>
     </BG>
-    // </Shell>
     )
 }
 export default Menu;

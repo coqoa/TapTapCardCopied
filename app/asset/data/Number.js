@@ -9,7 +9,7 @@ export const Number = [
         "image2" : require("../images/Number/0-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/0.mp3"),
 
     }, 
     {
@@ -20,8 +20,7 @@ export const Number = [
         "image2" : require("../images/Number/1-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PURPLE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/1.mp3")
     }, 
     {
         "id" : "2", 
@@ -31,8 +30,7 @@ export const Number = [
         "image2" : require("../images/Number/2-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/2.mp3")
     }, 
     {
         "id" : "3", 
@@ -42,8 +40,7 @@ export const Number = [
         "image2" : require("../images/Number/3-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.NAVY,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/3.mp3")
     }, 
     {
         "id" : "4", 
@@ -53,8 +50,7 @@ export const Number = [
         "image2" : require("../images/Number/4-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.GREEN,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/4.mp3")
     }, 
     {
         "id" : "5", 
@@ -64,8 +60,7 @@ export const Number = [
         "image2" : require("../images/Number/5-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PASTELORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/5.mp3")
     }, 
     {
         "id" : "6", 
@@ -75,8 +70,7 @@ export const Number = [
         "image2" : require("../images/Number/6-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.CUSTOMPINK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/6.mp3")
     }, 
     {
         "id" : "7", 
@@ -86,8 +80,7 @@ export const Number = [
         "image2" : require("../images/Number/7-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.LIGHTSEABLUE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/7.mp3")
     }, 
     {
         "id" : "8", 
@@ -97,8 +90,7 @@ export const Number = [
         "image2" : require("../images/Number/8-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDBRICK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/8.mp3")
     }, 
     {
         "id" : "9", 
@@ -108,8 +100,7 @@ export const Number = [
         "image2" : require("../images/Number/9-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.OLIVE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/9.mp3")
     }, 
     {
         "id" : "10", 
@@ -119,8 +110,7 @@ export const Number = [
         "image2" : require("../images/Number/10-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PURPLE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/10.mp3")
     },
 
     {
@@ -131,8 +121,7 @@ export const Number = [
         "image2" : require("../images/Number/11-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/11.mp3")
     }, 
     {
         "id" : "12", 
@@ -142,8 +131,7 @@ export const Number = [
         "image2" : require("../images/Number/12-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.NAVY,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/12.mp3")
     }, 
     {
         "id" : "13", 
@@ -153,8 +141,7 @@ export const Number = [
         "image2" : require("../images/Number/13-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.GREEN,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/13.mp3")
     }, 
     {
         "id" : "14", 
@@ -164,8 +151,7 @@ export const Number = [
         "image2" : require("../images/Number/14-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PASTELORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/14.mp3")
     }, 
     {
         "id" : "15", 
@@ -175,8 +161,7 @@ export const Number = [
         "image2" : require("../images/Number/15-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.CUSTOMPINK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/15.mp3")
     }, 
     {
         "id" : "16", 
@@ -186,8 +171,7 @@ export const Number = [
         "image2" : require("../images/Number/16-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.LIGHTSEABLUE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/16.mp3")
     }, 
     {
         "id" : "17", 
@@ -197,8 +181,7 @@ export const Number = [
         "image2" : require("../images/Number/17-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDBRICK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/17.mp3")
     }, 
     {
         "id" : "18", 
@@ -208,8 +191,7 @@ export const Number = [
         "image2" : require("../images/Number/18-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.OLIVE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/18.mp3")
     }, 
     {
         "id" : "19", 
@@ -219,8 +201,7 @@ export const Number = [
         "image2" : require("../images/Number/19-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/19.mp3")
     }, 
     {
         "id" : "20", 
@@ -230,8 +211,7 @@ export const Number = [
         "image2" : require("../images/Number/20-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/20.mp3")
     }, 
 
     {
@@ -242,8 +222,7 @@ export const Number = [
         "image2" : require("../images/Number/21-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.NAVY,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/21.mp3")
     }, 
     {
         "id" : "22", 
@@ -253,8 +232,7 @@ export const Number = [
         "image2" : require("../images/Number/22-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.GREEN,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/22.mp3")
     }, 
     {
         "id" : "23", 
@@ -264,8 +242,7 @@ export const Number = [
         "image2" : require("../images/Number/23-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PASTELORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/23.mp3")
     }, 
     {
         "id" : "24", 
@@ -275,8 +252,7 @@ export const Number = [
         "image2" : require("../images/Number/24-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.CUSTOMPINK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/24.mp3")
     }, 
     {
         "id" : "25", 
@@ -286,8 +262,7 @@ export const Number = [
         "image2" : require("../images/Number/25-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.LIGHTSEABLUE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/25.mp3")
     }, 
     {
         "id" : "26", 
@@ -297,8 +272,7 @@ export const Number = [
         "image2" : require("../images/Number/26-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDBRICK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/26.mp3")
     }, 
     {
         "id" : "27", 
@@ -308,8 +282,7 @@ export const Number = [
         "image2" : require("../images/Number/27-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.OLIVE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/27.mp3")
     }, 
     {
         "id" : "28", 
@@ -319,8 +292,7 @@ export const Number = [
         "image2" : require("../images/Number/28-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/28.mp3")
     }, 
     {
         "id" : "29", 
@@ -330,8 +302,7 @@ export const Number = [
         "image2" : require("../images/Number/29-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PURPLE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/29.mp3")
     }, 
     {
         "id" : "30", 
@@ -341,8 +312,7 @@ export const Number = [
         "image2" : require("../images/Number/30-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.NAVY,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/30.mp3")
     }, 
 
     {
@@ -353,8 +323,7 @@ export const Number = [
         "image2" : require("../images/Number/31-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.GREEN,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/31.mp3")
     }, 
     {
         "id" : "32", 
@@ -364,8 +333,7 @@ export const Number = [
         "image2" : require("../images/Number/32-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PASTELORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/32.mp3")
     }, 
     {
         "id" : "33", 
@@ -375,8 +343,7 @@ export const Number = [
         "image2" : require("../images/Number/33-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.CUSTOMPINK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/33.mp3")
     }, 
     {
         "id" : "34", 
@@ -386,8 +353,7 @@ export const Number = [
         "image2" : require("../images/Number/34-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.LIGHTSEABLUE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/34.mp3")
     }, 
     {
         "id" : "35", 
@@ -397,8 +363,7 @@ export const Number = [
         "image2" : require("../images/Number/35-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDBRICK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/35.mp3")
     }, 
     {
         "id" : "36", 
@@ -408,8 +373,7 @@ export const Number = [
         "image2" : require("../images/Number/36-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.OLIVE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/36.mp3")
     }, 
     {
         "id" : "37", 
@@ -419,8 +383,7 @@ export const Number = [
         "image2" : require("../images/Number/37-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/37.mp3")
     }, 
     {
         "id" : "38", 
@@ -430,8 +393,7 @@ export const Number = [
         "image2" : require("../images/Number/38-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PURPLE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/38.mp3")
     }, 
     {
         "id" : "39", 
@@ -441,8 +403,7 @@ export const Number = [
         "image2" : require("../images/Number/39-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/39.mp3")
     }, 
     {
         "id" : "40", 
@@ -452,8 +413,7 @@ export const Number = [
         "image2" : require("../images/Number/40-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.GREEN,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/40.mp3")
     }, 
     {
         "id" : "41", 
@@ -463,8 +423,7 @@ export const Number = [
         "image2" : require("../images/Number/41-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PASTELORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/41.mp3")
     }, 
     {
         "id" : "42", 
@@ -474,8 +433,7 @@ export const Number = [
         "image2" : require("../images/Number/42-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.CUSTOMPINK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/42.mp3")
     }, 
     {
         "id" : "43", 
@@ -485,8 +443,7 @@ export const Number = [
         "image2" : require("../images/Number/43-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.LIGHTSEABLUE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/43.mp3")
     }, 
     {
         "id" : "44", 
@@ -496,8 +453,7 @@ export const Number = [
         "image2" : require("../images/Number/44-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDBRICK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/44.mp3")
     }, 
     {
         "id" : "45", 
@@ -507,8 +463,7 @@ export const Number = [
         "image2" : require("../images/Number/45-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.OLIVE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/45.mp3")
     }, 
     {
         "id" : "46", 
@@ -518,8 +473,7 @@ export const Number = [
         "image2" : require("../images/Number/46-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/46.mp3")
     }, 
     {
         "id" : "47", 
@@ -529,8 +483,7 @@ export const Number = [
         "image2" : require("../images/Number/47-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PURPLE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/47.mp3")
     }, 
     {
         "id" : "48", 
@@ -540,8 +493,7 @@ export const Number = [
         "image2" : require("../images/Number/48-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/48.mp3")
     }, 
     {
         "id" : "49", 
@@ -551,8 +503,7 @@ export const Number = [
         "image2" : require("../images/Number/49-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.NAVY,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/49.mp3")
     }, 
     {
         "id" : "50", 
@@ -562,8 +513,7 @@ export const Number = [
         "image2" : require("../images/Number/50-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PASTELORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/50.mp3")
     }, 
     {
         "id" : "51", 
@@ -573,8 +523,7 @@ export const Number = [
         "image2" : require("../images/Number/51-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.CUSTOMPINK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/51.mp3")
     }, 
     {
         "id" : "52", 
@@ -584,8 +533,7 @@ export const Number = [
         "image2" : require("../images/Number/52-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.LIGHTSEABLUE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/52.mp3")
     }, 
     {
         "id" : "53", 
@@ -595,8 +543,7 @@ export const Number = [
         "image2" : require("../images/Number/53-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDBRICK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/53.mp3")
     }, 
     {
         "id" : "54", 
@@ -606,8 +553,7 @@ export const Number = [
         "image2" : require("../images/Number/54-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.OLIVE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/54.mp3")
     }, 
     {
         "id" : "55", 
@@ -617,8 +563,7 @@ export const Number = [
         "image2" : require("../images/Number/55-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/55.mp3")
     }, 
     {
         "id" : "56", 
@@ -628,8 +573,7 @@ export const Number = [
         "image2" : require("../images/Number/56-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PURPLE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/56.mp3")
     }, 
     {
         "id" : "57", 
@@ -639,8 +583,7 @@ export const Number = [
         "image2" : require("../images/Number/57-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/57.mp3")
     }, 
     {
         "id" : "58", 
@@ -650,8 +593,7 @@ export const Number = [
         "image2" : require("../images/Number/58-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.NAVY,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/58.mp3")
     }, 
     {
         "id" : "59", 
@@ -661,8 +603,7 @@ export const Number = [
         "image2" : require("../images/Number/59-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.GREEN,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/59.mp3")
     }, 
     {
         "id" : "60", 
@@ -672,8 +613,7 @@ export const Number = [
         "image2" : require("../images/Number/60-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.CUSTOMPINK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/60.mp3")
     }, 
     {
         "id" : "61", 
@@ -683,8 +623,7 @@ export const Number = [
         "image2" : require("../images/Number/61-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.LIGHTSEABLUE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/61.mp3")
     }, 
     {
         "id" : "62", 
@@ -694,8 +633,7 @@ export const Number = [
         "image2" : require("../images/Number/62-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDBRICK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/62.mp3")
     }, 
     {
         "id" : "63", 
@@ -705,8 +643,7 @@ export const Number = [
         "image2" : require("../images/Number/63-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.OLIVE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/63.mp3")
     }, 
     {
         "id" : "64", 
@@ -716,8 +653,7 @@ export const Number = [
         "image2" : require("../images/Number/64-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/64.mp3")
     }, 
     {
         "id" : "65", 
@@ -727,8 +663,7 @@ export const Number = [
         "image2" : require("../images/Number/65-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PURPLE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/65.mp3")
     }, 
     {
         "id" : "66", 
@@ -738,8 +673,7 @@ export const Number = [
         "image2" : require("../images/Number/66-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/66.mp3")
     }, 
     {
         "id" : "67", 
@@ -749,8 +683,7 @@ export const Number = [
         "image2" : require("../images/Number/67-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.NAVY,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/67.mp3")
     }, 
     {
         "id" : "68", 
@@ -760,8 +693,7 @@ export const Number = [
         "image2" : require("../images/Number/68-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.GREEN,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/68.mp3")
     }, 
     {
         "id" : "69", 
@@ -771,8 +703,7 @@ export const Number = [
         "image2" : require("../images/Number/69-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PASTELORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/69.mp3")
     }, 
     {
         "id" : "70", 
@@ -782,8 +713,7 @@ export const Number = [
         "image2" : require("../images/Number/70-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.LIGHTSEABLUE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/70.mp3")
     }, 
     {
         "id" : "71", 
@@ -793,8 +723,7 @@ export const Number = [
         "image2" : require("../images/Number/71-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDBRICK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/71.mp3")
     }, 
     {
         "id" : "72", 
@@ -804,8 +733,7 @@ export const Number = [
         "image2" : require("../images/Number/72-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.OLIVE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/72.mp3")
     }, 
     {
         "id" : "73", 
@@ -815,8 +743,7 @@ export const Number = [
         "image2" : require("../images/Number/73-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/73.mp3")
     }, 
     {
         "id" : "74", 
@@ -826,8 +753,7 @@ export const Number = [
         "image2" : require("../images/Number/74-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PURPLE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/74.mp3")
     }, 
     {
         "id" : "75", 
@@ -837,8 +763,7 @@ export const Number = [
         "image2" : require("../images/Number/75-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/75.mp3")
     }, 
     {
         "id" : "76", 
@@ -848,8 +773,7 @@ export const Number = [
         "image2" : require("../images/Number/76-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.NAVY,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/76.mp3")
     }, 
     {
         "id" : "77", 
@@ -859,8 +783,7 @@ export const Number = [
         "image2" : require("../images/Number/77-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.GREEN,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/77.mp3")
     }, 
     {
         "id" : "78", 
@@ -870,8 +793,7 @@ export const Number = [
         "image2" : require("../images/Number/78-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PASTELORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/78.mp3")
     }, 
     {
         "id" : "79", 
@@ -881,8 +803,7 @@ export const Number = [
         "image2" : require("../images/Number/79-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.CUSTOMPINK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/79.mp3")
     }, 
     {
         "id" : "80", 
@@ -892,8 +813,7 @@ export const Number = [
         "image2" : require("../images/Number/80-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDBRICK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/80.mp3")
     }, 
 
     {
@@ -904,8 +824,7 @@ export const Number = [
         "image2" : require("../images/Number/81-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.OLIVE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/81.mp3")
     }, 
     {
         "id" : "82", 
@@ -915,8 +834,7 @@ export const Number = [
         "image2" : require("../images/Number/82-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/82.mp3")
     }, 
     {
         "id" : "83", 
@@ -926,8 +844,7 @@ export const Number = [
         "image2" : require("../images/Number/83-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PURPLE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/83.mp3")
     }, 
     {
         "id" : "84", 
@@ -937,8 +854,7 @@ export const Number = [
         "image2" : require("../images/Number/84-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/84.mp3")
     }, 
     {
         "id" : "85", 
@@ -948,8 +864,7 @@ export const Number = [
         "image2" : require("../images/Number/85-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.NAVY,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/85.mp3")
     }, 
     {
         "id" : "86", 
@@ -959,8 +874,7 @@ export const Number = [
         "image2" : require("../images/Number/86-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.GREEN,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/86.mp3")
     }, 
     {
         "id" : "87", 
@@ -970,8 +884,7 @@ export const Number = [
         "image2" : require("../images/Number/87-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PASTELORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/87.mp3")
     }, 
     {
         "id" : "88", 
@@ -981,8 +894,7 @@ export const Number = [
         "image2" : require("../images/Number/88-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.CUSTOMPINK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/88.mp3")
     }, 
     {
         "id" : "89", 
@@ -992,8 +904,7 @@ export const Number = [
         "image2" : require("../images/Number/89-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.LIGHTSEABLUE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/89.mp3")
     }, 
     {
         "id" : "90", 
@@ -1003,8 +914,7 @@ export const Number = [
         "image2" : require("../images/Number/90-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.OLIVE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/90.mp3")
     }, 
     {
         "id" : "91", 
@@ -1014,8 +924,7 @@ export const Number = [
         "image2" : require("../images/Number/91-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/91.mp3")
     }, 
     {
         "id" : "92", 
@@ -1025,8 +934,7 @@ export const Number = [
         "image2" : require("../images/Number/92-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PURPLE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/92.mp3")
     }, 
     {
         "id" : "93", 
@@ -1036,8 +944,7 @@ export const Number = [
         "image2" : require("../images/Number/93-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/93.mp3")
     }, 
     {
         "id" : "94", 
@@ -1047,8 +954,7 @@ export const Number = [
         "image2" : require("../images/Number/94-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.NAVY,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/94.mp3")
     }, 
     {
         "id" : "95", 
@@ -1058,8 +964,7 @@ export const Number = [
         "image2" : require("../images/Number/95-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.GREEN,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/95.mp3")
     }, 
     {
         "id" : "96", 
@@ -1069,8 +974,7 @@ export const Number = [
         "image2" : require("../images/Number/96-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.PASTELORANGE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/96.mp3")
     }, 
     {
         "id" : "97", 
@@ -1080,8 +984,7 @@ export const Number = [
         "image2" : require("../images/Number/97-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.CUSTOMPINK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/97.mp3")
     }, 
     {
         "id" : "98", 
@@ -1091,8 +994,7 @@ export const Number = [
         "image2" : require("../images/Number/98-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.LIGHTSEABLUE,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/98.mp3")
     }, 
     {
         "id" : "99", 
@@ -1102,8 +1004,7 @@ export const Number = [
         "image2" : require("../images/Number/99-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.REDBRICK,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/99.mp3")
     }, 
     {
         "id" : "100", 
@@ -1113,8 +1014,7 @@ export const Number = [
         "image2" : require("../images/Number/100-2.png"), 
         "bgColor" : "white",
         "textColor" : colors.WhaleBG,
-        "SoundImage" : require("../audio/ganada/consonant/giyeok.mp3"),
-        "SoundKOR" : require("../audio/ganada/consonant/giyeok.mp3"),
+        "SoundImage" : require("../audio/Number/100.mp3")
     }, 
 
 ]

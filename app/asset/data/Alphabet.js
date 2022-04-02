@@ -1,4 +1,4 @@
-import { colors } from "../../component/color"
+import { colors } from "../../component/Color"
 
 export const Alphabet = [
     {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import {View, Text, Dimensions, PanResponder, Animated, Pressable, TouchableOpacity ,ActivityIndicator, ScrollView} from "react-native";
+import {View, Dimensions, PanResponder, Animated, Pressable, TouchableOpacity } from "react-native";
 import { Audio } from 'expo-av';
 import styled from "styled-components";
-import { colors } from "../component/color";
+import { colors } from "../component/Color";
 import { WordCardLevel } from "../component/CardDefault";
 
 
@@ -114,14 +114,12 @@ const MenuModalContainer = styled(Animated.createAnimatedComponent(View))`
     z-index: 2;
 `
 const MenuModal = styled.View`
-    /* top: 3px; */
     width: 90%;
     flex:1;
     align-items: center;
     justify-content: center;
 `
 const MenuModalScrollView = styled.ScrollView`
-    /* top: 3px; */
     width: 90%;
     flex:1;
 `
@@ -152,18 +150,17 @@ const WordPlay = ({route, navigation}) => {
     const [cardSelector, setCardSelector] = useState();
     const [mainScreenRender, setMainScreenRender] = useState(false)
     const [typeCheckRes, setTypeCheckRes] = useState("")
+
+    // Menu.js로부터 type을 받는다 (한글인지 영어인지) 그 후 type을 토대로 출력되는 코드들을 정해준다
+    const type = route.params.type
     
     const typeCheck = (e) => {
         if(e=="AnimalKOR"){
             return setTypeCheckRes("Animal")
         }else if (e=="AnimalENG"){
             return setTypeCheckRes("Animal")
-        }else if (e=="ganada"){
-            return setTypeCheckRes("ganada")
-        }else if (e=="Language"){
-            return setTypeCheckRes("Language")
-        }else if (e=="Number"){
-            return setTypeCheckRes("Number")
+        }else{
+            return setTypeCheckRes(e)
         }
     }
 
@@ -226,9 +223,8 @@ const WordPlay = ({route, navigation}) => {
     const number8Pan = btnPan("81~90")
     const number9Pan = btnPan("91~100")
 
-
 //선택지
-    //가나다메뉴 선택지
+    //가나다 메뉴 모달 선택지 함수
     const ganadaDistractor = (a,b,c,d) => {
         return (
             <LevelBtn 
@@ -241,35 +237,32 @@ const WordPlay = ({route, navigation}) => {
             </LevelBtn>
         )
     }
-    //숫자메뉴 선택지
+    //숫자 메뉴 모달 선택지 함수
     const numberDistractor = (a,b,c,d) => {
-        
         return (
-
             <LevelBtn 
                 {...a}
                 style={{backgroundColor: b, transform: [{scale:c}]}}
                 onPressIn={()=>{c.setValue(0.8),ClickSound()}}
-                    onPressOut={()=>c.setValue(1)}
+                onPressOut={()=>c.setValue(1)}
             >
                 <ModalMenuText>{d}</ModalMenuText>
             </LevelBtn>   
         )
     }
-    // 동물메뉴 선택지
+    // 동물 메뉴 모달 선택지
     const animalDistractor = (a,b,c,d) => {
         return (
             <LevelBtn 
-            {...a}
-            style={{backgroundColor: b, transform: [{scale:c}]}}
-            onPressIn={()=>{c.setValue(0.8),ClickSound()}}
-            onPressOut={()=>c.setValue(1)}
+                {...a}
+                style={{backgroundColor: b, transform: [{scale:c}]}}
+                onPressIn={()=>{c.setValue(0.8),ClickSound()}}
+                onPressOut={()=>c.setValue(1)}
             >
             <StarViewImage source={d} resizeMode="contain" />
             </LevelBtn>
         )
     }
-
 
     // 뒤로가기 버튼
     const goBackBtnScale = useRef(new Animated.Value(1)).current
@@ -287,24 +280,24 @@ const WordPlay = ({route, navigation}) => {
         })
     ).current
 
-    // mainScreenRender를 false로 만들면 실행되는 리렌더코드(clearTimeout해준다)
+    // mainScreenRender를 false로 만들면 실행되는 리렌더 함수(clearTimeout해준다)
+    // mainScreenRender?  메인컴포넌트를 출력하기위한 state
     const rerenderTimeout = useRef(null); 
     useEffect(()=>{
         rerenderTimeout.current = setTimeout(() => {setMainScreenRender(true)},50)
         return() => clearTimeout(rerenderTimeout.current)
     },[mainScreenRender])
-    // 받은props를 기반으로 cardSelector state를 변경, -> mainScreenRender를 false로 바꿔서 위의 코드를 실행한다
+
+    // 받은props를 기반으로 cardSelector state를 변경하는 함수 -> mainScreenRender를 false로 바꿔서 위의 코드를 실행한다
     const cardCheck = (e) => {
         setMainScreenRender(false);
         setCardSelector(e);
     }
+
     //자식컴포넌트로부터 값을 받아서 state를 변경하기 위해 props로 넘길 함수
     const getData = (cardSelector) => {
         setCardSelector(cardSelector)
     }
-
-    // Menu.js로부터 type을 받는다 (한글인지 영어인지) 그 후 type을 토대로 출력되는 코드들을 정해준다
-    const type = route.params.type
 
     const goBack = () => {
         navigation.goBack()
@@ -319,27 +312,18 @@ const WordPlay = ({route, navigation}) => {
         }
     }
     
-
-    
-    
-    return( 
-        // loading ? (
-        //     <Loader>
-        //         <ActivityIndicator />
-        //     </Loader>
-        // ) : (
-            
-            <Shell>
-            {/* 카드를 출력되는 부분은 CardDefault 컴포넌트를 불러와서 사용함 */}
-            
+    return(    
+        <Shell>
             <TopContainer>
             <Top>
+                {/* 뒤로가기 버튼 */}
                 <GoBack 
                     {...goBackPan.panHandlers} 
                     style={{transform: [{scale:goBackBtnScale}]}} 
                 >
                     <GoBackBtnImage source={require("../asset/images/goBack1.png")} />
                 </GoBack>
+                {/* 상단네비게이션 가운데 레벨표시하는 부분 */}
                 <Star>
                     {typeCheckRes == "Animal" && (
                     <>
@@ -353,7 +337,7 @@ const WordPlay = ({route, navigation}) => {
                         }})()}
                     </>
                     )}
-                    {typeCheckRes == "ganada" && (
+                    {typeCheckRes == "Ganada" && (
                         <>
                             {(()=>{
                             if(cardSelector === "Consonant") {return <MenuText>자 음</MenuText>}
@@ -379,8 +363,8 @@ const WordPlay = ({route, navigation}) => {
                             })()}
                         </>
                     )}
-                        
                 </Star>
+                {/* 메뉴 버튼 */}
                 <Menu 
                     style={{transform: [{scale:menuBtnScale}]}}
                     onPressIn={()=>{menuBtnScale.setValue(0.8), ClickSound(), menuModalScale.setValue(1), containerScale.setValue(1)}}
@@ -392,60 +376,58 @@ const WordPlay = ({route, navigation}) => {
             </Top>
             </TopContainer>
 
+            {/* 카드가 출력되는 부분은 CardDefault 컴포넌트를 불러와서 사용함 */}
             {mainScreenRender && (
             <Main>
                 {(()=>{ return ( <WordCardLevel level={cardSelector} getData={getData} type={type} /> )})()}
             </Main>
             )}
             
-            {/* 햄버거바 터치시 출력되는 모달 */}
+            {/* 메뉴버튼 터치시 출력되는 모달 */}
             <MenuModalBg 
             style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT,transform: [{scale:menuModalScale}]}}
             onPressOut={() => ( containerScale.setValue(0), menuModalScale.setValue(0))}
             />
-                <MenuModalContainer style={{transform:[{scale:containerScale}]}}>
+            <MenuModalContainer style={{transform:[{scale:containerScale}]}}>
 
-                {typeCheckRes == "Number" ? (
-                    <MenuModalScrollView
-                    contentContainerStyle = {{alignItems:"center"}}
-                    >
-                        {numberDistractor(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "숫 자")}
-                        {numberDistractor(number0Pan.panHandlers, colors.WhaleBG, level2Scale, "0~10")}
-                        {numberDistractor(number1Pan.panHandlers, colors.DARKOLIVE, level3Scale, "11~20")}
-                        {numberDistractor(number2Pan.panHandlers, colors.PURPLE, level4Scale, "21~30")}
-                        {numberDistractor(number3Pan.panHandlers, colors.NAVY, level5Scale, "31~40")}
-                        {numberDistractor(number4Pan.panHandlers, colors.GREEN, level6Scale, "41~50")}
-                        {numberDistractor(number5Pan.panHandlers, colors.PASTELORANGE, level7Scale, "51~60")}
-                        {numberDistractor(number6Pan.panHandlers, colors.CUSTOMPINK, level8Scale, "61~70")}
-                        {numberDistractor(number7Pan.panHandlers, colors.LIGHTSEABLUE, level9Scale, "71~80")}
-                        {numberDistractor(number8Pan.panHandlers, colors.REDBRICK, level10Scale, "81~90")}
-                        {numberDistractor(number9Pan.panHandlers, colors.GREEN, level11Scale, "91~100")}
-                    </MenuModalScrollView>
-                ):(
-                    <MenuModal>
-                        {typeCheckRes == "Animal" && (
-                            <>
-                            {animalDistractor(animal1Pan.panHandlers,colors.BLUE,level1Scale,require("../asset/images/Star1.png"))}
-                            {animalDistractor(animal2Pan.panHandlers,colors.REDORANGE,level2Scale,require("../asset/images/Star2.png"))}
-                            {animalDistractor(animal3Pan.panHandlers,colors.DARKOLIVE,level3Scale,require("../asset/images/Star3.png"))}
-                            </>
-                        )}
-                        {typeCheckRes == "ganada" && (
-                            <>
-                            {ganadaDistractor(ganada1Pan.panHandlers, colors.LIGHTPINK, level1Scale, "자 음")}
-                            {ganadaDistractor(ganada2Pan.panHandlers, colors.LIGHTNAVY, level2Scale, "모 음")}
-                            </>
-                        )}
-                        {typeCheckRes == "Language" && (
-                            <>
-                                {ganadaDistractor(alphabetPan.panHandlers, colors.LIGHTPINK, level1Scale, "알파벳")}
-                            </>
-                        )}
-                    </MenuModal>
-                )}
-                </MenuModalContainer>
-            </Shell>
-        )
-    // )
+            {typeCheckRes == "Number" ? (
+                <MenuModalScrollView contentContainerStyle = {{alignItems:"center"}}>
+                    {numberDistractor(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "숫 자")}
+                    {numberDistractor(number0Pan.panHandlers, colors.WhaleBG, level2Scale, "0~10")}
+                    {numberDistractor(number1Pan.panHandlers, colors.DARKOLIVE, level3Scale, "11~20")}
+                    {numberDistractor(number2Pan.panHandlers, colors.PURPLE, level4Scale, "21~30")}
+                    {numberDistractor(number3Pan.panHandlers, colors.NAVY, level5Scale, "31~40")}
+                    {numberDistractor(number4Pan.panHandlers, colors.GREEN, level6Scale, "41~50")}
+                    {numberDistractor(number5Pan.panHandlers, colors.PASTELORANGE, level7Scale, "51~60")}
+                    {numberDistractor(number6Pan.panHandlers, colors.CUSTOMPINK, level8Scale, "61~70")}
+                    {numberDistractor(number7Pan.panHandlers, colors.LIGHTSEABLUE, level9Scale, "71~80")}
+                    {numberDistractor(number8Pan.panHandlers, colors.REDBRICK, level10Scale, "81~90")}
+                    {numberDistractor(number9Pan.panHandlers, colors.GREEN, level11Scale, "91~100")}
+                </MenuModalScrollView>
+            ):(
+                <MenuModal>
+                    {typeCheckRes == "Animal" && (
+                    <>
+                        {animalDistractor(animal1Pan.panHandlers,colors.BLUE,level1Scale,require("../asset/images/Star1.png"))}
+                        {animalDistractor(animal2Pan.panHandlers,colors.REDORANGE,level2Scale,require("../asset/images/Star2.png"))}
+                        {animalDistractor(animal3Pan.panHandlers,colors.DARKOLIVE,level3Scale,require("../asset/images/Star3.png"))}
+                    </>
+                    )}
+                    {typeCheckRes == "Ganada" && (
+                    <>
+                        {ganadaDistractor(ganada1Pan.panHandlers, colors.LIGHTPINK, level1Scale, "자 음")}
+                        {ganadaDistractor(ganada2Pan.panHandlers, colors.LIGHTNAVY, level2Scale, "모 음")}
+                    </>
+                    )}
+                    {typeCheckRes == "Language" && (
+                    <>
+                        {ganadaDistractor(alphabetPan.panHandlers, colors.LIGHTPINK, level1Scale, "알파벳")}
+                    </>
+                    )}
+                </MenuModal>
+            )}
+            </MenuModalContainer>
+        </Shell>
+    )
 }
 export default WordPlay;

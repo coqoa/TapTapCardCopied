@@ -2,7 +2,7 @@ import React,{ useRef } from "react";
 import styled from "styled-components";
 import {Animated, Pressable, View} from "react-native";
 import { Audio } from 'expo-av';
-import { colors } from "../component/color";
+import { colors } from "../component/Color";
 
 const BG = styled.ImageBackground`
     flex: 1;
@@ -139,7 +139,7 @@ const Menu = ({navigation}) => {
     return(
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
         <MenuBoxShell>
-            {btnFunc(ganadaBtnAnimation,"ganada","가나다")}
+            {btnFunc(ganadaBtnAnimation,"Ganada","가나다")}
             {btnFunc(languageBtnAnimation,"Language","ABC")}
             {btnFunc(numberBtnAnimation,"Number","숫자")}
             <MenuBox 

@@ -1,10 +1,8 @@
 import React, {useState, useEffect, useCallback, useRef} from "react"
 import { Audio } from 'expo-av';
-import {View, Dimensions, FlatList, Animated, Easing, TouchableOpacity, Pressable, PanResponder,Text, TextInput, Button, ScrollView } from "react-native";
+import {View, Dimensions, FlatList, Animated, Pressable, PanResponder } from "react-native";
 import styled from "styled-components"
-import { colors } from "./color";
-import { Ionicons } from "@expo/vector-icons";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "./Color";
 
 import { AnimalCardArray } from "../asset/data/AnimalCardArray";
 import { KorArrayConsonant, KorArrayVowel } from "../asset/data/WordArrayKOR";
@@ -319,8 +317,9 @@ export const WordCardLevel = (props) => {
     const [distractorWindowBackground, setDistractorWindowBackground] = useState(true);
     const [distractorWindow, setDistractorWindow] = useState(true);
     const [scrollOn, setScrollOn] = useState(true)
-    // AnimatedValues & panResponder
-    // 카드애니메이션
+
+    // AnimatedValues & panResponder ~
+    // 카드애니메이션 (좌우이동, scale, opacity)
     const position = useRef(new Animated.Value(0)).current;
     const scaleControl = position.interpolate({
         inputRange:[-170,0,170,],
@@ -344,7 +343,6 @@ export const WordCardLevel = (props) => {
         restDisplacementThreshold:1,
         useNativeDriver:true,
     });
-
     const panResponder = useRef(PanResponder.create({
             onStartShouldSetPanResponder: () => true,
             onPanResponderMove:(_,{dx}) => {position.setValue(dx)}, 
@@ -366,7 +364,7 @@ export const WordCardLevel = (props) => {
         })
     ).current
     
-    //클릭시 나오는 두번째 이미지
+    //클릭시 두번째 이미지 출력
     const secondImageOpacity = useRef(new Animated.Value(0)).current;
     const secondImageOn = Animated.timing(secondImageOpacity, {
         toValue:1,
@@ -384,7 +382,7 @@ export const WordCardLevel = (props) => {
         onPanResponderEnd:()=>{Animated.sequence([secondImageOn,secondImageOff]).start();}
     })).current
 
-    // 텍스트클릭 애니메이션
+    // 텍스트 클릭시 출력하는 애니메이션
     const secondTextOpacity = useRef(new Animated.Value(0)).current;
     const secondTextOn = Animated.timing(secondTextOpacity,{
         toValue:1,
@@ -403,7 +401,8 @@ export const WordCardLevel = (props) => {
             Animated.sequence([secondTextOn, secondTextOff]).start();
         }
     })).current
-    // 물음표 애니메이션
+
+    // 물음표박스 애니메이션
     const questionOpacity = useRef(new Animated.Value(1)).current;
     const questionOpacityPress = Animated.timing(questionOpacity,{
         toValue:0,
@@ -415,7 +414,7 @@ export const WordCardLevel = (props) => {
             Animated.sequence([secondTextOn, secondTextOff])]).start();}
         
     })).current
-     // 실사 애니메이션
+     // 실제사진 모달 관련 애니메이션
     const pictureBtnScale = useRef(new Animated.Value(1)).current
     const pictureContainerScale = useRef(new Animated.Value(0)).current
     const pictureContainerModalOn = Animated.spring(pictureContainerScale,{
@@ -462,7 +461,7 @@ export const WordCardLevel = (props) => {
         }
     })).current
 
-    // 3LV 정답체크부분
+    // 3LV 선택지 정답 체크 관련
     // 클릭블로커
     const clickBlockerValue = useRef(new Animated.Value(0)).current
     const clickBlockerFunc = () =>{
@@ -479,7 +478,7 @@ export const WordCardLevel = (props) => {
         duration:150,
         useNativeDriver:true
     })
-    //정답애니메이션
+    // 정답 애니메이션
     const correctAnswerMarkValue = useRef(new Animated.Value(0)).current;
     const checkMarkOn = Animated.spring(correctAnswerMarkValue, {
         toValue:1,
@@ -507,6 +506,7 @@ export const WordCardLevel = (props) => {
             })).current
         )
     }
+    // 오답 애니메이션
     const wrongPressedOn = (e) => {
         return(
             Animated.spring(e,{
@@ -579,7 +579,8 @@ export const WordCardLevel = (props) => {
     const wrongImageOn4 = wrongPressedOn(wrongImageValue4)
     const wrongImageOff4 = wrongPressedOff(wrongImageValue4)
     const distractorBtn4PanWrong = distractorWrong(wrongImageOn4,wrongImageOff4)
-    //정답버튼?
+
+    // 정답버튼
     const correctAnswer = (a,b,c,d,) => {
         return(
             <Distractor {...a.panHandlers} style={{transform:[{scale:b}]}} onPressIn={()=> b.setValue(0.8) } onPressOut={() => {b.setValue(1), playSound(c),clickBlockerFunc()}}>
@@ -587,6 +588,7 @@ export const WordCardLevel = (props) => {
         </Distractor>
         )
     }
+    // 오답 버튼
     const wrongAnswer = (a,b,c,d,e,f,g) => {
         return(
             <Distractor {...a.panHandlers} style={{transform:[{scale:b}]}} onPressIn={()=>b.setValue(0.8)} onPressOut={() => {b.setValue(1), playSound(c),clickBlockerFunc()}}>
@@ -595,8 +597,10 @@ export const WordCardLevel = (props) => {
         </Distractor>
         )
     }
+    // ~ AnimatedValues & panResponder 
 
-    //마지막 카드에서 출력되는 모달창, 다시하기버튼, 다음레벨 버튼
+
+    //마지막 카드에서 출력되는 모달창 (다시하기버튼, 다음레벨 버튼)
     const lastListModalOn = () => {
         setClearModalToggle((prev) => !prev)
         playSound(require("../asset/audio/LastListModal.mp3"))
@@ -638,6 +642,7 @@ export const WordCardLevel = (props) => {
         setRefresh(false)
         setClearModalToggle((prev) => !prev)
     }
+
     //부모 컴포넌트로부터 type props(KOR, ENG 등등)를 받아서 그에 맞는 화면을 출력해주기 위한 변수 
     const type = props.type
     
@@ -645,9 +650,8 @@ export const WordCardLevel = (props) => {
     const playSound = async(e) => {
         const sound = new Audio.Sound();
         try {    
-            // 저장한 path로 음원 파일 불러오기 
+            // 저장한 path로 음원 파일 불러오기 & 재생하기 
             await sound.loadAsync(e);
-            // 음원 재생하기 
             await sound.playAsync();
         } catch (error) {
         }
@@ -668,13 +672,13 @@ export const WordCardLevel = (props) => {
         return() => clearTimeout(refreshTimeout.current)
     },[refresh])
 
-    // FlatList data 분배기
+    // 위의 type변수를 받아서 FlatList의 data에 값을 넣어주는 분배기
     const arrayAlloter = (e) => {
         if(e=="AnimalKOR"){
             return AnimalCardArray
         }else if(e == "AnimalENG"){
             return AnimalCardArray
-        }else if(e=="ganada"){
+        }else if(e=="Ganada"){
             if(props.level == "Consonant"){
                 return KorArrayConsonant
             }else if (props.level == "Vowel"){
@@ -692,6 +696,8 @@ export const WordCardLevel = (props) => {
             }
         }
     }
+
+    // 실제 출력되는 부분
     const levelConsole = () => {
         return(
             <View  style={{alignItems:"center", justifyContent:"center"}}>
@@ -708,7 +714,6 @@ export const WordCardLevel = (props) => {
                 onEndReached={lastListModalOn}
                 onEndReachedThreshold={-0.1}
                 renderItem = {({item})=>{
-
                     // 무작위배열만들기
                     const numberArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
                     // 배열마다 무작위 숫자 부여
@@ -725,9 +730,7 @@ export const WordCardLevel = (props) => {
                         array.sort(() => Math.random() - 0.5);
                     }
                     shuffle(numArray);
-                    
-                    
-                        //type에 따라 다른 값 출력
+                //type에 따라 다른 카드이름 출력
                     const itemName = () => {
                         switch(type){
                             case "AnimalKOR":
@@ -741,6 +744,7 @@ export const WordCardLevel = (props) => {
                             default:
                                 return
                     }}
+                // type에 따라 다른 오디오 출력
                     const itemAudio = () => {
                         switch(type){
                             case "AnimalKOR":
@@ -754,7 +758,7 @@ export const WordCardLevel = (props) => {
                             default:
                                 return
                     }}
-                    //선택지 type에 따라 다르게 표시하기
+                //선택지 type에 따라 다르게 표시하기
                     //선택지 이름
                     const distractorName = (e) =>{
                         switch(type){
@@ -794,18 +798,18 @@ export const WordCardLevel = (props) => {
                         
                         {/* 실사 모달창 */}
                         {arrayAlloter(type) == AnimalCardArray && (
-                        <RealPictureContainer style={{opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
-                            <RealPictureExitBtn  {...pictureClosePan.panHandlers} onPressIn={()=>{ClickSound()}} onPressOut={()=>{setScrollOn(true)}} style={{transform:[{scale:pictureCloseBtnScale}]}}>
-                                <RealPictureExitBtnImage source={require("../asset/images/RealPictureExitBtn.png")} resizeMode="contain" />
-                            </RealPictureExitBtn>
-                            <RealPictureScrollView style={{width:SCREEN_WIDTH}}  pagingEnabled horizontal>
-                                {PictureImageData(item.realImage1)}
-                                {PictureImageData(item.realImage2)}
-                                {PictureImageData(item.realImage3)}
-                                {PictureImageData(item.realImage4)}
-                                {PictureImageData(item.realImage5)}
-                            </RealPictureScrollView>
-                        </RealPictureContainer>
+                            <RealPictureContainer style={{opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
+                                <RealPictureExitBtn  {...pictureClosePan.panHandlers} onPressIn={()=>{ClickSound()}} onPressOut={()=>{setScrollOn(true)}} style={{transform:[{scale:pictureCloseBtnScale}]}}>
+                                    <RealPictureExitBtnImage source={require("../asset/images/RealPictureExitBtn.png")} resizeMode="contain" />
+                                </RealPictureExitBtn>
+                                <RealPictureScrollView style={{width:SCREEN_WIDTH}}  pagingEnabled horizontal>
+                                    {PictureImageData(item.realImage1)}
+                                    {PictureImageData(item.realImage2)}
+                                    {PictureImageData(item.realImage3)}
+                                    {PictureImageData(item.realImage4)}
+                                    {PictureImageData(item.realImage5)}
+                                </RealPictureScrollView>
+                            </RealPictureContainer>
                         )}
 
                         {/* 카드전체스타일 */}
@@ -851,7 +855,7 @@ export const WordCardLevel = (props) => {
                             <CardContents style={{flex:props.level == "word3LV" ? 2 : 1}}>
                                 <CardName>
 
-                                    {type == "ganada" && (
+                                    {type == "Ganada" && (
                                     <GanadaNameContainer>
                                         <GanadaNameShell>
                                             {ganadaBtn(item.SoundItem1, item.item1)}
@@ -879,11 +883,11 @@ export const WordCardLevel = (props) => {
                                     </GanadaNameContainer>
                                     )}
 
-                                    {type !== "ganada" && (
+                                    {type !== "Ganada" && (
                                     <>
                                         <CardNameText>{itemName()}</CardNameText>
                                     
-                                        {/* type에 따라 한글을 읽어주는지, 영어를 읽어주는지 */}
+                                        {/* type에 따라 한글을 읽어주는지, 영어를 읽어주는지 구분할 수 있도록 itemAudio함수 사용 */}
                                         <TextAudioBtn {...secondTextPan.panHandlers}
                                         onPressOut={()=>{playSound(itemAudio()),clickBlockerFunc()}} />
                                         
@@ -900,6 +904,7 @@ export const WordCardLevel = (props) => {
                                                 </QuestionMarkBtn>                                                    
                                             </QuestionMarkBg>
                                         )}
+                                        {/* 3레벨에서만 사용되는 선택지 박스 컴포넌트 */}
                                         {props.level == "word3LV" &&(
                                         <>
                                             {distractorWindowBackground&&(

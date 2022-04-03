@@ -27,12 +27,14 @@ const Main = styled.View`
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    z-index: 2;
 `
 const TopContainer = styled.View`
     flex: 1;
     align-items: center;
     justify-content: center;
     margin-bottom: 5px;
+    z-index: 2;
     
 `
 const Top = styled.View`
@@ -92,14 +94,12 @@ const MenuBtnImage = styled.ImageBackground`
     height: 100%;
 `
 
-const MenuModalBg = styled(Animated.createAnimatedComponent(TouchableOpacity))`
+const MenuModalBg = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     background-color: rgba(0,0,0,0.6);
     z-index: 35;
     align-items: center;
     justify-content: center;
-    z-index: 1;
-    
 `
 const MenuModalContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
@@ -111,7 +111,6 @@ const MenuModalContainer = styled(Animated.createAnimatedComponent(View))`
     justify-content: center;
     background-color: rgba(255,255,255,0.9);
     box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
-    z-index: 2;
 `
 const MenuModal = styled.View`
     width: 90%;
@@ -171,8 +170,7 @@ const WordPlay = ({route, navigation}) => {
 //버튼애니메이션 & 상호작용
     //햄버거 아이콘, 모달BG scale, 모달containder scale
     const menuBtnScale = useRef(new Animated.Value(1)).current
-    const menuModalScale = useRef(new Animated.Value(0)).current
-    const containerScale = useRef(new Animated.Value(0)).current
+    const menuModalIndex = useRef(new Animated.Value(0)).current
 
     // 1레벨선택버튼
     const level1Scale = useRef(new Animated.Value(1)).current
@@ -193,8 +191,7 @@ const WordPlay = ({route, navigation}) => {
             useRef(PanResponder.create({
                 onStartShouldSetPanResponder: () => true,
                 onPanResponderEnd:()=>{
-                    menuModalScale.setValue(0)
-                    containerScale.setValue(0)
+                 menuModalIndex.setValue(0)
                     return cardCheck(a)
                 }            
             })
@@ -367,7 +364,7 @@ const WordPlay = ({route, navigation}) => {
                 {/* 메뉴 버튼 */}
                 <Menu 
                     style={{transform: [{scale:menuBtnScale}]}}
-                    onPressIn={()=>{menuBtnScale.setValue(0.8), ClickSound(), menuModalScale.setValue(1), containerScale.setValue(1)}}
+                    onPressIn={()=>{menuBtnScale.setValue(0.8), ClickSound(), menuModalIndex.setValue(2)}}
                     onPressOut={()=>{menuBtnScale.setValue(1)}}
                 >
                     <MenuBtnImage source={require("../asset/images/MenuBar.png")} />
@@ -385,11 +382,11 @@ const WordPlay = ({route, navigation}) => {
             
             {/* 메뉴버튼 터치시 출력되는 모달 */}
             <MenuModalBg 
-            style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT,transform: [{scale:menuModalScale}]}}
-            onPressOut={() => ( containerScale.setValue(0), menuModalScale.setValue(0))}
+            // style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT,transform: [{scale menuModalIndex}]}}
+            style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT, zIndex: menuModalIndex, opacity: menuModalIndex}}
+            onPress={() =>  menuModalIndex.setValue(0)}
             />
-            <MenuModalContainer style={{transform:[{scale:containerScale}]}}>
-
+            <MenuModalContainer style={{zIndex: menuModalIndex, opacity: menuModalIndex}}>
             {typeCheckRes == "Number" ? (
                 <MenuModalScrollView contentContainerStyle = {{alignItems:"center"}}>
                     {numberDistractor(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "숫 자")}

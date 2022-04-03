@@ -1,6 +1,6 @@
 import React,{ useRef } from "react";
 import styled from "styled-components";
-import {Animated, Pressable, View} from "react-native";
+import {Platform, Animated, Pressable, View, Text, Button, TouchableOpacity} from "react-native";
 import { Audio } from 'expo-av';
 import { colors } from "../component/Color";
 
@@ -15,6 +15,7 @@ const MenuBoxShell = styled.View`
     flex: 1;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 `
     const MenuBox = styled(Animated.createAnimatedComponent(Pressable))`
         background-color: white;
@@ -62,7 +63,7 @@ const WordKorBtn = styled(Animated.createAnimatedComponent(Pressable))`
     justify-content: center;
     margin: 10px;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-
+    z-index: 100;
 `
 const WordSelectText = styled.Text`
     font-size: 32px;
@@ -101,7 +102,7 @@ const Menu = ({navigation}) => {
     // 동물버튼 모달창
     const animalSelectScale = useRef(new Animated.Value(0)).current
     // 동물 버튼 모달창 외부 클릭했을때 모달창을 닫기위한 Animated
-    const animalModalScale = useRef(new Animated.Value(0)).current;
+    const animalModalZIndex = useRef(new Animated.Value(0)).current;
     // 한글버튼
     const KorBtnAnimation = useRef(new Animated.Value(1)).current;
     // 영어버튼
@@ -133,11 +134,13 @@ const Menu = ({navigation}) => {
     }
     // WordPlay.js에 props 전달하는 함수
     const BtnClick = (e) => {
-        animalModalScale.setValue(0)
         navigation.navigate('WordPlay',{type:e}) 
+        animalModalZIndex.setValue(0)
     }
+    {console.log(Platform.OS)}
     return(
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
+
         <MenuBoxShell>
             {btnFunc(ganadaBtnAnimation,"Ganada","가나다")}
             {btnFunc(languageBtnAnimation,"Language","ABC")}
@@ -145,7 +148,7 @@ const Menu = ({navigation}) => {
             <MenuBox 
                 style={{transform: [{scale:wordPlayBtnAnimation}]}}
                 onPressIn={() => {ClickSound(), wordPlayBtnAnimation.setValue(0.9)}}
-                onPressOut={() => (animalModalScale.setValue(1), animalSelectScale.setValue(1) ,wordPlayBtnAnimation.setValue(1))}
+                onPressOut={() => (animalModalZIndex.setValue(2), animalSelectScale.setValue(1) ,wordPlayBtnAnimation.setValue(1))}
             >
                 <MenuText>동물</MenuText>
             </MenuBox>
@@ -153,7 +156,7 @@ const Menu = ({navigation}) => {
 
         {/* 동물 모달창 세부사항 */}
         {/*  모달컨테이너를 제외한 전체화면 : 터치시 모달 닫기위해 구현 */}
-        <SelectModalBG style={{transform:[{scale:animalModalScale}]}} onPress={()=>{animalModalScale.setValue(0), animalSelectScale.setValue(0)}}>
+        <SelectModalBG style={{zIndex:animalModalZIndex, opacity:animalModalZIndex}} onPress={()=>{animalModalZIndex.setValue(0), animalSelectScale.setValue(0)}}>
 
             <SelectContainer style={{transform:[{scale:animalSelectScale}]}}>
                 <WordSelectTitle><WordSelectTitleText>동물</WordSelectTitleText></WordSelectTitle>

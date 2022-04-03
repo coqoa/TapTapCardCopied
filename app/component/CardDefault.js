@@ -110,14 +110,14 @@ const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     height: 50%;
     border-radius: 150px;
     z-index: 1;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0.5);
 `
 const TextAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     width: 50%;
     height: 70%;
     border-radius: 80px;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0.5);
     z-index: 1;
 `
 const ClearModalContainer = styled.View`

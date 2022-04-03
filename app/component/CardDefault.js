@@ -13,7 +13,9 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 
-const CardList = styled(Animated.createAnimatedComponent(FlatList))``
+const CardList = styled(Animated.createAnimatedComponent(FlatList))`
+    z-index: 1;
+`
 const CardSection = styled.View`
     justify-content: center;
     align-items: center;
@@ -26,6 +28,7 @@ const Card = styled(Animated.createAnimatedComponent(View))`
     justify-content: center;
     border-radius: 15px;
     box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+    z-index: 1;
 `
 const CardImgShell = styled.View`
     align-items: center;
@@ -48,7 +51,6 @@ const ClickBlock = styled(Animated.createAnimatedComponent(View))`
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0);
-    z-index: 1;
 `
 const CardImgShellModal = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
@@ -239,7 +241,6 @@ const RealPictureBtnBG = styled.Image`
 
 const RealPictureContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
-    z-index: 50;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -434,10 +435,19 @@ export const WordCardLevel = (props) => {
         toValue:0,
         useNativeDriver:true
     })
+    const pictureZIndex = useRef(new Animated.Value(0)).current
+    const pictureZIndexOn = Animated.spring(pictureZIndex,{
+        toValue:2,
+        useNativeDriver:true
+    })
+    const pictureZIndexOff = Animated.spring(pictureZIndex,{
+        toValue:0,
+        useNativeDriver:true
+    })
     const pictureOpenPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
         onPanResponderStart:()=>{
-            Animated.parallel([pictureContainerModalOn, pictureOpacityOn]).start();
+            Animated.parallel([pictureContainerModalOn, pictureOpacityOn, pictureZIndexOn]).start();
         }
     })).current
 
@@ -456,8 +466,9 @@ export const WordCardLevel = (props) => {
     const pictureClosePan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
         onPanResponderStart:()=>{
+        
         Animated.sequence([pictureCloseBtnPressIn, pictureCloseBtnPressOut,
-            Animated.parallel([pictureContainerModalOff,pictureOpacityOff])]).start();
+            Animated.parallel([pictureContainerModalOff, pictureOpacityOff, pictureZIndexOn])]).start();
         }
     })).current
 
@@ -465,7 +476,7 @@ export const WordCardLevel = (props) => {
     // 클릭블로커
     const clickBlockerValue = useRef(new Animated.Value(0)).current
     const clickBlockerFunc = () =>{
-        clickBlockerValue.setValue(1),
+        clickBlockerValue.setValue(2),
         setTimeout(function(){
             clickBlockerValue.setValue(0)
         },1000)
@@ -798,7 +809,8 @@ export const WordCardLevel = (props) => {
                         
                         {/* 실사 모달창 */}
                         {arrayAlloter(type) == AnimalCardArray && (
-                            <RealPictureContainer style={{opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
+                            // <RealPictureContainer style={{opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
+                            <RealPictureContainer style={{zIndex: pictureZIndex, opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
                                 <RealPictureExitBtn  {...pictureClosePan.panHandlers} onPressIn={()=>{ClickSound()}} onPressOut={()=>{setScrollOn(true)}} style={{transform:[{scale:pictureCloseBtnScale}]}}>
                                     <RealPictureExitBtnImage source={require("../asset/images/RealPictureExitBtn.png")} resizeMode="contain" />
                                 </RealPictureExitBtn>
@@ -844,6 +856,7 @@ export const WordCardLevel = (props) => {
                                 <CardImgShellModal 
                                     style={{
                                         backgroundColor: item.bgColor, 
+                                        // backgroundColor: "black", 
                                         opacity:secondImageOpacity
                                     }}
                                 >
@@ -959,12 +972,13 @@ export const WordCardLevel = (props) => {
                     )
                 }}
                 />
-            <ClickBlock style={{transform:[{scale:clickBlockerValue}]}} />
+            {/* <ClickBlock style={{transform:[{scale:clickBlockerValue}]}} /> */}
+            <ClickBlock style={{zIndex:clickBlockerValue, opacity:clickBlockerValue}} />
             </>
             )}
             {/* 마지막리스트 도달하면 열리는 모달창 */}
             {clearModalToggle && (
-                <ClearModalContainer>
+                <ClearModalContainer style={{zIndex:3}}>
                     <ClearModal>
                         <ClearImage  source={require("../asset/images/Check.png")} />
                         <RepeatLevel

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {View, Dimensions, PanResponder, Animated, Pressable, TouchableOpacity } from "react-native";
+import {View, Dimensions, PanResponder, Animated, Pressable, TouchableOpacity, Text } from "react-native";
 import { Audio } from 'expo-av';
 import styled from "styled-components";
 import { colors } from "../component/Color";
@@ -43,7 +43,7 @@ const Top = styled.View`
     height: 100%;
     border-radius: 15px;
     align-items: center;
-    z-index: 30;
+    z-index: 10;
     background-color: rgba(255,255,255,0.6);
     box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
 `
@@ -54,7 +54,7 @@ const GoBack = styled(Animated.createAnimatedComponent(View))`
     left: 5px;
     align-items: center;
     justify-content: center;
-    z-index: 30;
+    z-index: 10;
 `
 const GoBackBtnImage = styled.Image`
     width: 100%;
@@ -87,7 +87,7 @@ const Menu =  styled(Animated.createAnimatedComponent(Pressable))`
     right: 0px;
     align-items: center;
     justify-content: center;
-    z-index: 30;
+    z-index: 10;
 `
 const MenuBtnImage = styled.ImageBackground`
     width: 100%;
@@ -96,8 +96,7 @@ const MenuBtnImage = styled.ImageBackground`
 
 const MenuModalBg = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
-    background-color: rgba(0,0,0,0.6);
-    z-index: 35;
+    background-color: rgba(0,0,0,0.1);
     align-items: center;
     justify-content: center;
 `
@@ -123,7 +122,7 @@ const MenuModalScrollView = styled.ScrollView`
     flex:1;
 `
 const LevelBtn = styled(Animated.createAnimatedComponent(Pressable))`
-    width: 90%;
+    width: 60%;
     height: 40px;
     align-items: center;
     justify-content: center;
@@ -243,7 +242,7 @@ const WordPlay = ({route, navigation}) => {
                 onPressIn={()=>{c.setValue(0.8),ClickSound()}}
                 onPressOut={()=>c.setValue(1)}
             >
-                <ModalMenuText>{d}</ModalMenuText>
+            <ModalMenuText>{d}</ModalMenuText>
             </LevelBtn>   
         )
     }
@@ -354,8 +353,8 @@ const WordPlay = ({route, navigation}) => {
                     {typeCheckRes == "Number" && (
                         <>
                             {(()=>{
-                                if(cardSelector === undefined){return <MenuText>숫 자</MenuText>}
-                                else if(cardSelector === "All") {return <MenuText>숫 자</MenuText>}
+                                if(cardSelector === undefined){return <MenuText>0~100</MenuText>}
+                                else if(cardSelector === "All") {return <MenuText>0~100</MenuText>}
                                 else{return <MenuText>{cardSelector}</MenuText>}
                             })()}
                         </>
@@ -384,12 +383,12 @@ const WordPlay = ({route, navigation}) => {
             <MenuModalBg 
             // style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT,transform: [{scale menuModalIndex}]}}
             style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT, zIndex: menuModalIndex, opacity: menuModalIndex}}
-            onPress={() =>  menuModalIndex.setValue(0)}
+            onPressOut={() =>  menuModalIndex.setValue(0)}
             />
             <MenuModalContainer style={{zIndex: menuModalIndex, opacity: menuModalIndex}}>
             {typeCheckRes == "Number" ? (
                 <MenuModalScrollView contentContainerStyle = {{alignItems:"center"}}>
-                    {numberDistractor(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "숫 자")}
+                    {numberDistractor(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "0~100")}
                     {numberDistractor(number0Pan.panHandlers, colors.WhaleBG, level2Scale, "0~10")}
                     {numberDistractor(number1Pan.panHandlers, colors.DARKOLIVE, level3Scale, "11~20")}
                     {numberDistractor(number2Pan.panHandlers, colors.PURPLE, level4Scale, "21~30")}

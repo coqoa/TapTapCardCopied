@@ -1,0 +1,150 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.taptapcard"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="30" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:5:3-75
+11-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:5:20-73
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:3:3-64
+12-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:3:20-62
+13    <uses-permission android:name="android.permission.VIBRATE" /> <!-- These require runtime permissions on M -->
+13-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:6:3-63
+13-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:6:20-61
+14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+14-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:8:3-77
+14-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:8:20-75
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- END OPTIONAL PERMISSIONS -->
+15-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:9:3-78
+15-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:9:20-76
+16    <queries>
+16-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:3-19:13
+17
+18        <!-- Support checking for http(s) links via the Linking API -->
+19        <intent>
+19-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:14:5-18:14
+20            <action android:name="android.intent.action.VIEW" />
+20-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:7-59
+20-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:15-56
+21
+22            <category android:name="android.intent.category.BROWSABLE" />
+22-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:7-68
+22-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:17-65
+23
+24            <data android:scheme="https" />
+24-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:7-38
+24-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:13-35
+25        </intent>
+26        <!-- Query open documents -->
+27        <intent>
+27-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-21:18
+28            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE" />
+28-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-79
+28-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:21-76
+29        </intent>
+30    </queries>
+31
+32    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+32-->[com.facebook.flipper:flipper:0.95.0] /Users/coqoa/.gradle/caches/transforms-3/2313775b6c28f1c8aaf1c11109c95cf9/transformed/jetified-flipper-0.95.0/AndroidManifest.xml:16:5-76
+32-->[com.facebook.flipper:flipper:0.95.0] /Users/coqoa/.gradle/caches/transforms-3/2313775b6c28f1c8aaf1c11109c95cf9/transformed/jetified-flipper-0.95.0/AndroidManifest.xml:16:22-73
+33    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+33-->[com.google.android.exoplayer:exoplayer-core:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/34606a6e05ac4d40079e51a2cb281f36/transformed/jetified-exoplayer-core-2.9.2/AndroidManifest.xml:24:5-79
+33-->[com.google.android.exoplayer:exoplayer-core:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/34606a6e05ac4d40079e51a2cb281f36/transformed/jetified-exoplayer-core-2.9.2/AndroidManifest.xml:24:22-76
+34    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+34-->[com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/0ae9f469a693394ab7e155552b69dd32/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
+34-->[com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/0ae9f469a693394ab7e155552b69dd32/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107
+35
+36    <application
+36-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:3-31:17
+37        android:name="com.taptapcard.MainApplication"
+37-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:16-47
+38        android:allowBackup="false"
+38-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:162-189
+39        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+39-->[androidx.core:core:1.3.0] /Users/coqoa/.gradle/caches/transforms-3/d15795c47be914585ca458b102a40944/transformed/core-1.3.0/AndroidManifest.xml:24:18-86
+40        android:debuggable="true"
+41        android:icon="@mipmap/ic_launcher"
+41-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:81-115
+42        android:label="@string/app_name"
+42-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:48-80
+43        android:roundIcon="@mipmap/ic_launcher_round"
+43-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:116-161
+44        android:theme="@style/AppTheme"
+44-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:190-221
+45        android:usesCleartextTraffic="true" >
+45-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:222-257
+46        <meta-data
+46-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:5-103
+47            android:name="expo.modules.updates.EXPO_UPDATE_URL"
+47-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:16-67
+48            android:value="YOUR-APP-URL-HERE" />
+48-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:68-101
+49        <meta-data
+49-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:5-112
+50            android:name="expo.modules.updates.EXPO_SDK_VERSION"
+50-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:16-68
+51            android:value="YOUR-APP-SDK-VERSION-HERE" />
+51-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:69-110
+52
+53        <activity
+53-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:5-29:16
+54            android:name="com.taptapcard.MainActivity"
+54-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:15-43
+55            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+55-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:77-154
+56            android:label="@string/app_name"
+56-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:44-76
+57            android:launchMode="singleTask"
+57-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:155-186
+58            android:theme="@style/Theme.App.SplashScreen"
+58-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:230-275
+59            android:windowSoftInputMode="adjustResize" >
+59-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:187-229
+60            <intent-filter>
+60-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:7-28:23
+61                <action android:name="android.intent.action.MAIN" />
+61-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:9-60
+61-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:17-58
+62
+63                <category android:name="android.intent.category.LAUNCHER" />
+63-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:9-68
+63-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:19-66
+64            </intent-filter>
+65        </activity>
+66        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+66-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:5-81
+66-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:15-79
+67
+68        <provider
+68-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-34:20
+69            android:name="expo.modules.filesystem.FileSystemFileProvider"
+69-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-74
+70            android:authorities="com.taptapcard.FileSystemFileProvider"
+70-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-74
+71            android:exported="false"
+71-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-37
+72            android:grantUriPermissions="true" >
+72-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-47
+73            <meta-data
+73-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:13-33:70
+74                android:name="android.support.FILE_PROVIDER_PATHS"
+74-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:17-67
+75                android:resource="@xml/file_system_provider_paths" />
+75-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:33:17-67
+76        </provider>
+77
+78        <meta-data
+78-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:89
+79            android:name="org.unimodules.core.AppLoader#react-native-headless"
+79-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-79
+80            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
+80-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-86
+81    </application>
+82
+83</manifest>

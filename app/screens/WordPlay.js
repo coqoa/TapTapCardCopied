@@ -34,7 +34,7 @@ const TopContainer = styled.View`
     align-items: center;
     justify-content: center;
     margin-bottom: 5px;
-    z-index: 2;
+    z-index: 3;
     
 `
 const Top = styled.View`

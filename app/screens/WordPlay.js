@@ -45,7 +45,6 @@ const Top = styled.View`
     align-items: center;
     z-index: 10;
     background-color: rgba(255,255,255,0.6);
-    box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
 `
 const GoBack = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
@@ -109,7 +108,6 @@ const MenuModalContainer = styled(Animated.createAnimatedComponent(View))`
     align-items: center;
     justify-content: center;
     background-color: rgba(255,255,255,0.9);
-    box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
 `
 const MenuModal = styled.View`
     width: 90%;
@@ -129,7 +127,6 @@ const LevelBtn = styled(Animated.createAnimatedComponent(Pressable))`
     margin: 5px;
     padding: 5px;
     border-radius: 15px;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
     `
 const ModalMenuText =styled.Text`
     font-size: 30px;
@@ -251,7 +248,13 @@ const WordPlay = ({route, navigation}) => {
         return (
             <LevelBtn 
                 {...a}
-                style={{backgroundColor: b, transform: [{scale:c}]}}
+                style={{backgroundColor: b, transform: [{scale:c}], 
+                    shadowColor: "black",
+                    shadowOpacity: 0.3,
+                    shadowRadius: 3,
+                    shadowOffset: {height: 2,width: 0,},
+                    elevation:5
+                }}
                 onPressIn={()=>{c.setValue(0.8),ClickSound()}}
                 onPressOut={()=>c.setValue(1)}
             >

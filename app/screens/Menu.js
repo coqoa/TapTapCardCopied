@@ -25,7 +25,8 @@ const MenuBoxShell = styled.View`
         justify-content: center;
         align-items: center;
         border-radius: 25px;
-        box-shadow: 0px 3px 5px rgba(0,0,0,0.2) ;
+
+        /* box-shadow: 0px 3px 5px rgba(0,0,0,0.2) ; */
     `
     const MenuText = styled.Text`
         font-size: 35px;
@@ -44,6 +45,7 @@ const SelectContainer = styled(Animated.createAnimatedComponent(View))`
     height: 270px;
     background-color: white;
     border-radius: 20px;
+
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
     align-items: center;
     justify-content: center;
@@ -112,7 +114,13 @@ const Menu = ({navigation}) => {
     const btnFunc = (a,b,c) => {
         return(
             <MenuBox
-                style={{transform: [{scale:a}]}}
+                style={{transform: [{scale:a}], 
+                    shadowColor: "black",
+                    shadowOpacity: 0.2,
+                    shadowRadius: 3,
+                    shadowOffset: {height: 2,width: 0,},
+                    elevation:5
+                }}
                 onPressIn={() => {ClickSound(), a.setValue(0.9)}}
                 onPressOut={() => (BtnClick(b),a.setValue(1))}
             >
@@ -124,7 +132,13 @@ const Menu = ({navigation}) => {
     const modalBtnFunc = (a,b,c,d) => {
         return(
                 <WordKorBtn 
-                    style={{transform: [{scale:a}], backgroundColor:b}}
+                    style={{transform: [{scale:a}], backgroundColor:b, 
+                        shadowColor: "black",
+                        shadowOpacity: 0.3,
+                        shadowRadius: 3,
+                        shadowOffset: {height: 2,width: 0,},
+                        elevation:5
+                    }}
                     onPressIn={() => (ClickSound(), a.setValue(0.9))}
                     onPressOut={() => {BtnClick(c),a.setValue(1)}}
                 >

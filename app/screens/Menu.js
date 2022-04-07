@@ -25,8 +25,6 @@ const MenuBoxShell = styled.View`
         justify-content: center;
         align-items: center;
         border-radius: 25px;
-
-        /* box-shadow: 0px 3px 5px rgba(0,0,0,0.2) ; */
     `
     const MenuText = styled.Text`
         font-size: 35px;
@@ -134,7 +132,7 @@ const Menu = ({navigation}) => {
                 <WordKorBtn 
                     style={{transform: [{scale:a}], backgroundColor:b, 
                         shadowColor: "black",
-                        shadowOpacity: 0.3,
+                        shadowOpacity: 0.2,
                         shadowRadius: 3,
                         shadowOffset: {height: 2,width: 0,},
                         elevation:5
@@ -160,7 +158,13 @@ const Menu = ({navigation}) => {
             {btnFunc(languageBtnAnimation,"Language","ABC")}
             {btnFunc(numberBtnAnimation,"Number","숫자")}
             <MenuBox 
-                style={{transform: [{scale:wordPlayBtnAnimation}]}}
+                style={{transform: [{scale:wordPlayBtnAnimation}],
+                    shadowColor: "black",
+                    shadowOpacity: 0.3,
+                    shadowRadius: 3,
+                    shadowOffset: {height: 2,width: 0,},
+                    elevation:5
+                }}
                 onPressIn={() => {ClickSound(), wordPlayBtnAnimation.setValue(0.9)}}
                 onPressOut={() => (animalModalZIndex.setValue(2), animalSelectScale.setValue(1) ,wordPlayBtnAnimation.setValue(1))}
             >

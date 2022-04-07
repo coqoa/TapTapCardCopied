@@ -427,6 +427,11 @@ export const KorArrayConsonant = [
         "type" : "자음",
         "cardBgColor" : colors.mainBgColor,
     }, 
+    {
+        "id" : "lastPage", 
+        "type" : "자음",
+        "cardBgColor" : colors.mainBgColor,
+    }, 
 
 ]
 export const KorArrayVowel = [
@@ -810,6 +815,11 @@ export const KorArrayVowel = [
         "SoundItem13" : require("../audio/Ganada/pi.mp3"),
         "item14" : "히",
         "SoundItem14" : require("../audio/Ganada/hi.mp3"),
+    }, 
+    {
+        "id" : "lastPage", 
+        "type" : "모음",
+        "cardBgColor" : colors.mainBgColor,
     }, 
     {
         "id" : "end", 

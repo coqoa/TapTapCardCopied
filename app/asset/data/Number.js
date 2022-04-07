@@ -1218,8 +1218,18 @@ export const Number = [
         "SoundImage" : require("../audio/Number/100.mp3")
     }, 
     {
+        "id" : "lasrPage", 
+        "allNum" : true,
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
         "id" : "end", 
         "allNum" : true,
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
+        "id" : "lasrPage0~10", 
+        "range": "0~10",
         "cardBgColor" : colors.mainBgColor,
     }, 
     {
@@ -1228,8 +1238,18 @@ export const Number = [
         "cardBgColor" : colors.mainBgColor,
     }, 
     {
+        "id" : "lasrPage11~20", 
+        "range": "11~20",
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
         "id" : "11~20end", 
         "range": "11~20",
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
+        "id" : "lasrPage21~30", 
+        "range": "21~30",
         "cardBgColor" : colors.mainBgColor,
     }, 
     {
@@ -1238,8 +1258,18 @@ export const Number = [
         "cardBgColor" : colors.mainBgColor,
     }, 
     {
+        "id" : "lasrPage31~40", 
+        "range": "31~40",
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
         "id" : "31~40end", 
         "range": "31~40",
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
+        "id" : "lasrPage41~50", 
+        "range": "41~50",
         "cardBgColor" : colors.mainBgColor,
     }, 
     {
@@ -1248,8 +1278,18 @@ export const Number = [
         "cardBgColor" : colors.mainBgColor,
     }, 
     {
+        "id" : "lasrPage51~60", 
+        "range": "51~60",
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
         "id" : "51~60end", 
         "range": "51~60",
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
+        "id" : "lasrPage61~70", 
+        "range": "61~70",
         "cardBgColor" : colors.mainBgColor,
     }, 
     {
@@ -1258,13 +1298,28 @@ export const Number = [
         "cardBgColor" : colors.mainBgColor,
     }, 
     {
+        "id" : "lasrPage71~80", 
+        "range": "71~80",
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
         "id" : "71~80end", 
         "range": "71~80",
         "cardBgColor" : colors.mainBgColor,
     }, 
     {
+        "id" : "lasrPage81~90", 
+        "range": "81~90",
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
         "id" : "81~90end", 
         "range": "81~90",
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
+        "id" : "lasrPage91~100", 
+        "range": "91~100",
         "cardBgColor" : colors.mainBgColor,
     }, 
     {

@@ -8,17 +8,12 @@ import { AnimalCardArray } from "../asset/data/AnimalCardArray";
 import { KorArrayConsonant, KorArrayVowel } from "../asset/data/WordArrayKOR";
 import { Alphabet } from "../asset/data/Alphabet";
 import { Number } from "../asset/data/Number";
+import { Lottie } from "lottie-react-native";
+import Animal from "./AnimalAnimation";
+import ClearModal from './ClearModal';
 //Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
-
-const platformShadow  = {
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3, },
-        shadowOpacity: 0.2,
-    shadowRadius: 10,
-    elevation: 5
-}
 
 const Container = styled.View`
     justify-content: center;
@@ -28,7 +23,6 @@ const CardContainer = styled.View`
     flex: 1;
     justify-content: center;
     align-items: center;
-    /* z-index: 1; */
 `
 const Card = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
@@ -38,8 +32,6 @@ const Card = styled(Animated.createAnimatedComponent(View))`
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    elevation:8;
-    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
 `
 const CardImgShell = styled.View`
     align-items: center;
@@ -117,10 +109,6 @@ const TextAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     z-index: 1;
 `
 
-
-
-
-
 // 동물 2레벨 물음표박스
 const QuestionMarkBg = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
@@ -164,7 +152,7 @@ const Distractor = styled(Animated.createAnimatedComponent(Pressable))`
     border-radius: 45px;
     justify-content: center;
     align-items: center;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    /* box-shadow: 1px 1px 5px rgba(0,0,0,0.1); */
     background-color: rgba(255,255,255, 0.6);
     z-index: 100;
 `
@@ -189,40 +177,39 @@ const CorrectAnswerImage = styled.Image`
 const ClearModalContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 80%;
     align-items: center;
     justify-content: center;
+    background-color: ${colors.mainBgColor};
 `
-const ClearModal = styled.View`
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 15px;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 2px 2px 5px ${colors.GRAY};
-`
-const RepeatLevel = styled.TouchableOpacity`
-    width: 200px;
-    height: 60px;
-    border-radius: 15px;
-    margin: 5px;
-    align-items: center;
-    justify-content: center;
-    background-color: ${colors.BLUE};
-    box-shadow: 1px 1px 3px ${colors.BLUE};
-`
-const NextLevel = styled(RepeatLevel)`
-    background-color: ${colors.REDORANGE};
-    box-shadow: 1px 1px 3px ${colors.REDORANGE};
-`
-const RepeatLevelText = styled.Text`
-    font-size: 23px;
-    color: white;
-    font-family: 'SDChild';
-`
-const NextLevelText = styled(RepeatLevelText)``
+// const ClearModal = styled.View`
+//     position: absolute;
+    
+//     width: 300px;
+//     height: 300px;
+//     border-radius: 15px;
+//     align-items: center;
+//     justify-content: center;
+//     background-color: transparent;
+// `
+// const RepeatLevel = styled.TouchableOpacity`
+//     width: 200px;
+//     height: 60px;
+//     border-radius: 15px;
+//     margin: 5px;
+//     align-items: center;
+//     justify-content: center;
+//     background-color: ${colors.BLUE};
+// `
+// const NextLevel = styled(RepeatLevel)`
+//     background-color: ${colors.REDORANGE};
+// `
+// const RepeatLevelText = styled.Text`
+//     font-size: 23px;
+//     color: white;
+//     font-family: 'SDChild';
+// `
+// const NextLevelText = styled(RepeatLevelText)``
 
 const ClickBlock = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
@@ -242,7 +229,6 @@ const RealPictureBtn = styled(Animated.createAnimatedComponent(Pressable))`
     right: 5px;
     border-radius: 10px;
     background-color: rgba(255,255,255,0.8);
-    box-shadow: 0px 1px 3px rgba(0,0,0,0.4);
     z-index: 49;
     align-items: center;
     justify-content: center;
@@ -294,17 +280,13 @@ const PictureImage = styled.Image`
 width: 100%;
 height: 100%;
 border-radius: 20px;
-
 `
+
 // ---------------------------------------------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
     //useState
     const [refresh, setRefresh] = useState(true);
-    const [realPictureToggle, setRealPictureToggle] = useState(false);
-    const [clearModalToggle, setClearModalToggle] = useState(false);
-    const [distractorWindowBackground, setDistractorWindowBackground] = useState(true);
-    const [distractorWindow, setDistractorWindow] = useState(true);
 
     // props 관련
     const type = props.type
@@ -333,7 +315,6 @@ export const WordCardLevel = (props) => {
         }
     }
     const data = arrayAlloter(type)
-    // console.log(data)
 
     // AnimatedValues & panResponder ~
     // 카드애니메이션 (좌우이동, scale, opacity)
@@ -370,10 +351,7 @@ export const WordCardLevel = (props) => {
     //Pan
     const cardPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:() => true,
-        onPanResponderMove:(_,{dx})=>{
-            cardPosition.setValue(dx)
-            // console.log(dx)
-        },
+        onPanResponderMove:(_,{dx})=>{cardPosition.setValue(dx)},
         onPanResponderGrant:()=>{
             cardPressIn.start();
         },
@@ -386,13 +364,12 @@ export const WordCardLevel = (props) => {
                         questionScale.setValue(1)
                     },70)
                 ) }
-
-
                 Animated.parallel([
                     distractorContainervisible,
                     distractorContainerScaleMax,
                     goLeft
                 ]).start(onDismiss);
+
             }else if(dx > 180){
                 playSound(require("../asset/audio/CardPass.mp3"))
                 {props.level == "word2LV" && (
@@ -431,8 +408,6 @@ export const WordCardLevel = (props) => {
     
     const questionPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
-        // onPanResponderStart:()=>{Animated.parallel([questionOpacityPress,
-        //     Animated.sequence([secondTextOn, secondTextOff])]).start();}
         onPanResponderStart:()=>{Animated.parallel([
             questionOpacityPress,
             questionScalePress,
@@ -534,12 +509,7 @@ export const WordCardLevel = (props) => {
                 onStartShouldSetPanResponder:()=>true,
                 onPanResponderStart:()=>{Animated.sequence([a]).start()},
                 onPanResponderEnd:()=>{
-                    Animated.parallel([
-                        b
-                        // distractorContainerInvisible,
-                        // Animated.sequence([secondTextOn, secondTextOff]), 
-                        // Animated.sequence([checkMarkOn, checkMarkOff])
-                    ]).start();
+                    Animated.parallel([b]).start();
                 }
             })).current
         )
@@ -550,27 +520,25 @@ export const WordCardLevel = (props) => {
     const wrong4 = distracttorWrong(btn4PressOn, btn4PressOut)
 
 
-    //이미지 터치시 출력되는 소리
-
     // 텍스트 클릭시 출력하는 애니메이션
-const secondTextOpacity = useRef(new Animated.Value(0)).current;
-const secondTextOn = Animated.timing(secondTextOpacity,{
-    toValue:1,
-    duration:200,
-    useNativeDriver:true
-})
-const secondTextOff = Animated.timing(secondTextOpacity,{
-    toValue:0,
-    duration:400,
-    delay:200,
-    useNativeDriver:true
-})
-const secondTextPan = useRef(PanResponder.create({
-    onStartShouldSetPanResponder:()=>true,
-    onPanResponderEnd:()=>{
-        Animated.sequence([secondTextOn, secondTextOff]).start();
-    }
-})).current
+    const secondTextOpacity = useRef(new Animated.Value(0)).current;
+    const secondTextOn = Animated.timing(secondTextOpacity,{
+        toValue:1,
+        duration:200,
+        useNativeDriver:true
+    })
+    const secondTextOff = Animated.timing(secondTextOpacity,{
+        toValue:0,
+        duration:400,
+        delay:200,
+        useNativeDriver:true
+    })
+    const secondTextPan = useRef(PanResponder.create({
+        onStartShouldSetPanResponder:()=>true,
+        onPanResponderEnd:()=>{
+            Animated.sequence([secondTextOn, secondTextOff]).start();
+        }
+    })).current
 
     //정답애니메이션
     const correctAnswerMarkValue = useRef(new Animated.Value(0)).current;
@@ -607,7 +575,7 @@ const secondTextPan = useRef(PanResponder.create({
     })
     const pictureZIndex = useRef(new Animated.Value(0)).current
     const pictureZIndexOn = Animated.spring(pictureZIndex,{
-        toValue:2,
+        toValue:3,
         useNativeDriver:true
     })
     const pictureZIndexOff = Animated.spring(pictureZIndex,{
@@ -657,7 +625,6 @@ const secondTextPan = useRef(PanResponder.create({
     const end = () => {
         console.log('end')
     }
-    // {console.log(index)}
     
 // function
     //오디오관련
@@ -704,7 +671,6 @@ const secondTextPan = useRef(PanResponder.create({
         return data[e].SoundImage;
     }
 
-    // {console.log(AnimalCardArray.length)}
     // array에 end어레이 2개씩필요함(
     {if(secondIndex == data.length-1){
         lastListModal.setValue(1)
@@ -712,10 +678,8 @@ const secondTextPan = useRef(PanResponder.create({
     }}
         
     //랜덤배열
-    
     const numberArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     //배열마다 무작위 숫자 부여
-    
     const mapArray = numberArray.map(item => item*Math.floor(Math.random()*(data.length-2)))
     // // 동일한 숫자 제거
     const mapArraySort = Array.from(new Set(mapArray))
@@ -729,18 +693,7 @@ const secondTextPan = useRef(PanResponder.create({
         array.sort(() => Math.random() - 0.5);
     }
     shuffle(numArray)
-    // shuffle(numArray)
-    // console.log('numArray0 = ',numArray[0]) 
-    // console.log('numArray1 = ',numArray[1]) 
-    // console.log('numArray2 = ',numArray[2]) 
-    // console.log('numArray3 = ',numArray[3]) 
-    // console.log('data[numArray[0].nameKOR] = ',data[numArray[0]].nameKOR) 
-    // console.log('numArray0------------------------------',numArray[0],'------------------------')
-    // console.log('numArray1------------------------------',numArray[1])
-    // console.log('numArray2------------------------------',numArray[2])
-    // console.log('numArray3------------------------------',numArray[3])
 
-// 텍스트부분 중복제거
     // type Ganada일때 사용하는 함수
     const ganadaBtn = (e,j) =>{
         return(
@@ -764,7 +717,7 @@ const secondTextPan = useRef(PanResponder.create({
                     {ganadaBtn(data[e].SoundItem9, data[e].item9)}
                     {ganadaBtn(data[e].SoundItem10, data[e].item10)}
                 </GanadaNameShell>
-                {data.item11!==undefined &&(
+                {data[firstIndex].item11!==undefined &&(
                 <GanadaNameShell>
                     {ganadaBtn(data[e].SoundItem11, data[e].item11)}
                     {ganadaBtn(data[e].SoundItem12, data[e].item12)}
@@ -788,8 +741,9 @@ const secondTextPan = useRef(PanResponder.create({
         setRefresh(false)
         setFirstIndex(0)
         setSecondIndex(1)
+        lastListModal.setValue(0)
     };
-        // 다음레벨 버튼
+    // 다음레벨 버튼
     //자식컴포넌트에서 부모컴포넌트 state를 바꾸려면 함수를 이용해야한다 (그냥 props는 읽기전용이라 props.level="???" 이런식으로 변경 불가능)
     const nextLevelBtn = (e) => {
         if(e=='word1LV'){
@@ -837,8 +791,9 @@ const secondTextPan = useRef(PanResponder.create({
             default:
                 return
     }}
+
      //선택지 이름
-     const distractorName = (e) =>{
+    const distractorName = (e) =>{
         switch(type){
             case "AnimalKOR":
                 return data[e].nameKOR;
@@ -848,30 +803,6 @@ const secondTextPan = useRef(PanResponder.create({
                 return
         }
     }
-    //
-    const answerCheck = (e) => {
-        switch(type){
-            case "AnimalKOR":
-                if(e == data[firstIndex].nameKOR){
-                    console.log('true KOR')
-                    distractorContainerValue.setValue(0)
-                }else{
-                    console.log('false KOR')
-                }
-                return
-            case "AnimalENG":
-                if(e == data[firstIndex].nameENG){
-                    console.log('true ENG')
-                }else{
-                    console.log('false ENG')
-                }
-                return
-            default:
-                return
-        }
-    }
-    // {console.log(dataName(firstIndex))}
-    // {console.log(dataName(numArray[0]))}
 
     const clickBlockerValue = useRef(new Animated.Value(0)).current
     const clickBlockerFunc = () =>{
@@ -887,15 +818,14 @@ const secondTextPan = useRef(PanResponder.create({
             <PictureImageShell style={{width:SCREEN_WIDTH}}><PictureImage source={e} resizeMode="cover" /></PictureImageShell>
         )
     }
-    // 실제 출력되는 부분
+
+// 실제 출력되는 부분
     const levelConsole = () => {
         return(
-            // <Container style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT ,backgroundColor:"#00a8ff"}}>
             <Container style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT ,backgroundColor:colors.mainBgColor}}>
                 <ClickBlock style={{zIndex:clickBlockerValue, opacity:clickBlockerValue}} />
                 {/* 실사 모달창 */}
                 {arrayAlloter(type) == AnimalCardArray && (
-                    // <RealPictureContainer style={{opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
                     <RealPictureContainer style={{zIndex: pictureZIndex, opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
                         <RealPictureExitBtn  {...pictureClosePan.panHandlers} onPressIn={()=>{ClickSound()}} style={{transform:[{scale:pictureCloseBtnScale}]}}>
                             <RealPictureExitBtnImage source={require("../asset/images/RealPictureExitBtn.png")} resizeMode="contain" />
@@ -913,7 +843,9 @@ const secondTextPan = useRef(PanResponder.create({
                 {/* {refresh && ( */}
                     <CardContainer>
                         <ClearModalContainer style={{opacity:lastListModal, zIndex:lastListModal}}>
-                            <ClearModal>
+                            <ClearModal type={type} level={props.level} restartLevelBtn={restartLevelBtn} nextLevelBtn={nextLevelBtn} />
+
+                            {/* <ClearModal>
                             <RepeatLevel
                                 onPressIn={() => ClickSound()}
                                 onPressOut={() => {restartLevelBtn(), lastListModal.setValue(0)}}
@@ -944,20 +876,29 @@ const secondTextPan = useRef(PanResponder.create({
                                     <NextLevelText>다음레벨 도전 !</NextLevelText>
                                 </NextLevel>
                             )}
-                            </ClearModal>
+                            </ClearModal> */}
+
                         </ClearModalContainer> 
 
                         <Card
                         style={{
                             backgroundColor: data[secondIndex].cardBgColor,
-                            transform: [{scale:secondCardScale}]
+                            transform: [{scale:secondCardScale}],
                         }}>
+                            {/* {arrayAlloter(type) == AnimalCardArray && (
+                                <RealPictureBtn>
+                                    <RealPictureBtnBGContainer>
+                                        <RealPictureBtnBG source={data[firstIndex].realImage1} resizeMode="cover" />
+                                    </RealPictureBtnBGContainer>
+                                </RealPictureBtn>
+                            )} */}
 
                                 <CardImgShell style={{backgroundColor:data[secondIndex].bgColor}}>
-                                    <CardImg source={data[secondIndex].image} resizeMode="contain"></CardImg>
+                                <Animal id={data[secondIndex].id} />
+                                    {/* <CardImg source={data[secondIndex].image} resizeMode="contain"></CardImg> */}
                                 </CardImgShell>
 
-                                {data[secondIndex].nameKOR.length>0 &&(
+                                {data[secondIndex].id.length>0 &&(
                                 <>
                                     {type == "Ganada" ? (
                                         <>{ganadaBtnFunc(secondIndex)}</>
@@ -984,7 +925,6 @@ const secondTextPan = useRef(PanResponder.create({
                         style={{
                             backgroundColor: data[firstIndex].cardBgColor,
                             transform:[{scale:cardScaleValue}, {translateX:cardPosition},{rotateZ:cardRotation}],
-                            platformShadow
                         }}>
                             {/* 실사모달버튼 */}
                             {arrayAlloter(type) == AnimalCardArray && (
@@ -1001,7 +941,8 @@ const secondTextPan = useRef(PanResponder.create({
                             )}
 
                             <CardImgShell style={{backgroundColor:data[firstIndex].bgColor}}>
-                                <CardImg source={data[firstIndex].image} resizeMode="contain"></CardImg>
+                            <Animal id={data[firstIndex].id} />
+                                {/* <CardImg source={data[firstIndex].image} resizeMode="contain"></CardImg> */}
                                 <ImageAudioBtn onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/>
                                 {/* <CardImgShellModal 
                                     style={{
@@ -1014,7 +955,7 @@ const secondTextPan = useRef(PanResponder.create({
                                 </CardImgShellModal> */}
                             </CardImgShell>
 
-                            {data[firstIndex].nameKOR.length>0 &&(<>
+                            {data[firstIndex].id.length > 0 &&(<>
                                 {type == "Ganada" ? (
                                 <>{ganadaBtnFunc(firstIndex)}</>
                                 ):(<>
@@ -1044,11 +985,11 @@ const secondTextPan = useRef(PanResponder.create({
                                         <DistractorContainer style={{opacity:distractorContainerValue, transform:[{scale:distractorContainerScale}]}}>
                                         {/* <DistractorContainer style={{zIndex:0, opacity:1, transform:[{scale:0.01}]}}> */}
                                             <DistractorRow>
-                                            {dataName(firstIndex) == dataName(numArray[0]) ? (
-                                                <Distractor 
-                                                    {...correct1.panHandlers} 
-                                                    style={{transform:[{scale:distractorBtn1}]}}
-                                                    onPressIn={()=>{playSound(correctAudio(numArray[0])),clickBlockerFunc()}}
+                                                {dataName(firstIndex) == dataName(numArray[0]) ? (
+                                                    <Distractor 
+                                                        {...correct1.panHandlers} 
+                                                        style={{transform:[{scale:distractorBtn1}]}}
+                                                        onPressIn={()=>{playSound(correctAudio(numArray[0])),clickBlockerFunc()}}
                                                     >
                                                         <DistractorText>{dataName(numArray[0])}</DistractorText>
                                                     </Distractor>
@@ -1079,20 +1020,6 @@ const secondTextPan = useRef(PanResponder.create({
                                                         <DistractorText>{dataName(numArray[1])}</DistractorText>
                                                     </Distractor>
                                                 )}
-
-                                                {/* 선택지 1번 */}
-                                                {/* {itemName() == distractorName(0) ? (
-                                                    correctAnswer(distractorBtn1Pan, distractorBtn1, distractorAudio(0), distractorName(0))
-                                                ):(
-                                                    wrongAnswer(distractorBtn1PanWrong, distractorBtn1, distractorAudio(0), distractorName(0), numArray[0].bgColor, wrongImageValue1 ,numArray[0].image)
-                                                )} */}
-
-                                                {/* 선택지 2번 */}
-                                                {/* {itemName() == distractorName(1) ? (
-                                                    correctAnswer(distractorBtn2Pan, distractorBtn2, distractorAudio(1), distractorName(1))
-                                                ):(
-                                                    wrongAnswer(distractorBtn2PanWrong, distractorBtn2, distractorAudio(1), distractorName(1), numArray[1].bgColor, wrongImageValue2, numArray[1].image)
-                                                )} */}
                                             </DistractorRow>
                                             <DistractorRow>
                                                 {dataName(firstIndex) == dataName(numArray[2]) ? (
@@ -1131,19 +1058,6 @@ const secondTextPan = useRef(PanResponder.create({
                                                     </Distractor>
                                                         
                                                 )}
-
-                                                {/* 선택지 3번 */}
-                                                {/* {itemName() == distractorName(2) ? (
-                                                    correctAnswer(distractorBtn3Pan, distractorBtn3, distractorAudio(2), distractorName(2))
-                                                ):(
-                                                    wrongAnswer(distractorBtn3PanWrong, distractorBtn3, distractorAudio(2), distractorName(2), numArray[2].bgColor, wrongImageValue3, numArray[2].image)
-                                                )} */}
-                                                {/* 선택지 4번 */}
-                                                {/* {itemName() == distractorName(3) ? (
-                                                    correctAnswer(distractorBtn4Pan, distractorBtn4, distractorAudio(3), distractorName(3))
-                                                ):(
-                                                    wrongAnswer(distractorBtn4PanWrong,distractorBtn4,distractorAudio(3), distractorName(3), numArray[3].bgColor, wrongImageValue4,numArray[3].image)
-                                                )} */}
                                             </DistractorRow>
                                         </DistractorContainer>
                                     </> )}
@@ -1156,10 +1070,6 @@ const secondTextPan = useRef(PanResponder.create({
                             </CorrectAnswerContainer>
                         </Card>
                     </CardContainer>
-                    
-
-                    
-                {/* )} */}
             </Container>
         )
     }

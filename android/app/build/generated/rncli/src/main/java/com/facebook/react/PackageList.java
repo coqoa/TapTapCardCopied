@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 // expo
 import expo.modules.ExpoModulesPackage;
+// lottie-react-native
+import com.airbnb.android.react.lottie.LottiePackage;
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
@@ -63,6 +65,7 @@ public class PackageList {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
       new ExpoModulesPackage(),
+      new LottiePackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage()
     ));

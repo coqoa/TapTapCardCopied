@@ -263,6 +263,10 @@ export const Alphabet = [
         "SoundImage" : require("../audio/Alphabet/z.mp3"),
     }, 
     {
+        "id" : "lastPage", 
+        "cardBgColor" : colors.mainBgColor,
+    }, 
+    {
         "id" : "end", 
         "cardBgColor" : colors.mainBgColor,
     }, 

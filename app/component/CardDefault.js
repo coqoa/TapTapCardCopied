@@ -9,8 +9,10 @@ import { KorArrayConsonant, KorArrayVowel } from "../asset/data/WordArrayKOR";
 import { Alphabet } from "../asset/data/Alphabet";
 import { Number } from "../asset/data/Number";
 import { Lottie } from "lottie-react-native";
-import Animal from "./AnimalAnimation";
+
+import AnimalAnimation from "./AnimalAnimation";
 import ClearModal from './ClearModal';
+import QuestionMarkAnimation from './QuestionMarkAnimation';
 //Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -47,6 +49,16 @@ const CardImg = styled.Image`
     flex: 1;
     width: 100%;
 `
+const CardImgShellModal = styled(Animated.createAnimatedComponent(View))`
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    /* z-index: 1; */
+`
+const CardImg2 = styled(CardImg)``
 // 카드 텍스트 style
 const CardContents = styled(Animated.createAnimatedComponent(View))`
     width: 100%;
@@ -92,7 +104,7 @@ const CardNameModal = styled(Animated.createAnimatedComponent(View))`
 `
 const CardNameModalText = styled(CardNameText)``
 
-const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
+const ImageAudioBtn = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     width: 60%;
     height: 50%;
@@ -152,7 +164,7 @@ const Distractor = styled(Animated.createAnimatedComponent(Pressable))`
     border-radius: 45px;
     justify-content: center;
     align-items: center;
-    /* box-shadow: 1px 1px 5px rgba(0,0,0,0.1); */
+    border: 3px solid ${colors.GRAY};
     background-color: rgba(255,255,255, 0.6);
     z-index: 100;
 `
@@ -356,6 +368,7 @@ export const WordCardLevel = (props) => {
             cardPressIn.start();
         },
         onPanResponderRelease:(_,{dx})=>{
+            
             if(dx < -180){
                 playSound(require("../asset/audio/CardPass.mp3"))
                 {props.level == "word2LV" && (
@@ -369,7 +382,6 @@ export const WordCardLevel = (props) => {
                     distractorContainerScaleMax,
                     goLeft
                 ]).start(onDismiss);
-
             }else if(dx > 180){
                 playSound(require("../asset/audio/CardPass.mp3"))
                 {props.level == "word2LV" && (
@@ -384,7 +396,10 @@ export const WordCardLevel = (props) => {
                     goRight
                 ]).start(onDismiss);
             }else{
+                playSound(data[firstIndex].SoundImage)
+                clickBlockerFunc()
                 Animated.parallel([
+                    Animated.sequence([secondImageOn,secondImageOff]),
                     cardPressOut,
                     goCenter
                 ]).start();
@@ -537,6 +552,69 @@ export const WordCardLevel = (props) => {
         onStartShouldSetPanResponder:()=>true,
         onPanResponderEnd:()=>{
             Animated.sequence([secondTextOn, secondTextOff]).start();
+        }
+    })).current
+
+//클릭시 두번째 이미지 출력
+    const secondImageOpacity = useRef(new Animated.Value(0)).current;
+    const secondImageOn = Animated.timing(secondImageOpacity, {
+        toValue:1,
+        duration:500,
+        useNativeDriver:true
+    })
+    const secondImageOff = Animated.timing(secondImageOpacity, {
+        toValue:0,
+        duration:500,
+        delay:100,
+        useNativeDriver:true
+    })
+    const secondImagePan = useRef(PanResponder.create({
+        // onStartShouldSetPanResponder:()=>true,
+        // onPanResponderEnd:()=>{
+        //     playSound(data[firstIndex].SoundImage),
+        //     clickBlockerFunc()
+        //     Animated.sequence([secondImageOn,secondImageOff]).start();}
+        onPanResponderMove:(_,{dx})=>{cardPosition.setValue(dx)},
+        onPanResponderGrant:()=>{
+            cardPressIn.start();
+        },
+        onPanResponderRelease:(_,{dx})=>{
+            if(dx < -180){
+                playSound(require("../asset/audio/CardPass.mp3"))
+                {props.level == "word2LV" && (
+                    setTimeout(function(){
+                        questionOpacity.setValue(1),
+                        questionScale.setValue(1)
+                    },70)
+                ) }
+                Animated.parallel([
+                    distractorContainervisible,
+                    distractorContainerScaleMax,
+                    goLeft
+                ]).start(onDismiss);
+
+            }else if(dx > 180){
+                playSound(require("../asset/audio/CardPass.mp3"))
+                {props.level == "word2LV" && (
+                    setTimeout(function(){
+                        questionOpacity.setValue(1),
+                        questionScale.setValue(1)
+                    },70)
+                ) }
+                Animated.parallel([
+                    distractorContainervisible,
+                    distractorContainerScaleMax,
+                    goRight
+                ]).start(onDismiss);
+            }else{
+                playSound(data[firstIndex].SoundImage),
+                
+                Animated.parallel([
+                    
+                    cardPressOut,
+                    goCenter
+                ]).start();
+            }
         }
     })).current
 
@@ -894,8 +972,11 @@ export const WordCardLevel = (props) => {
                             )} */}
 
                                 <CardImgShell style={{backgroundColor:data[secondIndex].bgColor}}>
-                                <Animal id={data[secondIndex].id} />
-                                    {/* <CardImg source={data[secondIndex].image} resizeMode="contain"></CardImg> */}
+                                    {arrayAlloter(type) == AnimalCardArray ? (
+                                        <AnimalAnimation id={data[secondIndex].id} />
+                                    ):(
+                                        <CardImg source={data[secondIndex].image} resizeMode="contain"></CardImg>
+                                    )}
                                 </CardImgShell>
 
                                 {data[secondIndex].id.length>0 &&(
@@ -907,7 +988,8 @@ export const WordCardLevel = (props) => {
                                             {props.level == "word2LV" && (
                                                 <QuestionMarkBg>
                                                     <QuestionMarkBtn>    
-                                                        <QuestionMarkImage source={data[firstIndex].questionMarkImage} resizeMode="contain"/>
+                                                        <QuestionMarkAnimation />
+                                                        {/* <QuestionMarkImage source={data[firstIndex].questionMarkImage} resizeMode="contain"/> */}
                                                     </QuestionMarkBtn>                                                    
                                                 </QuestionMarkBg>
                                             )}
@@ -941,18 +1023,27 @@ export const WordCardLevel = (props) => {
                             )}
 
                             <CardImgShell style={{backgroundColor:data[firstIndex].bgColor}}>
-                            <Animal id={data[firstIndex].id} />
-                                {/* <CardImg source={data[firstIndex].image} resizeMode="contain"></CardImg> */}
-                                <ImageAudioBtn onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/>
-                                {/* <CardImgShellModal 
-                                    style={{
-                                        backgroundColor: item.bgColor, 
-                                        // backgroundColor: "black", 
-                                        opacity:secondImageOpacity
-                                    }}
-                                >
-                                        <CardImg2 source={item.image2} resizeMode="contain"></CardImg2>
-                                </CardImgShellModal> */}
+                                {arrayAlloter(type) == AnimalCardArray ? (
+                                <>
+                                    <AnimalAnimation id={data[firstIndex].id} />
+                                    <ImageAudioBtn onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/>
+                                </>
+                                ):(
+                                <>
+                                    <CardImg source={data[firstIndex].image} resizeMode="contain" />
+                                    {/* <ImageAudioBtn {...secondImagePan.panHandlers} onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/> */}
+                                    <ImageAudioBtn {...secondImagePan.panHandlers} />
+                                    <CardImgShellModal 
+                                        style={{
+                                            backgroundColor: data[firstIndex].bgColor, 
+                                            // backgroundColor: "black", 
+                                            opacity:secondImageOpacity
+                                        }}
+                                    >
+                                            <CardImg2 source={data[firstIndex].image2} resizeMode="contain"></CardImg2>
+                                    </CardImgShellModal>
+                                </>
+                                )}
                             </CardImgShell>
 
                             {data[firstIndex].id.length > 0 &&(<>
@@ -974,9 +1065,10 @@ export const WordCardLevel = (props) => {
 
 
                                     {props.level == "word2LV" && (
-                                        <QuestionMarkBg style={{opacity:questionOpacity, transform:[{scale:questionScale}]}}>
-                                            <QuestionMarkBtn {...questionPan.panHandlers} onPress={() => {playSound(itemAudio(firstIndex)),clickBlockerFunc()} } >    
-                                                <QuestionMarkImage source={data[firstIndex].questionMarkImage} resizeMode="contain"/>
+                                        <QuestionMarkBg  style={{opacity:questionOpacity, transform:[{scale:questionScale}]}}>
+                                            <QuestionMarkBtn {...questionPan.panHandlers} onPress={() => {playSound(itemAudio(firstIndex)),clickBlockerFunc()} } >  
+                                                <QuestionMarkAnimation />  
+                                                {/* <QuestionMarkImage source={data[firstIndex].questionMarkImage} resizeMode="contain"/> */}
                                             </QuestionMarkBtn>                                                    
                                         </QuestionMarkBg>
                                     )}

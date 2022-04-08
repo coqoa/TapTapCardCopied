@@ -104,7 +104,7 @@ const CardNameModal = styled(Animated.createAnimatedComponent(View))`
 `
 const CardNameModalText = styled(CardNameText)``
 
-const ImageAudioBtn = styled(Animated.createAnimatedComponent(View))`
+const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     width: 60%;
     height: 50%;
@@ -299,6 +299,7 @@ border-radius: 20px;
 export const WordCardLevel = (props) => {
     //useState
     const [refresh, setRefresh] = useState(true);
+    const [picture, setPicture] = useState(false)
 
     // props 관련
     const type = props.type
@@ -360,6 +361,20 @@ export const WordCardLevel = (props) => {
     const goLeft = Animated.timing(cardPosition, {toValue:-SCREEN_WIDTH*2,duration:200, useNativeDriver:true});
     const goRight = Animated.timing(cardPosition, {toValue:SCREEN_WIDTH*2,duration:200, useNativeDriver:true});
     const goCenter = Animated.spring(cardPosition, {toValue: 0, useNativeDriver:true});
+
+    //클릭시 두번째 이미지 출력
+    const secondImageOpacity = useRef(new Animated.Value(0)).current;
+    const secondImageOn = Animated.timing(secondImageOpacity, {
+        toValue:1,
+        duration:500,
+        useNativeDriver:true
+    })
+    const secondImageOff = Animated.timing(secondImageOpacity, {
+        toValue:0,
+        duration:500,
+        delay:100,
+        useNativeDriver:true
+    })
     //Pan
     const cardPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:() => true,
@@ -396,13 +411,13 @@ export const WordCardLevel = (props) => {
                     goRight
                 ]).start(onDismiss);
             }else{
-                playSound(data[firstIndex].SoundImage)
-                clickBlockerFunc()
-                Animated.parallel([
-                    Animated.sequence([secondImageOn,secondImageOff]),
-                    cardPressOut,
-                    goCenter
-                ]).start();
+                Animated.parallel([cardPressOut,goCenter]).start();
+            }
+        },
+        onPanResponderEnd:(_,{dx})=>{
+            console.log(dx)
+            if(dx<30 && dx>-30){
+                Animated.sequence([secondImageOn,secondImageOff]).start()
             }
         }
     })).current;
@@ -555,69 +570,6 @@ export const WordCardLevel = (props) => {
         }
     })).current
 
-//클릭시 두번째 이미지 출력
-    const secondImageOpacity = useRef(new Animated.Value(0)).current;
-    const secondImageOn = Animated.timing(secondImageOpacity, {
-        toValue:1,
-        duration:500,
-        useNativeDriver:true
-    })
-    const secondImageOff = Animated.timing(secondImageOpacity, {
-        toValue:0,
-        duration:500,
-        delay:100,
-        useNativeDriver:true
-    })
-    const secondImagePan = useRef(PanResponder.create({
-        // onStartShouldSetPanResponder:()=>true,
-        // onPanResponderEnd:()=>{
-        //     playSound(data[firstIndex].SoundImage),
-        //     clickBlockerFunc()
-        //     Animated.sequence([secondImageOn,secondImageOff]).start();}
-        onPanResponderMove:(_,{dx})=>{cardPosition.setValue(dx)},
-        onPanResponderGrant:()=>{
-            cardPressIn.start();
-        },
-        onPanResponderRelease:(_,{dx})=>{
-            if(dx < -180){
-                playSound(require("../asset/audio/CardPass.mp3"))
-                {props.level == "word2LV" && (
-                    setTimeout(function(){
-                        questionOpacity.setValue(1),
-                        questionScale.setValue(1)
-                    },70)
-                ) }
-                Animated.parallel([
-                    distractorContainervisible,
-                    distractorContainerScaleMax,
-                    goLeft
-                ]).start(onDismiss);
-
-            }else if(dx > 180){
-                playSound(require("../asset/audio/CardPass.mp3"))
-                {props.level == "word2LV" && (
-                    setTimeout(function(){
-                        questionOpacity.setValue(1),
-                        questionScale.setValue(1)
-                    },70)
-                ) }
-                Animated.parallel([
-                    distractorContainervisible,
-                    distractorContainerScaleMax,
-                    goRight
-                ]).start(onDismiss);
-            }else{
-                playSound(data[firstIndex].SoundImage),
-                
-                Animated.parallel([
-                    
-                    cardPressOut,
-                    goCenter
-                ]).start();
-            }
-        }
-    })).current
-
     //정답애니메이션
     const correctAnswerMarkValue = useRef(new Animated.Value(0)).current;
     const checkMarkOn = Animated.spring(correctAnswerMarkValue, {
@@ -712,6 +664,7 @@ export const WordCardLevel = (props) => {
             await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
             await sound.playAsync();
         } catch (error) {
+            console.log("clickSoundError",error)
         }
     }
     const playSound = async(e) => {
@@ -905,16 +858,23 @@ export const WordCardLevel = (props) => {
                 {/* 실사 모달창 */}
                 {arrayAlloter(type) == AnimalCardArray && (
                     <RealPictureContainer style={{zIndex: pictureZIndex, opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
-                        <RealPictureExitBtn  {...pictureClosePan.panHandlers} onPressIn={()=>{ClickSound()}} style={{transform:[{scale:pictureCloseBtnScale}]}}>
+                        <RealPictureExitBtn  
+                            {...pictureClosePan.panHandlers} 
+                            onPressIn={()=>{ClickSound(), setTimeout(function(){setPicture(false)},500) }} 
+                            style={{transform:[{scale:pictureCloseBtnScale}]}}
+                        >
                             <RealPictureExitBtnImage source={require("../asset/images/RealPictureExitBtn.png")} resizeMode="contain" />
                         </RealPictureExitBtn>
-                        <RealPictureScrollView style={{width:SCREEN_WIDTH}} pagingEnabled horizontal >
-                            {PictureImageData(data[firstIndex].realImage1)}
-                            {PictureImageData(data[firstIndex].realImage2)}
-                            {PictureImageData(data[firstIndex].realImage3)}
-                            {PictureImageData(data[firstIndex].realImage4)}
-                            {PictureImageData(data[firstIndex].realImage5)}
-                        </RealPictureScrollView>
+                        {picture == true && 
+                            <RealPictureScrollView style={{width:SCREEN_WIDTH}} pagingEnabled horizontal >
+                                {PictureImageData(data[firstIndex].realImage1)}
+                                {PictureImageData(data[firstIndex].realImage2)}
+                                {PictureImageData(data[firstIndex].realImage3)}
+                                {PictureImageData(data[firstIndex].realImage4)}
+                                {PictureImageData(data[firstIndex].realImage5)}
+                                {PictureImageData(data[firstIndex].realImage1)}
+                            </RealPictureScrollView>
+                        }
                     </RealPictureContainer>
                 )}
 
@@ -922,40 +882,6 @@ export const WordCardLevel = (props) => {
                     <CardContainer>
                         <ClearModalContainer style={{opacity:lastListModal, zIndex:lastListModal}}>
                             <ClearModal type={type} level={props.level} restartLevelBtn={restartLevelBtn} nextLevelBtn={nextLevelBtn} />
-
-                            {/* <ClearModal>
-                            <RepeatLevel
-                                onPressIn={() => ClickSound()}
-                                onPressOut={() => {restartLevelBtn(), lastListModal.setValue(0)}}
-                            >
-                                <RepeatLevelText>Again !</RepeatLevelText>
-                            </RepeatLevel>
-
-                            { props.level == "word1LV" && (
-                                <NextLevel 
-                                    onPressIn={()=> ClickSound()}
-                                    onPressOut={()=> nextLevelBtn(props.level)}
-                                >
-                                    {type == "AnimalKOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
-                                    {type == "AnimalENG" && (<NextLevelText>Next Level !</NextLevelText>)}
-                                </NextLevel>
-                            )}
-                            { props.level == "word2LV" && (
-                                <NextLevel 
-                                    onPressIn={()=> ClickSound()}
-                                    onPressOut={()=> nextLevelBtn(props.level)}
-                                >
-                                    {type == "AnimalKOR" && (<NextLevelText>다음레벨 도전 !</NextLevelText>)}
-                                    {type == "AnimalENG" && (<NextLevelText>Next Level !</NextLevelText>)}
-                                </NextLevel>
-                            )}
-                            { type=="Number" &&  props.level !== "All" && props.level !=="91~100" && (
-                                <NextLevel onPressIn={()=> ClickSound()}onPressOut={()=> nextLevelBtn(props.level)}>
-                                    <NextLevelText>다음레벨 도전 !</NextLevelText>
-                                </NextLevel>
-                            )}
-                            </ClearModal> */}
-
                         </ClearModalContainer> 
 
                         <Card
@@ -963,14 +889,6 @@ export const WordCardLevel = (props) => {
                             backgroundColor: data[secondIndex].cardBgColor,
                             transform: [{scale:secondCardScale}],
                         }}>
-                            {/* {arrayAlloter(type) == AnimalCardArray && (
-                                <RealPictureBtn>
-                                    <RealPictureBtnBGContainer>
-                                        <RealPictureBtnBG source={data[firstIndex].realImage1} resizeMode="cover" />
-                                    </RealPictureBtnBGContainer>
-                                </RealPictureBtn>
-                            )} */}
-
                                 <CardImgShell style={{backgroundColor:data[secondIndex].bgColor}}>
                                     {arrayAlloter(type) == AnimalCardArray ? (
                                         <AnimalAnimation id={data[secondIndex].id} />
@@ -1013,7 +931,7 @@ export const WordCardLevel = (props) => {
                                 <RealPictureBtn
                                 {...pictureOpenPan.panHandlers}
                                 style={{transform:[{scale:pictureBtnScale}]}}
-                                onPressIn={()=>{pictureBtnScale.setValue(0.8), ClickSound()}}
+                                onPressIn={()=>{pictureBtnScale.setValue(0.8), ClickSound(), setPicture(true)}}
                                 onPressOut={()=>{pictureBtnScale.setValue(1)}}
                                 >
                                     <RealPictureBtnBGContainer>
@@ -1031,16 +949,12 @@ export const WordCardLevel = (props) => {
                                 ):(
                                 <>
                                     <CardImg source={data[firstIndex].image} resizeMode="contain" />
-                                    {/* <ImageAudioBtn {...secondImagePan.panHandlers} onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/> */}
-                                    <ImageAudioBtn {...secondImagePan.panHandlers} />
-                                    <CardImgShellModal 
-                                        style={{
-                                            backgroundColor: data[firstIndex].bgColor, 
-                                            // backgroundColor: "black", 
-                                            opacity:secondImageOpacity
-                                        }}
+                                    <ImageAudioBtn {...cardPan.panHandlers} onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/>
+                                    <CardImgShellModal style={{
+                                        backgroundColor: data[firstIndex].bgColor, 
+                                        opacity:secondImageOpacity}}
                                     >
-                                            <CardImg2 source={data[firstIndex].image2} resizeMode="contain"></CardImg2>
+                                        <CardImg2 source={data[firstIndex].image2} resizeMode="contain"></CardImg2>
                                     </CardImgShellModal>
                                 </>
                                 )}

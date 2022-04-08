@@ -193,13 +193,6 @@ export const AnimalCardArray = [
         "SoundENG" : require("../audio/Animal/Eng/HippoENG.mp3"),
         "check" : false,
     }, 
-    
-    // {
-    //     "id" : "end", 
-    //     "image" :  require("../lottie/lion.json"), 
-    //     "nameKOR" : "",
-    //     "cardBgColor" : colors.mainBgColor,
-    // }, 
 ]
 
 

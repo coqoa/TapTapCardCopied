@@ -55,8 +55,14 @@ const ClearModal = (props) => {
                 onPressIn={() => ClickSound()}
                 onPressOut={() => {props.restartLevelBtn()}}
             >
-                {props.type == "AnimalKOR" && (<RepeatLevelText>다시하기 !</RepeatLevelText>)}
-                {props.type == "AnimalENG" && (<RepeatLevelText>Again !</RepeatLevelText>)}
+
+                {props.type !== "AnimalENG" ? (
+                    <RepeatLevelText>다시하기 !</RepeatLevelText>
+                ):(
+                    <RepeatLevelText>Again !</RepeatLevelText>
+                )}
+                {/* {props.type !== "AnimalENG" && (<RepeatLevelText>다시하기 !</RepeatLevelText>)}
+                {props.type == "AnimalENG" && (<RepeatLevelText>Again !</RepeatLevelText>)} */}
                 
             </RepeatLevel>
 

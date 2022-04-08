@@ -253,7 +253,7 @@ export const Alphabet = [
         "SoundImage" : require("../audio/Alphabet/y.mp3"),
     }, 
     {
-        "id" : "Z", 
+        "id" : "lastPage", 
         "nameKOR" : "지",
         "image" : require("../images/Alphabet/Z.png"), 
         "image2" : require("../images/Alphabet/Z1.png"), 
@@ -263,12 +263,20 @@ export const Alphabet = [
         "SoundImage" : require("../audio/Alphabet/z.mp3"),
     }, 
     {
-        "id" : "lastPage", 
+        "id" : "emptyPage1", 
+        "nameKOR" : "",
+        "image" : require("../images/Alphabet/Z.png"), 
+        "bgColor" : "transparent",
         "cardBgColor" : colors.mainBgColor,
+        "textColor" : "transparent",
     }, 
     {
-        "id" : "end", 
+        "id" : "emptyPage2", 
+        "nameKOR" : "",
+        "image" : require("../images/Alphabet/Z.png"), 
+        "bgColor" : "transparent",
         "cardBgColor" : colors.mainBgColor,
+        "textColor" : "transparent",
     }, 
     
 ]

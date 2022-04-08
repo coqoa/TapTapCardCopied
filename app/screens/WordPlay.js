@@ -44,7 +44,7 @@ const Top = styled.View`
     border-radius: 15px;
     align-items: center;
     z-index: 10;
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(255,255,255,0.9);
 `
 const GoBack = styled(Animated.createAnimatedComponent(View))`
     position: absolute;

@@ -81,15 +81,20 @@ const WordSelectTitleText = styled(WordSelectText)`
 
 const Menu = ({navigation}) => {
     
-    
-    const ClickSound = async() => {
+    const playSound = async() => {
         const sound = new Audio.Sound();
-      try {    
-        await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
-        await sound.playAsync();
-      } catch (error) {
-     }
+        try {    
+            // 저장한 path로 음원 파일 불러오기 & 재생하기 
+            // await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
+            await sound.playAsync();
+            setTimeout(function(){
+                sound.unloadAsync();
+            },100) 
+        } catch (error) {
+            console.log('Menu.js playSound error = ', error)
+        }
     }
+
     // 메뉴 모달창 관련 버튼애니메이션
     // 가나다버튼
     const ganadaBtnAnimation = useRef(new Animated.Value(1)).current;
@@ -119,7 +124,8 @@ const Menu = ({navigation}) => {
                     shadowOffset: {height: 2,width: 0,},
                     elevation:5
                 }}
-                onPressIn={() => {ClickSound(), a.setValue(0.9)}}
+                onPress={() => {playSound()}}
+                onPressIn={() => {a.setValue(0.9)}}
                 onPressOut={() => (BtnClick(b),a.setValue(1))}
             >
                     <MenuText>{c}</MenuText>
@@ -137,7 +143,8 @@ const Menu = ({navigation}) => {
                         shadowOffset: {height: 2,width: 0,},
                         elevation:5
                     }}
-                    onPressIn={() => (ClickSound(), a.setValue(0.9))}
+                    onPress={()=>{playSound()}}
+                    onPressIn={() => (a.setValue(0.9))}
                     onPressOut={() => {BtnClick(c),a.setValue(1)}}
                 >
                     <WordSelectText>{d}</WordSelectText>
@@ -149,7 +156,7 @@ const Menu = ({navigation}) => {
         navigation.navigate('WordPlay',{type:e}) 
         animalModalZIndex.setValue(0)
     }
-    {console.log(Platform.OS)}
+
     return(
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
 
@@ -165,7 +172,8 @@ const Menu = ({navigation}) => {
                     shadowOffset: {height: 2,width: 0,},
                     elevation:5
                 }}
-                onPressIn={() => {ClickSound(), wordPlayBtnAnimation.setValue(0.9)}}
+                onPress={()=>{playSound()}}
+                onPressIn={() => {wordPlayBtnAnimation.setValue(0.9)}}
                 onPressOut={() => (animalModalZIndex.setValue(2), animalSelectScale.setValue(1) ,wordPlayBtnAnimation.setValue(1))}
             >
                 <MenuText>동물</MenuText>

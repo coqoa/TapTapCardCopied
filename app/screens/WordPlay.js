@@ -20,6 +20,7 @@ const Shell = styled.View`
     background-color: ${colors.mainBgColor};
     align-items: center;
     padding: 10px 0px;
+    border-radius: 15px;
 `
 const Main = styled.View`
     flex: 10;
@@ -34,7 +35,7 @@ const TopContainer = styled.View`
     align-items: center;
     justify-content: center;
     margin-bottom: 5px;
-    z-index: 3;
+    z-index: 2;
     
 `
 const Top = styled.View`
@@ -224,6 +225,7 @@ const WordPlay = ({route, navigation}) => {
                 {...a}
                 style={{backgroundColor: b, transform: [{scale:c}]}}
                 onPressIn={()=>{c.setValue(0.8),ClickSound()}}
+                // onPressIn={()=>{c.setValue(0.8)}}
                 onPressOut={()=>c.setValue(1)}
             >
                 <ModalMenuText>{d}</ModalMenuText>
@@ -237,6 +239,7 @@ const WordPlay = ({route, navigation}) => {
                 {...a}
                 style={{backgroundColor: b, transform: [{scale:c}]}}
                 onPressIn={()=>{c.setValue(0.8),ClickSound()}}
+                // onPressIn={()=>{c.setValue(0.8)}}
                 onPressOut={()=>c.setValue(1)}
             >
             <ModalMenuText>{d}</ModalMenuText>
@@ -256,6 +259,7 @@ const WordPlay = ({route, navigation}) => {
                     elevation:5
                 }}
                 onPressIn={()=>{c.setValue(0.8),ClickSound()}}
+                // onPressIn={()=>{c.setValue(0.8)}}
                 onPressOut={()=>c.setValue(1)}
             >
             <StarViewImage source={d} resizeMode="contain" />
@@ -299,7 +303,8 @@ const WordPlay = ({route, navigation}) => {
     }
 
     const goBack = () => {
-        navigation.goBack()
+        // navigation.goBack()
+        navigation.navigate('Menu')
     }
 
     const ClickSound = async() => {
@@ -307,7 +312,11 @@ const WordPlay = ({route, navigation}) => {
         try {    
             await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
             await sound.playAsync();
+            setTimeout(function(){
+                sound.unloadAsync();
+            },100) 
         } catch (error) {
+            console.log('WordPlay.js playSound error = ', error)
         }
     }
     
@@ -367,6 +376,7 @@ const WordPlay = ({route, navigation}) => {
                 <Menu 
                     style={{transform: [{scale:menuBtnScale}]}}
                     onPressIn={()=>{menuBtnScale.setValue(0.8), ClickSound(), menuModalIndex.setValue(2)}}
+                    // onPressIn={()=>{menuBtnScale.setValue(0.8), menuModalIndex.setValue(2)}}
                     onPressOut={()=>{menuBtnScale.setValue(1)}}
                 >
                     <MenuBtnImage source={require("../asset/images/MenuBar.png")} />

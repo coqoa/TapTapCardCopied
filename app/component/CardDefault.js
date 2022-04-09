@@ -110,14 +110,14 @@ const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     height: 50%;
     border-radius: 150px;
     z-index: 1;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0);
 `
 const TextAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     width: 50%;
     height: 70%;
     border-radius: 80px;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0);
     z-index: 1;
 `
 
@@ -415,7 +415,7 @@ export const WordCardLevel = (props) => {
             }
         },
         onPanResponderEnd:(_,{dx})=>{
-            console.log(dx)
+            // console.log(dx)
             if(dx<30 && dx>-30){
                 Animated.sequence([secondImageOn,secondImageOff]).start()
             }
@@ -663,17 +663,25 @@ export const WordCardLevel = (props) => {
         try {    
             await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
             await sound.playAsync();
+            setTimeout(function(){
+                sound.unloadAsync();
+            },200) 
         } catch (error) {
-            console.log("clickSoundError",error)
+            console.log('CardDefault.js ClickSound error = ', error)
         }
     }
+    
     const playSound = async(e) => {
         const sound = new Audio.Sound();
         try {    
             // 저장한 path로 음원 파일 불러오기 & 재생하기 
             await sound.loadAsync(e);
             await sound.playAsync();
+            setTimeout(function(){
+                sound.unloadAsync();
+            },2500) 
         } catch (error) {
+            console.log('CardDefault.js PlaySound error = ', error)
         }
     }
     const itemAudio = (e) => {
@@ -706,6 +714,7 @@ export const WordCardLevel = (props) => {
     {if(secondIndex == data.length-1){
         lastListModal.setValue(1)
         playSound(require("../asset/audio/LastListModal.mp3"))
+        
     }}
         
     //랜덤배열
@@ -853,14 +862,15 @@ export const WordCardLevel = (props) => {
 // 실제 출력되는 부분
     const levelConsole = () => {
         return(
-            <Container style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT ,backgroundColor:colors.mainBgColor}}>
+            <Container style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT}}>
+            {/* <Container style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT ,backgroundColor:colors.mainBgColor}}> */}
                 <ClickBlock style={{zIndex:clickBlockerValue, opacity:clickBlockerValue}} />
                 {/* 실사 모달창 */}
                 {arrayAlloter(type) == AnimalCardArray && (
                     <RealPictureContainer style={{zIndex: pictureZIndex, opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
                         <RealPictureExitBtn  
                             {...pictureClosePan.panHandlers} 
-                            onPressIn={()=>{ClickSound(), setTimeout(function(){setPicture(false)},500) }} 
+                            onPressIn={()=>{ClickSound(),setTimeout(function(){setPicture(false)},500) }} 
                             style={{transform:[{scale:pictureCloseBtnScale}]}}
                         >
                             <RealPictureExitBtnImage source={require("../asset/images/RealPictureExitBtn.png")} resizeMode="contain" />

@@ -29,13 +29,14 @@ const Main = styled.View`
     align-items: center;
     flex-direction: row;
     z-index: 2;
+    /* background-color: ${colors.BEIGE}; */
 `
 const TopContainer = styled.View`
     flex: 1;
     align-items: center;
     justify-content: center;
     margin-bottom: 5px;
-    z-index: 2;
+    z-index: 3;
     
 `
 const Top = styled.View`

@@ -4,7 +4,7 @@
             "outputFile": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "/Users/coqoa/.gradle/caches/transforms-3/f1d8efb4b8d7ab611577761c63516cd8/transformed/appcompat-1.2.0/res/values-port/values-port.xml",
+                    "source": "/Users/coqoa/.gradle/caches/transforms-3/c3d01fbb04d1b294124ee3997981ce65/transformed/appcompat-1.2.0/res/values-port/values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

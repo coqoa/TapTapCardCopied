@@ -4,7 +4,7 @@
             "outputFile": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/coqoa/.gradle/caches/transforms-3/c8b909d754456a1ce584df7c687e20c9/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
+                    "source": "/Users/coqoa/.gradle/caches/transforms-3/24fd2af65b48b790b61760e9820e41f1/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/coqoa/.gradle/caches/transforms-3/f1d8efb4b8d7ab611577761c63516cd8/transformed/appcompat-1.2.0/res/values-v23/values-v23.xml",
+                    "source": "/Users/coqoa/.gradle/caches/transforms-3/c3d01fbb04d1b294124ee3997981ce65/transformed/appcompat-1.2.0/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -34,7 +34,7 @@
                     }
                 },
                 {
-                    "source": "/Users/coqoa/.gradle/caches/transforms-3/442232dfc3bd4636261367c7466b9eb8/transformed/material-1.1.0/res/values-v23/values-v23.xml",
+                    "source": "/Users/coqoa/.gradle/caches/transforms-3/b02f2999b7cf7281e89d8109a16869ba/transformed/material-1.1.0/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,6",
                         "startColumns": "4,4",

@@ -2,18 +2,32 @@ import { NavigationContainer } from '@react-navigation/native';
 import * as Font from "expo-font"
 import AppLoading from 'expo-app-loading';
 import React, { useState, useEffect } from 'react';
-import Stack from './app/navigators/Stack';
+import InStack from './app/navigators/InStack';
+import OutStack from './app/navigators/OutStack'
 import { SafeAreaView } from 'react-native-safe-area-context';
+import auth from '@react-native-firebase/auth';
 
 export default function App() {
   const [ready, setReady] = useState(false);
   const onFinish = () => setReady(true);
+  const[isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(async() => {
     await Font.loadAsync({
         "SDChild": require("./app/asset/fonts/SDChildfundkorea.otf")
     })
   }, [])
+
+  useEffect(()=>{
+    auth().onAuthStateChanged((user)=>{
+      console.log("App.js user = ", user)
+      if(user){
+        setIsLoggedIn(true)
+      }else{
+        setIsLoggedIn(false)
+      }
+    })
+  },[])
 
   const startLoading = async () =>{
     // 로딩하고 싶은 것들을 담는 공간 
@@ -30,12 +44,11 @@ export default function App() {
       // onFinish는 state를 변경시키고 state가 변경되면 조건문 else에 해당하는 부분을 render한다
     );
   }
+
   return (
     <NavigationContainer>
       <SafeAreaView style={{flex:1}}>
-        <Stack />
-        {/* <WordPlay /> */}
-        {/* <Menu /> */}
+        {isLoggedIn ? <InStack />: <OutStack />}
       </SafeAreaView>
     </NavigationContainer>
   )

@@ -4,6 +4,8 @@ import {Platform, Animated, Pressable, View, Text, Button, TouchableOpacity} fro
 import { Audio } from 'expo-av';
 import { colors } from "../component/Color";
 
+import auth from '@react-native-firebase/auth';
+
 const BG = styled.ImageBackground`
     flex: 1;
     width: 100%;
@@ -85,11 +87,11 @@ const Menu = ({navigation}) => {
         const sound = new Audio.Sound();
         try {    
             // 저장한 path로 음원 파일 불러오기 & 재생하기 
-            // await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
+            await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
             await sound.playAsync();
-            setTimeout(function(){
-                sound.unloadAsync();
-            },100) 
+            // setTimeout(function(){
+            //     sound.unloadAsync();
+            // },100) 
         } catch (error) {
             console.log('Menu.js playSound error = ', error)
         }
@@ -157,10 +159,14 @@ const Menu = ({navigation}) => {
         animalModalZIndex.setValue(0)
     }
 
+    const logout = async()=>{
+        await auth().signOut()
+    }
     return(
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
 
         <MenuBoxShell>
+            <TouchableOpacity style={{position:"absolute", left:-10, top:20}} onPress={()=>{logout(), console.log('로그아웃')}}><Text>로그아웃</Text></TouchableOpacity>
             {btnFunc(ganadaBtnAnimation,"Ganada","가나다")}
             {btnFunc(languageBtnAnimation,"Language","ABC")}
             {btnFunc(numberBtnAnimation,"Number","숫자")}

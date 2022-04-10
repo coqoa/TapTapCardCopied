@@ -229,7 +229,7 @@ const ClickBlock = styled(Animated.createAnimatedComponent(View))`
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0);
 `
 
 // 실사이미지
@@ -862,8 +862,8 @@ export const WordCardLevel = (props) => {
 // 실제 출력되는 부분
     const levelConsole = () => {
         return(
+            // <Container style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT}}>
             <Container style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT}}>
-            {/* <Container style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT ,backgroundColor:colors.mainBgColor}}> */}
                 <ClickBlock style={{zIndex:clickBlockerValue, opacity:clickBlockerValue}} />
                 {/* 실사 모달창 */}
                 {arrayAlloter(type) == AnimalCardArray && (

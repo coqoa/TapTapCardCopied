@@ -2,35 +2,100 @@ import React, {useState, useRef} from "react";
 import { Text, View, Alert, ActivityIndicator, Dimensions } from "react-native";
 import styled from "styled-components/native";
 import auth from '@react-native-firebase/auth';
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {colors} from "../component/Color"
+import { Audio } from 'expo-av';
+import Greeting from "../component/Greeting";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
-const TextArea = styled.TextInput``
-const Btn = styled.TouchableOpacity``
-const BtnText = styled.Text``
+const Container = styled.View`
+    justify-content: center;
+    align-items: center;
+    /* padding: 10px; */
+    flex: 1;
+`
 
-const SignupBtn = styled.TouchableOpacity``
-const SignupBtnText = styled.Text``
+const GreetingShell = styled.View`
+    width: 100%;
+    height: 25%;
+    /* background-color: blue; */
+`
+const Contents = styled.View`
+    flex: 1;
+    width: 80%;
+    border-radius: 15px;
+    /* border: 2px solid gray; */
+    /* padding: 10px; */
+`
+const Nav = styled.View`
+    flex-direction: row;
+    /* padding: 10px; */
+    /* background-color: red; */
+    justify-content: center;
+    
+`
+const NavBtn = styled.TouchableOpacity`
+    width: 50%;
+    height: 40px;
+    justify-content: center;
+`
+const NavBtnText = styled.Text`
+    text-align: center;
+    font-family: "SDChild";
+    font-size: 25px;
+`
+
+const Main = styled.View`
+    flex: 1;
+    align-items: center;
+    margin-top: 15px;
+`
+const TextArea = styled.TextInput`
+    width: 90%;
+    height: 10%;
+    margin: 10px 0px;
+    padding: 0px 10px;
+    border-radius: 15px;
+    border: 2px solid lightgray;
+    font-size: 23px;
+    font-family: "SDChild";
+`
+const Btn = styled.TouchableOpacity`
+    width: 70%;
+    height: 10%;
+    margin: 10px 0px;
+    border-radius: 15px;
+    /* background-color: #EC705E; */
+    align-items: center;
+    justify-content: center;
+`
+const BtnText = styled.Text`
+    color: white;
+    font-size: 23px;
+    font-family: "SDChild";
+`
 
 const Login = ({navigation}) => {
-    const passwordInput = useRef()
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const loginPasswordInput = useRef()
+    const [navCheck, setNavCheck] = useState("Login")
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const onSubmitEmailEditing = () => {
-        passwordInput.current.focus();
+    const onSubmitLoginEmailEditing = () => {
+        loginPasswordInput.current.focus();
     }
-    const onSubmitPasswordEditing = async() => {
+    const onSubmitLoginPasswordEditing = async() => {
         if(loading){
             return;
         }
+        playSound()
+
         setLoading(true)
         try{
-            if(email !=="" && password !==""){
-                await auth().signInWithEmailAndPassword(email, password)
+            if(loginEmail !=="" && loginPassword !==""){
+                await auth().signInWithEmailAndPassword(loginEmail, loginPassword)
                 // const userCredential = await auth().signInWithEmailAndPassword(email, password)
                 // console.log("userCredential = ", userCredential)
             }else{
@@ -60,51 +125,135 @@ const Login = ({navigation}) => {
         }
     }
 
+    const signupPasswordInput = useRef()
+    const [signupEmail, setSignupEmail] = useState("");
+    const [signupPassword, setSignupPassword] = useState("");
+
+    const onSubmitSignupEmailEditing = () => {
+        signupPasswordInput.current.focus();
+    }
+    const onSubmitSignupPasswordEditing = async() => {
+        if(loading){
+            return;
+        }
+        playSound()
+
+        setLoading(true)
+        try{
+            if(signupEmail !=="" && signupPassword !==""){
+                const userCredential = await auth().createUserWithEmailAndPassword(signupEmail, signupPassword)
+                // console.log("userCredential = ", userCredential)
+            }else{
+                setLoading(false)
+                Alert.alert('칸을 채워주세요')
+            }
+        }catch(e){
+            setLoading(false)
+            switch(e.code){
+                case "auth/email-already-in-use" : {
+                     return Alert.alert('이미 사용중인 이메일입니다.')
+                }
+                case "auth/auth/invalid-email" : {
+                    return Alert.alert('이메일을 입력해주세요')
+                }
+                case "auth/weak-password" : {
+                     return Alert.alert('안전하지 않은 비밀번호입니다.\n다른 비밀번호를 사용해 주세요.')
+                }
+                case "auth/operation-not-allowed" : {
+                    return Alert.alert('operation-not-allowed \n관리자에게 문의하세요 ')
+                }
+            }
+            console.log("error = ", e)
+        }
+    }
+
+    const playSound = async() => {
+        const sound = new Audio.Sound();
+        try {    
+            await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
+            const status = await sound.playAsync();
+            setTimeout(function(){
+                sound.unloadAsync();
+            },status.playableDurationMillis + 1000) 
+        } catch (e) {
+            console.log('Login.js playSound error = ', e)
+        }
+    }
+
     return(
-    <KeyboardAwareScrollView
-    extraHeight={300}
-    enableOnAndroid={true}
-    enableAutomaticScroll={Platform.OS === 'ios'}
-    contentContainerStyle={{ height: -30 }}
-    resetScrollToCoords={{ x: 0, y: 0 }}
-    scrollEnabled={true}
-    >
-    {/* <View style={{flex: 1,alignItems:"center", justifyContent:"center"}}>
-            <Text>Login</Text>
-    </View> */}
-    <View style={{flex:1, backgroundColor:"beige"}} >
-        <TextArea 
-            placeholder="Email" 
-            value={email} 
-            returnKeyType="next"
-            keyboardType = "email-address" 
-            autoCapitalize="none" 
-            autoCorrect={false} 
-            onChangeText = {(text) => setEmail(text)} 
-            onSubmitEditing = {onSubmitEmailEditing}
-        />
+    <Container>
+        <GreetingShell style={{transform:[{scale:3}]}}>
+            <Greeting />
+        </GreetingShell>
+        <Contents>
+            <Nav>
+                <NavBtn onPress={() => setNavCheck("Login")}>
+                    <NavBtnText style={{color : navCheck == "Login" ? "black" : "lightgray"}}>Log in</NavBtnText>
+                </NavBtn>
+                <NavBtn onPress={() => setNavCheck("Signup")} >
+                    <NavBtnText  style={{color : navCheck == "Signup" ? "black" : "lightgray"}}>Sign up</NavBtnText>
+                </NavBtn>
+            </Nav>
 
-        <TextArea 
-            ref={passwordInput}
-            placeholder="Password" 
-            value={password}  
-            returnKeyType="done"
-            secureTextEntry 
-            onChangeText = {(text) => setPassword(text)} 
-            onSubmitEditing = {onSubmitPasswordEditing}
-        />
-        <Btn onPress = {onSubmitPasswordEditing}>
-            {loading ? <ActivityIndicator color="black"/> : <BtnText>로그인</BtnText>}
-        </Btn>
+            <Main>
+                {navCheck == "Login" ? (
+                    <>
+                    <TextArea 
+                        placeholder="Email" 
+                        value={loginEmail} 
+                        returnKeyType="next"
+                        keyboardType = "email-address" 
+                        autoCapitalize="none" 
+                        autoCorrect={false} 
+                        onChangeText = {(text) => setLoginEmail(text)} 
+                        onSubmitEditing = {onSubmitLoginEmailEditing}
+                    />
+    
+                    <TextArea 
+                        ref={loginPasswordInput}
+                        placeholder="Password" 
+                        value={loginPassword}  
+                        returnKeyType="done"
+                        secureTextEntry 
+                        onChangeText = {(text) => setLoginPassword(text)} 
+                        onSubmitEditing = {onSubmitLoginPasswordEditing}
+                    />
+                    <Btn onPress = {onSubmitLoginPasswordEditing} style={{backgroundColor : navCheck == "Login" ? "#EC705E" : "lightgray"}}>
+                        {loading ? <ActivityIndicator color="white"/> : <BtnText>Log in</BtnText>}
+                    </Btn>
+                    </>
+                ):(
+                    <>
+                    <TextArea 
+                        placeholder="Email" 
+                        value={signupEmail} 
+                        returnKeyType="next"
+                        keyboardType = "email-address" 
+                        autoCapitalize="none" 
+                        autoCorrect={false} 
+                        onChangeText = {(text) => setSignupEmail(text)} 
+                        onSubmitEditing = {onSubmitSignupEmailEditing}
+                    />
 
+                    <TextArea 
+                        ref={signupPasswordInput}
+                        placeholder="Password" 
+                        value={signupPassword}  
+                        returnKeyType="done"
+                        secureTextEntry 
+                        onChangeText = {(text) => setSignupPassword(text)} 
+                        onSubmitEditing = {onSubmitSignupPasswordEditing}
+                    />
+                    <Btn onPress = {onSubmitSignupPasswordEditing} style={{backgroundColor : navCheck == "Signup" ? colors.WhaleBG : "lightgray"}}>
+                        {loading ? <ActivityIndicator color="white"/> : <BtnText>Signup</BtnText>}
+                    </Btn>
+                    </>
+                )}
+            </Main>
 
+        </Contents>
+    </Container>
 
-
-        <SignupBtn style={{width: 100,flex:1, backgroundColor:"tomato"}} onPress={() => navigation.navigate("Signup")} >
-            <SignupBtnText>가입</SignupBtnText>
-        </SignupBtn>
-    </View>
-    </KeyboardAwareScrollView>
     )
 }
 export default Login;

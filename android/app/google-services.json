@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "694781280993",
+    "project_id": "tabtabcard",
+    "storage_bucket": "tabtabcard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694781280993:android:f0c662c3e1e2e89a8b6da0",
+        "android_client_info": {
+          "package_name": "com.taptapcard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694781280993-k9q677dsp6eau7bo71h5ltu8pjsu5c69.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taptapcard",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "694781280993-81244ijlf95pvdvn4du0im7ebh456ns1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZLW3rdE4CsqLTMmDQmtcqRHUIP9qn2gk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694781280993-81244ijlf95pvdvn4du0im7ebh456ns1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

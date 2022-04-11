@@ -9,15 +9,15 @@ const Btn = styled.TouchableOpacity``
 const BtnText = styled.Text``
 
 const Signup = ({navigation}) => {
-    const passwordInput = useRef()
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const signupPasswordInput = useRef()
+    const [signupEmail, setSignupEmail] = useState("");
+    const [signupPassword, setSignupPassword] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const onSubmitEmailEditing = () => {
-        passwordInput.current.focus();
+    const onSubmitSignupEmailEditing = () => {
+        signupPasswordInput.current.focus();
     }
-    const onSubmitPasswordEditing = async() => {
+    const onSubmitSignupPasswordEditing = async() => {
         // if(email === "" || password === ""){
         //     Alert.alert('칸을 모두 채워주세요')
         // }
@@ -26,8 +26,8 @@ const Signup = ({navigation}) => {
         }
         setLoading(true)
         try{
-            if(email !=="" && password !==""){
-                const userCredential = await auth().createUserWithEmailAndPassword(email, password)
+            if(signupEmail !=="" && signupPassword !==""){
+                const userCredential = await auth().createUserWithEmailAndPassword(signupEmail, signupPassword)
                 // console.log("userCredential = ", userCredential)
             }else{
                 setLoading(false)
@@ -58,25 +58,25 @@ const Signup = ({navigation}) => {
         <Text onPress={() => navigation.goBack()}>back</Text>
         <TextArea 
             placeholder="Email" 
-            value={email} 
+            value={signupEmail} 
             returnKeyType="next"
             keyboardType = "email-address" 
             autoCapitalize="none" 
             autoCorrect={false} 
-            onChangeText = {(text) => setEmail(text)} 
-            onSubmitEditing = {onSubmitEmailEditing}
+            onChangeText = {(text) => setSignupEmail(text)} 
+            onSubmitEditing = {onSubmitSignupEmailEditing}
         />
 
         <TextArea 
-            ref={passwordInput}
+            ref={signupPasswordInput}
             placeholder="Password" 
-            value={password}  
+            value={signupPassword}  
             returnKeyType="done"
             secureTextEntry 
-            onChangeText = {(text) => setPassword(text)} 
-            onSubmitEditing = {onSubmitPasswordEditing}
+            onChangeText = {(text) => setSignupPassword(text)} 
+            onSubmitEditing = {onSubmitSignupPasswordEditing}
         />
-        <Btn onPress = {onSubmitPasswordEditing}>
+        <Btn onPress = {onSubmitSignupPasswordEditing}>
             {loading ? <ActivityIndicator color="black"/> : <BtnText>가입하기</BtnText>}
         </Btn>
         

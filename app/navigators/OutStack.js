@@ -12,7 +12,7 @@ const Stack = () => {
     return(
     <NativeStack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}} >
         <NativeStack.Screen name="Login" component={Login} />
-        <NativeStack.Screen name="Signup" component={Signup} />
+        {/* <NativeStack.Screen name="Signup" component={Signup} /> */}
     </NativeStack.Navigator>
     );
 }

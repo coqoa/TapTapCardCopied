@@ -168,7 +168,7 @@ const Distractor = styled(Animated.createAnimatedComponent(Pressable))`
     background-color: rgba(255,255,255, 0.6);
     z-index: 100;
 `
-const DistractorText = styled.Text`
+const DistractorText = styled(Animated.createAnimatedComponent(Text))`
     font-family: 'SDChild';
     font-size: 45px;
     color: ${colors.REALDARKGRAY};
@@ -336,6 +336,7 @@ export const WordCardLevel = (props) => {
     //Value
     const cardPosition = useRef(new Animated.Value(0)).current;
     const cardScaleValue = useRef(new Animated.Value(1)).current;
+    const distractorOpacity = useRef(new Animated.Value(1)).current;
     const cardRotation = cardPosition.interpolate({
         inputRange: [-250, 250],
         outputRange:["-15deg","15deg"],
@@ -350,6 +351,11 @@ export const WordCardLevel = (props) => {
     const lastListModal = useRef(new Animated.Value(0)).current;
 
     //Animations
+    const distractorOpacityUp = Animated.spring(distractorOpacity,{
+        toValue:1,
+        // delay:1000,
+        useNativeDriver:true
+    })
     const cardPressIn = Animated.spring(cardScaleValue,{
         toValue:0.95,
         useNativeDriver:true
@@ -393,9 +399,11 @@ export const WordCardLevel = (props) => {
                     },70)
                 ) }
                 Animated.parallel([
+                    goLeft,
                     distractorContainervisible,
                     distractorContainerScaleMax,
-                    goLeft
+                    // 아래 애니메이션이 onDisMiss이후에 진행되야하는데
+                    distractorOpacityUp
                 ]).start(onDismiss);
             }else if(dx > 180){
                 playSound(require("../asset/audio/CardPass.mp3"))
@@ -406,9 +414,10 @@ export const WordCardLevel = (props) => {
                     },70)
                 ) }
                 Animated.parallel([
+                    goRight,
                     distractorContainervisible,
                     distractorContainerScaleMax,
-                    goRight
+                    distractorOpacityUp
                 ]).start(onDismiss);
             }else{
                 Animated.parallel([cardPressOut,goCenter]).start();
@@ -517,6 +526,7 @@ export const WordCardLevel = (props) => {
                 onStartShouldSetPanResponder:()=>true,
                 onPanResponderStart:()=>{Animated.sequence([a]).start()},
                 onPanResponderEnd:()=>{
+                    distractorOpacity.setValue(0)
                     Animated.parallel([
                         b,
                         distractorContainerInvisible,
@@ -717,16 +727,21 @@ export const WordCardLevel = (props) => {
         
     }}
         
+    
     //랜덤배열
+    // console.log(data[0].id)
     const numberArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     //배열마다 무작위 숫자 부여
     const mapArray = numberArray.map(item => item*Math.floor(Math.random()*(data.length-2)))
+    // console.log(data.length, mapArray)
     // // 동일한 숫자 제거
     const mapArraySort = Array.from(new Set(mapArray))
+    // console.log(mapArraySort)
     // // 해당카드의 id는 제거한다(중복방지)
     const filterMapArray = mapArraySort.filter(function(element){
-            return element !== firstIndex
-        });
+        return element !== firstIndex
+    });
+    // console.log(filterMapArray)
     const numArray =  [data[firstIndex].id, filterMapArray[0], filterMapArray[1], filterMapArray[2]]
     // // 배열 섞기
     function shuffle(array) {
@@ -882,7 +897,6 @@ export const WordCardLevel = (props) => {
                                 {PictureImageData(data[firstIndex].realImage3)}
                                 {PictureImageData(data[firstIndex].realImage4)}
                                 {PictureImageData(data[firstIndex].realImage5)}
-                                {PictureImageData(data[firstIndex].realImage1)}
                             </RealPictureScrollView>
                         }
                     </RealPictureContainer>
@@ -921,6 +935,19 @@ export const WordCardLevel = (props) => {
                                                     </QuestionMarkBtn>                                                    
                                                 </QuestionMarkBg>
                                             )}
+                                            {props.level == "word3LV" &&(<>
+                                            <DistractorContainer>
+                                                <DistractorRow>
+                                                    <Distractor />
+                                                    <Distractor />
+                                                </DistractorRow>
+                                                <DistractorRow>
+                                                    <Distractor />
+                                                    <Distractor />
+                                                </DistractorRow>
+                                            </DistractorContainer>
+
+                                            </>)}
                                             {props.level !== "word3LV" && (
                                                 <CardNameText style={{fontSize:100}}>{dataName(secondIndex)}</CardNameText>
                                             ) }
@@ -1007,7 +1034,7 @@ export const WordCardLevel = (props) => {
                                                         style={{transform:[{scale:distractorBtn1}]}}
                                                         onPressIn={()=>{playSound(correctAudio(numArray[0])),clickBlockerFunc()}}
                                                     >
-                                                        <DistractorText>{dataName(numArray[0])}</DistractorText>
+                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[0])}</DistractorText>
                                                     </Distractor>
                                                 ):(
                                                     <Distractor 
@@ -1015,7 +1042,7 @@ export const WordCardLevel = (props) => {
                                                     style={{transform:[{scale:distractorBtn1}]}}
                                                     onPressIn={()=>playSound(wrongAudio(numArray[0]))}
                                                     >
-                                                        <DistractorText>{dataName(numArray[0])}</DistractorText>
+                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[0])}</DistractorText>
                                                     </Distractor>
                                                 )}
                                                 
@@ -1025,7 +1052,7 @@ export const WordCardLevel = (props) => {
                                                     style={{transform:[{scale:distractorBtn2}]}}
                                                     onPressIn={()=>{playSound(correctAudio(numArray[1])),clickBlockerFunc()}}
                                                     >
-                                                        <DistractorText>{dataName(numArray[1])}</DistractorText>
+                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[1])}</DistractorText>
                                                     </Distractor>
                                                 ):(
                                                     <Distractor 
@@ -1033,7 +1060,7 @@ export const WordCardLevel = (props) => {
                                                     style={{transform:[{scale:distractorBtn2}]}}
                                                     onPressIn={()=>playSound(wrongAudio(numArray[1]))}
                                                     >
-                                                        <DistractorText>{dataName(numArray[1])}</DistractorText>
+                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[1])}</DistractorText>
                                                     </Distractor>
                                                 )}
                                             </DistractorRow>
@@ -1044,7 +1071,7 @@ export const WordCardLevel = (props) => {
                                                         style={{transform:[{scale:distractorBtn3}]}}
                                                         onPressIn={()=>{playSound(correctAudio(numArray[2])),clickBlockerFunc()}}
                                                     >
-                                                        <DistractorText>{dataName(numArray[2])}</DistractorText>
+                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[2])}</DistractorText>
                                                     </Distractor>
                                                 ):(
                                                     <Distractor 
@@ -1052,7 +1079,7 @@ export const WordCardLevel = (props) => {
                                                         style={{transform:[{scale:distractorBtn3}]}}
                                                         onPressIn={()=>playSound(wrongAudio(numArray[2]))}
                                                     >
-                                                        <DistractorText>{dataName(numArray[2])}</DistractorText>
+                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[2])}</DistractorText>
                                                     </Distractor>
                                                 )}
 
@@ -1062,7 +1089,7 @@ export const WordCardLevel = (props) => {
                                                         style={{transform:[{scale:distractorBtn4}]}}
                                                         onPressIn={()=>{playSound(correctAudio(numArray[3])),clickBlockerFunc()}}
                                                     >
-                                                        <DistractorText>{dataName(numArray[3])}</DistractorText>
+                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[3])}</DistractorText>
                                                     </Distractor>
                                                 ):(
                                                     <Distractor 
@@ -1070,7 +1097,7 @@ export const WordCardLevel = (props) => {
                                                         style={{transform:[{scale:distractorBtn4}]}}
                                                         onPressIn={()=>playSound(wrongAudio(numArray[3]))}
                                                     >
-                                                        <DistractorText>{dataName(numArray[3])}</DistractorText>
+                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[3])}</DistractorText>
                                                     </Distractor>
                                                         
                                                 )}

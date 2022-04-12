@@ -71,8 +71,13 @@ const Btn = styled.TouchableOpacity`
     justify-content: center;
 `
 const BtnText = styled.Text`
+    top: 2px;
     color: white;
-    font-size: 23px;
+    font-size: 25px;
+    font-family: "SDChild";
+`
+const ValidationText = styled.Text`
+    font-size: 22px;
     font-family: "SDChild";
 `
 
@@ -82,6 +87,7 @@ const Login = ({navigation}) => {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const [validation, setValidation] = useState("")
 
     const onSubmitLoginEmailEditing = () => {
         loginPasswordInput.current.focus();
@@ -100,25 +106,25 @@ const Login = ({navigation}) => {
                 // console.log("userCredential = ", userCredential)
             }else{
                 setLoading(false)
-                Alert.alert('칸을 채워주세요')
+                setValidation('칸을 채워주세요')
             }
         }catch(e){
             setLoading(false)
             switch(e.code){
                 case "auth/invalid-email" : {
-                    return Alert.alert('이메일을 입력해주세요')
+                    return setValidation("이메일을 입력해주세요")
                 }
-                case "user-disabled" : {
-                    return Alert.alert('user-disabled')
+                case "auth/user-disabled" : {
+                    return setValidation('user-disabled')
                 }
                 case "auth/user-not-found" : {
-                    return Alert.alert('존재하지 않는 이메일 입니다')
+                    return setValidation('존재하지 않는 이메일 입니다')
                 }
                 case "auth/wrong-password" : {
-                    return Alert.alert('비밀번호가 일치하지 않습니다')
+                    return setValidation('비밀번호가 일치하지 않습니다')
                 }
                 case "auth/operation-not-allowed" : {
-                    return Alert.alert('auth/operation-not-allowed \n관리자에게 문의하세요')
+                    return setValidation('auth/operation-not-allowed \n관리자에게 문의하세요')
                 }
             }
             console.log("error = ", e.code)
@@ -141,29 +147,29 @@ const Login = ({navigation}) => {
         setLoading(true)
         try{
             if(signupEmail !=="" && signupPassword !==""){
-                const userCredential = await auth().createUserWithEmailAndPassword(signupEmail, signupPassword)
+                await auth().createUserWithEmailAndPassword(signupEmail, signupPassword)
                 // console.log("userCredential = ", userCredential)
             }else{
                 setLoading(false)
-                Alert.alert('칸을 채워주세요')
+                setValidation('칸을 채워주세요')
             }
         }catch(e){
             setLoading(false)
             switch(e.code){
                 case "auth/email-already-in-use" : {
-                     return Alert.alert('이미 사용중인 이메일입니다.')
+                     return setValidation('이미 사용중인 이메일입니다.')
                 }
-                case "auth/auth/invalid-email" : {
-                    return Alert.alert('이메일을 입력해주세요')
+                case "auth/invalid-email" : {
+                    return setValidation('이메일을 입력해주세요')
                 }
                 case "auth/weak-password" : {
-                     return Alert.alert('안전하지 않은 비밀번호입니다.\n다른 비밀번호를 사용해 주세요.')
+                     return setValidation('안전하지 않은 비밀번호입니다.\n다른 비밀번호를 사용해 주세요.')
                 }
                 case "auth/operation-not-allowed" : {
-                    return Alert.alert('operation-not-allowed \n관리자에게 문의하세요 ')
+                    return setValidation('operation-not-allowed \n관리자에게 문의하세요 ')
                 }
             }
-            console.log("error = ", e)
+            console.log("error = ", e.code)
         }
     }
 
@@ -172,14 +178,13 @@ const Login = ({navigation}) => {
         try {    
             await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
             const status = await sound.playAsync();
-            setTimeout(function(){
+            setTimeout(()=>{
                 sound.unloadAsync();
             },status.playableDurationMillis + 1000) 
         } catch (e) {
             console.log('Login.js playSound error = ', e)
         }
     }
-
     return(
     <Container>
         <GreetingShell style={{transform:[{scale:3}]}}>
@@ -187,11 +192,11 @@ const Login = ({navigation}) => {
         </GreetingShell>
         <Contents>
             <Nav>
-                <NavBtn onPress={() => setNavCheck("Login")}>
-                    <NavBtnText style={{color : navCheck == "Login" ? "black" : "lightgray"}}>Log in</NavBtnText>
+                <NavBtn onPress={() => {setNavCheck("Login"), setValidation("")}}>
+                    <NavBtnText style={{color : navCheck == "Login" ? "black" : "lightgray"}}>로그인</NavBtnText>
                 </NavBtn>
-                <NavBtn onPress={() => setNavCheck("Signup")} >
-                    <NavBtnText  style={{color : navCheck == "Signup" ? "black" : "lightgray"}}>Sign up</NavBtnText>
+                <NavBtn onPress={() => {setNavCheck("Signup"), setValidation("")}} >
+                    <NavBtnText  style={{color : navCheck == "Signup" ? "black" : "lightgray"}}>회원가입</NavBtnText>
                 </NavBtn>
             </Nav>
 
@@ -199,7 +204,7 @@ const Login = ({navigation}) => {
                 {navCheck == "Login" ? (
                     <>
                     <TextArea 
-                        placeholder="Email" 
+                        placeholder="이메일" 
                         value={loginEmail} 
                         returnKeyType="next"
                         keyboardType = "email-address" 
@@ -211,7 +216,7 @@ const Login = ({navigation}) => {
     
                     <TextArea 
                         ref={loginPasswordInput}
-                        placeholder="Password" 
+                        placeholder="비밀번호" 
                         value={loginPassword}  
                         returnKeyType="done"
                         secureTextEntry 
@@ -219,13 +224,14 @@ const Login = ({navigation}) => {
                         onSubmitEditing = {onSubmitLoginPasswordEditing}
                     />
                     <Btn onPress = {onSubmitLoginPasswordEditing} style={{backgroundColor : navCheck == "Login" ? "#EC705E" : "lightgray"}}>
-                        {loading ? <ActivityIndicator color="white"/> : <BtnText>Log in</BtnText>}
+                        {loading ? <ActivityIndicator color="white"/> : <BtnText>로그인</BtnText>}
                     </Btn>
+                    <ValidationText style={{color:colors.WhaleBG}}>{validation}</ValidationText>
                     </>
                 ):(
                     <>
                     <TextArea 
-                        placeholder="Email" 
+                        placeholder="이메일" 
                         value={signupEmail} 
                         returnKeyType="next"
                         keyboardType = "email-address" 
@@ -237,7 +243,7 @@ const Login = ({navigation}) => {
 
                     <TextArea 
                         ref={signupPasswordInput}
-                        placeholder="Password" 
+                        placeholder="비밀번호" 
                         value={signupPassword}  
                         returnKeyType="done"
                         secureTextEntry 
@@ -245,8 +251,9 @@ const Login = ({navigation}) => {
                         onSubmitEditing = {onSubmitSignupPasswordEditing}
                     />
                     <Btn onPress = {onSubmitSignupPasswordEditing} style={{backgroundColor : navCheck == "Signup" ? colors.WhaleBG : "lightgray"}}>
-                        {loading ? <ActivityIndicator color="white"/> : <BtnText>Signup</BtnText>}
+                        {loading ? <ActivityIndicator color="white"/> : <BtnText>회원가입</BtnText>}
                     </Btn>
+                    <ValidationText style={{color: "#EC705E"}}>{validation}</ValidationText>
                     </>
                 )}
             </Main>

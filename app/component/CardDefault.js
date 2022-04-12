@@ -353,7 +353,7 @@ export const WordCardLevel = (props) => {
     //Animations
     const distractorOpacityUp = Animated.spring(distractorOpacity,{
         toValue:1,
-        // delay:1000,
+        delay:1000,
         useNativeDriver:true
     })
     const cardPressIn = Animated.spring(cardScaleValue,{
@@ -388,8 +388,8 @@ export const WordCardLevel = (props) => {
         onPanResponderGrant:()=>{
             cardPressIn.start();
         },
-        onPanResponderRelease:(_,{dx})=>{
-            
+        onPanResponderRelease:(_,{dx})=>{ 
+
             if(dx < -180){
                 playSound(require("../asset/audio/CardPass.mp3"))
                 {props.level == "word2LV" && (
@@ -397,14 +397,14 @@ export const WordCardLevel = (props) => {
                         questionOpacity.setValue(1),
                         questionScale.setValue(1)
                     },70)
-                ) }
+                )}
+                distractorOpacity.setValue(0)
                 Animated.parallel([
                     goLeft,
                     distractorContainervisible,
                     distractorContainerScaleMax,
-                    // 아래 애니메이션이 onDisMiss이후에 진행되야하는데
-                    distractorOpacityUp
-                ]).start(onDismiss);
+                    
+                ]).start(onDismiss, Animated.parallel([distractorOpacityUp]).start());
             }else if(dx > 180){
                 playSound(require("../asset/audio/CardPass.mp3"))
                 {props.level == "word2LV" && (
@@ -412,13 +412,13 @@ export const WordCardLevel = (props) => {
                         questionOpacity.setValue(1),
                         questionScale.setValue(1)
                     },70)
-                ) }
+                )}
+                distractorOpacity.setValue(0)
                 Animated.parallel([
                     goRight,
                     distractorContainervisible,
                     distractorContainerScaleMax,
-                    distractorOpacityUp
-                ]).start(onDismiss);
+                ]).start(onDismiss, Animated.parallel([distractorOpacityUp]).start());
             }else{
                 Animated.parallel([cardPressOut,goCenter]).start();
             }
@@ -660,7 +660,7 @@ export const WordCardLevel = (props) => {
             setSecondIndex(prev => prev + 1);
             cardScaleValue.setValue(1)
             cardPosition.setValue(0);
-        },100)
+        },50)
     }
     const end = () => {
         console.log('end')
@@ -743,12 +743,12 @@ export const WordCardLevel = (props) => {
     });
     // console.log(filterMapArray)
     const numArray =  [data[firstIndex].id, filterMapArray[0], filterMapArray[1], filterMapArray[2]]
+    // console.log(numArray)
     // // 배열 섞기
     function shuffle(array) {
         array.sort(() => Math.random() - 0.5);
     }
     shuffle(numArray)
-
     // type Ganada일때 사용하는 함수
     const ganadaBtn = (e,j) =>{
         return(

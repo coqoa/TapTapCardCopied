@@ -7,6 +7,8 @@ import OutStack from './app/navigators/OutStack'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import auth from '@react-native-firebase/auth';
 
+import { NativeBaseProvider } from 'native-base';
+
 export default function App() {
   const [ready, setReady] = useState(false);
   const onFinish = () => setReady(true);
@@ -54,12 +56,14 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      {ready && (
-        <SafeAreaView style={{flex:1}}>
-          {isLoggedIn ? <InStack />: <OutStack />}
-        </SafeAreaView>
-      )}
-    </NavigationContainer>
+    <NativeBaseProvider>
+      <NavigationContainer>
+        {ready && (
+          <SafeAreaView style={{flex:1}}>
+            {isLoggedIn ? <InStack />: <OutStack />}
+          </SafeAreaView>
+        )}
+      </NavigationContainer>
+    </NativeBaseProvider>
   )
 }

@@ -8,8 +8,6 @@ PODS:
     - ReactCommon/turbomodule/core
   - EXConstants (13.0.2):
     - ExpoModulesCore
-  - EXErrorRecovery (3.0.5):
-    - ExpoModulesCore
   - EXFileSystem (13.1.4):
     - ExpoModulesCore
   - EXFont (10.0.5):
@@ -355,6 +353,8 @@ PODS:
   - RNScreens (3.10.2):
     - React-Core
     - React-RCTImage
+  - RNSVG (12.3.0):
+    - React-Core
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -362,7 +362,6 @@ DEPENDENCIES:
   - EXApplication (from `../node_modules/expo-application/ios`)
   - EXAV (from `../node_modules/expo-av/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
-  - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
@@ -405,6 +404,7 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -429,8 +429,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-av/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
-  EXErrorRecovery:
-    :path: "../node_modules/expo-error-recovery/ios"
   EXFileSystem:
     :path: "../node_modules/expo-file-system/ios"
   EXFont:
@@ -511,6 +509,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/auth"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -520,7 +520,6 @@ SPEC CHECKSUMS:
   EXApplication: 54fe5bd6268d697771645e8f1aef8b806a65247a
   EXAV: b9ed0c201092244c46aa78f907f5c66176bed236
   EXConstants: 88bf79622fbd9b476c96d8ec57fe97ca44fe8e3c
-  EXErrorRecovery: b0d7582714a2cc896e94a2308a356f94dbf14ef7
   EXFileSystem: 08a3033ac372b6346becf07839e1ccef26fb1058
   EXFont: 2597c10ac85a69d348d44d7873eccf5a7576ef5e
   EXKeepAwake: bf48d7f740a5cd2befed6cf9a49911d385c6c47d
@@ -570,6 +569,7 @@ SPEC CHECKSUMS:
   RNFBApp: 097a31d372b3db15b41c7a1a5c429433b0609e12
   RNFBAuth: 85b7ad91e3783dfde011702b2b747b1fd7be7234
   RNScreens: d6da2b9e29cf523832c2542f47bf1287318b1868
+  RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
 
 PODFILE CHECKSUM: 2ef0626422394e42ec0bbfdb09dbc7d3cd8de396

@@ -29,11 +29,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>EXErrorRecovery.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>EXFileSystem.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -140,6 +135,11 @@
 			<false/>
 		</dict>
 		<key>RNFBAuth.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RNSVG.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

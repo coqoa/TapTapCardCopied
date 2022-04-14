@@ -4,7 +4,6 @@ import { Audio } from 'expo-av';
 import styled from "styled-components";
 import { colors } from "../component/Color";
 import { WordCardLevel } from "../component/CardDefault";
-import Payment from "./Payment";
 
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -321,7 +320,7 @@ const WordPlay = ({route, navigation}) => {
                 
                 {/* 상단네비게이션 가운데 레벨표시하는 부분 */}
                 <Star>
-                <TouchableOpacity onPress={()=>{navigation.navigate(Payment)}}><Text>결제</Text></TouchableOpacity>
+                <TouchableOpacity onPress={()=>{navigation.navigate("PaymentTest")}}><Text>결제</Text></TouchableOpacity>
                     {typeCheckRes == "Animal" && (
                     <>
                         {(()=>{

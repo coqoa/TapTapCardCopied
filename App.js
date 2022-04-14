@@ -12,10 +12,15 @@ export default function App() {
   const onFinish = () => setReady(true);
   const[isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // useEffect(async() => {
+  //   await Font.loadAsync({
+  //       "SDChild": require("./app/asset/fonts/SDChildfundkorea.otf")
+  //   })
+  // }, [])
 
   useEffect(async()=>{
-    auth().onAuthStateChanged((user)=>{
-      console.log("App.js user = ", user)
+    await auth().onAuthStateChanged((user)=>{
+      // console.log("App.js user = ", user)
       if(user){
         setIsLoggedIn(true)
       }else{
@@ -27,13 +32,14 @@ export default function App() {
   const startLoading = async () =>{
     // 로딩하고 싶은 것들을 담는 공간 
     // (ex. API호출 혹은 정보를 받거나 video요소를 미리 받아놓거나, DB를 미리 열거나, 아이콘을 미리준비)
+    // useEffect(async() => {
+      await Font.loadAsync({
+          "SDChild": require("./app/asset/fonts/SDChildfundkorea.otf")
+      })
+    // }, [])
   };
 
-  useEffect(async() => {
-    await Font.loadAsync({
-        "SDChild": require("./app/asset/fonts/SDChildfundkorea.otf")
-    })
-  }, [])
+
 
   if(!ready){
     return (
@@ -49,9 +55,11 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <SafeAreaView style={{flex:1}}>
-        {isLoggedIn ? <InStack />: <OutStack />}
-      </SafeAreaView>
+      {ready && (
+        <SafeAreaView style={{flex:1}}>
+          {isLoggedIn ? <InStack />: <OutStack />}
+        </SafeAreaView>
+      )}
     </NavigationContainer>
   )
 }

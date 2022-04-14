@@ -87,19 +87,6 @@
             android:authorities="com.taptapcard.reactnativefirebaseappinitprovider"
             android:exported="false"
             android:initOrder="99" />
-        <provider
-            android:name="expo.modules.filesystem.FileSystemFileProvider"
-            android:authorities="com.taptapcard.FileSystemFileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true" >
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_system_provider_paths" />
-        </provider>
-
-        <meta-data
-            android:name="org.unimodules.core.AppLoader#react-native-headless"
-            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
 
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
@@ -137,6 +124,29 @@
                     android:scheme="recaptcha" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+            android:authorities="com.taptapcard.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+        <provider
+            android:name="expo.modules.filesystem.FileSystemFileProvider"
+            android:authorities="com.taptapcard.FileSystemFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_system_provider_paths" />
+        </provider>
+
+        <meta-data
+            android:name="org.unimodules.core.AppLoader#react-native-headless"
+            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"

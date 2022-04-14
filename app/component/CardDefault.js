@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useCallback, useRef} from "react"
 import { Audio } from 'expo-av';
-import {View, Dimensions, FlatList, Animated, Pressable, PanResponder, Text, Platform} from "react-native";
+import {View, Dimensions, FlatList, Animated, Pressable, PanResponder, Text, Platform, TouchableOpacity} from "react-native";
 import styled from "styled-components"
 import { colors } from "./Color";
 

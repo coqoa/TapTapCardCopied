@@ -163,151 +163,169 @@
 88-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-37
 89            android:initOrder="99" />
 89-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-35
-90        <provider
-90-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-34:20
-91            android:name="expo.modules.filesystem.FileSystemFileProvider"
-91-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-74
-92            android:authorities="com.taptapcard.FileSystemFileProvider"
-92-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-74
-93            android:exported="false"
-93-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-37
-94            android:grantUriPermissions="true" >
-94-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-47
-95            <meta-data
-95-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:13-33:70
-96                android:name="android.support.FILE_PROVIDER_PATHS"
-96-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:17-67
-97                android:resource="@xml/file_system_provider_paths" />
-97-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:33:17-67
-98        </provider>
+90
+91        <activity
+91-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:27:9-44:20
+92            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+92-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:28:13-80
+93            android:excludeFromRecents="true"
+93-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:29:13-46
+94            android:exported="true"
+94-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:30:13-36
+95            android:launchMode="singleTask"
+95-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:31:13-44
+96            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+96-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:32:13-72
+97            <intent-filter>
+97-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:33:13-43:29
+98                <action android:name="android.intent.action.VIEW" />
+98-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:7-59
+98-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:15-56
 99
-100        <meta-data
-100-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:89
-101            android:name="org.unimodules.core.AppLoader#react-native-headless"
-101-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-79
-102            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
-102-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-86
-103
-104        <activity
-104-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:27:9-44:20
-105            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-105-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:28:13-80
-106            android:excludeFromRecents="true"
-106-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:29:13-46
-107            android:exported="true"
-107-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:30:13-36
-108            android:launchMode="singleTask"
-108-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:31:13-44
-109            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-109-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:32:13-72
-110            <intent-filter>
-110-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:33:13-43:29
-111                <action android:name="android.intent.action.VIEW" />
-111-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:7-59
-111-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:15-56
-112
-113                <category android:name="android.intent.category.DEFAULT" />
-113-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:17-76
-113-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:27-73
-114                <category android:name="android.intent.category.BROWSABLE" />
-114-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:7-68
-114-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:17-65
-115
-116                <data
-116-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:7-38
-117                    android:host="firebase.auth"
-118                    android:path="/"
-119                    android:scheme="genericidp" />
-119-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:13-35
-120            </intent-filter>
-121        </activity>
-122        <activity
-122-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:45:9-62:20
-123            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-123-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:46:13-79
-124            android:excludeFromRecents="true"
-124-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:47:13-46
-125            android:exported="true"
-125-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:48:13-36
-126            android:launchMode="singleTask"
-126-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:49:13-44
-127            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-127-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:50:13-72
-128            <intent-filter>
-128-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:51:13-61:29
-129                <action android:name="android.intent.action.VIEW" />
-129-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:7-59
-129-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:15-56
-130
-131                <category android:name="android.intent.category.DEFAULT" />
-131-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:17-76
-131-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:27-73
-132                <category android:name="android.intent.category.BROWSABLE" />
-132-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:7-68
-132-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:17-65
-133
-134                <data
-134-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:7-38
-135                    android:host="firebase.auth"
-136                    android:path="/"
-137                    android:scheme="recaptcha" />
-137-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:13-35
-138            </intent-filter>
-139        </activity>
-140
-141        <provider
-141-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:26:9-31:39
-142            android:name="com.google.firebase.provider.FirebaseInitProvider"
-142-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:27:13-77
-143            android:authorities="com.taptapcard.firebaseinitprovider"
-143-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:28:13-72
-144            android:directBootAware="true"
-144-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:29:13-43
-145            android:exported="false"
-145-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:30:13-37
-146            android:initOrder="100" />
-146-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:31:13-36
-147
-148        <activity
-148-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:23:9-27:75
-149            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-149-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:24:13-93
-150            android:excludeFromRecents="true"
-150-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:25:13-46
-151            android:exported="false"
-151-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:26:13-37
-152            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-152-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:27:13-72
-153        <!--
-154            Service handling Google Sign-In user revocation. For apps that do not integrate with
-155            Google Sign-In, this service will never be started.
-156        -->
-157        <service
-157-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:33:9-37:51
-158            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-158-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:34:13-89
-159            android:exported="true"
-159-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:35:13-36
-160            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-160-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:36:13-107
-161            android:visibleToInstantApps="true" />
-161-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:37:13-48
-162
-163        <activity
-163-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
-164            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-164-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
-165            android:exported="false"
-165-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
-166            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-166-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
-167
-168        <meta-data
-168-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
-169            android:name="com.google.android.gms.version"
-169-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
-170            android:value="@integer/google_play_services_version" />
-170-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
-171    </application>
+100                <category android:name="android.intent.category.DEFAULT" />
+100-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:17-76
+100-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:27-73
+101                <category android:name="android.intent.category.BROWSABLE" />
+101-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:7-68
+101-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:17-65
+102
+103                <data
+103-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:7-38
+104                    android:host="firebase.auth"
+105                    android:path="/"
+106                    android:scheme="genericidp" />
+106-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:13-35
+107            </intent-filter>
+108        </activity>
+109        <activity
+109-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:45:9-62:20
+110            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+110-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:46:13-79
+111            android:excludeFromRecents="true"
+111-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:47:13-46
+112            android:exported="true"
+112-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:48:13-36
+113            android:launchMode="singleTask"
+113-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:49:13-44
+114            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+114-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:50:13-72
+115            <intent-filter>
+115-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:51:13-61:29
+116                <action android:name="android.intent.action.VIEW" />
+116-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:7-59
+116-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:15-56
+117
+118                <category android:name="android.intent.category.DEFAULT" />
+118-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:17-76
+118-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:27-73
+119                <category android:name="android.intent.category.BROWSABLE" />
+119-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:7-68
+119-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:17-65
+120
+121                <data
+121-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:7-38
+122                    android:host="firebase.auth"
+123                    android:path="/"
+124                    android:scheme="recaptcha" />
+124-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:13-35
+125            </intent-filter>
+126        </activity>
+127
+128        <provider
+128-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-20:20
+129            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+129-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-83
+130            android:authorities="com.taptapcard.fileprovider"
+130-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-64
+131            android:exported="false"
+131-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-37
+132            android:grantUriPermissions="true" >
+132-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-47
+133            <meta-data
+133-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:63
+134                android:name="android.support.FILE_PROVIDER_PATHS"
+134-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-67
+135                android:resource="@xml/file_provider_paths" />
+135-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-60
+136        </provider>
+137        <provider
+137-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-34:20
+138            android:name="expo.modules.filesystem.FileSystemFileProvider"
+138-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-74
+139            android:authorities="com.taptapcard.FileSystemFileProvider"
+139-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-74
+140            android:exported="false"
+140-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-37
+141            android:grantUriPermissions="true" >
+141-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-47
+142            <meta-data
+142-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:63
+143                android:name="android.support.FILE_PROVIDER_PATHS"
+143-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-67
+144                android:resource="@xml/file_system_provider_paths" />
+144-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-60
+145        </provider>
+146
+147        <meta-data
+147-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:89
+148            android:name="org.unimodules.core.AppLoader#react-native-headless"
+148-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-79
+149            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
+149-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-86
+150
+151        <provider
+151-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:26:9-31:39
+152            android:name="com.google.firebase.provider.FirebaseInitProvider"
+152-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:27:13-77
+153            android:authorities="com.taptapcard.firebaseinitprovider"
+153-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:28:13-72
+154            android:directBootAware="true"
+154-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:29:13-43
+155            android:exported="false"
+155-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:30:13-37
+156            android:initOrder="100" />
+156-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:31:13-36
+157
+158        <activity
+158-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:23:9-27:75
+159            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+159-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:24:13-93
+160            android:excludeFromRecents="true"
+160-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:25:13-46
+161            android:exported="false"
+161-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:26:13-37
+162            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+162-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:27:13-72
+163        <!--
+164            Service handling Google Sign-In user revocation. For apps that do not integrate with
+165            Google Sign-In, this service will never be started.
+166        -->
+167        <service
+167-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:33:9-37:51
+168            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+168-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:34:13-89
+169            android:exported="true"
+169-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:35:13-36
+170            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+170-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:36:13-107
+171            android:visibleToInstantApps="true" />
+171-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:37:13-48
 172
-173</manifest>
+173        <activity
+173-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+174            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+174-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+175            android:exported="false"
+175-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+176            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+176-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+177
+178        <meta-data
+178-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+179            android:name="com.google.android.gms.version"
+179-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
+180            android:value="@integer/google_play_services_version" />
+180-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+181    </application>
+182
+183</manifest>

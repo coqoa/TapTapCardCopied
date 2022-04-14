@@ -4,6 +4,7 @@ import { Audio } from 'expo-av';
 import styled from "styled-components";
 import { colors } from "../component/Color";
 import { WordCardLevel } from "../component/CardDefault";
+import Payment from "./Payment";
 
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -48,7 +49,7 @@ const Top = styled.View`
     z-index: 10;
     background-color: rgba(255,255,255,0.9);
 `
-const GoBack = styled(Animated.createAnimatedComponent(View))`
+const GoBack = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     width: 35px;
     height: 35px;
@@ -219,52 +220,22 @@ const WordPlay = ({route, navigation}) => {
     const number9Pan = btnPan("91~100")
 
 //선택지
-    //가나다 메뉴 모달 선택지 함수
-    const ganadaDistractor = (a,b,c,d) => {
-        return (
-            <LevelBtn 
-                {...a}
-                style={{backgroundColor: b, transform: [{scale:c}]}}
-                onPressIn={()=>{c.setValue(0.8),ClickSound()}}
-                // onPressIn={()=>{c.setValue(0.8)}}
-                onPressOut={()=>c.setValue(1)}
-            >
-                <ModalMenuText>{d}</ModalMenuText>
-            </LevelBtn>
-        )
-    }
     //숫자 메뉴 모달 선택지 함수
-    const numberDistractor = (a,b,c,d) => {
+    const distractorFunc = (a,b,c,d) => {
         return (
             <LevelBtn 
                 {...a}
                 style={{backgroundColor: b, transform: [{scale:c}]}}
-                onPressIn={()=>{c.setValue(0.8),ClickSound()}}
-                // onPressIn={()=>{c.setValue(0.8)}}
+                onPress={()=>{playSound('click', clickSound)}}
+                onPressIn={()=>{c.setValue(0.8)}}
                 onPressOut={()=>c.setValue(1)}
             >
-            <ModalMenuText>{d}</ModalMenuText>
+                {typeCheckRes !== "Animal" ? (
+                    <ModalMenuText>{d}</ModalMenuText>
+                ):(
+                    <StarViewImage source={d} resizeMode="contain" />
+                )}
             </LevelBtn>   
-        )
-    }
-    // 동물 메뉴 모달 선택지
-    const animalDistractor = (a,b,c,d) => {
-        return (
-            <LevelBtn 
-                {...a}
-                style={{backgroundColor: b, transform: [{scale:c}], 
-                    shadowColor: "black",
-                    shadowOpacity: 0.3,
-                    shadowRadius: 3,
-                    shadowOffset: {height: 2,width: 0,},
-                    elevation:5
-                }}
-                onPressIn={()=>{c.setValue(0.8),ClickSound()}}
-                // onPressIn={()=>{c.setValue(0.8)}}
-                onPressOut={()=>c.setValue(1)}
-            >
-            <StarViewImage source={d} resizeMode="contain" />
-            </LevelBtn>
         )
     }
 
@@ -273,11 +244,10 @@ const WordPlay = ({route, navigation}) => {
     const goBackPan = useRef(
         PanResponder.create({
             onStartShouldSetPanResponder: () => true,
-            onPanResponderGrant:() => {
-                ClickSound()
+            onPanResponderStart:() => {
                 goBackBtnScale.setValue(0.8)
             },
-            onPanResponderRelease:()=>{
+            onPanResponderEnd:()=>{
                 goBack()
                 goBackBtnScale.setValue(1)
             }            
@@ -308,18 +278,33 @@ const WordPlay = ({route, navigation}) => {
         navigation.navigate('Menu')
     }
 
-    const ClickSound = async() => {
-        const sound = new Audio.Sound();
-        try {    
-            await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
-            await sound.playAsync();
-            setTimeout(function(){
-                sound.unloadAsync();
-            },100) 
-        } catch (error) {
-            console.log('WordPlay.js playSound error = ', error)
-        }
+    // const ClickSound = async() => {
+    //     const sound = new Audio.Sound();
+    //     try {    
+    //         await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
+    //         await sound.playAsync();
+    //         setTimeout(function(){
+    //             sound.unloadAsync();
+    //         },100) 
+    //     } catch (error) {
+    //         console.log('WordPlay.js playSound error = ', error)
+    //     }
+    // }
+    function playSound(name, sound){
+        console.log('Playing '+name);
+        Audio.Sound.createAsync( sound,{ shouldPlay: true }
+        ).then((res)=>{
+            res.sound.setOnPlaybackStatusUpdate((status)=>{
+                if(!status.didJustFinish) return;
+                console.log('Unloading '+name);
+                res.sound.unloadAsync().catch(()=>{});
+            });
+        }).catch((error)=>{
+            console.log('뭔에런데진짜 짜증나게',error)
+        });
     }
+    
+    const clickSound = require("../asset/audio/btnClickSound.mp3");
     
     return(    
         <Shell>
@@ -328,12 +313,15 @@ const WordPlay = ({route, navigation}) => {
                 {/* 뒤로가기 버튼 */}
                 <GoBack 
                     {...goBackPan.panHandlers} 
-                    style={{transform: [{scale:goBackBtnScale}]}} 
+                    style={{transform: [{scale:goBackBtnScale}]}}
+                    onPress={()=>{playSound('click', clickSound)}} 
                 >
                     <GoBackBtnImage source={require("../asset/images/goBack1.png")} />
                 </GoBack>
+                
                 {/* 상단네비게이션 가운데 레벨표시하는 부분 */}
                 <Star>
+                <TouchableOpacity onPress={()=>{navigation.navigate(Payment)}}><Text>결제</Text></TouchableOpacity>
                     {typeCheckRes == "Animal" && (
                     <>
                         {(()=>{
@@ -376,8 +364,8 @@ const WordPlay = ({route, navigation}) => {
                 {/* 메뉴 버튼 */}
                 <Menu 
                     style={{transform: [{scale:menuBtnScale}]}}
-                    onPressIn={()=>{menuBtnScale.setValue(0.8), ClickSound(), menuModalIndex.setValue(2)}}
-                    // onPressIn={()=>{menuBtnScale.setValue(0.8), menuModalIndex.setValue(2)}}
+                    onPress={()=>{playSound('click', clickSound)}}
+                    onPressIn={()=>{menuBtnScale.setValue(0.8), menuModalIndex.setValue(2)}}
                     onPressOut={()=>{menuBtnScale.setValue(1)}}
                 >
                     <MenuBtnImage source={require("../asset/images/MenuBar.png")} />
@@ -402,36 +390,36 @@ const WordPlay = ({route, navigation}) => {
             <MenuModalContainer style={{zIndex: menuModalIndex, opacity: menuModalIndex}}>
             {typeCheckRes == "Number" ? (
                 <MenuModalScrollView contentContainerStyle = {{alignItems:"center"}}>
-                    {numberDistractor(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "0~100")}
-                    {numberDistractor(number0Pan.panHandlers, colors.WhaleBG, level2Scale, "0~10")}
-                    {numberDistractor(number1Pan.panHandlers, colors.DARKOLIVE, level3Scale, "11~20")}
-                    {numberDistractor(number2Pan.panHandlers, colors.PURPLE, level4Scale, "21~30")}
-                    {numberDistractor(number3Pan.panHandlers, colors.NAVY, level5Scale, "31~40")}
-                    {numberDistractor(number4Pan.panHandlers, colors.GREEN, level6Scale, "41~50")}
-                    {numberDistractor(number5Pan.panHandlers, colors.PASTELORANGE, level7Scale, "51~60")}
-                    {numberDistractor(number6Pan.panHandlers, colors.CUSTOMPINK, level8Scale, "61~70")}
-                    {numberDistractor(number7Pan.panHandlers, colors.LIGHTSEABLUE, level9Scale, "71~80")}
-                    {numberDistractor(number8Pan.panHandlers, colors.REDBRICK, level10Scale, "81~90")}
-                    {numberDistractor(number9Pan.panHandlers, colors.GREEN, level11Scale, "91~100")}
+                    {distractorFunc(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "0~100")}
+                    {distractorFunc(number0Pan.panHandlers, colors.WhaleBG, level2Scale, "0~10")}
+                    {distractorFunc(number1Pan.panHandlers, colors.DARKOLIVE, level3Scale, "11~20")}
+                    {distractorFunc(number2Pan.panHandlers, colors.PURPLE, level4Scale, "21~30")}
+                    {distractorFunc(number3Pan.panHandlers, colors.NAVY, level5Scale, "31~40")}
+                    {distractorFunc(number4Pan.panHandlers, colors.GREEN, level6Scale, "41~50")}
+                    {distractorFunc(number5Pan.panHandlers, colors.PASTELORANGE, level7Scale, "51~60")}
+                    {distractorFunc(number6Pan.panHandlers, colors.CUSTOMPINK, level8Scale, "61~70")}
+                    {distractorFunc(number7Pan.panHandlers, colors.LIGHTSEABLUE, level9Scale, "71~80")}
+                    {distractorFunc(number8Pan.panHandlers, colors.REDBRICK, level10Scale, "81~90")}
+                    {distractorFunc(number9Pan.panHandlers, colors.GREEN, level11Scale, "91~100")}
                 </MenuModalScrollView>
             ):(
                 <MenuModal>
                     {typeCheckRes == "Animal" && (
                     <>
-                        {animalDistractor(animal1Pan.panHandlers,colors.BLUE,level1Scale,require("../asset/images/Star1.png"))}
-                        {animalDistractor(animal2Pan.panHandlers,colors.REDORANGE,level2Scale,require("../asset/images/Star2.png"))}
-                        {animalDistractor(animal3Pan.panHandlers,colors.DARKOLIVE,level3Scale,require("../asset/images/Star3.png"))}
+                        {distractorFunc(animal1Pan.panHandlers,colors.BLUE,level1Scale,require("../asset/images/Star1.png"))}
+                        {distractorFunc(animal2Pan.panHandlers,colors.REDORANGE,level2Scale,require("../asset/images/Star2.png"))}
+                        {distractorFunc(animal3Pan.panHandlers,colors.DARKOLIVE,level3Scale,require("../asset/images/Star3.png"))}
                     </>
                     )}
                     {typeCheckRes == "Ganada" && (
                     <>
-                        {ganadaDistractor(ganada1Pan.panHandlers, colors.LIGHTPINK, level1Scale, "자 음")}
-                        {ganadaDistractor(ganada2Pan.panHandlers, colors.LIGHTNAVY, level2Scale, "모 음")}
+                        {distractorFunc(ganada1Pan.panHandlers, colors.LIGHTPINK, level1Scale, "자 음")}
+                        {distractorFunc(ganada2Pan.panHandlers, colors.LIGHTNAVY, level2Scale, "모 음")}
                     </>
                     )}
                     {typeCheckRes == "Language" && (
                     <>
-                        {ganadaDistractor(alphabetPan.panHandlers, colors.LIGHTPINK, level1Scale, "알파벳")}
+                        {distractorFunc(alphabetPan.panHandlers, colors.LIGHTPINK, level1Scale, "알파벳")}
                     </>
                     )}
                 </MenuModal>

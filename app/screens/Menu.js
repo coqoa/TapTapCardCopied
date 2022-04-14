@@ -82,21 +82,34 @@ const WordSelectTitleText = styled(WordSelectText)`
 // -------------------------------------------------------------------------------------------------
 
 const Menu = ({navigation}) => {
-    
-    const playSound = async() => {
-        const sound = new Audio.Sound();
-        try {    
-            // 저장한 path로 음원 파일 불러오기 & 재생하기 
-            await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
-            await sound.playAsync();
-            // setTimeout(function(){
-            //     sound.unloadAsync();
-            // },100) 
-        } catch (error) {
-            console.log('Menu.js playSound error = ', error)
-        }
-    }
 
+    // const playSound = async() => {
+    //     const sound = new Audio.Sound();
+    //     try {    
+    //         // 저장한 path로 음원 파일 불러오기 & 재생하기 
+    //         await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
+    //         await sound.playAsync();
+    //         // setTimeout(function(){
+    //         //     sound.unloadAsync();
+    //         // },100) 
+    //     } catch (error) {
+    //         console.log('Menu.js playSound error = ', error)
+    //     }
+    // }
+    function playSound(name, sound){
+        console.log('Playing '+name);
+        Audio.Sound.createAsync( sound,{ shouldPlay: true }
+        ).then((res)=>{
+            res.sound.setOnPlaybackStatusUpdate((status)=>{
+                if(!status.didJustFinish) return;
+                console.log('Unloading '+name);
+                res.sound.unloadAsync().catch(()=>{});
+            });
+        }).catch((error)=>{});
+    }
+    
+    const clickSound = require("../asset/audio/btnClickSound.mp3");
+    
     // 메뉴 모달창 관련 버튼애니메이션
     // 가나다버튼
     const ganadaBtnAnimation = useRef(new Animated.Value(1)).current;
@@ -126,7 +139,7 @@ const Menu = ({navigation}) => {
                     shadowOffset: {height: 2,width: 0,},
                     elevation:5
                 }}
-                onPress={() => {playSound()}}
+                onPress={() => {playSound('click', clickSound)}}
                 onPressIn={() => {a.setValue(0.9)}}
                 onPressOut={() => (BtnClick(b),a.setValue(1))}
             >
@@ -145,7 +158,7 @@ const Menu = ({navigation}) => {
                         shadowOffset: {height: 2,width: 0,},
                         elevation:5
                     }}
-                    onPress={()=>{playSound()}}
+                    onPress={()=>{playSound('click', clickSound)}}
                     onPressIn={() => (a.setValue(0.9))}
                     onPressOut={() => {BtnClick(c),a.setValue(1)}}
                 >
@@ -178,7 +191,7 @@ const Menu = ({navigation}) => {
                     shadowOffset: {height: 2,width: 0,},
                     elevation:5
                 }}
-                onPress={()=>{playSound()}}
+                onPress={()=>{playSound('click', clickSound)}}
                 onPressIn={() => {wordPlayBtnAnimation.setValue(0.9)}}
                 onPressOut={() => (animalModalZIndex.setValue(2), animalSelectScale.setValue(1) ,wordPlayBtnAnimation.setValue(1))}
             >

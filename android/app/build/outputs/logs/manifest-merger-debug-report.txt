@@ -10,14 +10,16 @@ MERGED from [com.facebook.flipper:flipper-network-plugin:0.95.0] /Users/coqoa/.g
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.95.0] /Users/coqoa/.gradle/caches/transforms-3/ef3414b931d2e4ccf6dc25636af97e68/transformed/jetified-flipper-fresco-plugin-0.95.0/AndroidManifest.xml:8:1-15:12
 MERGED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-29:12
+MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:17:1-73:12
 MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:expo] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:iamport-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/iamport-react-native/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-safe-area-context] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-23:12
 MERGED from [:expo-application] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-application/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:expo-av] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-av/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:expo-constants] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-constants/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [:expo-error-recovery] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-error-recovery/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-37:12
 MERGED from [:expo-font] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-font/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:expo-keep-awake] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-keep-awake/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
@@ -30,7 +32,6 @@ MERGED from [com.facebook.fresco:fresco:2.5.0] /Users/coqoa/.gradle/caches/trans
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/fc0d9d73fdc9ebf785f7e965c42f122e/transformed/jetified-imagepipeline-okhttp3-2.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:animated-gif:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/9a43626092da5a30f3a0d1c6e5566dd5/transformed/jetified-animated-gif-2.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:webpsupport:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/f1291a49149188a46ee884c4d8ff676d/transformed/jetified-webpsupport-2.0.0/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:17:1-73:12
 MERGED from [androidx.browser:browser:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/3a48869a16a4fdee6924b3517dd125c4/transformed/browser-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/95ed9fc1fe6bc0da543594966214947f/transformed/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/924e93f77a98eadb96a1b78bf4f000f9/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -63,20 +64,21 @@ MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/coqoa/.gradle/
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/f75dc8635e29a7f3dd6f2112b9c38a6f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/239dcb6ccd82bc1e794ac9d00cbc293d/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/6f8f5f73adcf0dd1761a2be47e3be43e/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb8762276a43e9bbf6310934cf7a94a2/transformed/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:16:1-24:12
 MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb6fc5f569bf50ae50d583af432780e6/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7ccf0e71e0d1aa2cd1af94bbbfd9fe85/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.2.1] /Users/coqoa/.gradle/caches/transforms-3/7e00c0c23a6f469583c5411de2f65b56/transformed/fragment-1.2.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/2632538ffd1a78dee6f487a9cae8cada/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.webkit:webkit:1.4.0] /Users/coqoa/.gradle/caches/transforms-3/3f8d5ebba2860908298f1147a0d27cb5/transformed/webkit-1.4.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2ae8915466fd9d591da47ff0bf5f8e95/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/65734f4924cc1eae6ebdbd8e2b0689f3/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2794239bffd4bcda8e3ace851c671d2a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/65734f4924cc1eae6ebdbd8e2b0689f3/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/73983d4935a7f88fea3ffc1ce2450ffa/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/08ddb8d3a2517b0491534c21e24d6e6b/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -134,12 +136,12 @@ MERGED from [com.facebook.flipper:flipper:0.95.0] /Users/coqoa/.gradle/caches/tr
 MERGED from [com.facebook.flipper:flipper:0.95.0] /Users/coqoa/.gradle/caches/transforms-3/cc45e4ed7543a66363f7ec054b1802f1/transformed/jetified-flipper-0.95.0/AndroidManifest.xml:15:5-67
 MERGED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-67
 MERGED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-67
+MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:23:5-67
 MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-67
 MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-67
 MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-67
 MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-67
-MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:23:5-67
 	android:name
 		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:3:20-62
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
@@ -188,14 +190,16 @@ MERGED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/Androi
 MERGED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:3-31:17
 MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-27:19
 MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-27:19
+MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:26:5-71:19
+MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:26:5-71:19
+MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-21:19
+MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-21:19
 MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:5-35:19
 MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:5-35:19
 MERGED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-15:19
 MERGED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-15:19
 MERGED from [com.facebook.react:react-native:0.64.3] /Users/coqoa/.gradle/caches/transforms-3/e43cd5aa52d44d6688924375319b8dfb/transformed/jetified-react-native-0.64.3/AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.64.3] /Users/coqoa/.gradle/caches/transforms-3/e43cd5aa52d44d6688924375319b8dfb/transformed/jetified-react-native-0.64.3/AndroidManifest.xml:11:5-20
-MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:26:5-71:19
-MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:26:5-71:19
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/coqoa/.gradle/caches/transforms-3/d1be7fc0cd730f16ccb4d39053e83dc3/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/coqoa/.gradle/caches/transforms-3/d1be7fc0cd730f16ccb4d39053e83dc3/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:25:5-38:19
@@ -302,22 +306,26 @@ MERGED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapca
 MERGED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:21:5-44
+MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:21:5-44
 MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:expo] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:expo] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:iamport-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/iamport-react-native/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:iamport-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/iamport-react-native/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-safe-area-context] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-screens] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:expo-application] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-application/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:expo-application] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-application/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:expo-av] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-av/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:expo-av] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-av/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:expo-constants] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-constants/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:expo-constants] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-constants/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:expo-error-recovery] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-error-recovery/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:expo-error-recovery] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-error-recovery/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-10:41
 MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-10:41
 MERGED from [:expo-font] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-font/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
@@ -342,8 +350,6 @@ MERGED from [com.facebook.fresco:animated-gif:2.0.0] /Users/coqoa/.gradle/caches
 MERGED from [com.facebook.fresco:animated-gif:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/9a43626092da5a30f3a0d1c6e5566dd5/transformed/jetified-animated-gif-2.0.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:webpsupport:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/f1291a49149188a46ee884c4d8ff676d/transformed/jetified-webpsupport-2.0.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:webpsupport:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/f1291a49149188a46ee884c4d8ff676d/transformed/jetified-webpsupport-2.0.0/AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:21:5-44
-MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:21:5-44
 MERGED from [androidx.browser:browser:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/3a48869a16a4fdee6924b3517dd125c4/transformed/browser-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.browser:browser:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/3a48869a16a4fdee6924b3517dd125c4/transformed/browser-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/95ed9fc1fe6bc0da543594966214947f/transformed/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
@@ -408,12 +414,12 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/coqoa/.gradle/cach
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/239dcb6ccd82bc1e794ac9d00cbc293d/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/6f8f5f73adcf0dd1761a2be47e3be43e/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/6f8f5f73adcf0dd1761a2be47e3be43e/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb8762276a43e9bbf6310934cf7a94a2/transformed/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb8762276a43e9bbf6310934cf7a94a2/transformed/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
 MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
 MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb6fc5f569bf50ae50d583af432780e6/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
@@ -426,16 +432,18 @@ MERGED from [androidx.fragment:fragment:1.2.1] /Users/coqoa/.gradle/caches/trans
 MERGED from [androidx.fragment:fragment:1.2.1] /Users/coqoa/.gradle/caches/transforms-3/7e00c0c23a6f469583c5411de2f65b56/transformed/fragment-1.2.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/2632538ffd1a78dee6f487a9cae8cada/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/2632538ffd1a78dee6f487a9cae8cada/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.webkit:webkit:1.4.0] /Users/coqoa/.gradle/caches/transforms-3/3f8d5ebba2860908298f1147a0d27cb5/transformed/webkit-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.webkit:webkit:1.4.0] /Users/coqoa/.gradle/caches/transforms-3/3f8d5ebba2860908298f1147a0d27cb5/transformed/webkit-1.4.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2ae8915466fd9d591da47ff0bf5f8e95/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2ae8915466fd9d591da47ff0bf5f8e95/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/65734f4924cc1eae6ebdbd8e2b0689f3/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/65734f4924cc1eae6ebdbd8e2b0689f3/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2794239bffd4bcda8e3ace851c671d2a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2794239bffd4bcda8e3ace851c671d2a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/65734f4924cc1eae6ebdbd8e2b0689f3/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/65734f4924cc1eae6ebdbd8e2b0689f3/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/73983d4935a7f88fea3ffc1ce2450ffa/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
@@ -558,36 +566,6 @@ ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard
 		ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-35
 	android:name
 		ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:23:13-88
-intent#action:name:android.intent.action.OPEN_DOCUMENT_TREE
-ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-21:18
-action#android.intent.action.OPEN_DOCUMENT_TREE
-ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-79
-	android:name
-		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:21-76
-provider#expo.modules.filesystem.FileSystemFileProvider
-ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-34:20
-	android:grantUriPermissions
-		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-47
-	android:authorities
-		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-74
-	android:exported
-		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-37
-	tools:replace
-		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:13-48
-	android:name
-		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-74
-meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:13-33:70
-	android:resource
-		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:33:17-67
-	android:name
-		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:17-67
-meta-data#org.unimodules.core.AppLoader#react-native-headless
-ADDED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:89
-	android:value
-		ADDED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-86
-	android:name
-		ADDED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-79
 activity#com.google.firebase.auth.internal.GenericIdpActivity
 ADDED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:27:9-44:20
 	android:excludeFromRecents
@@ -626,6 +604,46 @@ ADDED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/cache
 		ADDED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:69:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:68:17-109
+provider#com.reactnativecommunity.webview.RNCWebViewFileProvider
+ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-20:20
+	android:grantUriPermissions
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-47
+	android:authorities
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-64
+	android:exported
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-37
+	android:name
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-83
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:63
+	android:resource
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-60
+	android:name
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-67
+intent#action:name:android.intent.action.OPEN_DOCUMENT_TREE
+ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-21:18
+action#android.intent.action.OPEN_DOCUMENT_TREE
+ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-79
+	android:name
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:21-76
+provider#expo.modules.filesystem.FileSystemFileProvider
+ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-34:20
+	android:grantUriPermissions
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-47
+	android:authorities
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-74
+	android:exported
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-37
+	tools:replace
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:13-48
+	android:name
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-74
+meta-data#org.unimodules.core.AppLoader#react-native-headless
+ADDED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:89
+	android:value
+		ADDED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-86
+	android:name
+		ADDED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-79
 provider#com.google.firebase.provider.FirebaseInitProvider
 ADDED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:26:9-31:39
 	android:authorities

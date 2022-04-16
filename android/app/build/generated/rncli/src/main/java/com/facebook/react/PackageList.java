@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
 // @react-native-firebase/auth
 import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
+// @react-native-firebase/firestore
+import io.invertase.firebase.firestore.ReactNativeFirebaseFirestorePackage;
 // expo
 import expo.modules.ExpoModulesPackage;
 // iamport-react-native
@@ -25,6 +27,8 @@ import com.airbnb.android.react.lottie.LottiePackage;
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
 import com.swmansion.rnscreens.RNScreensPackage;
+// react-native-svg
+import com.horcrux.svg.SvgPackage;
 // react-native-webview
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 
@@ -74,11 +78,13 @@ public class PackageList {
       new MainReactPackage(mConfig),
       new ReactNativeFirebaseAppPackage(),
       new ReactNativeFirebaseAuthPackage(),
+      new ReactNativeFirebaseFirestorePackage(),
       new ExpoModulesPackage(),
       new IamportReactNativePackage(),
       new LottiePackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),
+      new SvgPackage(),
       new RNCWebViewPackage()
     ));
   }

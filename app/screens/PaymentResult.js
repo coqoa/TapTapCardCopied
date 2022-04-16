@@ -31,17 +31,17 @@ export default function PaymentResult({ route, navigation }) {
       <Text>{`결제에 ${isSuccess ? '성공' : '실패'}하였습니다`}</Text>
       <List>
         <List.Item>
-          <Text>아임포트 번호</Text>
+          <Text>아임포트 번호 : </Text>
           <Text>{imp_uid}</Text>
         </List.Item>
         {isSuccess ? (
           <List.Item>
-            <Text>주문번호</Text>
+            <Text>주문번호 : </Text>
             <Text>{merchant_uid}</Text>
           </List.Item>
         ) : (
           <List.Item>
-            <Text>에러메시지</Text>
+            <Text>에러메시지 : </Text>
             <Text>{error_msg}</Text>
           </List.Item>
         )}
@@ -52,12 +52,6 @@ export default function PaymentResult({ route, navigation }) {
       >
         <Text>돌아가기</Text>
       </IconButton>
-      {/* {console.log(route)} */}
-      {/* <Text>{imp_success}</Text>
-      <Text>{success}</Text>
-      <Text>{imp_uid}</Text>
-      <Text>{merchant_uid}</Text>
-      <Text>{error_msg}</Text> */}
     </View>
   );
 }

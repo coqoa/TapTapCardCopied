@@ -80,7 +80,9 @@ const WordSelectTitleText = styled(WordSelectText)`
 `
 
 // -------------------------------------------------------------------------------------------------
-
+// console.log("오스아이디 = ",auth())
+// console.log("오스폰번호 = ",auth()._user.phonenumber)
+// console.log("오스이메일 = ",auth()._user.email)
 const Menu = ({navigation}) => {
 
     // const playSound = async() => {

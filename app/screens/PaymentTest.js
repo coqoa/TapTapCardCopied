@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { colors } from '../component/Color';
+import styled from "styled-components/native";
+import auth from '@react-native-firebase/auth';
 import {
   Button,
   FormControl,
@@ -21,21 +24,27 @@ export default function PaymentTest({ navigation }) {
   const [cardQuota, setCardQuota] = useState(0);
   const [merchantUid, setMerchantUid] = useState(`mid_${new Date().getTime()}`);
   const [name, setName] = useState('아임포트 결제데이터분석');
-  const [amount, setAmount] = useState('3333');
+  const [amount, setAmount] = useState('1000');
   const [buyerName, setBuyerName] = useState('최병민');
   const [buyerTel, setBuyerTel] = useState('01012341234');
-  const [buyerEmail, setBuyerEmail] = useState('example@example.com');
+  const [buyerEmail, setBuyerEmail] = useState(auth()._user.email);
   const [vbankDue, setVbankDue] = useState('');
   const [bizNum, setBizNum] = useState('');
   const [escrow, setEscrow] = useState(false);
   const [digital, setDigital] = useState(false);
 
+  const TextArea = styled.Text`
+    margin: 10px 15px;
+    /* margin-left: 15px; */
+    color:${colors.GRAY};
+  `
   return (
     <ScrollView>
-      <FormControl>
+      <FormControl style={{padding:60}}>
         <Stack>
-          <FormControl.Label>PG사</FormControl.Label>
+          <FormControl.Label>결제 대행사</FormControl.Label>
           <Picker
+            
             data={PGS}
             selectedValue={pg}
             onValueChange={(value) => {
@@ -45,14 +54,14 @@ export default function PaymentTest({ navigation }) {
             }}
           />
         </Stack>
-        <Stack>
+        {/* <Stack>
           <FormControl.Label>티어 코드</FormControl.Label>
           <Picker
             data={TIER_CODES}
             selectedValue={tierCode}
             onValueChange={(value) => setTierCode(value)}
           />
-        </Stack>
+        </Stack> */}
         <Stack>
           <FormControl.Label>결제수단</FormControl.Label>
           <Picker
@@ -61,7 +70,7 @@ export default function PaymentTest({ navigation }) {
             onValueChange={(value) => setMethod(value)}
           />
         </Stack>
-        {method === 'card' && (
+        {/* {method === 'card' && (
           <Stack>
             <FormControl.Label>할부개월수</FormControl.Label>
             <Picker
@@ -106,45 +115,55 @@ export default function PaymentTest({ navigation }) {
         <Stack>
           <FormControl.Label>주문명</FormControl.Label>
           <Input value={name} onChangeText={(value) => setName(value)} />
-        </Stack>
+        </Stack> */}
         <Stack>
-          <FormControl.Label>결제금액</FormControl.Label>
-          <Input
-            value={amount}
-            keyboardType="number-pad"
-            onChangeText={(value) => setAmount(value)}
-          />
+          <FormControl.Label>상품내용</FormControl.Label>
+          <TextArea>컨텐츠 제한을 해제하기 위한 상품</TextArea>
         </Stack>
         <Stack>
           <FormControl.Label>주문번호</FormControl.Label>
-          <Input
+          <TextArea>{merchantUid}</TextArea>
+          {/* <Input
             value={merchantUid}
             onChangeText={(value) => setMerchantUid(value)}
-          />
+          /> */}
+        </Stack>
+        <Stack>
+          <FormControl.Label>결제금액</FormControl.Label>
+          <TextArea>{amount+"원"}</TextArea>
+          {/* <Input
+            value={amount}
+            keyboardType="number-pad"
+            onChangeText={(value) => setAmount(value)}
+          /> */}
         </Stack>
         <Stack>
           <FormControl.Label>이름</FormControl.Label>
-          <Input
+          <TextArea>{buyerName}</TextArea>
+          {/* <Input
             value={buyerName}
             onChangeText={(value) => setBuyerName(value)}
-          />
+          /> */}
         </Stack>
         <Stack>
           <FormControl.Label>전화번호</FormControl.Label>
-          <Input
+          <TextArea>{buyerTel}</TextArea>
+          {/* <Input
             value={buyerTel}
             keyboardType="number-pad"
             onChangeText={(value) => setBuyerTel(value)}
-          />
+          /> */}
         </Stack>
         <Stack>
           <FormControl.Label>이메일</FormControl.Label>
-          <Input
+          <TextArea>{buyerEmail}</TextArea>
+          {/* <Input
             value={buyerEmail}
             onChangeText={(value) => setBuyerEmail(value)}
-          />
+          /> */}
         </Stack>
         <Button
+        style={{marginTop:30, backgroundColor:colors.WhaleBG}}
           onPress={() => {
             const data = {
               params: {
@@ -232,7 +251,7 @@ export default function PaymentTest({ navigation }) {
             navigation.navigate('Payment', data);
           }}
         >
-          <Text>결제하기</Text>
+          <Text style={{fontSize:16, color:colors.BEIGE}}>결제하기</Text>
         </Button>
       </FormControl>
     </ScrollView>

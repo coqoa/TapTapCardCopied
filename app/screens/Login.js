@@ -1,10 +1,12 @@
 import React, {useState, useRef} from "react";
-import { Text, View, Alert, ActivityIndicator, Dimensions } from "react-native";
+import { Text, View, Alert, ActivityIndicator, Dimensions, KeyboardAvoidingView, ScrollView} from "react-native";
 import styled from "styled-components/native";
-import auth from '@react-native-firebase/auth';
 import {colors} from "../component/Color"
 import { Audio } from 'expo-av';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import Greeting from "../component/Greeting";
+import Welcome from "../component/Welcome";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -14,24 +16,22 @@ const Container = styled.View`
     align-items: center;
     /* padding: 10px; */
     flex: 1;
+    /* background-color: blue; */
 `
 
 const GreetingShell = styled.View`
+    /* position: absolute;s */
     width: 100%;
     height: 25%;
-    /* background-color: blue; */
 `
 const Contents = styled.View`
     flex: 1;
     width: 80%;
+    top: 20px;
     border-radius: 15px;
-    /* border: 2px solid gray; */
-    /* padding: 10px; */
 `
 const Nav = styled.View`
     flex-direction: row;
-    /* padding: 10px; */
-    /* background-color: red; */
     justify-content: center;
     
 `
@@ -46,14 +46,19 @@ const NavBtnText = styled.Text`
     font-size: 25px;
 `
 
-const Main = styled.View`
+const Main = styled.ScrollView`
     flex: 1;
-    align-items: center;
-    margin-top: 15px;
+    top: 20px;
+    /* border: 1px solid gray; */
+`
+const Empty = styled.View`
+    width: 100%;
+    height: 45%;
+    /* align-items: center; */
 `
 const TextArea = styled.TextInput`
     width: 90%;
-    height: 10%;
+    height: 40px;
     margin: 10px 0px;
     padding: 0px 10px;
     border-radius: 15px;
@@ -63,7 +68,7 @@ const TextArea = styled.TextInput`
 `
 const Btn = styled.TouchableOpacity`
     width: 70%;
-    height: 10%;
+    height: 35px;
     margin: 10px 0px;
     border-radius: 15px;
     /* background-color: #EC705E; */
@@ -88,6 +93,10 @@ const Login = ({navigation}) => {
     const [loginPassword, setLoginPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [validation, setValidation] = useState("")
+    // const userRef = fstore.collection('TAPTAP')
+    const usersCollection = firestore().collection('TAPTAPUSER');
+    // console.log("여기부터임 = ",usersCollection)
+
 
     const onSubmitLoginEmailEditing = () => {
         loginPasswordInput.current.focus();
@@ -102,8 +111,8 @@ const Login = ({navigation}) => {
         try{
             if(loginEmail !=="" && loginPassword !==""){
                 await auth().signInWithEmailAndPassword(loginEmail, loginPassword)
-                // const userCredential = await auth().signInWithEmailAndPassword(email, password)
-                // console.log("userCredential = ", userCredential)
+                // const userCredential = await auth().signInWithEmailAndPassword(loginEmail, loginPassword)
+                // console.log("userCredential = ", userCredential.user)
             }else{
                 setLoading(false)
                 setValidation('칸을 채워주세요')
@@ -127,18 +136,29 @@ const Login = ({navigation}) => {
                     return setValidation('auth/operation-not-allowed \n관리자에게 문의하세요')
                 }
             }
-            console.log("error = ", e.code)
+            console.log("error =3 ", e.code)
         }
     }
 
     const signupPasswordInput = useRef()
+    const signupNameInput = useRef()
+    const signupNumberInput = useRef()
+
     const [signupEmail, setSignupEmail] = useState("");
     const [signupPassword, setSignupPassword] = useState("");
+    const [signupName, setSignupName] = useState("");
+    const [signupNumber, setSignupNumber] = useState("");
 
     const onSubmitSignupEmailEditing = () => {
         signupPasswordInput.current.focus();
     }
-    const onSubmitSignupPasswordEditing = async() => {
+    const onSubmitSignupPasswordEditing = () => {
+        signupNameInput.current.focus();
+    }
+    const onSubmitSignupNameEditing = () => {
+        signupNumberInput.current.focus();
+    }
+    const onSubmitSignupNumberEditing = async() => {
         if(loading){
             return;
         }
@@ -146,9 +166,14 @@ const Login = ({navigation}) => {
 
         setLoading(true)
         try{
-            if(signupEmail !=="" && signupPassword !==""){
+            if(signupEmail !=="" && signupPassword !=="" && signupName !== "" && signupNumver !== ""){
                 await auth().createUserWithEmailAndPassword(signupEmail, signupPassword)
                 // console.log("userCredential = ", userCredential)
+                await usersCollection.doc(signupEmail).set({
+                    name:signupName,
+                    email:signupEmail,
+                    number:signupNumber,
+                })
             }else{
                 setLoading(false)
                 setValidation('칸을 채워주세요')
@@ -169,7 +194,7 @@ const Login = ({navigation}) => {
                     return setValidation('operation-not-allowed \n관리자에게 문의하세요 ')
                 }
             }
-            console.log("error = ", e.code)
+            console.log("error1 = ", e.code)
         }
     }
 
@@ -182,14 +207,16 @@ const Login = ({navigation}) => {
                 sound.unloadAsync();
             },status.playableDurationMillis + 1000) 
         } catch (e) {
-            console.log('Login.js playSound error = ', e)
+            console.log('Login.js playSound error2 = ', e)
         }
     }
     return(
     <Container>
+        {navCheck == "Login" && (
         <GreetingShell style={{transform:[{scale:3}]}}>
             <Greeting />
         </GreetingShell>
+        )}
         <Contents>
             <Nav>
                 <NavBtn onPress={() => {setNavCheck("Login"), setValidation("")}}>
@@ -200,7 +227,7 @@ const Login = ({navigation}) => {
                 </NavBtn>
             </Nav>
 
-            <Main>
+            <Main contentContainerStyle={{alignItems:"center"}}>
                 {navCheck == "Login" ? (
                     <>
                     <TextArea 
@@ -231,6 +258,7 @@ const Login = ({navigation}) => {
                 ):(
                     <>
                     <TextArea 
+                        autoFocus={true}
                         placeholder="이메일" 
                         value={signupEmail} 
                         returnKeyType="next"
@@ -240,25 +268,50 @@ const Login = ({navigation}) => {
                         onChangeText = {(text) => setSignupEmail(text)} 
                         onSubmitEditing = {onSubmitSignupEmailEditing}
                     />
-
                     <TextArea 
                         ref={signupPasswordInput}
                         placeholder="비밀번호" 
                         value={signupPassword}  
-                        returnKeyType="done"
+                        returnKeyType="next"
                         secureTextEntry 
                         onChangeText = {(text) => setSignupPassword(text)} 
                         onSubmitEditing = {onSubmitSignupPasswordEditing}
+                        />
+                    <TextArea 
+                        ref={signupNameInput}
+                        placeholder="이름" 
+                        value={signupName}  
+                        returnKeyType="next" 
+                        keyboardType = "email-address" 
+                        autoCapitalize="none" 
+                        autoCorrect={false} 
+                        onChangeText = {(text) => setSignupName(text)} 
+                        onSubmitEditing = {onSubmitSignupNameEditing}
                     />
-                    <Btn onPress = {onSubmitSignupPasswordEditing} style={{backgroundColor : navCheck == "Signup" ? colors.WhaleBG : "lightgray"}}>
+                    <TextArea 
+                        ref={signupNumberInput}
+                        placeholder="전화번호" 
+                        value={signupNumber}  
+                        autoCapitalize="none" 
+                        autoCorrect={false} 
+                        keyboardType = "number-pad" 
+                        returnKeyType="done"
+                        onChangeText = {(text) => setSignupNumber(text)} 
+                        onSubmitEditing = {onSubmitSignupNumberEditing}
+                    />
+                    <Btn onPress = {onSubmitSignupNumberEditing} style={{backgroundColor : navCheck == "Signup" ? colors.WhaleBG : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>회원가입</BtnText>}
                     </Btn>
                     <ValidationText style={{color: "#EC705E"}}>{validation}</ValidationText>
                     </>
                 )}
             </Main>
-
         </Contents>
+        {navCheck == "Signup" && (
+        <Empty style={{transform:[{scale:1}]}}>
+            <Welcome />
+        </Empty>
+        )}
     </Container>
 
     )

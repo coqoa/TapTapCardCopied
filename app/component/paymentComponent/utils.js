@@ -92,7 +92,7 @@ import {
   
     switch (pg) {
       case 'kakao':
-        return 'imp19464697';
+        return 'TC0ONETIME';
       case 'paypal':
         return 'imp19464697';
       case 'mobilians':

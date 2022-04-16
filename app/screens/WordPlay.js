@@ -299,7 +299,7 @@ const WordPlay = ({route, navigation}) => {
                 res.sound.unloadAsync().catch(()=>{});
             });
         }).catch((error)=>{
-            console.log('뭔에런데진짜 짜증나게',error)
+            console.log('뭔에런데진짜..',error)
         });
     }
     

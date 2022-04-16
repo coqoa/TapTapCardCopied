@@ -64,7 +64,8 @@
             "scheme": "taptapScheme"
           }
         }
-      ]
+      ],
+      "softwareKeyboardLayoutMode": "pan"
     }
   },
   "name": "taptapcard"

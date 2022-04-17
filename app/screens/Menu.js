@@ -85,32 +85,17 @@ const WordSelectTitleText = styled(WordSelectText)`
 // console.log("오스이메일 = ",auth()._user.email)
 const Menu = ({navigation}) => {
 
-    // const playSound = async() => {
-    //     const sound = new Audio.Sound();
-    //     try {    
-    //         // 저장한 path로 음원 파일 불러오기 & 재생하기 
-    //         await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
-    //         await sound.playAsync();
-    //         // setTimeout(function(){
-    //         //     sound.unloadAsync();
-    //         // },100) 
-    //     } catch (error) {
-    //         console.log('Menu.js playSound error = ', error)
-    //     }
-    // }
-    function playSound(name, sound){
-        console.log('Playing '+name);
+    function playSound(sound){
+        console.log('Playing '+sound);
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
         ).then((res)=>{
             res.sound.setOnPlaybackStatusUpdate((status)=>{
                 if(!status.didJustFinish) return;
-                console.log('Unloading '+name);
+                console.log('Unloading '+sound);
                 res.sound.unloadAsync().catch(()=>{});
             });
-        }).catch((error)=>{});
+        }).catch((error)=>{console.log('Menu = ', error)});
     }
-    
-    const clickSound = require("../asset/audio/btnClickSound.mp3");
     
     // 메뉴 모달창 관련 버튼애니메이션
     // 가나다버튼
@@ -125,9 +110,9 @@ const Menu = ({navigation}) => {
     const animalSelectScale = useRef(new Animated.Value(0)).current
     // 동물 버튼 모달창 외부 클릭했을때 모달창을 닫기위한 Animated
     const animalModalZIndex = useRef(new Animated.Value(0)).current;
-    // 한글버튼
+    // 동물-한글버튼
     const KorBtnAnimation = useRef(new Animated.Value(1)).current;
-    // 영어버튼
+    // 동물-영어버튼
     const EngBtnAnimation = useRef(new Animated.Value(1)).current;
 
     //메뉴 버튼 애니메이션 & 실행함수
@@ -141,7 +126,7 @@ const Menu = ({navigation}) => {
                     shadowOffset: {height: 2,width: 0,},
                     elevation:5
                 }}
-                onPress={() => {playSound('click', clickSound)}}
+                onPress={() => {playSound(require("../asset/audio/btnClickSound.mp3"))}}
                 onPressIn={() => {a.setValue(0.9)}}
                 onPressOut={() => (BtnClick(b),a.setValue(1))}
             >
@@ -152,20 +137,20 @@ const Menu = ({navigation}) => {
     // 모달창 내부 버튼 애니메이션 & 실행함수
     const modalBtnFunc = (a,b,c,d) => {
         return(
-                <WordKorBtn 
-                    style={{transform: [{scale:a}], backgroundColor:b, 
-                        shadowColor: "black",
-                        shadowOpacity: 0.2,
-                        shadowRadius: 3,
-                        shadowOffset: {height: 2,width: 0,},
-                        elevation:5
-                    }}
-                    onPress={()=>{playSound('click', clickSound)}}
-                    onPressIn={() => (a.setValue(0.9))}
-                    onPressOut={() => {BtnClick(c),a.setValue(1)}}
-                >
-                    <WordSelectText>{d}</WordSelectText>
-                </WordKorBtn>
+            <WordKorBtn 
+                style={{transform: [{scale:a}], backgroundColor:b, 
+                    shadowColor: "black",
+                    shadowOpacity: 0.2,
+                    shadowRadius: 3,
+                    shadowOffset: {height: 2,width: 0,},
+                    elevation:5
+                }}
+                onPress={()=>{playSound(require("../asset/audio/btnClickSound.mp3"))}}
+                onPressIn={() => (a.setValue(0.9))}
+                onPressOut={() => {BtnClick(c),a.setValue(1)}}
+            >
+                <WordSelectText>{d}</WordSelectText>
+            </WordKorBtn>
         )
     }
     // WordPlay.js에 props 전달하는 함수
@@ -193,7 +178,7 @@ const Menu = ({navigation}) => {
                     shadowOffset: {height: 2,width: 0,},
                     elevation:5
                 }}
-                onPress={()=>{playSound('click', clickSound)}}
+                onPress={()=>{playSound(require("../asset/audio/btnClickSound.mp3"))}}
                 onPressIn={() => {wordPlayBtnAnimation.setValue(0.9)}}
                 onPressOut={() => (animalModalZIndex.setValue(2), animalSelectScale.setValue(1) ,wordPlayBtnAnimation.setValue(1))}
             >

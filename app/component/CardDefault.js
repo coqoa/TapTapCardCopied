@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useCallback, useRef} from "react"
 import { Audio } from 'expo-av';
-import {View, Dimensions, FlatList, Animated, Pressable, PanResponder, Text, Platform, TouchableOpacity} from "react-native";
+import {View, Dimensions, FlatList, Animated, Pressable, PanResponder, Text, Platform, TouchableOpacity, ActivityIndicator} from "react-native";
 import styled from "styled-components"
 import { colors } from "./Color";
 
@@ -12,7 +12,7 @@ import { Lottie } from "lottie-react-native";
 
 import AnimalAnimation from "./AnimalAnimation";
 import ClearModal from './ClearModal';
-import QuestionMarkAnimation from './QuestionMarkAnimation';
+import QuestionMarkAnimation from './lottieComponent/QuestionMarkAnimation';
 //Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -681,19 +681,31 @@ export const WordCardLevel = (props) => {
         }
     }
     
-    const playSound = async(e) => {
-        const sound = new Audio.Sound();
-        try {    
-            // 저장한 path로 음원 파일 불러오기 & 재생하기 
-            await sound.loadAsync(e);
-            await sound.playAsync();
-            setTimeout(function(){
-                sound.unloadAsync();
-            },2500) 
-        } catch (error) {
-            console.log('CardDefault.js PlaySound error = ', error)
-        }
+    // const playSound = async(e) => {
+    //     const sound = new Audio.Sound();
+    //     try {    
+    //         // 저장한 path로 음원 파일 불러오기 & 재생하기 
+    //         await sound.loadAsync(e);
+    //         await sound.playAsync();
+    //         setTimeout(function(){
+    //             sound.unloadAsync();
+    //         },2500) 
+    //     } catch (error) {
+    //         console.log('CardDefault.js PlaySound error = ', error)
+    //     }
+    // }
+    function playSound(sound){
+        console.log('Playing '+sound);
+        Audio.Sound.createAsync( sound,{ shouldPlay: true }
+        ).then((res)=>{
+            res.sound.setOnPlaybackStatusUpdate((status)=>{
+                if(!status.didJustFinish) return;
+                console.log('Unloading '+sound);
+                res.sound.unloadAsync().catch(()=>{});
+            });
+        }).catch((error)=>{});
     }
+
     const itemAudio = (e) => {
         switch(type){
             case "AnimalKOR":

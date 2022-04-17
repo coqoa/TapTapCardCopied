@@ -2,7 +2,7 @@ import React from "react";
 import {createNativeStackNavigator} from "@react-navigation/native-stack" 
 
 import Menu from "../screens/Menu";
-import WordPlay from "../screens/WordPlay";
+import CardShell from "../screens/CardShell";
 import Payment from "../screens/Payment";
 import PaymentResult from "../screens/PaymentResult";
 import PaymentTest from "../screens/PaymentTest";
@@ -14,7 +14,7 @@ const MenuStack = () => {
     return(
     <NativeStack.Navigator initialRouteName="Menu" screenOptions={{headerShown: false}} >
         <NativeStack.Screen name="Menu" component={Menu} />
-        <NativeStack.Screen name="WordPlay" component={WordPlay} />
+        <NativeStack.Screen name="WordPlay" component={CardShell} />
         
         <NativeStack.Screen name="PaymentTest" component={PaymentTest} />
         <NativeStack.Screen name="Payment" component={Payment} />

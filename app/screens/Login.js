@@ -5,8 +5,8 @@ import {colors} from "../component/Color"
 import { Audio } from 'expo-av';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import Greeting from "../component/Greeting";
-import Welcome from "../component/Welcome";
+import Greeting from "../component/lottieComponent/Greeting";
+import Welcome from "../component/lottieComponent/Welcome";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -94,7 +94,7 @@ const Login = ({navigation}) => {
     const [loading, setLoading] = useState(false);
     const [validation, setValidation] = useState("")
     // const userRef = fstore.collection('TAPTAP')
-    const usersCollection = firestore().collection('TAPTAPUSER');
+    const firestoreUserColl = firestore().collection('TAPTAPUSER');
     // console.log("여기부터임 = ",usersCollection)
 
 
@@ -105,7 +105,7 @@ const Login = ({navigation}) => {
         if(loading){
             return;
         }
-        playSound()
+        playSound(require("../asset/audio/btnClickSound.mp3"))
 
         setLoading(true)
         try{
@@ -162,14 +162,14 @@ const Login = ({navigation}) => {
         if(loading){
             return;
         }
-        playSound()
+        playSound(require("../asset/audio/btnClickSound.mp3"))
 
         setLoading(true)
         try{
             if(signupEmail !=="" && signupPassword !=="" && signupName !== "" && signupNumver !== ""){
                 await auth().createUserWithEmailAndPassword(signupEmail, signupPassword)
                 // console.log("userCredential = ", userCredential)
-                await usersCollection.doc(signupEmail).set({
+                await firestoreUserColl.doc(signupEmail).set({
                     name:signupName,
                     email:signupEmail,
                     number:signupNumber,
@@ -198,17 +198,16 @@ const Login = ({navigation}) => {
         }
     }
 
-    const playSound = async() => {
-        const sound = new Audio.Sound();
-        try {    
-            await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
-            const status = await sound.playAsync();
-            setTimeout(()=>{
-                sound.unloadAsync();
-            },status.playableDurationMillis + 1000) 
-        } catch (e) {
-            console.log('Login.js playSound error2 = ', e)
-        }
+    function playSound(sound){
+        console.log('Playing '+sound);
+        Audio.Sound.createAsync( sound,{ shouldPlay: true }
+        ).then((res)=>{
+            res.sound.setOnPlaybackStatusUpdate((status)=>{
+                if(!status.didJustFinish) return;
+                console.log('Unloading '+sound);
+                res.sound.unloadAsync().catch(()=>{});
+            });
+        }).catch((error)=>{});
     }
     return(
     <Container>

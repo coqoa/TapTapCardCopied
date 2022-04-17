@@ -3,10 +3,20 @@ import { Text, View, Alert, ActivityIndicator, Dimensions, KeyboardAvoidingView,
 import styled from "styled-components/native";
 import {colors} from "../component/Color"
 import { Audio } from 'expo-av';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
+import {Ionicons} from "@expo/vector-icons";
+
 import Greeting from "../component/lottieComponent/Greeting";
 import Welcome from "../component/lottieComponent/Welcome";
+
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-google-signin/google-signin';
+
+const onGoogleButtonPress = async () => { 
+    const { idToken } = await GoogleSignin.signIn(); 
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken); 
+    return auth().signInWithCredential(googleCredential); 
+}
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -14,9 +24,7 @@ const SCREEN_HEIGHT = Dimensions.get("window").height;
 const Container = styled.View`
     justify-content: center;
     align-items: center;
-    /* padding: 10px; */
     flex: 1;
-    /* background-color: blue; */
 `
 
 const GreetingShell = styled.View`
@@ -67,8 +75,9 @@ const TextArea = styled.TextInput`
     font-family: "SDChild";
 `
 const Btn = styled.TouchableOpacity`
+    flex-direction: row;
     width: 70%;
-    height: 35px;
+    height: 45px;
     margin: 10px 0px;
     border-radius: 15px;
     /* background-color: #EC705E; */
@@ -76,10 +85,21 @@ const Btn = styled.TouchableOpacity`
     justify-content: center;
 `
 const BtnText = styled.Text`
-    top: 2px;
     color: white;
-    font-size: 25px;
+    font-size: 23px;
     font-family: "SDChild";
+`
+const SocialSign = styled(Btn)``
+const SocialText = styled(BtnText)`
+    font-size: 20px;
+    padding: 0px 10px ;
+`
+const ValidationShell = styled.View`
+    width: 70%;
+    height: 23px;
+    /* border: 1px solid red; */
+    align-items: center;
+    justify-content: center;
 `
 const ValidationText = styled.Text`
     font-size: 22px;
@@ -252,7 +272,8 @@ const Login = ({navigation}) => {
                     <Btn onPress = {onSubmitLoginPasswordEditing} style={{backgroundColor : navCheck == "Login" ? "#EC705E" : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>로그인</BtnText>}
                     </Btn>
-                    <ValidationText style={{color:colors.WhaleBG}}>{validation}</ValidationText>
+                    <ValidationShell><ValidationText style={{color:colors.DARKGRAY}}>{validation}</ValidationText></ValidationShell>
+                    <SocialSign style={{backgroundColor:colors.BLUE}} onPress={() => onGoogleButtonPress()}><Ionicons name="logo-google" size={22} color="white" /><SocialText>구글계정으로 시작하기</SocialText></SocialSign>
                     </>
                 ):(
                     <>
@@ -298,7 +319,7 @@ const Login = ({navigation}) => {
                         onChangeText = {(text) => setSignupNumber(text)} 
                         onSubmitEditing = {onSubmitSignupNumberEditing}
                     />
-                    <Btn onPress = {onSubmitSignupNumberEditing} style={{backgroundColor : navCheck == "Signup" ? colors.WhaleBG : "lightgray"}}>
+                    <Btn onPress = {onSubmitSignupNumberEditing} style={{backgroundColor : navCheck == "Signup" ? colors.NAVY : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>회원가입</BtnText>}
                     </Btn>
                     <ValidationText style={{color: "#EC705E"}}>{validation}</ValidationText>
@@ -306,10 +327,15 @@ const Login = ({navigation}) => {
                 )}
             </Main>
         </Contents>
-        {navCheck == "Signup" && (
-        <Empty style={{transform:[{scale:1}]}}>
+        {navCheck == "Signup" ? (
+            <Empty style={{transform:[{scale:1}]}}>
             <Welcome />
         </Empty>
+        ):(
+            <>
+            {/* <SocialSign style={{backgroundColor:colors.WhaleBG}} ><Ionicons name="logo-google" size={22} color="white" /><SocialText>구글계정으로 시작하기</SocialText></SocialSign>
+            <GoogleSigninButton style={{borderRadius:20}} onPress={() => onGoogleButtonPress()} /> */}
+            </>
         )}
     </Container>
 

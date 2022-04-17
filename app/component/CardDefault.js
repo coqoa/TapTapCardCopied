@@ -4,6 +4,7 @@ import {View, Dimensions, FlatList, Animated, Pressable, PanResponder, Text, Pla
 import styled from "styled-components"
 import { colors } from "./Color";
 
+
 import { AnimalCardArray } from "../asset/data/AnimalCardArray";
 import { KorArrayConsonant, KorArrayVowel } from "../asset/data/WordArrayKOR";
 import { Alphabet } from "../asset/data/Alphabet";

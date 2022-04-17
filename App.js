@@ -5,15 +5,24 @@ import React, { useState, useEffect } from 'react';
 import InStack from './app/navigators/InStack';
 import OutStack from './app/navigators/OutStack'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import auth from '@react-native-firebase/auth';
 
+import auth from '@react-native-firebase/auth';
 import { NativeBaseProvider } from 'native-base';
 import {SSRProvider} from '@react-aria/ssr'; 
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+
+const googleSigninConfigure = () => { 
+    GoogleSignin.configure({ webClientId: '694781280993-81244ijlf95pvdvn4du0im7ebh456ns1.apps.googleusercontent.com'}) 
+}
 
 export default function App() {
   const [ready, setReady] = useState(false);
   const onFinish = () => setReady(true);
   const[isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  useEffect(()=>{
+      googleSigninConfigure();
+  },[])
 
   useEffect(async()=>{
     await auth().onAuthStateChanged((user)=>{

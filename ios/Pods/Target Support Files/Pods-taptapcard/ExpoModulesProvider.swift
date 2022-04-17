@@ -6,6 +6,7 @@
  */
 
 import ExpoModulesCore
+import ExpoAdapterGoogleSignIn
 
 @objc(ExpoModulesProvider)
 public class ExpoModulesProvider: ModulesProvider {
@@ -16,6 +17,7 @@ public class ExpoModulesProvider: ModulesProvider {
 
   public override func getAppDelegateSubscribers() -> [ExpoAppDelegateSubscriber.Type] {
     return [
+      GoogleSignInAppDelegate.self
     ]
   }
 

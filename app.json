@@ -48,7 +48,8 @@
           "NSAllowsArbitraryLoads": true,
           "NSAllowsArbitraryLoadsInWebContent": true
         }
-      }
+      },
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "package": "com.taptapcard",
@@ -65,8 +66,10 @@
           }
         }
       ],
-      "softwareKeyboardLayoutMode": "pan"
-    }
+      "softwareKeyboardLayoutMode": "pan",
+      "googleServicesFile": "./google-services.json"
+    },
+    "plugins": ["@react-native-google-signin/google-signin"]
   },
   "name": "taptapcard"
 }

@@ -11,6 +11,9 @@ import { Alphabet } from "../asset/data/Alphabet";
 import { Number } from "../asset/data/Number";
 import { Lottie } from "lottie-react-native";
 
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+
 import AnimalAnimation from "./AnimalAnimation";
 import ClearModal from './ClearModal';
 import QuestionMarkAnimation from './lottieComponent/QuestionMarkAnimation';
@@ -305,6 +308,7 @@ export const WordCardLevel = (props) => {
     // props 관련
     const type = props.type
     
+    // 데이터배열 분배기
     const arrayAlloter = (e) => {
         if(e=="AnimalKOR"){
             return AnimalCardArray
@@ -334,10 +338,14 @@ export const WordCardLevel = (props) => {
     // 카드애니메이션 (좌우이동, scale, opacity)
     const position = useRef(new Animated.Value(0)).current;
 
+    const lastListModal = useRef(new Animated.Value(0)).current;
+
+// 카드 애니메이션 관련
     //Value
     const cardPosition = useRef(new Animated.Value(0)).current;
     const cardScaleValue = useRef(new Animated.Value(1)).current;
     const distractorOpacity = useRef(new Animated.Value(1)).current;
+    // interpolate
     const cardRotation = cardPosition.interpolate({
         inputRange: [-250, 250],
         outputRange:["-15deg","15deg"],
@@ -348,9 +356,6 @@ export const WordCardLevel = (props) => {
         outputRange:[1,0.7,1],
         extrapolate:"clamp"
     })
-
-    const lastListModal = useRef(new Animated.Value(0)).current;
-
     //Animations
     const distractorOpacityUp = Animated.spring(distractorOpacity,{
         toValue:1,
@@ -369,7 +374,7 @@ export const WordCardLevel = (props) => {
     const goRight = Animated.timing(cardPosition, {toValue:SCREEN_WIDTH*2,duration:200, useNativeDriver:true});
     const goCenter = Animated.spring(cardPosition, {toValue: 0, useNativeDriver:true});
 
-    //클릭시 두번째 이미지 출력
+    //클릭시 출력되는 secondImage Animations
     const secondImageOpacity = useRef(new Animated.Value(0)).current;
     const secondImageOn = Animated.timing(secondImageOpacity, {
         toValue:1,
@@ -382,15 +387,12 @@ export const WordCardLevel = (props) => {
         delay:100,
         useNativeDriver:true
     })
-    //Pan
+    //panResponder
     const cardPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:() => true,
         onPanResponderMove:(_,{dx})=>{cardPosition.setValue(dx)},
-        onPanResponderGrant:()=>{
-            cardPressIn.start();
-        },
+        onPanResponderGrant:()=>{cardPressIn.start();},
         onPanResponderRelease:(_,{dx})=>{ 
-
             if(dx < -180){
                 playSound(require("../asset/audio/CardPass.mp3"))
                 {props.level == "word2LV" && (
@@ -403,8 +405,7 @@ export const WordCardLevel = (props) => {
                 Animated.parallel([
                     goLeft,
                     distractorContainervisible,
-                    distractorContainerScaleMax,
-                    
+                    distractorContainerScaleMax, 
                 ]).start(onDismiss, Animated.parallel([distractorOpacityUp]).start());
             }else if(dx > 180){
                 playSound(require("../asset/audio/CardPass.mp3"))
@@ -425,12 +426,12 @@ export const WordCardLevel = (props) => {
             }
         },
         onPanResponderEnd:(_,{dx})=>{
-            // console.log(dx)
             if(dx<30 && dx>-30){
                 Animated.sequence([secondImageOn,secondImageOff]).start()
             }
         }
     })).current;
+
     //물음표박스 Animation
     const questionOpacity = useRef(new Animated.Value(1)).current;
     const questionOpacityPress = Animated.timing(questionOpacity,{
@@ -445,7 +446,7 @@ export const WordCardLevel = (props) => {
         duration:10,
         useNativeDriver:true
     })
-    
+    // 물음표 박스 panResponder
     const questionPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:()=>true,
         onPanResponderStart:()=>{Animated.parallel([
@@ -453,11 +454,9 @@ export const WordCardLevel = (props) => {
             questionScalePress,
             Animated.sequence([secondTextOn, secondTextOff])
         ]).start();}
-        
     })).current
     
-    // 동물 3레벨 선택지 애니메이션
-    // 선택지 박스
+    // 동물 3레벨 선택지 Animations
     const distractorContainerValue = useRef(new Animated.Value(1)).current;
     const distractorContainerInvisible = Animated.timing(distractorContainerValue, {
         toValue:0,
@@ -480,6 +479,7 @@ export const WordCardLevel = (props) => {
         duration:150,
         useNativeDriver:true
     })
+
     const distractorBtn1 = useRef(new Animated.Value(1)).current;
     const btn1PressOn = Animated.spring(distractorBtn1,{
         toValue:0.85,
@@ -520,7 +520,7 @@ export const WordCardLevel = (props) => {
         friction:1,
         useNativeDriver:true
     })
-
+    //선택지 버튼 panResponder
     const distracttorCorrect = (a,b) => {
         return(
             useRef(PanResponder.create({
@@ -559,7 +559,29 @@ export const WordCardLevel = (props) => {
     const wrong2 = distracttorWrong(btn2PressOn, btn2PressOut)
     const wrong3 = distracttorWrong(btn3PressOn, btn3PressOut)
     const wrong4 = distracttorWrong(btn4PressOn, btn4PressOut)
-
+    // 선택지 정답확인
+    const distractorChecker = (a,b,c,d) => {
+        return(
+            dataName(firstIndex) == dataName(d) ? (
+                <Distractor 
+                    {...a.panHandlers} 
+                    style={{transform:[{scale:c}]}}
+                    onPressIn={()=>{playSound(correctAudio(d)),clickBlockerFunc()}}
+                >
+                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(d)}</DistractorText>
+                </Distractor>
+            ):(
+                <Distractor 
+                {...b.panHandlers} 
+                style={{transform:[{scale:c}]}}
+                onPressIn={()=>playSound(wrongAudio(d))}
+                >
+                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(d)}</DistractorText>
+                </Distractor>
+            )
+        )
+    }
+    
 
     // 텍스트 클릭시 출력하는 애니메이션
     const secondTextOpacity = useRef(new Animated.Value(0)).current;
@@ -696,12 +718,12 @@ export const WordCardLevel = (props) => {
     //     }
     // }
     function playSound(sound){
-        console.log('Playing '+sound);
+        // console.log('Playing '+sound);
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
         ).then((res)=>{
             res.sound.setOnPlaybackStatusUpdate((status)=>{
                 if(!status.didJustFinish) return;
-                console.log('Unloading '+sound);
+                // console.log('Unloading '+sound);
                 res.sound.unloadAsync().catch(()=>{});
             });
         }).catch((error)=>{});
@@ -887,6 +909,26 @@ export const WordCardLevel = (props) => {
         )
     }
 
+//  데이터베이스 이메일체크(결제고객체크)
+const PaymentUserCollection = firestore().collection('PaymentUsers');
+
+const [userEmail, setUserEmail] = useState(auth()._user.email); 
+const [paymentMember, setPaymentMember] = useState(false);
+const readPaymentUserDB = async() =>{
+    const readDBsnapshot = await PaymentUserCollection.get();
+    readDBsnapshot.forEach(value=> (value.data().email == userEmail ? setPaymentMember(true):(null)))
+}
+useEffect(()=>{
+    readPaymentUserDB()
+},[])
+console.log(paymentMember)
+if(paymentMember == true){
+    console.log('결제멤버')
+}else{
+    console.log('미결제멤버')
+}
+
+
 // 실제 출력되는 부분
     const levelConsole = () => {
         return(
@@ -904,228 +946,233 @@ export const WordCardLevel = (props) => {
                             <RealPictureExitBtnImage source={require("../asset/images/RealPictureExitBtn.png")} resizeMode="contain" />
                         </RealPictureExitBtn>
                         {picture == true && 
-                            <RealPictureScrollView style={{width:SCREEN_WIDTH}} pagingEnabled horizontal >
-                                {PictureImageData(data[firstIndex].realImage1)}
-                                {PictureImageData(data[firstIndex].realImage2)}
-                                {PictureImageData(data[firstIndex].realImage3)}
-                                {PictureImageData(data[firstIndex].realImage4)}
-                                {PictureImageData(data[firstIndex].realImage5)}
-                            </RealPictureScrollView>
+                        <RealPictureScrollView style={{width:SCREEN_WIDTH}} pagingEnabled horizontal >
+                            {PictureImageData(data[firstIndex].realImage1)}
+                            {PictureImageData(data[firstIndex].realImage2)}
+                            {PictureImageData(data[firstIndex].realImage3)}
+                            {PictureImageData(data[firstIndex].realImage4)}
+                            {PictureImageData(data[firstIndex].realImage5)}
+                        </RealPictureScrollView>
                         }
                     </RealPictureContainer>
                 )}
 
-                {/* {refresh && ( */}
-                    <CardContainer>
-                        <ClearModalContainer style={{opacity:lastListModal, zIndex:lastListModal}}>
-                            <ClearModal type={type} level={props.level} restartLevelBtn={restartLevelBtn} nextLevelBtn={nextLevelBtn} />
-                        </ClearModalContainer> 
-
-                        <Card
-                        style={{
-                            backgroundColor: data[secondIndex].cardBgColor,
-                            transform: [{scale:secondCardScale}],
-                        }}>
-                                <CardImgShell style={{backgroundColor:data[secondIndex].bgColor}}>
-                                    {arrayAlloter(type) == AnimalCardArray ? (
-                                        <AnimalAnimation id={data[secondIndex].id} />
-                                    ):(
-                                        <CardImg source={data[secondIndex].image} resizeMode="contain"></CardImg>
-                                    )}
-                                </CardImgShell>
-
-                                {data[secondIndex].id.length>0 &&(
-                                <>
-                                    {type == "Ganada" ? (
-                                        <>{ganadaBtnFunc(secondIndex)}</>
-                                    ):(
-                                        <CardContents style={{flex:props.level == "word3LV" ? 2 : 1, zIndex:distractorContainerValue }}>
-                                            {props.level == "word2LV" && (
-                                                <QuestionMarkBg>
-                                                    <QuestionMarkBtn>    
-                                                        <QuestionMarkAnimation />
-                                                        {/* <QuestionMarkImage source={data[firstIndex].questionMarkImage} resizeMode="contain"/> */}
-                                                    </QuestionMarkBtn>                                                    
-                                                </QuestionMarkBg>
-                                            )}
-                                            {props.level == "word3LV" &&(<>
-                                            <DistractorContainer>
-                                                <DistractorRow>
-                                                    <Distractor />
-                                                    <Distractor />
-                                                </DistractorRow>
-                                                <DistractorRow>
-                                                    <Distractor />
-                                                    <Distractor />
-                                                </DistractorRow>
-                                            </DistractorContainer>
-
-                                            </>)}
-                                            {props.level !== "word3LV" && (
-                                                <CardNameText style={{fontSize:100}}>{dataName(secondIndex)}</CardNameText>
-                                            ) }
-                                        </CardContents>
-                                    )}
-                                </>
-                            )}
-                        </Card>
-
-                        <Card
-                        {...cardPan.panHandlers}
-                        style={{
-                            backgroundColor: data[firstIndex].cardBgColor,
-                            transform:[{scale:cardScaleValue}, {translateX:cardPosition},{rotateZ:cardRotation}],
-                        }}>
-                            {/* 실사모달버튼 */}
-                            {arrayAlloter(type) == AnimalCardArray && (
-                                <RealPictureBtn
-                                {...pictureOpenPan.panHandlers}
-                                style={{transform:[{scale:pictureBtnScale}]}}
-                                onPressIn={()=>{pictureBtnScale.setValue(0.8), ClickSound(), setPicture(true)}}
-                                onPressOut={()=>{pictureBtnScale.setValue(1)}}
-                                >
-                                    <RealPictureBtnBGContainer>
-                                        <RealPictureBtnBG source={data[firstIndex].realImage1} resizeMode="cover" />
-                                    </RealPictureBtnBGContainer>
-                                </RealPictureBtn>
-                            )}
-
-                            <CardImgShell style={{backgroundColor:data[firstIndex].bgColor}}>
+                {/* 카드부분 */}
+                <CardContainer>
+                    {/* 마지막장에 출력되는 모달창 */}
+                    <ClearModalContainer style={{opacity:lastListModal, zIndex:lastListModal}}>
+                        <ClearModal type={type} level={props.level} restartLevelBtn={restartLevelBtn} nextLevelBtn={nextLevelBtn} />
+                    </ClearModalContainer> 
+                    {/* 뒤카드 */}
+                    <Card
+                    style={{
+                        backgroundColor: data[secondIndex].cardBgColor,
+                        transform: [{scale:secondCardScale}],
+                    }}>
+                            <CardImgShell style={{backgroundColor:data[secondIndex].bgColor}}>
                                 {arrayAlloter(type) == AnimalCardArray ? (
-                                <>
-                                    <AnimalAnimation id={data[firstIndex].id} />
-                                    <ImageAudioBtn onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/>
-                                </>
+                                    <AnimalAnimation id={data[secondIndex].id} />
                                 ):(
-                                <>
-                                    <CardImg source={data[firstIndex].image} resizeMode="contain" />
-                                    <ImageAudioBtn {...cardPan.panHandlers} onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/>
-                                    <CardImgShellModal style={{
-                                        backgroundColor: data[firstIndex].bgColor, 
-                                        opacity:secondImageOpacity}}
-                                    >
-                                        <CardImg2 source={data[firstIndex].image2} resizeMode="contain"></CardImg2>
-                                    </CardImgShellModal>
-                                </>
+                                    <CardImg source={data[secondIndex].image} resizeMode="contain"></CardImg>
                                 )}
                             </CardImgShell>
 
-                            {data[firstIndex].id.length > 0 &&(<>
+                            {data[secondIndex].id.length>0 &&(
+                            <>
                                 {type == "Ganada" ? (
-                                <>{ganadaBtnFunc(firstIndex)}</>
-                                ):(<>
-                                <CardContents style={{flex:props.level == "word3LV" ? 2 : 1, zIndex:distractorContainerValue}}>
-                                    <CardNameText>{dataName(firstIndex)}</CardNameText>
-
-
-                                    <TextAudioBtn {...secondTextPan.panHandlers}
-                                    onPressOut={()=>{playSound(itemAudio(firstIndex)),clickBlockerFunc()}} 
-                                    />
-                                    
-                                    {/* 터치시 텍스트 색깔을 바꿔주는 모달 */}
-                                    <CardNameModal style={{opacity:secondTextOpacity}}>
-                                        <CardNameModalText style={{color:data[firstIndex].textColor}}>{dataName(firstIndex)}</CardNameModalText>
-                                    </CardNameModal>
-
-
-                                    {props.level == "word2LV" && (
-                                        <QuestionMarkBg  style={{opacity:questionOpacity, transform:[{scale:questionScale}]}}>
-                                            <QuestionMarkBtn {...questionPan.panHandlers} onPress={() => {playSound(itemAudio(firstIndex)),clickBlockerFunc()} } >  
-                                                <QuestionMarkAnimation />  
-                                                {/* <QuestionMarkImage source={data[firstIndex].questionMarkImage} resizeMode="contain"/> */}
-                                            </QuestionMarkBtn>                                                    
-                                        </QuestionMarkBg>
-                                    )}
-
-                                    {props.level == "word3LV" &&(<>
-                                        <DistractorContainer style={{opacity:distractorContainerValue, transform:[{scale:distractorContainerScale}]}}>
-                                        {/* <DistractorContainer style={{zIndex:0, opacity:1, transform:[{scale:0.01}]}}> */}
+                                    <>{ganadaBtnFunc(secondIndex)}</>
+                                ):(
+                                    <CardContents style={{flex:props.level == "word3LV" ? 2 : 1, zIndex:distractorContainerValue }}>
+                                        {props.level == "word2LV" && (
+                                            <QuestionMarkBg>
+                                                <QuestionMarkBtn>    
+                                                    <QuestionMarkAnimation />
+                                                </QuestionMarkBtn>                                                    
+                                            </QuestionMarkBg>
+                                        )}
+                                        {props.level == "word3LV" &&(
+                                        // <>
+                                        <DistractorContainer>
                                             <DistractorRow>
-                                                {dataName(firstIndex) == dataName(numArray[0]) ? (
-                                                    <Distractor 
-                                                        {...correct1.panHandlers} 
-                                                        style={{transform:[{scale:distractorBtn1}]}}
-                                                        onPressIn={()=>{playSound(correctAudio(numArray[0])),clickBlockerFunc()}}
-                                                    >
-                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[0])}</DistractorText>
-                                                    </Distractor>
-                                                ):(
-                                                    <Distractor 
-                                                    {...wrong1.panHandlers} 
-                                                    style={{transform:[{scale:distractorBtn1}]}}
-                                                    onPressIn={()=>playSound(wrongAudio(numArray[0]))}
-                                                    >
-                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[0])}</DistractorText>
-                                                    </Distractor>
-                                                )}
-                                                
-                                                {dataName(firstIndex) == dataName(numArray[1]) ? (
-                                                    <Distractor 
-                                                    {...correct2.panHandlers}
-                                                    style={{transform:[{scale:distractorBtn2}]}}
-                                                    onPressIn={()=>{playSound(correctAudio(numArray[1])),clickBlockerFunc()}}
-                                                    >
-                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[1])}</DistractorText>
-                                                    </Distractor>
-                                                ):(
-                                                    <Distractor 
-                                                    {...wrong2.panHandlers}
-                                                    style={{transform:[{scale:distractorBtn2}]}}
-                                                    onPressIn={()=>playSound(wrongAudio(numArray[1]))}
-                                                    >
-                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[1])}</DistractorText>
-                                                    </Distractor>
-                                                )}
+                                                <Distractor />
+                                                <Distractor />
                                             </DistractorRow>
                                             <DistractorRow>
-                                                {dataName(firstIndex) == dataName(numArray[2]) ? (
-                                                    <Distractor 
-                                                        {...correct3.panHandlers}
-                                                        style={{transform:[{scale:distractorBtn3}]}}
-                                                        onPressIn={()=>{playSound(correctAudio(numArray[2])),clickBlockerFunc()}}
-                                                    >
-                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[2])}</DistractorText>
-                                                    </Distractor>
-                                                ):(
-                                                    <Distractor 
-                                                        {...wrong3.panHandlers}
-                                                        style={{transform:[{scale:distractorBtn3}]}}
-                                                        onPressIn={()=>playSound(wrongAudio(numArray[2]))}
-                                                    >
-                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[2])}</DistractorText>
-                                                    </Distractor>
-                                                )}
-
-                                                {dataName(firstIndex) == dataName(numArray[3]) ? (
-                                                    <Distractor 
-                                                        {...correct4.panHandlers}
-                                                        style={{transform:[{scale:distractorBtn4}]}}
-                                                        onPressIn={()=>{playSound(correctAudio(numArray[3])),clickBlockerFunc()}}
-                                                    >
-                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[3])}</DistractorText>
-                                                    </Distractor>
-                                                ):(
-                                                    <Distractor 
-                                                        {...wrong4.panHandlers}
-                                                        style={{transform:[{scale:distractorBtn4}]}}
-                                                        onPressIn={()=>playSound(wrongAudio(numArray[3]))}
-                                                    >
-                                                        <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[3])}</DistractorText>
-                                                    </Distractor>
-                                                        
-                                                )}
+                                                <Distractor />
+                                                <Distractor />
                                             </DistractorRow>
                                         </DistractorContainer>
-                                    </> )}
-                                </CardContents>
-                                </>)}
-                            </>)}
-                            {/* 정답체크 */}
-                            <CorrectAnswerContainer style={{transform:[{scale:correctAnswerMarkValue}], zIndex:2}}>
-                                <CorrectAnswerImage source={require("../asset/images/Check.png")} />
-                            </CorrectAnswerContainer>
-                        </Card>
-                    </CardContainer>
+                                        // </>
+                                        )}
+                                        {props.level !== "word3LV" && (
+                                            <CardNameText style={{fontSize:100}}>{dataName(secondIndex)}</CardNameText>
+                                        )}
+                                    </CardContents>
+                                )}
+                            </>
+                        )}
+                    </Card>
+                    {/* 앞카드 */}
+                    <Card
+                    {...cardPan.panHandlers}
+                    style={{
+                        backgroundColor: data[firstIndex].cardBgColor,
+                        transform:[{scale:cardScaleValue}, {translateX:cardPosition},{rotateZ:cardRotation}],
+                    }}>
+                        {/* 실사모달버튼 */}
+                        {arrayAlloter(type) == AnimalCardArray && (
+                            <RealPictureBtn
+                            {...pictureOpenPan.panHandlers}
+                            style={{transform:[{scale:pictureBtnScale}]}}
+                            onPressIn={()=>{pictureBtnScale.setValue(0.8), ClickSound(), setPicture(true)}}
+                            onPressOut={()=>{pictureBtnScale.setValue(1)}}
+                            >
+                                <RealPictureBtnBGContainer>
+                                    <RealPictureBtnBG source={data[firstIndex].realImage1} resizeMode="cover" />
+                                </RealPictureBtnBGContainer>
+                            </RealPictureBtn>
+                        )}
+                        {/* 카드 그림부분 */}
+                        <CardImgShell style={{backgroundColor:data[firstIndex].bgColor}}>
+                            {arrayAlloter(type) == AnimalCardArray ? (
+                            <>
+                                <AnimalAnimation id={data[firstIndex].id} />
+                                <ImageAudioBtn onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/>
+                            </>
+                            ):(
+                            <>
+                                <CardImg source={data[firstIndex].image} resizeMode="contain" />
+                                <ImageAudioBtn {...cardPan.panHandlers} onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/>
+                                <CardImgShellModal style={{
+                                    backgroundColor: data[firstIndex].bgColor, 
+                                    opacity:secondImageOpacity}}
+                                >
+                                    <CardImg2 source={data[firstIndex].image2} resizeMode="contain"></CardImg2>
+                                </CardImgShellModal>
+                            </>
+                            )}
+                        </CardImgShell>
+                        {/* 카드 텍스트부분 */}
+                        {data[firstIndex].id.length > 0 &&(<>
+                            {type == "Ganada" ? (
+                                <>{ganadaBtnFunc(firstIndex)}</>
+                            ):(
+                            // <>
+                            <CardContents style={{flex:props.level == "word3LV" ? 2 : 1, zIndex:distractorContainerValue}}>
+                                <CardNameText>{dataName(firstIndex)}</CardNameText>
+                                <TextAudioBtn {...secondTextPan.panHandlers}
+                                    onPressOut={()=>{playSound(itemAudio(firstIndex)),clickBlockerFunc()}} 
+                                />
+                                {/* 터치시 텍스트 색깔을 바꿔주는 모달 */}
+                                <CardNameModal style={{opacity:secondTextOpacity}}>
+                                    <CardNameModalText style={{color:data[firstIndex].textColor}}>{dataName(firstIndex)}</CardNameModalText>
+                                </CardNameModal>
+
+                                {props.level == "word2LV" && (
+                                    <QuestionMarkBg  style={{opacity:questionOpacity, transform:[{scale:questionScale}]}}>
+                                        <QuestionMarkBtn {...questionPan.panHandlers} onPress={() => {playSound(itemAudio(firstIndex)),clickBlockerFunc()} } >  
+                                            <QuestionMarkAnimation />  
+                                            {/* <QuestionMarkImage source={data[firstIndex].questionMarkImage} resizeMode="contain"/> */}
+                                        </QuestionMarkBtn>                                                    
+                                    </QuestionMarkBg>
+                                )}
+
+                                {props.level == "word3LV" &&(
+                                // <>
+                                    <DistractorContainer style={{opacity:distractorContainerValue, transform:[{scale:distractorContainerScale}]}}>
+                                    {/* <DistractorContainer style={{zIndex:0, opacity:1, transform:[{scale:0.01}]}}> */}
+                                        <DistractorRow>
+                                        {distractorChecker(correct1, wrong1, distractorBtn1,numArray[0])}
+                                        {distractorChecker(correct2, wrong2, distractorBtn2,numArray[1])}
+                                            {/* {dataName(firstIndex) == dataName(numArray[0]) ? (
+                                                <Distractor 
+                                                    {...correct1.panHandlers} 
+                                                    style={{transform:[{scale:distractorBtn1}]}}
+                                                    onPressIn={()=>{playSound(correctAudio(numArray[0])),clickBlockerFunc()}}
+                                                >
+                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[0])}</DistractorText>
+                                                </Distractor>
+                                            ):(
+                                                <Distractor 
+                                                {...wrong1.panHandlers} 
+                                                style={{transform:[{scale:distractorBtn1}]}}
+                                                onPressIn={()=>playSound(wrongAudio(numArray[0]))}
+                                                >
+                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[0])}</DistractorText>
+                                                </Distractor>
+                                            )}
+                                            
+                                            {dataName(firstIndex) == dataName(numArray[1]) ? (
+                                                <Distractor 
+                                                {...correct2.panHandlers}
+                                                style={{transform:[{scale:distractorBtn2}]}}
+                                                onPressIn={()=>{playSound(correctAudio(numArray[1])),clickBlockerFunc()}}
+                                                >
+                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[1])}</DistractorText>
+                                                </Distractor>
+                                            ):(
+                                                <Distractor 
+                                                {...wrong2.panHandlers}
+                                                style={{transform:[{scale:distractorBtn2}]}}
+                                                onPressIn={()=>playSound(wrongAudio(numArray[1]))}
+                                                >
+                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[1])}</DistractorText>
+                                                </Distractor>
+                                            )} */}
+                                        </DistractorRow>
+                                        <DistractorRow>
+                                            {distractorChecker(correct3, wrong3, distractorBtn3,numArray[2])}
+                                            {distractorChecker(correct4, wrong4, distractorBtn4,numArray[3])}
+                                            {/* {dataName(firstIndex) == dataName(numArray[2]) ? (
+                                                <Distractor 
+                                                    {...correct3.panHandlers}
+                                                    style={{transform:[{scale:distractorBtn3}]}}
+                                                    onPressIn={()=>{playSound(correctAudio(numArray[2])),clickBlockerFunc()}}
+                                                >
+                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[2])}</DistractorText>
+                                                </Distractor>
+                                            ):(
+                                                <Distractor 
+                                                    {...wrong3.panHandlers}
+                                                    style={{transform:[{scale:distractorBtn3}]}}
+                                                    onPressIn={()=>playSound(wrongAudio(numArray[2]))}
+                                                >
+                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[2])}</DistractorText>
+                                                </Distractor>
+                                            )}
+
+                                            {dataName(firstIndex) == dataName(numArray[3]) ? (
+                                                <Distractor 
+                                                    {...correct4.panHandlers}
+                                                    style={{transform:[{scale:distractorBtn4}]}}
+                                                    onPressIn={()=>{playSound(correctAudio(numArray[3])),clickBlockerFunc()}}
+                                                >
+                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[3])}</DistractorText>
+                                                </Distractor>
+                                            ):(
+                                                <Distractor 
+                                                    {...wrong4.panHandlers}
+                                                    style={{transform:[{scale:distractorBtn4}]}}
+                                                    onPressIn={()=>playSound(wrongAudio(numArray[3]))}
+                                                >
+                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[3])}</DistractorText>
+                                                </Distractor>
+                                                    
+                                            )} */}
+                                        </DistractorRow>
+                                    </DistractorContainer>
+                                // </> 
+                                )}
+                            </CardContents>
+                            // </>
+                            )}
+                        </>)}
+                        {/* 정답체크 */}
+                        <CorrectAnswerContainer style={{transform:[{scale:correctAnswerMarkValue}], zIndex:2}}>
+                            <CorrectAnswerImage source={require("../asset/images/Check.png")} />
+                        </CorrectAnswerContainer>
+                    </Card>
+                </CardContainer>
             </Container>
         )
     }

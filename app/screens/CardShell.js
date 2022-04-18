@@ -277,12 +277,12 @@ const CardShell = ({route, navigation}) => {
     }
 
     function playSound(sound){
-        console.log('Playing '+sound);
+        // console.log('Playing '+sound);
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
         ).then((res)=>{
             res.sound.setOnPlaybackStatusUpdate((status)=>{
                 if(!status.didJustFinish) return;
-                console.log('Unloading '+sound);
+                // console.log('Unloading '+sound);
                 res.sound.unloadAsync().catch(()=>{});
             });
         }).catch((error)=>{});
@@ -291,7 +291,7 @@ const CardShell = ({route, navigation}) => {
         // useEffect(()=>{
         setTimeout(function(){
             setLoading(true)
-            console.log('셋타임아웃')
+            // console.log('셋타임아웃')
         },400)
         // },[])
     }

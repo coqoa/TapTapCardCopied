@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState} from 'react';
 import {
   ArrowBackIcon,
   CheckCircleIcon,
@@ -8,6 +8,9 @@ import {
   View,
   WarningIcon,
 } from 'native-base';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import { useEffect } from 'react';
 
 export default function PaymentResult({ route, navigation }) {
   const imp_success = route.params.imp_success;
@@ -23,11 +26,24 @@ export default function PaymentResult({ route, navigation }) {
     imp_success === false ||
     success === 'false' ||
     success === false
-  );
+  )
+
+  const PaymentUserCollection = firestore().collection('PaymentUsers');
+  const [userEmail, setUserEmail] = useState(auth()._user.email); 
+  const createDB = async() =>{
+    (await PaymentUserCollection.get()).forEach(value => value.data().email == userEmail ? (
+        null
+    ) : (
+        PaymentUserCollection.doc(userEmail).set({email:userEmail,})
+    ))
+}
+useEffect(()=>{
+  {isSuccess && createDB()}
+},[])
 
   return (
     <View>
-      {isSuccess ? <CheckCircleIcon /> : <WarningIcon />}
+      {isSuccess ? (<CheckCircleIcon />) : <WarningIcon />}
       <Text>{`결제에 ${isSuccess ? '성공' : '실패'}하였습니다`}</Text>
       <List>
         <List.Item>

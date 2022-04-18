@@ -1,10 +1,11 @@
-import React,{ useRef } from "react";
+import React,{ useRef, useEffect } from "react";
 import styled from "styled-components";
 import {Platform, Animated, Pressable, View, Text, Button, TouchableOpacity} from "react-native";
 import { Audio } from 'expo-av';
 import { colors } from "../component/Color";
 
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const BG = styled.ImageBackground`
     flex: 1;
@@ -86,12 +87,12 @@ const WordSelectTitleText = styled(WordSelectText)`
 const Menu = ({navigation}) => {
 
     function playSound(sound){
-        console.log('Playing '+sound);
+        // console.log('Playing '+sound);
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
         ).then((res)=>{
             res.sound.setOnPlaybackStatusUpdate((status)=>{
                 if(!status.didJustFinish) return;
-                console.log('Unloading '+sound);
+                // console.log('Unloading '+sound);
                 res.sound.unloadAsync().catch(()=>{});
             });
         }).catch((error)=>{console.log('Menu = ', error)});
@@ -162,6 +163,14 @@ const Menu = ({navigation}) => {
     const logout = async()=>{
         await auth().signOut()
     }
+    const firestoreUserColl = firestore().collection('TAPTAPUSER');
+    useEffect(async()=>{
+        await firestoreUserColl.doc(auth()._user.email).set({
+            // name:signupName,
+            email:auth()._user.email,
+            // number:signupNumber,
+        })
+    },[])
     return(
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
 

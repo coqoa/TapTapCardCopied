@@ -114,7 +114,7 @@ const Login = ({navigation}) => {
     const [loading, setLoading] = useState(false);
     const [validation, setValidation] = useState("")
     // const userRef = fstore.collection('TAPTAP')
-    const firestoreUserColl = firestore().collection('TAPTAPUSER');
+    // const firestoreUserColl = firestore().collection('TAPTAPUSER');
     // console.log("여기부터임 = ",usersCollection)
 
 
@@ -189,11 +189,11 @@ const Login = ({navigation}) => {
             if(signupEmail !=="" && signupPassword !=="" && signupName !== "" && signupNumver !== ""){
                 await auth().createUserWithEmailAndPassword(signupEmail, signupPassword)
                 // console.log("userCredential = ", userCredential)
-                await firestoreUserColl.doc(signupEmail).set({
-                    name:signupName,
-                    email:signupEmail,
-                    number:signupNumber,
-                })
+                // await firestoreUserColl.doc(signupEmail).set({
+                //     name:signupName,
+                //     email:signupEmail,
+                //     number:signupNumber,
+                // })
             }else{
                 setLoading(false)
                 setValidation('칸을 채워주세요')
@@ -219,12 +219,12 @@ const Login = ({navigation}) => {
     }
 
     function playSound(sound){
-        console.log('Playing '+sound);
+        // console.log('Playing '+sound);
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
         ).then((res)=>{
             res.sound.setOnPlaybackStatusUpdate((status)=>{
                 if(!status.didJustFinish) return;
-                console.log('Unloading '+sound);
+                // console.log('Unloading '+sound);
                 res.sound.unloadAsync().catch(()=>{});
             });
         }).catch((error)=>{});

@@ -306,10 +306,9 @@ export const WordCardLevel = (props) => {
     //  데이터베이스 이메일체크(결제고객체크)
     const PaymentUserCollection = firestore().collection('PaymentUsers');
 
-    const [userEmail, setUserEmail] = useState(auth()._user.email); 
+    const [userEmail, setUserEmail] = useState(auth()._user.email);     
     const [paymentMember, setPaymentMember] = useState(false);
-    const [correctAnswerMark, setCorrectAnswerMark] = useState(false)
-
+    
     const readPaymentUserDB = async() =>{
         const readDBsnapshot = await PaymentUserCollection.get();
         readDBsnapshot.forEach(value=> (value.data().email == userEmail ? setPaymentMember(true):(null)))
@@ -317,7 +316,8 @@ export const WordCardLevel = (props) => {
     useEffect(()=>{
         readPaymentUserDB()
     },[])
-    // console.log(paymentMember)
+    
+    const [correctAnswerMark, setCorrectAnswerMark] = useState(false)
     
     //useState
     const [refresh, setRefresh] = useState(true);

@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { colors } from "../component/Color";
 import { WordCardLevel } from "../component/CardDefault";
 
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -93,14 +95,15 @@ const MenuModalBg = styled(Animated.createAnimatedComponent(Pressable))`
 `
 const MenuModalContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
-    top: 10%;
+    top: 13%;
     width: 60%;
-    height: 25%;
+    height: 35%;
     border-radius: 20px;
     align-items: center;
     justify-content: center;
     background-color: rgba(255,255,255,0.9);
 `
+
 const MenuModal = styled.View`
     width: 90%;
     flex:1;
@@ -121,7 +124,8 @@ const LevelBtn = styled(Animated.createAnimatedComponent(Pressable))`
     border-radius: 15px;
     `
 const ModalMenuText =styled.Text`
-    font-size: 30px;
+    top: 1px;
+    font-size: 28px;
     font-family: "SDChild";
     color: white;
     text-align: center;
@@ -129,6 +133,12 @@ const ModalMenuText =styled.Text`
 const StarViewImage = styled.ImageBackground`
     width: 100%;
     height: 100%;
+`
+const PaymentBtn = styled(LevelBtn)`
+    background-color: ${colors.REALDARKGRAY};
+`
+const PaymentText = styled(ModalMenuText)`
+    color: ${colors.REALLIGHTGRAY};
 `
 
 const CardShell = ({route, navigation}) => {
@@ -275,6 +285,18 @@ const CardShell = ({route, navigation}) => {
             });
         }).catch((error)=>{});
     }
+
+    const [userEmail, setUserEmail] = useState(auth()._user.email); 
+    const [paymentMember, setPaymentMember] = useState(false);
+    const PaymentUserCollection = firestore().collection('PaymentUsers');
+
+    const readPaymentUserDB = async() =>{
+        const readDBsnapshot = await PaymentUserCollection.get();
+        readDBsnapshot.forEach(value=> (value.data().email == userEmail ? setPaymentMember(true):(null)))
+    }
+    useEffect(()=>{
+        readPaymentUserDB()
+    },[])
     
     return(    
         <Shell>
@@ -291,7 +313,6 @@ const CardShell = ({route, navigation}) => {
                 
                 {/* 상단네비게이션 가운데 레벨표시하는 부분 */}
                 <Star>
-                <TouchableOpacity onPress={()=>{navigation.navigate("PaymentTest")}}><Text>결제</Text></TouchableOpacity>
                     {typeCheckRes == "Animal" && (
                     <>
                         {(()=>{
@@ -357,42 +378,49 @@ const CardShell = ({route, navigation}) => {
             onPressOut={() =>  {menuModalIndex.setValue(0)}}
             />
             <MenuModalContainer style={{zIndex: menuModalIndex, opacity: menuModalIndex}}>
-            {typeCheckRes == "Number" ? (
-                <MenuModalScrollView contentContainerStyle = {{alignItems:"center"}}>
-                    {distractorFunc(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "0~100")}
-                    {distractorFunc(number0Pan.panHandlers, colors.WhaleBG, level2Scale, "0~10")}
-                    {distractorFunc(number1Pan.panHandlers, colors.DARKOLIVE, level3Scale, "11~20")}
-                    {distractorFunc(number2Pan.panHandlers, colors.PURPLE, level4Scale, "21~30")}
-                    {distractorFunc(number3Pan.panHandlers, colors.NAVY, level5Scale, "31~40")}
-                    {distractorFunc(number4Pan.panHandlers, colors.GREEN, level6Scale, "41~50")}
-                    {distractorFunc(number5Pan.panHandlers, colors.PASTELORANGE, level7Scale, "51~60")}
-                    {distractorFunc(number6Pan.panHandlers, colors.CUSTOMPINK, level8Scale, "61~70")}
-                    {distractorFunc(number7Pan.panHandlers, colors.LIGHTSEABLUE, level9Scale, "71~80")}
-                    {distractorFunc(number8Pan.panHandlers, colors.REDBRICK, level10Scale, "81~90")}
-                    {distractorFunc(number9Pan.panHandlers, colors.GREEN, level11Scale, "91~100")}
-                </MenuModalScrollView>
-            ):(
-                <MenuModal>
-                    {typeCheckRes == "Animal" && (
-                    <>
-                        {distractorFunc(animal1Pan.panHandlers,colors.BLUE,level1Scale,require("../asset/images/Star1.png"))}
-                        {distractorFunc(animal2Pan.panHandlers,colors.REDORANGE,level2Scale,require("../asset/images/Star2.png"))}
-                        {distractorFunc(animal3Pan.panHandlers,colors.DARKOLIVE,level3Scale,require("../asset/images/Star3.png"))}
-                    </>
-                    )}
-                    {typeCheckRes == "Ganada" && (
-                    <>
-                        {distractorFunc(ganada1Pan.panHandlers, colors.LIGHTPINK, level1Scale, "자 음")}
-                        {distractorFunc(ganada2Pan.panHandlers, colors.LIGHTNAVY, level2Scale, "모 음")}
-                    </>
-                    )}
-                    {typeCheckRes == "Language" && (
-                    <>
-                        {distractorFunc(alphabetPan.panHandlers, colors.LIGHTPINK, level1Scale, "알파벳")}
-                    </>
-                    )}
-                </MenuModal>
-            )}
+                
+                {typeCheckRes == "Number" ? (
+                    <MenuModalScrollView contentContainerStyle = {{alignItems:"center"}}>
+                        {paymentMember == false && (
+                            <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}><PaymentText>결제하기</PaymentText></PaymentBtn>
+                        )}
+                        {distractorFunc(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "0~100")}
+                        {distractorFunc(number0Pan.panHandlers, colors.WhaleBG, level2Scale, "0~10")}
+                        {distractorFunc(number1Pan.panHandlers, colors.DARKOLIVE, level3Scale, "11~20")}
+                        {distractorFunc(number2Pan.panHandlers, colors.PURPLE, level4Scale, "21~30")}
+                        {distractorFunc(number3Pan.panHandlers, colors.NAVY, level5Scale, "31~40")}
+                        {distractorFunc(number4Pan.panHandlers, colors.GREEN, level6Scale, "41~50")}
+                        {distractorFunc(number5Pan.panHandlers, colors.PASTELORANGE, level7Scale, "51~60")}
+                        {distractorFunc(number6Pan.panHandlers, colors.CUSTOMPINK, level8Scale, "61~70")}
+                        {distractorFunc(number7Pan.panHandlers, colors.LIGHTSEABLUE, level9Scale, "71~80")}
+                        {distractorFunc(number8Pan.panHandlers, colors.REDBRICK, level10Scale, "81~90")}
+                        {distractorFunc(number9Pan.panHandlers, colors.GREEN, level11Scale, "91~100")}
+                    </MenuModalScrollView>
+                ):(
+                    <MenuModal>
+                        {paymentMember == false && (
+                            <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}><PaymentText>결제하기</PaymentText></PaymentBtn>
+                        )}
+                        {typeCheckRes == "Animal" && (
+                        <>
+                            {distractorFunc(animal1Pan.panHandlers,colors.BLUE,level1Scale,require("../asset/images/Star1.png"))}
+                            {distractorFunc(animal2Pan.panHandlers,colors.REDORANGE,level2Scale,require("../asset/images/Star2.png"))}
+                            {distractorFunc(animal3Pan.panHandlers,colors.DARKOLIVE,level3Scale,require("../asset/images/Star3.png"))}
+                        </>
+                        )}
+                        {typeCheckRes == "Ganada" && (
+                        <>
+                            {distractorFunc(ganada1Pan.panHandlers, colors.LIGHTPINK, level1Scale, "자 음")}
+                            {distractorFunc(ganada2Pan.panHandlers, colors.LIGHTNAVY, level2Scale, "모 음")}
+                        </>
+                        )}
+                        {typeCheckRes == "Language" && (
+                        <>
+                            {distractorFunc(alphabetPan.panHandlers, colors.LIGHTPINK, level1Scale, "알파벳")}
+                        </>
+                        )}
+                    </MenuModal>
+                )}
             </MenuModalContainer>
         </Shell>
     )

@@ -16,6 +16,7 @@ import firestore from '@react-native-firebase/firestore';
 
 import AnimalAnimation from "./AnimalAnimation";
 import ClearModal from './ClearModal';
+import CorrectAnswer from "./lottieComponent/CorrectAnswer";
 import QuestionMarkAnimation from './lottieComponent/QuestionMarkAnimation';
 //Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -179,10 +180,11 @@ const DistractorText = styled(Animated.createAnimatedComponent(Text))`
 `
 const CorrectAnswerContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
-    top: 0px;
-    width: 80px;
-    height: 80px;
-    border-radius: 15px;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    /* border-radius: 15px; */
+    /* border:1px solid black; */
 `
 const CorrectAnswerImage = styled.Image`
     width: 100%;
@@ -301,6 +303,22 @@ border-radius: 20px;
 // ---------------------------------------------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
+    //  데이터베이스 이메일체크(결제고객체크)
+    const PaymentUserCollection = firestore().collection('PaymentUsers');
+
+    const [userEmail, setUserEmail] = useState(auth()._user.email); 
+    const [paymentMember, setPaymentMember] = useState(false);
+    const [correctAnswerMark, setCorrectAnswerMark] = useState(false)
+
+    const readPaymentUserDB = async() =>{
+        const readDBsnapshot = await PaymentUserCollection.get();
+        readDBsnapshot.forEach(value=> (value.data().email == userEmail ? setPaymentMember(true):(null)))
+    }
+    useEffect(()=>{
+        readPaymentUserDB()
+    },[])
+    // console.log(paymentMember)
+    
     //useState
     const [refresh, setRefresh] = useState(true);
     const [picture, setPicture] = useState(false)
@@ -332,7 +350,16 @@ export const WordCardLevel = (props) => {
             }
         }
     }
-    const data = arrayAlloter(type)
+    //결제멤버/ 미결제 멤버 체크해주는 함수
+    //clear모달에서 결제멤버면 다음창으로 미결제멤버면 결제버튼 출력하기
+    const memberChecker = (e) => {
+        if(paymentMember == true){
+            return arrayAlloter(e)
+        }else{
+            return arrayAlloter(e).slice(0,8)
+        }
+    }
+    const data = memberChecker(type)
 
     // AnimatedValues & panResponder ~
     // 카드애니메이션 (좌우이동, scale, opacity)
@@ -359,7 +386,7 @@ export const WordCardLevel = (props) => {
     //Animations
     const distractorOpacityUp = Animated.spring(distractorOpacity,{
         toValue:1,
-        delay:1000,
+        delay:300,
         useNativeDriver:true
     })
     const cardPressIn = Animated.spring(cardScaleValue,{
@@ -370,8 +397,8 @@ export const WordCardLevel = (props) => {
         toValue:1,
         useNativeDriver:true
     })
-    const goLeft = Animated.timing(cardPosition, {toValue:-SCREEN_WIDTH*2,duration:200, useNativeDriver:true});
-    const goRight = Animated.timing(cardPosition, {toValue:SCREEN_WIDTH*2,duration:200, useNativeDriver:true});
+    const goLeft = Animated.timing(cardPosition, {toValue:-SCREEN_WIDTH*1.3,duration:150, useNativeDriver:true});
+    const goRight = Animated.timing(cardPosition, {toValue:SCREEN_WIDTH*1.3,duration:150, useNativeDriver:true});
     const goCenter = Animated.spring(cardPosition, {toValue: 0, useNativeDriver:true});
 
     //클릭시 출력되는 secondImage Animations
@@ -431,6 +458,15 @@ export const WordCardLevel = (props) => {
             }
         }
     })).current;
+    const onDismiss = () => {
+        setFirstIndex(prev => prev + 1);
+        //카드변경 깜빡임 방지 setTimeout함수
+        setTimeout(function(){
+            setSecondIndex(prev => prev + 1);
+            cardScaleValue.setValue(1)
+            cardPosition.setValue(0);
+        },10)
+    }
 
     //물음표박스 Animation
     const questionOpacity = useRef(new Animated.Value(1)).current;
@@ -463,7 +499,7 @@ export const WordCardLevel = (props) => {
         duration:150,
         useNativeDriver:true
     })
-    const distractorContainervisible = Animated.spring(distractorContainerValue, {
+    const distractorContainervisible = Animated.timing(distractorContainerValue, {
         toValue:1,
         duration:150,
         useNativeDriver:true
@@ -474,7 +510,7 @@ export const WordCardLevel = (props) => {
         duration:150,
         useNativeDriver:true
     })
-    const distractorContainerScaleMax = Animated.spring(distractorContainerScale, {
+    const distractorContainerScaleMax = Animated.timing(distractorContainerScale, {
         toValue:1,
         duration:150,
         useNativeDriver:true
@@ -528,12 +564,18 @@ export const WordCardLevel = (props) => {
                 onPanResponderStart:()=>{Animated.sequence([a]).start()},
                 onPanResponderEnd:()=>{
                     distractorOpacity.setValue(0)
+                    // correctAnswerMarkValue.setValue(3)
+                    setCorrectAnswerMark(true)
+                    setTimeout(()=>{
+                        setCorrectAnswerMark(false)
+                    },1800)
                     Animated.parallel([
+                        // Animated.sequence([checkMarkOn, checkMarkOff]),
                         b,
                         distractorContainerInvisible,
                         distractorContainerScaleMini,
-                        Animated.sequence([secondTextOn, secondTextOff]), 
-                        Animated.sequence([checkMarkOn, checkMarkOff])
+                        // Animated.sequence([checkMarkOff]),
+                        Animated.sequence([secondTextOn, secondTextOff])
                     ]).start();
                 }
             })).current
@@ -603,17 +645,18 @@ export const WordCardLevel = (props) => {
         }
     })).current
 
-    //정답애니메이션
+    //정답애니메이션 ( 오답체크하는데 쓰자)
     const correctAnswerMarkValue = useRef(new Animated.Value(0)).current;
     const checkMarkOn = Animated.spring(correctAnswerMarkValue, {
-        toValue:1,
+        toValue:2,
         useNativeDriver:true
     })
     const checkMarkOff = Animated.spring(correctAnswerMarkValue, {
         toValue:0,
-        delay:300,
+        delay:1000,
         useNativeDriver:true
     })
+    
 
     //실사 애니메이션
      // 실제사진 모달 관련 애니메이션
@@ -673,21 +716,8 @@ export const WordCardLevel = (props) => {
         }
     })).current
 
-
     const [firstIndex, setFirstIndex] = useState(0);
     const [secondIndex, setSecondIndex] = useState(1);
-    const onDismiss = () => {
-        setFirstIndex(prev => prev + 1);
-        //카드변경 깜빡임 방지 setTimeout함수
-        setTimeout(function(){
-            setSecondIndex(prev => prev + 1);
-            cardScaleValue.setValue(1)
-            cardPosition.setValue(0);
-        },50)
-    }
-    const end = () => {
-        console.log('end')
-    }
     
 // function
     //오디오관련
@@ -703,20 +733,6 @@ export const WordCardLevel = (props) => {
             console.log('CardDefault.js ClickSound error = ', error)
         }
     }
-    
-    // const playSound = async(e) => {
-    //     const sound = new Audio.Sound();
-    //     try {    
-    //         // 저장한 path로 음원 파일 불러오기 & 재생하기 
-    //         await sound.loadAsync(e);
-    //         await sound.playAsync();
-    //         setTimeout(function(){
-    //             sound.unloadAsync();
-    //         },2500) 
-    //     } catch (error) {
-    //         console.log('CardDefault.js PlaySound error = ', error)
-    //     }
-    // }
     function playSound(sound){
         // console.log('Playing '+sound);
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
@@ -755,13 +771,11 @@ export const WordCardLevel = (props) => {
         return data[e].SoundImage;
     }
 
-    // array에 end어레이 2개씩필요함(
     {if(secondIndex == data.length-1){
         lastListModal.setValue(1)
         playSound(require("../asset/audio/LastListModal.mp3"))
         
     }}
-        
     
     //랜덤배열
     // console.log(data[0].id)
@@ -882,18 +896,6 @@ export const WordCardLevel = (props) => {
                 return
     }}
 
-     //선택지 이름
-    const distractorName = (e) =>{
-        switch(type){
-            case "AnimalKOR":
-                return data[e].nameKOR;
-            case "AnimalENG":
-                return data[e].nameENG;
-            default:
-                return
-        }
-    }
-
     const clickBlockerValue = useRef(new Animated.Value(0)).current
     const clickBlockerFunc = () =>{
         clickBlockerValue.setValue(2),
@@ -908,27 +910,7 @@ export const WordCardLevel = (props) => {
             <PictureImageShell style={{width:SCREEN_WIDTH}}><PictureImage source={e} resizeMode="cover" /></PictureImageShell>
         )
     }
-
-//  데이터베이스 이메일체크(결제고객체크)
-const PaymentUserCollection = firestore().collection('PaymentUsers');
-
-const [userEmail, setUserEmail] = useState(auth()._user.email); 
-const [paymentMember, setPaymentMember] = useState(false);
-const readPaymentUserDB = async() =>{
-    const readDBsnapshot = await PaymentUserCollection.get();
-    readDBsnapshot.forEach(value=> (value.data().email == userEmail ? setPaymentMember(true):(null)))
-}
-useEffect(()=>{
-    readPaymentUserDB()
-},[])
-console.log(paymentMember)
-if(paymentMember == true){
-    console.log('결제멤버')
-}else{
-    console.log('미결제멤버')
-}
-
-
+    
 // 실제 출력되는 부분
     const levelConsole = () => {
         return(
@@ -963,12 +945,20 @@ if(paymentMember == true){
                     <ClearModalContainer style={{opacity:lastListModal, zIndex:lastListModal}}>
                         <ClearModal type={type} level={props.level} restartLevelBtn={restartLevelBtn} nextLevelBtn={nextLevelBtn} />
                     </ClearModalContainer> 
-                    {/* 뒤카드 */}
+                    {/* 뒷카드 */}
                     <Card
                     style={{
                         backgroundColor: data[secondIndex].cardBgColor,
                         transform: [{scale:secondCardScale}],
                     }}>
+                        {data[secondIndex].id < data.length-2 &&(
+                        <RealPictureBtn>
+                            <RealPictureBtnBGContainer>
+                                <RealPictureBtnBG source={data[secondIndex].realImage1} resizeMode="cover" />
+                            </RealPictureBtnBGContainer>
+                        </RealPictureBtn>
+                        )}
+
                             <CardImgShell style={{backgroundColor:data[secondIndex].bgColor}}>
                                 {arrayAlloter(type) == AnimalCardArray ? (
                                     <AnimalAnimation id={data[secondIndex].id} />
@@ -991,18 +981,20 @@ if(paymentMember == true){
                                             </QuestionMarkBg>
                                         )}
                                         {props.level == "word3LV" &&(
-                                        // <>
-                                        <DistractorContainer>
-                                            <DistractorRow>
-                                                <Distractor />
-                                                <Distractor />
-                                            </DistractorRow>
-                                            <DistractorRow>
-                                                <Distractor />
-                                                <Distractor />
-                                            </DistractorRow>
-                                        </DistractorContainer>
-                                        // </>
+                                        <>
+                                            {data[secondIndex].id < data.length-2 &&(
+                                                <DistractorContainer>
+                                                    <DistractorRow>
+                                                        <Distractor />
+                                                        <Distractor />
+                                                    </DistractorRow>
+                                                    <DistractorRow>
+                                                        <Distractor />
+                                                        <Distractor />
+                                                    </DistractorRow>
+                                                </DistractorContainer>
+                                            )}
+                                        </>
                                         )}
                                         {props.level !== "word3LV" && (
                                             <CardNameText style={{fontSize:100}}>{dataName(secondIndex)}</CardNameText>
@@ -1057,7 +1049,6 @@ if(paymentMember == true){
                             {type == "Ganada" ? (
                                 <>{ganadaBtnFunc(firstIndex)}</>
                             ):(
-                            // <>
                             <CardContents style={{flex:props.level == "word3LV" ? 2 : 1, zIndex:distractorContainerValue}}>
                                 <CardNameText>{dataName(firstIndex)}</CardNameText>
                                 <TextAudioBtn {...secondTextPan.panHandlers}
@@ -1072,105 +1063,33 @@ if(paymentMember == true){
                                     <QuestionMarkBg  style={{opacity:questionOpacity, transform:[{scale:questionScale}]}}>
                                         <QuestionMarkBtn {...questionPan.panHandlers} onPress={() => {playSound(itemAudio(firstIndex)),clickBlockerFunc()} } >  
                                             <QuestionMarkAnimation />  
-                                            {/* <QuestionMarkImage source={data[firstIndex].questionMarkImage} resizeMode="contain"/> */}
                                         </QuestionMarkBtn>                                                    
                                     </QuestionMarkBg>
                                 )}
 
                                 {props.level == "word3LV" &&(
-                                // <>
                                     <DistractorContainer style={{opacity:distractorContainerValue, transform:[{scale:distractorContainerScale}]}}>
-                                    {/* <DistractorContainer style={{zIndex:0, opacity:1, transform:[{scale:0.01}]}}> */}
                                         <DistractorRow>
-                                        {distractorChecker(correct1, wrong1, distractorBtn1,numArray[0])}
-                                        {distractorChecker(correct2, wrong2, distractorBtn2,numArray[1])}
-                                            {/* {dataName(firstIndex) == dataName(numArray[0]) ? (
-                                                <Distractor 
-                                                    {...correct1.panHandlers} 
-                                                    style={{transform:[{scale:distractorBtn1}]}}
-                                                    onPressIn={()=>{playSound(correctAudio(numArray[0])),clickBlockerFunc()}}
-                                                >
-                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[0])}</DistractorText>
-                                                </Distractor>
-                                            ):(
-                                                <Distractor 
-                                                {...wrong1.panHandlers} 
-                                                style={{transform:[{scale:distractorBtn1}]}}
-                                                onPressIn={()=>playSound(wrongAudio(numArray[0]))}
-                                                >
-                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[0])}</DistractorText>
-                                                </Distractor>
-                                            )}
-                                            
-                                            {dataName(firstIndex) == dataName(numArray[1]) ? (
-                                                <Distractor 
-                                                {...correct2.panHandlers}
-                                                style={{transform:[{scale:distractorBtn2}]}}
-                                                onPressIn={()=>{playSound(correctAudio(numArray[1])),clickBlockerFunc()}}
-                                                >
-                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[1])}</DistractorText>
-                                                </Distractor>
-                                            ):(
-                                                <Distractor 
-                                                {...wrong2.panHandlers}
-                                                style={{transform:[{scale:distractorBtn2}]}}
-                                                onPressIn={()=>playSound(wrongAudio(numArray[1]))}
-                                                >
-                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[1])}</DistractorText>
-                                                </Distractor>
-                                            )} */}
+                                            {distractorChecker(correct1, wrong1, distractorBtn1,numArray[0])}
+                                            {distractorChecker(correct2, wrong2, distractorBtn2,numArray[1])}
                                         </DistractorRow>
                                         <DistractorRow>
                                             {distractorChecker(correct3, wrong3, distractorBtn3,numArray[2])}
                                             {distractorChecker(correct4, wrong4, distractorBtn4,numArray[3])}
-                                            {/* {dataName(firstIndex) == dataName(numArray[2]) ? (
-                                                <Distractor 
-                                                    {...correct3.panHandlers}
-                                                    style={{transform:[{scale:distractorBtn3}]}}
-                                                    onPressIn={()=>{playSound(correctAudio(numArray[2])),clickBlockerFunc()}}
-                                                >
-                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[2])}</DistractorText>
-                                                </Distractor>
-                                            ):(
-                                                <Distractor 
-                                                    {...wrong3.panHandlers}
-                                                    style={{transform:[{scale:distractorBtn3}]}}
-                                                    onPressIn={()=>playSound(wrongAudio(numArray[2]))}
-                                                >
-                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[2])}</DistractorText>
-                                                </Distractor>
-                                            )}
-
-                                            {dataName(firstIndex) == dataName(numArray[3]) ? (
-                                                <Distractor 
-                                                    {...correct4.panHandlers}
-                                                    style={{transform:[{scale:distractorBtn4}]}}
-                                                    onPressIn={()=>{playSound(correctAudio(numArray[3])),clickBlockerFunc()}}
-                                                >
-                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[3])}</DistractorText>
-                                                </Distractor>
-                                            ):(
-                                                <Distractor 
-                                                    {...wrong4.panHandlers}
-                                                    style={{transform:[{scale:distractorBtn4}]}}
-                                                    onPressIn={()=>playSound(wrongAudio(numArray[3]))}
-                                                >
-                                                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(numArray[3])}</DistractorText>
-                                                </Distractor>
-                                                    
-                                            )} */}
                                         </DistractorRow>
                                     </DistractorContainer>
-                                // </> 
                                 )}
                             </CardContents>
-                            // </>
                             )}
                         </>)}
                         {/* 정답체크 */}
-                        <CorrectAnswerContainer style={{transform:[{scale:correctAnswerMarkValue}], zIndex:2}}>
-                            <CorrectAnswerImage source={require("../asset/images/Check.png")} />
-                        </CorrectAnswerContainer>
+                        {/* <CorrectAnswerContainer style={{transform:[{scale:correctAnswerMarkValue}], zIndex:2}}> */}
+                        {correctAnswerMark && (
+                            <CorrectAnswerContainer style={{transform:[{scale:3}], zIndex:2}}>
+                                {/* <CorrectAnswerImage source={require("../asset/images/Check.png")} /> */}
+                                <CorrectAnswer />
+                            </CorrectAnswerContainer>
+                        )}
                     </Card>
                 </CardContainer>
             </Container>

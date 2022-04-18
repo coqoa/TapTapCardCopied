@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {View, Dimensions, PanResponder, Animated, Pressable, TouchableOpacity, Text, ActivityIndicator } from "react-native";
+import {View, Dimensions, PanResponder, Animated, Pressable, TouchableOpacity, Text } from "react-native";
 import { Audio } from 'expo-av';
 import styled from "styled-components";
 import { colors } from "../component/Color";
@@ -8,12 +8,6 @@ import { WordCardLevel } from "../component/CardDefault";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
-
-const Loader = styled.View`
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-`;
 
 const Shell = styled.View`
     flex: 1;
@@ -31,7 +25,7 @@ const Main = styled.View`
     z-index: 2;
 `
 const TopContainer = styled.View`
-    flex: 1;
+    height:55px;
     align-items: center;
     justify-content: center;
     margin-bottom: 5px;
@@ -60,7 +54,6 @@ const GoBackBtnImage = styled.Image`
     width: 100%;
     height: 100%;
 `
-
 const Star = styled.View`
     flex: 1;
     height: 40px;
@@ -79,7 +72,6 @@ const MenuText = styled.Text`
     font-family: "SDChild";
     color: ${colors.REALDARKGRAY};
 `
-
 const Menu =  styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     width: 55px;
@@ -93,7 +85,6 @@ const MenuBtnImage = styled.ImageBackground`
     width: 100%;
     height: 100%;
 `
-
 const MenuModalBg = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     background-color: rgba(0,0,0,0.1);
@@ -188,11 +179,10 @@ const CardShell = ({route, navigation}) => {
             useRef(PanResponder.create({
                 onStartShouldSetPanResponder: () => true,
                 onPanResponderEnd:()=>{
-                 menuModalIndex.setValue(0)
+                    menuModalIndex.setValue(0)
                     return cardCheck(a)
                 }            
-            })
-        ).current
+            })).current
         )
     }
 // 애니메이션 적용하는 Pan
@@ -216,7 +206,6 @@ const CardShell = ({route, navigation}) => {
     const number7Pan = btnPan("71~80")
     const number8Pan = btnPan("81~90")
     const number9Pan = btnPan("91~100")
-
 //선택지
     //숫자 메뉴 모달 선택지 함수
     const distractorFunc = (a,b,c,d) => {
@@ -226,7 +215,7 @@ const CardShell = ({route, navigation}) => {
                 style={{backgroundColor: b, transform: [{scale:c}]}}
                 onPress={()=>{playSound(require("../asset/audio/btnClickSound.mp3"))}}
                 onPressIn={()=>{c.setValue(0.8)}}
-                onPressOut={()=>c.setValue(1)}
+                onPressOut={()=>{c.setValue(1)}}
             >
                 {typeCheckRes !== "Animal" ? (
                     <ModalMenuText>{d}</ModalMenuText>
@@ -272,7 +261,6 @@ const CardShell = ({route, navigation}) => {
     }
 
     const goBack = () => {
-        // navigation.goBack()
         navigation.navigate('Menu')
     }
 
@@ -286,14 +274,6 @@ const CardShell = ({route, navigation}) => {
                 res.sound.unloadAsync().catch(()=>{});
             });
         }).catch((error)=>{});
-    }
-    const LoadingToggle = () => {
-        // useEffect(()=>{
-        setTimeout(function(){
-            setLoading(true)
-            // console.log('셋타임아웃')
-        },400)
-        // },[])
     }
     
     return(    
@@ -363,30 +343,16 @@ const CardShell = ({route, navigation}) => {
 
             </Top>
             </TopContainer>
-            {LoadingToggle()}
             {/* 카드가 출력되는 부분은 CardDefault 컴포넌트를 불러와서 사용함 */}
             {mainScreenRender && (
             <Main>
                 {(()=>{ return (
-                    <>
-                    {loading ? (
-                        <>
-                            <WordCardLevel level={cardSelector} getData={getData} type={type}>
-
-
-                            </WordCardLevel>
-                            {LoadingToggle()}
-                        </>
-                    ):(
-                        <ActivityIndicator color="white"/> 
-                    )}
-                    </>
+                    <WordCardLevel level={cardSelector} getData={getData} type={type} />
                 )})()}
             </Main>
             )}
             {/* 메뉴버튼 터치시 출력되는 모달 */}
             <MenuModalBg 
-            // style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT,transform: [{scale menuModalIndex}]}}
             style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT, zIndex: menuModalIndex, opacity: menuModalIndex}}
             onPressOut={() =>  {menuModalIndex.setValue(0)}}
             />

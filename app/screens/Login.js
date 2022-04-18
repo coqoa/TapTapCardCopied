@@ -26,9 +26,7 @@ const Container = styled.View`
     align-items: center;
     flex: 1;
 `
-
 const GreetingShell = styled.View`
-    /* position: absolute;s */
     width: 100%;
     height: 25%;
 `
@@ -53,16 +51,14 @@ const NavBtnText = styled.Text`
     font-family: "SDChild";
     font-size: 25px;
 `
-
 const Main = styled.ScrollView`
     flex: 1;
     top: 20px;
-    /* border: 1px solid gray; */
 `
 const Empty = styled.View`
     width: 100%;
-    height: 45%;
-    /* align-items: center; */
+    height: 40%;
+    /* border: 1px solid red; */
 `
 const TextArea = styled.TextInput`
     width: 90%;
@@ -96,13 +92,12 @@ const SocialText = styled(BtnText)`
 `
 const ValidationShell = styled.View`
     width: 70%;
-    height: 23px;
-    /* border: 1px solid red; */
+    height: 18px;
     align-items: center;
     justify-content: center;
 `
 const ValidationText = styled.Text`
-    font-size: 22px;
+    font-size: 18px;
     font-family: "SDChild";
 `
 
@@ -113,26 +108,20 @@ const Login = ({navigation}) => {
     const [loginPassword, setLoginPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [validation, setValidation] = useState("")
-    // const userRef = fstore.collection('TAPTAP')
-    // const firestoreUserColl = firestore().collection('TAPTAPUSER');
-    // console.log("여기부터임 = ",usersCollection)
 
-
+//  로그인 버튼
     const onSubmitLoginEmailEditing = () => {
         loginPasswordInput.current.focus();
     }
     const onSubmitLoginPasswordEditing = async() => {
+        playSound(require("../asset/audio/btnClickSound.mp3"))
+        setLoading(true)
         if(loading){
             return;
         }
-        playSound(require("../asset/audio/btnClickSound.mp3"))
-
-        setLoading(true)
         try{
             if(loginEmail !=="" && loginPassword !==""){
                 await auth().signInWithEmailAndPassword(loginEmail, loginPassword)
-                // const userCredential = await auth().signInWithEmailAndPassword(loginEmail, loginPassword)
-                // console.log("userCredential = ", userCredential.user)
             }else{
                 setLoading(false)
                 setValidation('칸을 채워주세요')
@@ -168,7 +157,7 @@ const Login = ({navigation}) => {
     const [signupPassword, setSignupPassword] = useState("");
     const [signupName, setSignupName] = useState("");
     const [signupNumber, setSignupNumber] = useState("");
-
+// 회원가입 버튼
     const onSubmitSignupEmailEditing = () => {
         signupPasswordInput.current.focus();
     }
@@ -179,21 +168,14 @@ const Login = ({navigation}) => {
         signupNumberInput.current.focus();
     }
     const onSubmitSignupNumberEditing = async() => {
+        playSound(require("../asset/audio/btnClickSound.mp3"))
+        setLoading(true)
         if(loading){
             return;
         }
-        playSound(require("../asset/audio/btnClickSound.mp3"))
-
-        setLoading(true)
         try{
             if(signupEmail !=="" && signupPassword !=="" && signupName !== "" && signupNumver !== ""){
                 await auth().createUserWithEmailAndPassword(signupEmail, signupPassword)
-                // console.log("userCredential = ", userCredential)
-                // await firestoreUserColl.doc(signupEmail).set({
-                //     name:signupName,
-                //     email:signupEmail,
-                //     number:signupNumber,
-                // })
             }else{
                 setLoading(false)
                 setValidation('칸을 채워주세요')
@@ -269,11 +251,13 @@ const Login = ({navigation}) => {
                         onChangeText = {(text) => setLoginPassword(text)} 
                         onSubmitEditing = {onSubmitLoginPasswordEditing}
                     />
+                    <ValidationShell><ValidationText style={{color:colors.DARKGRAY}}>{validation}</ValidationText></ValidationShell>
                     <Btn onPress = {onSubmitLoginPasswordEditing} style={{backgroundColor : navCheck == "Login" ? "#EC705E" : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>로그인</BtnText>}
                     </Btn>
-                    <ValidationShell><ValidationText style={{color:colors.DARKGRAY}}>{validation}</ValidationText></ValidationShell>
-                    <SocialSign style={{backgroundColor:colors.BLUE}} onPress={() => onGoogleButtonPress()}><Ionicons name="logo-google" size={22} color="white" /><SocialText>구글계정으로 시작하기</SocialText></SocialSign>
+                    <SocialSign style={{backgroundColor:colors.BLUE}} onPress={() => onGoogleButtonPress()}>
+                        <Ionicons name="logo-google" size={22} color="white" /><SocialText>구글계정으로 시작하기</SocialText>
+                    </SocialSign>
                     </>
                 ):(
                     <>
@@ -319,10 +303,10 @@ const Login = ({navigation}) => {
                         onChangeText = {(text) => setSignupNumber(text)} 
                         onSubmitEditing = {onSubmitSignupNumberEditing}
                     />
+                    <ValidationShell><ValidationText style={{color: "#EC705E"}}>{validation}</ValidationText></ValidationShell>
                     <Btn onPress = {onSubmitSignupNumberEditing} style={{backgroundColor : navCheck == "Signup" ? colors.NAVY : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>회원가입</BtnText>}
                     </Btn>
-                    <ValidationText style={{color: "#EC705E"}}>{validation}</ValidationText>
                     </>
                 )}
             </Main>
@@ -331,14 +315,8 @@ const Login = ({navigation}) => {
             <Empty style={{transform:[{scale:1}]}}>
             <Welcome />
         </Empty>
-        ):(
-            <>
-            {/* <SocialSign style={{backgroundColor:colors.WhaleBG}} ><Ionicons name="logo-google" size={22} color="white" /><SocialText>구글계정으로 시작하기</SocialText></SocialSign>
-            <GoogleSigninButton style={{borderRadius:20}} onPress={() => onGoogleButtonPress()} /> */}
-            </>
-        )}
+        ):(null)}
     </Container>
-
     )
 }
 export default Login;

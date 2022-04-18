@@ -20,20 +20,19 @@ const MenuBoxShell = styled.View`
     align-items: center;
     z-index: 1;
 `
-    const MenuBox = styled(Animated.createAnimatedComponent(Pressable))`
-        background-color: white;
-        width: 250px;
-        height: 80px;
-        margin: 20px;
-        justify-content: center;
-        align-items: center;
-        border-radius: 25px;
-    `
-    const MenuText = styled.Text`
-        font-size: 35px;
-        font-family: 'SDChild';
-    `
-
+const MenuBox = styled(Animated.createAnimatedComponent(Pressable))`
+    background-color: white;
+    width: 250px;
+    height: 80px;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+`
+const MenuText = styled.Text`
+    font-size: 35px;
+    font-family: 'SDChild';
+`
 const SelectModalBG = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     width: 100%;
@@ -79,13 +78,8 @@ const WordSelectTitleText = styled(WordSelectText)`
     color: ${colors.REALDARKGRAY};
     margin-bottom: 10px;
 `
-
 // -------------------------------------------------------------------------------------------------
-// console.log("오스아이디 = ",auth())
-// console.log("오스폰번호 = ",auth()._user.phonenumber)
-// console.log("오스이메일 = ",auth()._user.email)
 const Menu = ({navigation}) => {
-
     function playSound(sound){
         // console.log('Playing '+sound);
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
@@ -98,7 +92,7 @@ const Menu = ({navigation}) => {
         }).catch((error)=>{console.log('Menu = ', error)});
     }
     
-    // 메뉴 모달창 관련 버튼애니메이션
+// 메뉴 모달창 관련 버튼애니메이션
     // 가나다버튼
     const ganadaBtnAnimation = useRef(new Animated.Value(1)).current;
     // ABC버튼
@@ -119,39 +113,39 @@ const Menu = ({navigation}) => {
     //메뉴 버튼 애니메이션 & 실행함수
     const btnFunc = (a,b,c) => {
         return(
-            <MenuBox
-                style={{transform: [{scale:a}], 
-                    shadowColor: "black",
-                    shadowOpacity: 0.2,
-                    shadowRadius: 3,
-                    shadowOffset: {height: 2,width: 0,},
-                    elevation:5
-                }}
-                onPress={() => {playSound(require("../asset/audio/btnClickSound.mp3"))}}
-                onPressIn={() => {a.setValue(0.9)}}
-                onPressOut={() => (BtnClick(b),a.setValue(1))}
-            >
-                    <MenuText>{c}</MenuText>
-            </MenuBox>
+        <MenuBox
+            style={{transform: [{scale:a}], 
+                shadowColor: "black",
+                shadowOpacity: 0.1,
+                shadowRadius: 3,
+                shadowOffset: {height: 2,width: 0,},
+                elevation:1
+            }}
+            onPress={() => {playSound(require("../asset/audio/btnClickSound.mp3"))}}
+            onPressIn={() => {a.setValue(0.9)}}
+            onPressOut={() => (BtnClick(b),a.setValue(1))}
+        >
+                <MenuText>{c}</MenuText>
+        </MenuBox>
         )
     }
     // 모달창 내부 버튼 애니메이션 & 실행함수
     const modalBtnFunc = (a,b,c,d) => {
         return(
-            <WordKorBtn 
-                style={{transform: [{scale:a}], backgroundColor:b, 
-                    shadowColor: "black",
-                    shadowOpacity: 0.2,
-                    shadowRadius: 3,
-                    shadowOffset: {height: 2,width: 0,},
-                    elevation:5
-                }}
-                onPress={()=>{playSound(require("../asset/audio/btnClickSound.mp3"))}}
-                onPressIn={() => (a.setValue(0.9))}
-                onPressOut={() => {BtnClick(c),a.setValue(1)}}
-            >
-                <WordSelectText>{d}</WordSelectText>
-            </WordKorBtn>
+        <WordKorBtn 
+            style={{transform: [{scale:a}], backgroundColor:b, 
+                shadowColor: "black",
+                shadowOpacity: 0.1,
+                shadowRadius: 3,
+                shadowOffset: {height: 2,width: 0,},
+                elevation:1
+            }}
+            onPress={()=>{playSound(require("../asset/audio/btnClickSound.mp3"))}}
+            onPressIn={() => (a.setValue(0.9))}
+            onPressOut={() => {BtnClick(c),a.setValue(1)}}
+        >
+            <WordSelectText>{d}</WordSelectText>
+        </WordKorBtn>
         )
     }
     // WordPlay.js에 props 전달하는 함수
@@ -159,21 +153,18 @@ const Menu = ({navigation}) => {
         navigation.navigate('WordPlay',{type:e}) 
         animalModalZIndex.setValue(0)
     }
-
     const logout = async()=>{
         await auth().signOut()
     }
     const firestoreUserColl = firestore().collection('TAPTAPUSER');
     useEffect(async()=>{
         await firestoreUserColl.doc(auth()._user.email).set({
-            // name:signupName,
             email:auth()._user.email,
-            // number:signupNumber,
         })
     },[])
+
     return(
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
-
         <MenuBoxShell>
             <TouchableOpacity style={{position:"absolute", left:-10, top:20}} onPress={()=>{logout(), console.log('로그아웃')}}><Text>로그아웃</Text></TouchableOpacity>
             {btnFunc(ganadaBtnAnimation,"Ganada","가나다")}
@@ -182,10 +173,10 @@ const Menu = ({navigation}) => {
             <MenuBox 
                 style={{transform: [{scale:wordPlayBtnAnimation}],
                     shadowColor: "black",
-                    shadowOpacity: 0.3,
+                    shadowOpacity: 0.1,
                     shadowRadius: 3,
-                    shadowOffset: {height: 2,width: 0,},
-                    elevation:5
+                    shadowOffset: {height: 2,width: 0},
+                    elevation:1
                 }}
                 onPress={()=>{playSound(require("../asset/audio/btnClickSound.mp3"))}}
                 onPressIn={() => {wordPlayBtnAnimation.setValue(0.9)}}
@@ -198,10 +189,15 @@ const Menu = ({navigation}) => {
         {/* 동물 모달창 세부사항 */}
         {/*  모달컨테이너를 제외한 전체화면 : 터치시 모달 닫기위해 구현 */}
         <SelectModalBG style={{zIndex:animalModalZIndex, opacity:animalModalZIndex}} onPress={()=>{animalModalZIndex.setValue(0), animalSelectScale.setValue(0)}}>
-
-            <SelectContainer style={{transform:[{scale:animalSelectScale}]}}>
+            <SelectContainer style={{
+                transform:[{scale:animalSelectScale}], 
+                shadowColor: "black",
+                shadowOpacity: 0.1,
+                shadowRadius: 3,
+                shadowOffset: {height: 2,width: 0},
+                elevation:1
+            }}>
                 <WordSelectTitle><WordSelectTitleText>동물</WordSelectTitleText></WordSelectTitle>
-
                 {modalBtnFunc(KorBtnAnimation,colors.BLUE,"AnimalKOR","한글")}
                 {modalBtnFunc(EngBtnAnimation,colors.REDORANGE,"AnimalENG","영어")}
             </SelectContainer>

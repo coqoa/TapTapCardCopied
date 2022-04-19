@@ -16,8 +16,10 @@ import firestore from '@react-native-firebase/firestore';
 
 import AnimalAnimation from "./AnimalAnimation";
 import ClearModal from './ClearModal';
-import CorrectAnswer from "./lottieComponent/CorrectAnswer";
 import QuestionMarkAnimation from './lottieComponent/QuestionMarkAnimation';
+import CorrectAnswer from "./lottieComponent/CorrectAnswer";
+import WrongAnswer from './lottieComponent/WrongAnswer';
+
 //Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -180,7 +182,7 @@ const DistractorText = styled(Animated.createAnimatedComponent(Text))`
 `
 const CorrectAnswerContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
-    top: 50%;
+    bottom: 25%;
     width: 100px;
     height: 100px;
     /* border-radius: 15px; */
@@ -190,6 +192,7 @@ const CorrectAnswerImage = styled.Image`
     width: 100%;
     height: 100%;
 `
+const WrongContainer = styled(CorrectAnswerContainer)``
 
 //마지막 카드에서 생성되는 모달창 style
 const ClearModalContainer = styled(Animated.createAnimatedComponent(View))`
@@ -564,17 +567,15 @@ export const WordCardLevel = (props) => {
                 onPanResponderStart:()=>{Animated.sequence([a]).start()},
                 onPanResponderEnd:()=>{
                     distractorOpacity.setValue(0)
-                    // correctAnswerMarkValue.setValue(3)
                     setCorrectAnswerMark(true)
                     setTimeout(()=>{
                         setCorrectAnswerMark(false)
                     },1800)
                     Animated.parallel([
-                        // Animated.sequence([checkMarkOn, checkMarkOff]),
+                        
                         b,
                         distractorContainerInvisible,
                         distractorContainerScaleMini,
-                        // Animated.sequence([checkMarkOff]),
                         Animated.sequence([secondTextOn, secondTextOff])
                     ]).start();
                 }
@@ -592,11 +593,28 @@ export const WordCardLevel = (props) => {
                 onStartShouldSetPanResponder:()=>true,
                 onPanResponderStart:()=>{Animated.sequence([a]).start()},
                 onPanResponderEnd:()=>{
-                    Animated.parallel([b]).start();
+                    wrongShell.setValue(1)
+                    Animated.parallel([
+                        b,
+                        Animated.sequence([wrongShellOn, wrongShellOff]),
+                    ]).start();
                 }
             })).current
         )
     }
+
+    //오답애니메이션 
+    const wrongShell = useRef(new Animated.Value(0)).current;
+    const wrongShellOn = Animated.spring(wrongShell, {
+        toValue:1.5,
+        useNativeDriver:true
+    })
+    const wrongShellOff = Animated.spring(wrongShell, {
+        toValue:0,
+        delay:800,
+        useNativeDriver:true
+    })
+    
     const wrong1 = distracttorWrong(btn1PressOn, btn1PressOut)
     const wrong2 = distracttorWrong(btn2PressOn, btn2PressOut)
     const wrong3 = distracttorWrong(btn3PressOn, btn3PressOut)
@@ -613,13 +631,13 @@ export const WordCardLevel = (props) => {
                     <DistractorText style={{opacity:distractorOpacity}}>{dataName(d)}</DistractorText>
                 </Distractor>
             ):(
-                <Distractor 
-                {...b.panHandlers} 
-                style={{transform:[{scale:c}]}}
-                onPressIn={()=>playSound(wrongAudio(d))}
-                >
-                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(d)}</DistractorText>
-                </Distractor>
+            <Distractor 
+            {...b.panHandlers} 
+            style={{transform:[{scale:c}]}}
+            onPressIn={()=>playSound(wrongAudio(d))}
+            >
+                <DistractorText style={{opacity:distractorOpacity}}>{dataName(d)}</DistractorText>
+            </Distractor>
             )
         )
     }
@@ -644,19 +662,6 @@ export const WordCardLevel = (props) => {
             Animated.sequence([secondTextOn, secondTextOff]).start();
         }
     })).current
-
-    //정답애니메이션 ( 오답체크하는데 쓰자)
-    const correctAnswerMarkValue = useRef(new Animated.Value(0)).current;
-    const checkMarkOn = Animated.spring(correctAnswerMarkValue, {
-        toValue:2,
-        useNativeDriver:true
-    })
-    const checkMarkOff = Animated.spring(correctAnswerMarkValue, {
-        toValue:0,
-        delay:1000,
-        useNativeDriver:true
-    })
-    
 
     //실사 애니메이션
      // 실제사진 모달 관련 애니메이션
@@ -1082,11 +1087,13 @@ export const WordCardLevel = (props) => {
                             </CardContents>
                             )}
                         </>)}
+                        {/* 오답체크 */}
+                        <WrongContainer style={{transform:[{scale:wrongShell}], zIndex:2}}>
+                            <WrongAnswer />
+                        </WrongContainer>
                         {/* 정답체크 */}
-                        {/* <CorrectAnswerContainer style={{transform:[{scale:correctAnswerMarkValue}], zIndex:2}}> */}
                         {correctAnswerMark && (
                             <CorrectAnswerContainer style={{transform:[{scale:3}], zIndex:2}}>
-                                {/* <CorrectAnswerImage source={require("../asset/images/Check.png")} /> */}
                                 <CorrectAnswer />
                             </CorrectAnswerContainer>
                         )}

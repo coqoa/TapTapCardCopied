@@ -1,2 +1,20 @@
-objc[75965]: Class AMSupportURLConnectionDelegate is implemented in both /usr/lib/libauthinstall.dylib (0x20a2afb78) and /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/MobileDevice (0x1111442c8). One of the two will be used. Which one is undefined.
-objc[75965]: Class AMSupportURLSession is implemented in both /usr/lib/libauthinstall.dylib (0x20a2afbc8) and /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/MobileDevice (0x111144318). One of the two will be used. Which one is undefined.
+objc[88097]: Class AMSupportURLConnectionDelegate is implemented in both /usr/lib/libauthinstall.dylib (0x20a2afb78) and /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/MobileDevice (0x1108b82c8). One of the two will be used. Which one is undefined.
+objc[88097]: Class AMSupportURLSession is implemented in both /usr/lib/libauthinstall.dylib (0x20a2afbc8) and /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/MobileDevice (0x1108b8318). One of the two will be used. Which one is undefined.
+2022-04-20 00:23:26.145 xcodebuild[88097:1998567]  DVTAssertions: Warning in /Library/Caches/com.apple.xbs/Sources/DVTiOSFrameworks/DVTiOSFrameworks-19527/DTDeviceKitBase/DTDKRemoteDeviceData.m:373
+Details:  (null) deviceType from 133f81c9ab243a6af19926d27a3565c9d7d46e3d was NULL when -platform called.
+Object:   <DTDKMobileDeviceToken: 0x13190e2c0>
+Method:   -platform
+Thread:   <NSThread: 0x11c0e8d60>{number = 4, name = (null)}
+Please file a bug at https://feedbackassistant.apple.com with this warning message and any useful information you can provide.
+2022-04-20 00:23:26.340 xcodebuild[88097:1998597]  DVTAssertions: Warning in /Library/Caches/com.apple.xbs/Sources/DVTiOSFrameworks/DVTiOSFrameworks-19527/DTDeviceKitBase/DTDKRemoteDeviceData.m:373
+Details:  (null) deviceType from 133f81c9ab243a6af19926d27a3565c9d7d46e3d was NULL when -platform called.
+Object:   <DTDKMobileDeviceToken: 0x13190e2c0>
+Method:   -platform
+Thread:   <NSThread: 0x11c0e8c00>{number = 3, name = (null)}
+Please file a bug at https://feedbackassistant.apple.com with this warning message and any useful information you can provide.
+2022-04-20 00:23:26.435 xcodebuild[88097:1998597]  DVTAssertions: Warning in /Library/Caches/com.apple.xbs/Sources/DVTiOSFrameworks/DVTiOSFrameworks-19527/DTDeviceKitBase/DTDKRemoteDeviceData.m:373
+Details:  (null) deviceType from 133f81c9ab243a6af19926d27a3565c9d7d46e3d was NULL when -platform called.
+Object:   <DTDKMobileDeviceToken: 0x13190e2c0>
+Method:   -platform
+Thread:   <NSThread: 0x11c0e8c00>{number = 3, name = (null)}
+Please file a bug at https://feedbackassistant.apple.com with this warning message and any useful information you can provide.

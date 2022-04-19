@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from "react";
-import { Text, View, Alert, ActivityIndicator, Dimensions, KeyboardAvoidingView, ScrollView} from "react-native";
+import { Text, View, Alert, ActivityIndicator, Dimensions, KeyboardAvoidingView, ScrollView, Platform} from "react-native";
 import styled from "styled-components/native";
 import {colors} from "../component/Color"
 import { Audio } from 'expo-av';
@@ -12,6 +12,8 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-google-signin/google-signin';
 import { appleAuth, AppleButton } from '@invertase/react-native-apple-authentication';
+import AppleLogin from "../component/firebaseComponent/AppleLogin";
+import GoogleLogin from "../component/firebaseComponent/GoogleLogin";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -104,36 +106,36 @@ const Login = ({navigation}) => {
     const [loading, setLoading] = useState(false);
     const [validation, setValidation] = useState("")
 
-    //애플소셜로그인
-    async function onAppleButtonPress() {
-        // 1). 로그인 요청 수행
-        const appleAuthRequestResponse = await appleAuth.performRequest({
-            requestedOperation: appleAuth.Operation.LOGIN,
-            requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
-        });
-        // 2).요청이 성공하면 토큰과 nonce를 추출
-        const { identityToken, nonce } = appleAuthRequestResponse;
-        if (identityToken) {
-            // 3).Firebase `AppleAuthProvider` credential 생성
-            const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
+    // //애플소셜로그인
+    // async function onAppleButtonPress() {
+    //     // 1). 로그인 요청 수행
+    //     const appleAuthRequestResponse = await appleAuth.performRequest({
+    //         requestedOperation: appleAuth.Operation.LOGIN,
+    //         requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+    //     });
+    //     // 2).요청이 성공하면 토큰과 nonce를 추출
+    //     const { identityToken, nonce } = appleAuthRequestResponse;
+    //     if (identityToken) {
+    //         // 3).Firebase `AppleAuthProvider` credential 생성
+    //         const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
         
-            // 4). 생성된 `AppleAuthProvider` credential을 사용해서 Firebase인증 요청을 시작한다,
-            //     이 예제에서는 `signInWithCredential`이 사용되지만, 기존 사용자와 연결하려면 `linkWithCredential`를 호출할 수 있다
-            const userCredential = await auth().signInWithCredential(appleCredential);
+    //         // 4). 생성된 `AppleAuthProvider` credential을 사용해서 Firebase인증 요청을 시작한다,
+    //         //     이 예제에서는 `signInWithCredential`이 사용되지만, 기존 사용자와 연결하려면 `linkWithCredential`를 호출할 수 있다
+    //         const userCredential = await auth().signInWithCredential(appleCredential);
         
-            // 사용자가 로그인되면 모든Firebase의 `onAuthStateChanged` 리스너가 트리거된다 
-            console.log(`Login.js 애플을 통해 인증된 파이어베이스, 유저아이디: ${userCredential.user.uid}`);
-          } else {
-            // 재시도하기 위한 처리부분
-          }
-    }
+    //         // 사용자가 로그인되면 모든Firebase의 `onAuthStateChanged` 리스너가 트리거된다 
+    //         console.log(`Login.js 애플을 통해 인증된 파이어베이스, 유저아이디: ${userCredential.user.uid}`);
+    //       } else {
+    //         // 재시도하기 위한 처리부분
+    //       }
+    // }
     
     //구글소셜로그인
-    const onGoogleButtonPress = async () => { 
-        const { idToken } = await GoogleSignin.signIn(); 
-        const googleCredential = auth.GoogleAuthProvider.credential(idToken); 
-        return auth().signInWithCredential(googleCredential); 
-    }
+    // const onGoogleButtonPress = async () => { 
+    //     const { idToken } = await GoogleSignin.signIn(); 
+    //     const googleCredential = auth.GoogleAuthProvider.credential(idToken); 
+    //     return auth().signInWithCredential(googleCredential); 
+    // }
 //  로그인 버튼
     const onSubmitLoginEmailEditing = () => {
         loginPasswordInput.current.focus();
@@ -280,27 +282,9 @@ const Login = ({navigation}) => {
                     <Btn onPress = {onSubmitLoginPasswordEditing} style={{backgroundColor : navCheck == "Login" ? "#EC705E" : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>로그인</BtnText>}
                     </Btn>
-                    <SocialSign style={{backgroundColor:colors.BLUE}} onPress={() => onGoogleButtonPress()}>
-                        <Ionicons name="logo-google" size={22} color="white" /><SocialText>구글계정으로 시작하기</SocialText>
-                    </SocialSign>
-                    {/* <AppleButton
-                        buttonStyle={AppleButton.Style.WHITE}
-                        buttonType={AppleButton.Type.SIGN_IN}
-                        style={{
-                        width: 160, // You must specify a width
-                        height: 45, // You must specify a height
-                        }}
-                        onPress={() => onAppleButtonPress()}
-                    /> */}
-                    {/* Render your other social provider buttons here */}
-                    {appleAuth.isSupported && (
-                        <AppleButton
-                        cornerRadius={5}
-                        style={{ width: 200, height: 60 }}
-                        buttonStyle={AppleButton.Style.WHITE}
-                        buttonType={AppleButton.Type.SIGN_IN}
-                        onPress={() => onAppleButtonPress()}
-                        />
+                    <GoogleLogin />
+                    {Platform.OS == "ios" && (
+                        <AppleLogin />
                     )}
                     </>
                 ):(
@@ -325,7 +309,7 @@ const Login = ({navigation}) => {
                         onChangeText = {(text) => setSignupPassword(text)} 
                         onSubmitEditing = {onSubmitSignupPasswordEditing}
                         />
-                    <TextArea 
+                    {/* <TextArea 
                         ref={signupNameInput}
                         placeholder="이름" 
                         value={signupName}  
@@ -346,7 +330,7 @@ const Login = ({navigation}) => {
                         returnKeyType="done"
                         onChangeText = {(text) => setSignupNumber(text)} 
                         onSubmitEditing = {onSubmitSignupNumberEditing}
-                    />
+                    /> */}
                     <ValidationShell><ValidationText style={{color: "#EC705E"}}>{validation}</ValidationText></ValidationShell>
                     <Btn onPress = {onSubmitSignupNumberEditing} style={{backgroundColor : navCheck == "Signup" ? colors.NAVY : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>회원가입</BtnText>}
@@ -357,8 +341,8 @@ const Login = ({navigation}) => {
         </Contents>
         {navCheck == "Signup" ? (
             <Empty style={{transform:[{scale:1}]}}>
-            <Welcome />
-        </Empty>
+                <Welcome />
+            </Empty>
         ):(null)}
     </Container>
     )

@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import * as Font from "expo-font"
 import AppLoading from 'expo-app-loading';
 import React, { useState, useEffect } from 'react';
+import {View, ActivityIndicator} from "react-native";
 import InStack from './app/navigators/InStack';
 import OutStack from './app/navigators/OutStack'
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -24,8 +25,8 @@ export default function App() {
       googleSigninConfigure();
   },[])
 
-  useEffect(async()=>{
-    await auth().onAuthStateChanged((user)=>{
+  useEffect(()=>{
+    auth().onAuthStateChanged((user)=>{
       if(user){
         setIsLoggedIn(true)
       }else{

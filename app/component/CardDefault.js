@@ -141,9 +141,9 @@ const QuestionMarkBtn = styled(Animated.createAnimatedComponent(Pressable))`
     width: 100%;
     height: 100%;
 `
-const QuestionMarkImage = styled.Image`
-    width: 100%;
-    height: 100%;
+const QuestionLottie = styled.View`
+    flex:1;
+    top:10px;
 `
 //동물 3레벨 선택지박스
 const DistractorContainer = styled(Animated.createAnimatedComponent(View))`
@@ -306,6 +306,14 @@ border-radius: 20px;
 // ---------------------------------------------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
+
+    //카드 로딩
+    // const [loading,setLoading] = useState(true);
+    // useEffect(()=>{
+    //     setTimeout(function(){
+    //         setLoading(false)
+    //     },500)
+    // },[])
     //  데이터베이스 이메일체크(결제고객체크)
     const PaymentUserCollection = firestore().collection('PaymentUsers');
 
@@ -981,7 +989,9 @@ export const WordCardLevel = (props) => {
                                         {props.level == "word2LV" && (
                                             <QuestionMarkBg>
                                                 <QuestionMarkBtn>    
-                                                    <QuestionMarkAnimation />
+                                                    <QuestionLottie style={{transform:[{scale:2}]}}>
+                                                        <QuestionMarkAnimation />
+                                                    </QuestionLottie>
                                                 </QuestionMarkBtn>                                                    
                                             </QuestionMarkBg>
                                         )}
@@ -1066,8 +1076,10 @@ export const WordCardLevel = (props) => {
 
                                 {props.level == "word2LV" && (
                                     <QuestionMarkBg  style={{opacity:questionOpacity, transform:[{scale:questionScale}]}}>
-                                        <QuestionMarkBtn {...questionPan.panHandlers} onPress={() => {playSound(itemAudio(firstIndex)),clickBlockerFunc()} } >  
-                                            <QuestionMarkAnimation />  
+                                        <QuestionMarkBtn {...questionPan.panHandlers} onPress={() => {playSound(itemAudio(firstIndex)),clickBlockerFunc()}} >  
+                                            <QuestionLottie style={{transform:[{scale:2}]}}>
+                                                <QuestionMarkAnimation />
+                                            </QuestionLottie>
                                         </QuestionMarkBtn>                                                    
                                     </QuestionMarkBg>
                                 )}

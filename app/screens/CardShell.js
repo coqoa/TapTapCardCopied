@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {View, Dimensions, PanResponder, Animated, Pressable, TouchableOpacity, Text } from "react-native";
+import {View, Dimensions, PanResponder, Animated, Pressable, TouchableOpacity, Text, ActivityIndicator } from "react-native";
 import { Audio } from 'expo-av';
 import styled from "styled-components";
 import { colors } from "../component/Color";
@@ -144,6 +144,16 @@ const PaymentText = styled(ModalMenuText)`
 const CardShell = ({route, navigation}) => {
 
     const [loading, setLoading] = useState(false);
+    const contentsLoading = () => {
+        setLoading(true)
+        setTimeout(function(){
+            setLoading(false)
+        },300)
+    }
+    useEffect(()=>{
+        contentsLoading()
+    },[])
+
     const [cardSelector, setCardSelector] = useState();
     const [mainScreenRender, setMainScreenRender] = useState(false)
     const [typeCheckRes, setTypeCheckRes] = useState("")
@@ -189,6 +199,7 @@ const CardShell = ({route, navigation}) => {
             useRef(PanResponder.create({
                 onStartShouldSetPanResponder: () => true,
                 onPanResponderEnd:()=>{
+                    contentsLoading()
                     menuModalIndex.setValue(0)
                     return cardCheck(a)
                 }            
@@ -365,13 +376,17 @@ const CardShell = ({route, navigation}) => {
             </Top>
             </TopContainer>
             {/* 카드가 출력되는 부분은 CardDefault 컴포넌트를 불러와서 사용함 */}
-            {mainScreenRender && (
-            <Main>
-                {(()=>{ return (
-                    <WordCardLevel level={cardSelector} getData={getData} type={type} />
-                )})()}
-            </Main>
-            )}
+            {mainScreenRender && (<>
+                {loading ? (
+                    <ActivityIndicator color={"white"} style={{flex:1}} />
+                ):(
+                    <Main>
+                        {(()=>{ return (
+                            <WordCardLevel level={cardSelector} getData={getData} type={type} />
+                        )})()}
+                    </Main>
+                )}
+            </>)}
             {/* 메뉴버튼 터치시 출력되는 모달 */}
             <MenuModalBg 
             style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT, zIndex: menuModalIndex, opacity: menuModalIndex}}

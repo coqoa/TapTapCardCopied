@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { colors } from '../component/Color';
 import styled from "styled-components/native";
 import auth from '@react-native-firebase/auth';
@@ -25,22 +25,32 @@ export default function PaymentTest({ navigation }) {
   const [merchantUid, setMerchantUid] = useState(`mid_${new Date().getTime()}`);
   const [name, setName] = useState('아임포트 결제데이터분석');
   const [amount, setAmount] = useState('1000');
-  const [buyerName, setBuyerName] = useState('최병민');
-  const [buyerTel, setBuyerTel] = useState('01012341234');
+  const [buyerName, setBuyerName] = useState('');
+  const [buyerTel, setBuyerTel] = useState("");
   const [buyerEmail, setBuyerEmail] = useState(auth()._user.email);
   const [vbankDue, setVbankDue] = useState('');
   const [bizNum, setBizNum] = useState('');
   const [escrow, setEscrow] = useState(false);
   const [digital, setDigital] = useState(false);
 
+  const [validationCheck, setValidationCheck] = useState("")
   const TextArea = styled.Text`
     margin: 10px 15px;
     /* margin-left: 15px; */
     color:${colors.GRAY};
   `
+  const Validation = styled.Text`
+  margin-top: 10px;
+    text-align: center;
+    color:${colors.TOMATO};
+  `
+
+  const buyerEmailRef = useRef();
+  const buyerTelRef = useRef();
+  
   return (
-    <ScrollView>
-      <FormControl style={{padding:60}}>
+    <ScrollView >
+      <FormControl style={{paddingTop:30, paddingLeft:60, paddingRight:60}}>
         <Stack>
           <FormControl.Label>결제 대행사</FormControl.Label>
           <Picker
@@ -117,44 +127,6 @@ export default function PaymentTest({ navigation }) {
           <Input value={name} onChangeText={(value) => setName(value)} />
         </Stack> */}
         <Stack>
-          <FormControl.Label>상품내용</FormControl.Label>
-          <TextArea>컨텐츠 제한을 해제하기 위한 상품</TextArea>
-        </Stack>
-        <Stack>
-          <FormControl.Label>주문번호</FormControl.Label>
-          <TextArea>{merchantUid}</TextArea>
-          {/* <Input
-            value={merchantUid}
-            onChangeText={(value) => setMerchantUid(value)}
-          /> */}
-        </Stack>
-        <Stack>
-          <FormControl.Label>결제금액</FormControl.Label>
-          <TextArea>{amount+"원"}</TextArea>
-          {/* <Input
-            value={amount}
-            keyboardType="number-pad"
-            onChangeText={(value) => setAmount(value)}
-          /> */}
-        </Stack>
-        <Stack>
-          <FormControl.Label>이름</FormControl.Label>
-          <TextArea>{buyerName}</TextArea>
-          {/* <Input
-            value={buyerName}
-            onChangeText={(value) => setBuyerName(value)}
-          /> */}
-        </Stack>
-        <Stack>
-          <FormControl.Label>전화번호</FormControl.Label>
-          <TextArea>{buyerTel}</TextArea>
-          {/* <Input
-            value={buyerTel}
-            keyboardType="number-pad"
-            onChangeText={(value) => setBuyerTel(value)}
-          /> */}
-        </Stack>
-        <Stack>
           <FormControl.Label>이메일</FormControl.Label>
           <TextArea>{buyerEmail}</TextArea>
           {/* <Input
@@ -162,8 +134,45 @@ export default function PaymentTest({ navigation }) {
             onChangeText={(value) => setBuyerEmail(value)}
           /> */}
         </Stack>
+        <Stack>
+          <FormControl.Label>이름</FormControl.Label>
+          {/* <TextArea>{buyerName}</TextArea> */}
+          <Input
+            ref={buyerEmailRef}
+            value={buyerName}
+            autoCorrect={false}
+            autoComplete="off"
+            onChangeText={(value) => setBuyerName(value)}
+          />
+        </Stack>
+        <Stack>
+          <FormControl.Label>전화번호</FormControl.Label>
+          {/* <TextArea>{buyerTel}</TextArea> */}
+          <Input
+            ref={buyerTelRef}
+            value={buyerTel}
+            type="tel"
+            placeholder="숫자 11자리"
+            keyboardType="number-pad"
+            onChangeText={(value) => setBuyerTel(value)}
+          />
+        </Stack>
+        {/* <Stack>
+          <FormControl.Label>상품내용</FormControl.Label>
+          <TextArea>컨텐츠 제한을 해제하기 위한 상품</TextArea>
+        </Stack>
+        <Stack>
+          <FormControl.Label>주문번호</FormControl.Label>
+          <TextArea>{merchantUid}</TextArea>
+        </Stack>
+        <Stack>
+          <FormControl.Label>결제금액</FormControl.Label>
+          <TextArea>{amount+"원"}</TextArea>
+        </Stack> */}
+        
+        <Validation>{validationCheck}</Validation>
         <Button
-        style={{marginTop:30, backgroundColor:colors.WhaleBG}}
+        style={{marginTop:10, backgroundColor:colors.WhaleBG}}
           onPress={() => {
             const data = {
               params: {
@@ -247,8 +256,17 @@ export default function PaymentTest({ navigation }) {
                 },
               ];
             }
-
-            navigation.navigate('Payment', data);
+            {buyerName.length > 1 && buyerTel.length > 7 &&(
+              navigation.navigate('Payment', data)
+            )}
+            {buyerName.length < 2 && (
+              setValidationCheck("이름을 정확히 입력해주세요"),
+              buyerEmailRef.current.focus()
+            )}
+            {buyerTel.length < 8 &&(
+              setValidationCheck("전화번호를 정확히 입력해주세요"),
+              buyerTelRef.current.focus()
+          )}
           }}
         >
           <Text style={{fontSize:16, color:colors.BEIGE}}>결제하기</Text>

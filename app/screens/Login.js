@@ -1,22 +1,17 @@
-import React, {useState, useRef, useEffect} from "react";
-import { Text, View, Alert, ActivityIndicator, Dimensions, KeyboardAvoidingView, ScrollView, Platform} from "react-native";
+import React, {useState, useRef} from "react";
+import {ActivityIndicator,Platform} from "react-native";
 import styled from "styled-components/native";
 import {colors} from "../component/Color"
 import { Audio } from 'expo-av';
-import {Ionicons} from "@expo/vector-icons";
-
-import Greeting from "../component/lottieComponent/Greeting";
-import Welcome from "../component/lottieComponent/Welcome";
 
 import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
-import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-google-signin/google-signin';
-import { appleAuth, AppleButton } from '@invertase/react-native-apple-authentication';
 import AppleLogin from "../component/firebaseComponent/AppleLogin";
 import GoogleLogin from "../component/firebaseComponent/GoogleLogin";
 
-const SCREEN_WIDTH = Dimensions.get("window").width;
-const SCREEN_HEIGHT = Dimensions.get("window").height;
+import Greeting from "../component/lottieComponent/Greeting";
+import Welcome from "../component/lottieComponent/Welcome";
+import GreetingNavy from '../component/lottieComponent/GreetingNavy';
+
 
 const Container = styled.View`
     justify-content: center;
@@ -30,7 +25,7 @@ const GreetingShell = styled.View`
 const Contents = styled.View`
     flex: 1;
     width: 80%;
-    top: 20px;
+    top: 10px;
     border-radius: 15px;
 `
 const Nav = styled.View`
@@ -39,9 +34,10 @@ const Nav = styled.View`
     
 `
 const NavBtn = styled.TouchableOpacity`
-    width: 50%;
+    width: 40%;
     height: 40px;
     justify-content: center;
+    /* border: 1px solid red; */
 `
 const NavBtnText = styled.Text`
     text-align: center;
@@ -50,11 +46,12 @@ const NavBtnText = styled.Text`
 `
 const Main = styled.ScrollView`
     flex: 1;
-    top: 20px;
+    top: 0px;
 `
 const Empty = styled.View`
     width: 100%;
-    height: 40%;
+    padding: 0px;
+    height: 30%;
     /* border: 1px solid red; */
 `
 const TextArea = styled.TextInput`
@@ -82,11 +79,6 @@ const BtnText = styled.Text`
     font-size: 23px;
     font-family: "SDChild";
 `
-const SocialSign = styled(Btn)``
-const SocialText = styled(BtnText)`
-    font-size: 20px;
-    padding: 0px 10px ;
-`
 const ValidationShell = styled.View`
     width: 70%;
     height: 18px;
@@ -99,56 +91,26 @@ const ValidationText = styled.Text`
 `
 
 const Login = ({navigation}) => {
-    const loginPasswordInput = useRef()
+    const PasswordInput = useRef()
     const [navCheck, setNavCheck] = useState("Login")
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [validation, setValidation] = useState("")
 
-    // //애플소셜로그인
-    // async function onAppleButtonPress() {
-    //     // 1). 로그인 요청 수행
-    //     const appleAuthRequestResponse = await appleAuth.performRequest({
-    //         requestedOperation: appleAuth.Operation.LOGIN,
-    //         requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
-    //     });
-    //     // 2).요청이 성공하면 토큰과 nonce를 추출
-    //     const { identityToken, nonce } = appleAuthRequestResponse;
-    //     if (identityToken) {
-    //         // 3).Firebase `AppleAuthProvider` credential 생성
-    //         const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
-        
-    //         // 4). 생성된 `AppleAuthProvider` credential을 사용해서 Firebase인증 요청을 시작한다,
-    //         //     이 예제에서는 `signInWithCredential`이 사용되지만, 기존 사용자와 연결하려면 `linkWithCredential`를 호출할 수 있다
-    //         const userCredential = await auth().signInWithCredential(appleCredential);
-        
-    //         // 사용자가 로그인되면 모든Firebase의 `onAuthStateChanged` 리스너가 트리거된다 
-    //         console.log(`Login.js 애플을 통해 인증된 파이어베이스, 유저아이디: ${userCredential.user.uid}`);
-    //       } else {
-    //         // 재시도하기 위한 처리부분
-    //       }
-    // }
-    
-    //구글소셜로그인
-    // const onGoogleButtonPress = async () => { 
-    //     const { idToken } = await GoogleSignin.signIn(); 
-    //     const googleCredential = auth.GoogleAuthProvider.credential(idToken); 
-    //     return auth().signInWithCredential(googleCredential); 
-    // }
 //  로그인 버튼
-    const onSubmitLoginEmailEditing = () => {
-        loginPasswordInput.current.focus();
+    const onSubmitEmail = () => {
+        PasswordInput.current.focus();
     }
-    const onSubmitLoginPasswordEditing = async() => {
+    const loginEditing = async() => {
         playSound(require("../asset/audio/btnClickSound.mp3"))
         setLoading(true)
         if(loading){
             return;
         }
         try{
-            if(loginEmail !=="" && loginPassword !==""){
-                await auth().signInWithEmailAndPassword(loginEmail, loginPassword)
+            if(email !=="" && password !==""){
+                await auth().signInWithEmailAndPassword(email, password)
             }else{
                 setLoading(false)
                 setValidation('칸을 채워주세요')
@@ -176,33 +138,16 @@ const Login = ({navigation}) => {
         }
     }
 
-    const signupPasswordInput = useRef()
-    const signupNameInput = useRef()
-    const signupNumberInput = useRef()
-
-    const [signupEmail, setSignupEmail] = useState("");
-    const [signupPassword, setSignupPassword] = useState("");
-    const [signupName, setSignupName] = useState("");
-    const [signupNumber, setSignupNumber] = useState("");
 // 회원가입 버튼
-    const onSubmitSignupEmailEditing = () => {
-        signupPasswordInput.current.focus();
-    }
-    const onSubmitSignupPasswordEditing = () => {
-        signupNameInput.current.focus();
-    }
-    const onSubmitSignupNameEditing = () => {
-        signupNumberInput.current.focus();
-    }
-    const onSubmitSignupNumberEditing = async() => {
+    const signupEditing = async() => {
         playSound(require("../asset/audio/btnClickSound.mp3"))
         setLoading(true)
         if(loading){
             return;
         }
         try{
-            if(signupEmail !=="" && signupPassword !=="" && signupName !== "" && signupNumver !== ""){
-                await auth().createUserWithEmailAndPassword(signupEmail, signupPassword)
+            if(email !=="" && password !==""){
+                await auth().createUserWithEmailAndPassword(email, password)
             }else{
                 setLoading(false)
                 setValidation('칸을 채워주세요')
@@ -226,6 +171,13 @@ const Login = ({navigation}) => {
             console.log("error1 = ", e.code)
         }
     }
+    const btnAlloter = () => {
+        if(navCheck == "Login"){
+            return loginEditing
+        }else{
+            return signupEditing
+        }
+    }
 
     function playSound(sound){
         // console.log('Playing '+sound);
@@ -238,13 +190,12 @@ const Login = ({navigation}) => {
             });
         }).catch((error)=>{});
     }
+
     return(
     <Container>
-        {navCheck == "Login" && (
         <GreetingShell style={{transform:[{scale:3}]}}>
-            <Greeting />
+            {navCheck == "Login" ? (<Greeting />):(<GreetingNavy />)}
         </GreetingShell>
-        )}
         <Contents>
             <Nav>
                 <NavBtn onPress={() => {setNavCheck("Login"), setValidation("")}}>
@@ -256,89 +207,49 @@ const Login = ({navigation}) => {
             </Nav>
 
             <Main contentContainerStyle={{alignItems:"center"}}>
-                {navCheck == "Login" ? (
-                    <>
-                    <TextArea 
-                        placeholder="이메일" 
-                        value={loginEmail} 
-                        returnKeyType="next"
-                        keyboardType = "email-address" 
-                        autoCapitalize="none" 
-                        autoCorrect={false} 
-                        onChangeText = {(text) => setLoginEmail(text)} 
-                        onSubmitEditing = {onSubmitLoginEmailEditing}
-                    />
+                <TextArea 
+                    placeholder="이메일" 
+                    value={email} 
+                    returnKeyType="next"
+                    keyboardType = "email-address" 
+                    autoCapitalize="none" 
+                    autoCorrect={false} 
+                    onChangeText = {(text) => setEmail(text)} 
+                    onSubmitEditing = {onSubmitEmail}
+                />
     
-                    <TextArea 
-                        ref={loginPasswordInput}
-                        placeholder="비밀번호" 
-                        value={loginPassword}  
-                        returnKeyType="done"
-                        secureTextEntry 
-                        onChangeText = {(text) => setLoginPassword(text)} 
-                        onSubmitEditing = {onSubmitLoginPasswordEditing}
-                    />
-                    <ValidationShell><ValidationText style={{color:colors.DARKGRAY}}>{validation}</ValidationText></ValidationShell>
-                    <Btn onPress = {onSubmitLoginPasswordEditing} style={{backgroundColor : navCheck == "Login" ? "#EC705E" : "lightgray"}}>
+                <TextArea 
+                    ref={PasswordInput}
+                    placeholder="비밀번호" 
+                    value={password}  
+                    returnKeyType="done"
+                    secureTextEntry 
+                    onChangeText = {(text) => setPassword(text)} 
+                    onSubmitEditing = {btnAlloter()}
+                />
+
+                <ValidationShell>
+                    <ValidationText style={{color:colors.DARKGRAY}}>{validation}</ValidationText>
+                </ValidationShell>
+
+                {navCheck=="Login" ? (
+                <>
+                    <Btn onPress = {loginEditing} style={{backgroundColor : navCheck == "Login" ? "#EC705E" : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>로그인</BtnText>}
                     </Btn>
                     <GoogleLogin />
                     {Platform.OS == "ios" && (
                         <AppleLogin />
                     )}
-                    </>
+                </>
                 ):(
-                    <>
-                    <TextArea 
-                        autoFocus={true}
-                        placeholder="이메일" 
-                        value={signupEmail} 
-                        returnKeyType="next"
-                        keyboardType = "email-address" 
-                        autoCapitalize="none" 
-                        autoCorrect={false} 
-                        onChangeText = {(text) => setSignupEmail(text)} 
-                        onSubmitEditing = {onSubmitSignupEmailEditing}
-                    />
-                    <TextArea 
-                        ref={signupPasswordInput}
-                        placeholder="비밀번호" 
-                        value={signupPassword}  
-                        returnKeyType="next"
-                        secureTextEntry 
-                        onChangeText = {(text) => setSignupPassword(text)} 
-                        onSubmitEditing = {onSubmitSignupPasswordEditing}
-                        />
-                    {/* <TextArea 
-                        ref={signupNameInput}
-                        placeholder="이름" 
-                        value={signupName}  
-                        returnKeyType="next" 
-                        keyboardType = "email-address" 
-                        autoCapitalize="none" 
-                        autoCorrect={false} 
-                        onChangeText = {(text) => setSignupName(text)} 
-                        onSubmitEditing = {onSubmitSignupNameEditing}
-                    />
-                    <TextArea 
-                        ref={signupNumberInput}
-                        placeholder="전화번호" 
-                        value={signupNumber}  
-                        autoCapitalize="none" 
-                        autoCorrect={false} 
-                        keyboardType = "number-pad" 
-                        returnKeyType="done"
-                        onChangeText = {(text) => setSignupNumber(text)} 
-                        onSubmitEditing = {onSubmitSignupNumberEditing}
-                    /> */}
-                    <ValidationShell><ValidationText style={{color: "#EC705E"}}>{validation}</ValidationText></ValidationShell>
-                    <Btn onPress = {onSubmitSignupNumberEditing} style={{backgroundColor : navCheck == "Signup" ? colors.NAVY : "lightgray"}}>
+                    <Btn onPress = {signupEditing} style={{backgroundColor : navCheck == "Signup" ? colors.NAVY : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>회원가입</BtnText>}
                     </Btn>
-                    </>
                 )}
             </Main>
         </Contents>
+
         {navCheck == "Signup" ? (
             <Empty style={{transform:[{scale:1}]}}>
                 <Welcome />

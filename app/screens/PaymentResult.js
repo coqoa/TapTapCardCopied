@@ -8,10 +8,55 @@ import {
   View,
   WarningIcon,
 } from 'native-base';
+import { useEffect } from 'react';
+import styled from "styled-components/native";
+import { colors } from '../component/Color';
+
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { useEffect } from 'react';
+import PaymentSuccess from '../component/lottieComponent/PaymentSuccess';
+import PaymentFailed from '../component/lottieComponent/PaymentFailed';
+import { TouchableOpacity } from 'react-native';
 
+const Container = styled.View`
+  flex:1;
+  padding: 50px;
+  align-items: center;
+  justify-content: center;
+`
+const TextSection = styled.View`
+  top: 10%;
+  /* flex:1; */
+  /* width: 100%; */
+  /* height: 10%; */
+  /* border: 1px solid red; */
+`
+const ResultText = styled.Text`
+  top: 2px;
+  font-family: "SDChild";
+  font-size: 30px;
+`
+const LottieSection = styled.View`
+  flex:5;
+  width: 100%;
+`
+const GoBackBtn = styled.TouchableOpacity`
+  width: 150px;
+  height: 50px;
+  bottom: 10%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  /* border: 1px solid red; */
+  /* background-color: darkgray; */
+
+`
+const GoBackText = styled.Text`
+  top: 2px;
+  font-family: "SDChild";
+  font-size: 27px;
+  color:white;
+`
 export default function PaymentResult({ route, navigation }) {
   const imp_success = route.params.imp_success;
   const success = route.params.success;
@@ -42,10 +87,24 @@ useEffect(()=>{
 },[])
 
   return (
-    <View>
-      {isSuccess ? (<CheckCircleIcon />) : <WarningIcon />}
-      <Text>{`결제에 ${isSuccess ? '성공' : '실패'}하였습니다`}</Text>
-      <List>
+    <Container>
+      <TextSection>
+        <ResultText>{`결제에 ${isSuccess ? '성공' : '실패'}했습니다`}</ResultText>
+      </TextSection>
+      <LottieSection>
+      {isSuccess ? (
+        <PaymentSuccess />
+      ) : (
+        <PaymentFailed />
+      )}
+      </LottieSection>
+      <GoBackBtn 
+        onPress={() => navigation.navigate('Menu')} 
+        style={{backgroundColor:(isSuccess ? ("tomato") : ("darkgray"))}}
+      >
+        <GoBackText>{`${isSuccess ? '시작하기' : '돌아가기'}`}</GoBackText>
+      </GoBackBtn>
+      {/* <List>
         <List.Item>
           <Text>아임포트 번호 : </Text>
           <Text>{imp_uid}</Text>
@@ -61,13 +120,13 @@ useEffect(()=>{
             <Text>{error_msg}</Text>
           </List.Item>
         )}
-      </List>
-      <IconButton
+      </List> */}
+      {/* <IconButton
         icon={<ArrowBackIcon />}
         onPress={() => navigation.navigate('Menu')}
       >
         <Text>돌아가기</Text>
-      </IconButton>
-    </View>
+      </IconButton> */}
+    </Container>
   );
 }

@@ -6,6 +6,7 @@ import { colors } from "../component/Color";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import AxiosApi from "../component/paymentComponent/AxiosApi";
 
 const BG = styled.ImageBackground`
     flex: 1;
@@ -78,6 +79,8 @@ const WordSelectTitleText = styled(WordSelectText)`
     color: ${colors.REALDARKGRAY};
     margin-bottom: 10px;
 `
+// -------------------------------------------------------------------------------------------------
+
 // -------------------------------------------------------------------------------------------------
 const Menu = ({navigation}) => {
     function playSound(sound){
@@ -166,6 +169,7 @@ const Menu = ({navigation}) => {
     return(
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
         <MenuBoxShell>
+            {/* <AxiosApi /> */}
             <TouchableOpacity style={{position:"absolute", left:-10, top:20}} onPress={()=>{logout(), console.log('로그아웃')}}><Text>로그아웃</Text></TouchableOpacity>
             {btnFunc(ganadaBtnAnimation,"Ganada","가나다")}
             {btnFunc(languageBtnAnimation,"Language","ABC")}

@@ -4,8 +4,8 @@ import { colors } from "../../component/Color"
 export const AnimalCardArray = [
     {
         "id" : "0", 
-        "image" :  require("../lottie/Animal/lion.json"), 
-        "size" : "90%",
+        "image" :  require("../lottie/Animal/dolphin.json"), 
+        "size" : "110%",
         // "image2" : require("../images/Animal/Lion2.png"),
         "realImage1" : require("../images/RealPicture/RealLion1.jpg"), 
         "realImage2" : require("../images/RealPicture/RealLion2.jpg"), 

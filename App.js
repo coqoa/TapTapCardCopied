@@ -27,6 +27,7 @@ export default function App() {
 
   useEffect(()=>{
     auth().onAuthStateChanged((user)=>{
+      // user를 받아서 user값이 참이면 로그인, false면 로그아웃 -> user값에 따라 isLoggedIn state값을 변경시켜서 로그인스크린을 보여줄지 메뉴스크린을 보여줄지 정한다
       if(user){
         setIsLoggedIn(true)
       }else{

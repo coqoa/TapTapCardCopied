@@ -89,7 +89,7 @@ const ValidationText = styled.Text`
     font-size: 18px;
     font-family: "SDChild";
 `
-
+// ------------------------------------------------------------------
 const Login = ({navigation}) => {
     const PasswordInput = useRef()
     const [navCheck, setNavCheck] = useState("Login")
@@ -98,24 +98,31 @@ const Login = ({navigation}) => {
     const [loading, setLoading] = useState(false);
     const [validation, setValidation] = useState("")
 
-//  로그인 버튼
+    //  이메일입력 후 키보드에 next를 탭하면 password로 포커스를 이동
     const onSubmitEmail = () => {
         PasswordInput.current.focus();
     }
+
+    // 로그인을 진행하는 함수
     const loginEditing = async() => {
         playSound(require("../asset/audio/btnClickSound.mp3"))
+        //ActivityIndicator컴포넌트 출력
         setLoading(true)
+        // 두번눌리는걸 방지
         if(loading){
             return;
         }
         try{
             if(email !=="" && password !==""){
+                // 입력값이 공백이 아니면 로그인
                 await auth().signInWithEmailAndPassword(email, password)
             }else{
+                // 입력값이 공백이라면 유효성 체크 메시지 출력
                 setLoading(false)
                 setValidation('칸을 채워주세요')
             }
         }catch(e){
+            // 에러 발생시 에러이유를 유효성 체크 메시지로 출력
             setLoading(false)
             switch(e.code){
                 case "auth/invalid-email" : {
@@ -134,7 +141,6 @@ const Login = ({navigation}) => {
                     return setValidation('auth/operation-not-allowed \n관리자에게 문의하세요')
                 }
             }
-            console.log("error =3 ", e.code)
         }
     }
 
@@ -171,6 +177,7 @@ const Login = ({navigation}) => {
             console.log("error1 = ", e.code)
         }
     }
+    //Login인지 Signup인지 확인 후 버튼에 쓰이는 함수를 나눠줌 
     const btnAlloter = () => {
         if(navCheck == "Login"){
             return loginEditing
@@ -178,22 +185,23 @@ const Login = ({navigation}) => {
             return signupEditing
         }
     }
-
+    // 오디오출력 관련 함수
     function playSound(sound){
-        // console.log('Playing '+sound);
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
         ).then((res)=>{
             res.sound.setOnPlaybackStatusUpdate((status)=>{
                 if(!status.didJustFinish) return;
-                // console.log('Unloading '+sound);
                 res.sound.unloadAsync().catch(()=>{});
             });
         }).catch((error)=>{});
     }
 
+    
+
     return(
     <Container>
         <GreetingShell style={{transform:[{scale:3}]}}>
+            {/* 로그인/회원가입 TextInput 상단 LottieAnimation */}
             {navCheck == "Login" ? (<Greeting />):(<GreetingNavy />)}
         </GreetingShell>
         <Contents>
@@ -233,6 +241,7 @@ const Login = ({navigation}) => {
                 </ValidationShell>
 
                 {navCheck=="Login" ? (
+                    // 로그인 관련 버튼
                 <>
                     <Btn onPress = {loginEditing} style={{backgroundColor : navCheck == "Login" ? "#EC705E" : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>로그인</BtnText>}
@@ -243,6 +252,7 @@ const Login = ({navigation}) => {
                     )}
                 </>
                 ):(
+                    // 회원가입 관련 버튼
                     <Btn onPress = {signupEditing} style={{backgroundColor : navCheck == "Signup" ? colors.NAVY : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>회원가입</BtnText>}
                     </Btn>

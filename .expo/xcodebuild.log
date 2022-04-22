@@ -9,8 +9,8 @@ note: Planning
 Analyze workspace
 
 Create build description
-Build description signature: 7df2c9f460eb67d4bda1cb79c6be5d7f
-Build description path: /Users/coqoa/Library/Developer/Xcode/DerivedData/taptapcard-fvilyrfuddwelierelynajuzqbzp/Build/Intermediates.noindex/XCBuildData/7df2c9f460eb67d4bda1cb79c6be5d7f-desc.xcbuild
+Build description signature: 8a0eb4eef7193d2eb803cb6d9b30d0d8
+Build description path: /Users/coqoa/Library/Developer/Xcode/DerivedData/taptapcard-fvilyrfuddwelierelynajuzqbzp/Build/Intermediates.noindex/XCBuildData/8a0eb4eef7193d2eb803cb6d9b30d0d8-desc.xcbuild
 
 note: Build preparation complete
 note: Building targets in dependency order
@@ -1498,13 +1498,13 @@ CodeSign /Users/coqoa/Library/Developer/Xcode/DerivedData/taptapcard-fvilyrfuddw
     /usr/bin/codesign --force --sign - --entitlements /Users/coqoa/Library/Developer/Xcode/DerivedData/taptapcard-fvilyrfuddwelierelynajuzqbzp/Build/Intermediates.noindex/taptapcard.build/Debug-iphonesimulator/taptapcard.build/taptapcard.app.xcent --timestamp\=none --generate-entitlement-der /Users/coqoa/Library/Developer/Xcode/DerivedData/taptapcard-fvilyrfuddwelierelynajuzqbzp/Build/Products/Debug-iphonesimulator/taptapcard.app
 /Users/coqoa/Library/Developer/Xcode/DerivedData/taptapcard-fvilyrfuddwelierelynajuzqbzp/Build/Products/Debug-iphonesimulator/taptapcard.app: replacing existing signature
 
-/Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'gRPC-C++-gRPCCertificates-Cpp' from project 'Pods')
+/Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'gRPC-Core' from project 'Pods')
 /Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'AppAuth' from project 'Pods')
-/Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'gRPC-C++' from project 'Pods')
-/Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'BoringSSL-GRPC' from project 'Pods')
 /Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 5.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'leveldb-library' from project 'Pods')
+/Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'BoringSSL-GRPC' from project 'Pods')
 /Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'abseil' from project 'Pods')
 /Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 8.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'boost-for-react-native' from project 'Pods')
-/Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'gRPC-Core' from project 'Pods')
+/Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'gRPC-C++' from project 'Pods')
+/Users/coqoa/Downloads/RN-APP/taptapcard/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 7.0, but the range of supported deployment target versions is 9.0 to 15.2.99. (in target 'gRPC-C++-gRPCCertificates-Cpp' from project 'Pods')
 ** BUILD SUCCEEDED **
 

@@ -23,11 +23,14 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 const Container = styled.View`
+flex: 1;
     justify-content: center;
     align-items: center;
 `
 const CardContainer = styled.View`
-    flex: 1;
+    /* flex: 1; */
+    width: 100%;
+    height: 120%;
     justify-content: center;
     align-items: center;
 `
@@ -896,7 +899,7 @@ export const WordCardLevel = (props) => {
     const levelConsole = () => {
         return(
             // <Container style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT}}>
-            <Container style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT}}>
+            <Container>
                 <ClickBlock style={{zIndex:clickBlockerValue, opacity:clickBlockerValue}} />
                 {/* 실사 모달창 */}
                 {arrayAlloter(type) == AnimalCardArray && (

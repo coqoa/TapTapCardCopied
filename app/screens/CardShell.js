@@ -7,6 +7,7 @@ import { WordCardLevel } from "../component/CardDefault";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import {InterstitialAd, BannerAd} from "../component/Ads"
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -15,29 +16,22 @@ const Shell = styled.View`
     flex: 1;
     background-color: ${colors.mainBgColor};
     align-items: center;
-    padding: 10px 0px;
+    /* padding: 10px 0px; */
     border-radius: 15px;
 `
-const Main = styled.View`
-    flex: 10;
-    margin-top: 5px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    z-index: 2;
-`
 const TopContainer = styled.View`
-    height:55px;
+    /* top:10px; */
+    height:70px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     z-index: 3;
     
 `
 const Top = styled.View`
     flex-direction: row;
     width: 80%;
-    height: 100%;
+    height: 80%;
     border-radius: 15px;
     align-items: center;
     z-index: 10;
@@ -67,6 +61,15 @@ const Star = styled.View`
 const StarViewImage1 = styled.ImageBackground`
     width: 100%;
     height: 100%;
+`
+const Main = styled.View`
+    flex: 1;
+    /* margin-top: 5px; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: row;
+    z-index: 2;
+    /* border: 1px solid green; */
 `
 const MenuText = styled.Text`
     top: 3px;
@@ -138,11 +141,27 @@ const PaymentBtn = styled(LevelBtn)`
     background-color: ${colors.REALDARKGRAY};
 `
 const PaymentText = styled(ModalMenuText)`
+    font-size: 22px;
     color: ${colors.REALLIGHTGRAY};
+`
+
+const InterstitialShell = styled.View`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 3;
+`
+const BannerShell = styled.View`
+    bottom:0px;
+    width: 100%;
+    height: 50px;
+    background-color: white;
 `
 
 const CardShell = ({route, navigation}) => {
 
+    const [interstitial, setInterstitial] = useState(true)
     const [loading, setLoading] = useState(false);
     const contentsLoading = () => {
         setLoading(true)
@@ -310,6 +329,7 @@ const CardShell = ({route, navigation}) => {
     },[])
     
     return(    
+        <>
         <Shell>
             <TopContainer>
             <Top>
@@ -397,7 +417,7 @@ const CardShell = ({route, navigation}) => {
                 {typeCheckRes == "Number" ? (
                     <MenuModalScrollView contentContainerStyle = {{alignItems:"center"}}>
                         {paymentMember == false && (
-                            <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}><PaymentText>결제하기</PaymentText></PaymentBtn>
+                            <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}><PaymentText>광고제거하기</PaymentText></PaymentBtn>
                         )}
                         {distractorFunc(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "0~100")}
                         {distractorFunc(number0Pan.panHandlers, colors.WhaleBG, level2Scale, "0~10")}
@@ -414,7 +434,7 @@ const CardShell = ({route, navigation}) => {
                 ):(
                     <MenuModal>
                         {paymentMember == false && (
-                            <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}><PaymentText>결제하기</PaymentText></PaymentBtn>
+                            <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}><PaymentText>광고제거하기</PaymentText></PaymentBtn>
                         )}
                         {typeCheckRes == "Animal" && (
                         <>
@@ -437,7 +457,27 @@ const CardShell = ({route, navigation}) => {
                     </MenuModal>
                 )}
             </MenuModalContainer>
+
+            {paymentMember == false && (
+            <>
+                <BannerShell>
+                    <BannerAd />
+                </BannerShell>
+                {interstitial &&(
+                    <InterstitialShell>
+                        <InterstitialAd />
+                        <TouchableOpacity style={{width:50 , height:50, backgroundColor:"green", justifyContent:"center"}} onPress={() => setInterstitial(false)}>
+                            <Text style={{textAlign:"center", color:"white"}}>닫기</Text>
+                        </TouchableOpacity>
+                    </InterstitialShell>
+                )}
+            </>
+            )}
         </Shell>
+
+
+        
+        </>
     )
 }
 export default CardShell;

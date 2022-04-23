@@ -165,7 +165,6 @@ const Menu = ({navigation}) => {
             email:auth()._user.email,
         })
     },[])
-
     return(
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
         <MenuBoxShell>

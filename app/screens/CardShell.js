@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import {View, Dimensions, PanResponder, Animated, Pressable, TouchableOpacity, Text, ActivityIndicator } from "react-native";
 import { Audio } from 'expo-av';
 import styled from "styled-components";
+import {Ionicons, MaterialIcons} from "@expo/vector-icons";
+
 import { colors } from "../component/Color";
 import { WordCardLevel } from "../component/CardDefault";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import {InterstitialAd, BannerAd} from "../component/Ads"
+import { Copyright } from "../component/Copyright";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -23,7 +26,7 @@ const TopContainer = styled.View`
     /* top:10px; */
     height:70px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     /* margin-bottom: 5px; */
     z-index: 3;
     
@@ -92,13 +95,15 @@ const MenuBtnImage = styled.ImageBackground`
 `
 const MenuModalBg = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
-    background-color: rgba(0,0,0,0.1);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
     align-items: center;
     justify-content: center;
 `
 const MenuModalContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
-    top: 13%;
+    top: 20%;
     width: 60%;
     height: 35%;
     border-radius: 20px;
@@ -144,16 +149,55 @@ const PaymentText = styled(ModalMenuText)`
     font-size: 22px;
     color: ${colors.REALLIGHTGRAY};
 `
-
+const CopyrightBtn  = styled.TouchableOpacity`
+    position: absolute;
+    right:5px;
+    bottom:10px;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    /* border: 1px solid red; */
+`
+const CopyrightShell = styled.View`
+    position: absolute;
+    right:10px;
+    bottom:10px;
+    width: 80%;
+    height: 60%;
+    border-radius: 15px;
+    z-index: 10;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 10px;
+`
+const CopyrightHeader = styled.View`
+    position: absolute;
+    top: 10px;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+`
+const CopyrightText = styled.Text`
+    bottom: 1px;
+    font-size: 18px;
+`
+const CopyrightCloseBtn = styled.TouchableOpacity`
+    position: absolute;
+    right: 0px;
+`
 const InterstitialShell = styled.View`
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: white;
-    z-index: 3;
+    z-index: 10;
 `
 const BannerShell = styled.View`
-    bottom:0px;
+    /* top:0px; */
     width: 100%;
     height: 50px;
     background-color: white;
@@ -161,6 +205,7 @@ const BannerShell = styled.View`
 
 const CardShell = ({route, navigation}) => {
 
+    const [copyrightModal, setCopyrightModal] = useState(false);
     const [interstitial, setInterstitial] = useState(true)
     const [loading, setLoading] = useState(false);
     const contentsLoading = () => {
@@ -331,6 +376,21 @@ const CardShell = ({route, navigation}) => {
     return(    
         <>
         <Shell>
+            {paymentMember == false && (
+            <>
+                <BannerShell>
+                    <BannerAd />
+                </BannerShell>
+                {interstitial &&(
+                    <InterstitialShell>
+                        <InterstitialAd />
+                        <TouchableOpacity style={{width:50 , height:50, backgroundColor:"green", justifyContent:"center"}} onPress={() => setInterstitial(false)}>
+                            <Text style={{textAlign:"center", color:"white"}}>닫기</Text>
+                        </TouchableOpacity>
+                    </InterstitialShell>
+                )}
+            </>
+            )}
             <TopContainer>
             <Top>
                 {/* 뒤로가기 버튼 */}
@@ -409,7 +469,7 @@ const CardShell = ({route, navigation}) => {
             </>)}
             {/* 메뉴버튼 터치시 출력되는 모달 */}
             <MenuModalBg 
-            style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT, zIndex: menuModalIndex, opacity: menuModalIndex}}
+            style={{ zIndex: menuModalIndex, opacity: menuModalIndex}}
             onPressOut={() =>  {menuModalIndex.setValue(0)}}
             />
             <MenuModalContainer style={{zIndex: menuModalIndex, opacity: menuModalIndex}}>
@@ -457,8 +517,24 @@ const CardShell = ({route, navigation}) => {
                     </MenuModal>
                 )}
             </MenuModalContainer>
+            {/* 저작권정보 */}
+            <CopyrightBtn onPress={()=>setCopyrightModal(true)}>
+                <MaterialIcons name="copyright" size={22} color="lightgray" />
+            </CopyrightBtn>
+            {copyrightModal && (
+                <CopyrightShell>
+                    <CopyrightHeader>
+                        <CopyrightText>저작권정보</CopyrightText>
+                        <CopyrightCloseBtn onPress={()=>setCopyrightModal(false)}>
+                            <Ionicons name="close-circle-outline" size={22} color="gray" />
+                        </CopyrightCloseBtn>
+                    </CopyrightHeader>
+                    <Copyright />
+                </CopyrightShell>
+            )}
 
-            {paymentMember == false && (
+
+            {/* {paymentMember == false && (
             <>
                 <BannerShell>
                     <BannerAd />
@@ -472,7 +548,7 @@ const CardShell = ({route, navigation}) => {
                     </InterstitialShell>
                 )}
             </>
-            )}
+            )} */}
         </Shell>
 
 

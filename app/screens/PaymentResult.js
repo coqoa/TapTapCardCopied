@@ -1,13 +1,4 @@
 import {React, useState, useEffect} from 'react';
-import {
-  ArrowBackIcon,
-  CheckCircleIcon,
-  IconButton,
-  List,
-  Text,
-  View,
-  WarningIcon,
-} from 'native-base';
 import styled from "styled-components/native";
 import { colors } from '../component/Color';
 
@@ -17,7 +8,6 @@ import PaymentSuccess from '../component/lottieComponent/PaymentSuccess';
 import PaymentFailed from '../component/lottieComponent/PaymentFailed';
 import axios from 'axios';
 
-
 const Container = styled.View`
   flex:1;
   padding: 50px;
@@ -26,10 +16,6 @@ const Container = styled.View`
 `
 const TextSection = styled.View`
   top: 10%;
-  /* flex:1; */
-  /* width: 100%; */
-  /* height: 10%; */
-  /* border: 1px solid red; */
 `
 const ResultText = styled.Text`
   top: 2px;
@@ -47,9 +33,6 @@ const GoBackBtn = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  /* border: 1px solid red; */
-  /* background-color: darkgray; */
-
 `
 const GoBackText = styled.Text`
   top: 2px;
@@ -128,8 +111,8 @@ export default function PaymentResult({ route, navigation }) {
         const paymentData = res.data.response;
         // console.log('조회한 결제 정보(내가입력한주문서) paymentData =', paymentData);
         const {amount, status} = paymentData;
-        console.log(typeof(amount))
-        console.log(typeof(parseInt(defaultAmount)))
+        // console.log(typeof(amount))
+        // console.log(typeof(parseInt(defaultAmount)))
         if(amount === parseInt(defaultAmount)){
           createDB()
           setIsSuccess(true)

@@ -1,15 +1,13 @@
 import React, {useState, useEffect, useCallback, useRef} from "react"
 import { Audio } from 'expo-av';
-import {View, Dimensions, FlatList, Animated, Pressable, PanResponder, Text, Platform, TouchableOpacity, ActivityIndicator} from "react-native";
+import {View, Dimensions, Animated, Pressable, PanResponder, Text, Platform, ActivityIndicator} from "react-native";
 import styled from "styled-components"
 import { colors } from "./Color";
-
 
 import { AnimalCardArray } from "../asset/data/AnimalCardArray";
 import { KorArrayConsonant, KorArrayVowel } from "../asset/data/WordArrayKOR";
 import { Alphabet } from "../asset/data/Alphabet";
 import { Number } from "../asset/data/Number";
-import { Lottie } from "lottie-react-native";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -185,8 +183,6 @@ const CorrectAnswerContainer = styled(Animated.createAnimatedComponent(View))`
     bottom: 25%;
     width: 100px;
     height: 100px;
-    /* border-radius: 15px; */
-    /* border:1px solid black; */
 `
 const CorrectAnswerImage = styled.Image`
     width: 100%;
@@ -203,35 +199,6 @@ const ClearModalContainer = styled(Animated.createAnimatedComponent(View))`
     justify-content: center;
     background-color: ${colors.mainBgColor};
 `
-// const ClearModal = styled.View`
-//     position: absolute;
-    
-//     width: 300px;
-//     height: 300px;
-//     border-radius: 15px;
-//     align-items: center;
-//     justify-content: center;
-//     background-color: transparent;
-// `
-// const RepeatLevel = styled.TouchableOpacity`
-//     width: 200px;
-//     height: 60px;
-//     border-radius: 15px;
-//     margin: 5px;
-//     align-items: center;
-//     justify-content: center;
-//     background-color: ${colors.BLUE};
-// `
-// const NextLevel = styled(RepeatLevel)`
-//     background-color: ${colors.REDORANGE};
-// `
-// const RepeatLevelText = styled.Text`
-//     font-size: 23px;
-//     color: white;
-//     font-family: 'SDChild';
-// `
-// const NextLevelText = styled(RepeatLevelText)``
-
 const ClickBlock = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     left: 0;
@@ -314,12 +281,11 @@ export const WordCardLevel = (props) => {
     //         setLoading(false)
     //     },500)
     // },[])
+
     //  데이터베이스 이메일체크(결제고객체크)
     const PaymentUserCollection = firestore().collection('PaymentUsers');
-
     const [userEmail, setUserEmail] = useState(auth()._user.email);     
     const [paymentMember, setPaymentMember] = useState(false);
-    
     const readPaymentUserDB = async() =>{
         const readDBsnapshot = await PaymentUserCollection.get();
         readDBsnapshot.forEach(value=> (value.data().email == userEmail ? setPaymentMember(true):(null)))
@@ -328,8 +294,9 @@ export const WordCardLevel = (props) => {
         readPaymentUserDB()
     },[])
     
+    //정답모달창 관련 state
     const [correctAnswerMark, setCorrectAnswerMark] = useState(false)
-    
+
     //useState
     const [refresh, setRefresh] = useState(true);
     const [picture, setPicture] = useState(false)
@@ -364,11 +331,12 @@ export const WordCardLevel = (props) => {
     //결제멤버/ 미결제 멤버 체크해주는 함수
     //clear모달에서 결제멤버면 다음창으로 미결제멤버면 결제버튼 출력하기
     const memberChecker = (e) => {
-        if(paymentMember == true){
-            return arrayAlloter(e)
-        }else{
-            return arrayAlloter(e).slice(0,8)
-        }
+        // if(paymentMember == true){
+        //     return arrayAlloter(e)
+        // }else{
+        //     return arrayAlloter(e).slice(0,8)
+        // }
+        return arrayAlloter(e)
     }
     const data = memberChecker(type)
 
@@ -408,8 +376,8 @@ export const WordCardLevel = (props) => {
         toValue:1,
         useNativeDriver:true
     })
-    const goLeft = Animated.timing(cardPosition, {toValue:-SCREEN_WIDTH*1.3,duration:150, useNativeDriver:true});
-    const goRight = Animated.timing(cardPosition, {toValue:SCREEN_WIDTH*1.3,duration:150, useNativeDriver:true});
+    const goLeft = Animated.timing(cardPosition, {toValue:-SCREEN_WIDTH*1.3,duration:200, useNativeDriver:true});
+    const goRight = Animated.timing(cardPosition, {toValue:SCREEN_WIDTH*1.3,duration:200, useNativeDriver:true});
     const goCenter = Animated.spring(cardPosition, {toValue: 0, useNativeDriver:true});
 
     //클릭시 출력되는 secondImage Animations
@@ -476,7 +444,7 @@ export const WordCardLevel = (props) => {
             setSecondIndex(prev => prev + 1);
             cardScaleValue.setValue(1)
             cardPosition.setValue(0);
-        },10)
+        },50)
     }
 
     //물음표박스 Animation

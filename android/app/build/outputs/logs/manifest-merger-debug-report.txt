@@ -1,10 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-32:12
-INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-32:12
-INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-32:12
-INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-32:12
-MERGED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-32:12
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-34:12
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-34:12
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-34:12
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-34:12
+MERGED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-34:12
 MERGED from [com.facebook.flipper:flipper:0.95.0] /Users/coqoa/.gradle/caches/transforms-3/cc45e4ed7543a66363f7ec054b1802f1/transformed/jetified-flipper-0.95.0/AndroidManifest.xml:8:1-18:12
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.95.0] /Users/coqoa/.gradle/caches/transforms-3/3957038e3ee9546c56339c9e1a73f37e/transformed/jetified-flipper-network-plugin-0.95.0/AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.95.0] /Users/coqoa/.gradle/caches/transforms-3/ef3414b931d2e4ccf6dc25636af97e68/transformed/jetified-flipper-fresco-plugin-0.95.0/AndroidManifest.xml:8:1-15:12
@@ -13,6 +13,7 @@ MERGED from [:react-native-firebase_firestore] /Users/coqoa/Downloads/RN-APP/tap
 MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-29:12
 MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:17:1-73:12
 MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:invertase_react-native-apple-authentication] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@invertase/react-native-apple-authentication/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-12:12
 MERGED from [:react-native-google-signin_google-signin] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:expo] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:iamport-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/iamport-react-native/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
@@ -70,6 +71,7 @@ MERGED from [com.facebook.fresco:fbcore:2.5.0] /Users/coqoa/.gradle/caches/trans
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/153faf73f0baafc96c163a4634043949/transformed/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/f75dc8635e29a7f3dd6f2112b9c38a6f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/239dcb6ccd82bc1e794ac9d00cbc293d/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.3.0] /Users/coqoa/.gradle/caches/transforms-3/e9caa8ce1801ebd1dc8ef87502e73e50/transformed/jetified-core-ktx-1.3.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/6f8f5f73adcf0dd1761a2be47e3be43e/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:2:1-7:12
@@ -79,43 +81,45 @@ MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gra
 MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb6fc5f569bf50ae50d583af432780e6/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7ccf0e71e0d1aa2cd1af94bbbfd9fe85/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.fragment:fragment:1.2.1] /Users/coqoa/.gradle/caches/transforms-3/7e00c0c23a6f469583c5411de2f65b56/transformed/fragment-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.3.2] /Users/coqoa/.gradle/caches/transforms-3/281f1e576a4238923d3beae8dc6c4a66/transformed/fragment-1.3.2/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/2632538ffd1a78dee6f487a9cae8cada/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.webkit:webkit:1.4.0] /Users/coqoa/.gradle/caches/transforms-3/3f8d5ebba2860908298f1147a0d27cb5/transformed/webkit-1.4.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2ae8915466fd9d591da47ff0bf5f8e95/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2794239bffd4bcda8e3ace851c671d2a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/65734f4924cc1eae6ebdbd8e2b0689f3/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/73983d4935a7f88fea3ffc1ce2450ffa/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/08ddb8d3a2517b0491534c21e24d6e6b/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.activity:activity:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/752e223c6b6ddb35b4a2fc04d355d47d/transformed/jetified-activity-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.2.2] /Users/coqoa/.gradle/caches/transforms-3/de2877082ac791b45d12d51f6bc77b56/transformed/jetified-activity-1.2.2/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/013050e6d48ff8d811cb280aa8af3e09/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/5ff86b6192273fe88df0140e16b82d09/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7abf82544ca901ee77d08a1883abd733/transformed/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7dc766fb0db719889748b099275c8c0d/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/73983d4935a7f88fea3ffc1ce2450ffa/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/eb817fde748f0dc27ae6bb4dd800b280/transformed/jetified-exoplayer-2.9.2/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-ui:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/ff9849e8e0cda6e06a650bc677ed2385/transformed/jetified-exoplayer-ui-2.9.2/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.media:media:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/fdfa1a0a3700bb9d5c75f28a6dd60d39/transformed/media-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/31a01791c318aae52acdc4aa925b28e7/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.3.0] /Users/coqoa/.gradle/caches/transforms-3/6fed69050e27398189012d7635b36a49/transformed/core-1.3.0/AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/6469fabab7a45339c1c048b1b0c75aa9/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/1510df70f6533deb527cf078c6e7c399/transformed/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/0f79b3fb659c43a11ccf011833b0f3f1/transformed/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/6fcef73541d913375bb9900e453db570/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/5aecb538be99e943b6ca6ebd43ba8340/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/3f328409b530bd0be9d7ac0a71680701/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/24fd2af65b48b790b61760e9820e41f1/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/341b4184664491502e852bb606d9271c/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f9da0e1a391f289bd0e6a76fd621aca1/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/d6ee2f1880c942b1c88494742ab4304f/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/b74cdccde4f2ac9e91abead65a9ba949/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/c914b5975532f76122152c4c98d550a6/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-dash:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/1c1d438fb9bd20e67489019bdcf4c923/transformed/jetified-exoplayer-dash-2.9.2/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-hls:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/e4d78f9c0c39837ef2c6f38060646a5d/transformed/jetified-exoplayer-hls-2.9.2/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/81f10f3e150bf330c4a110729c335dee/transformed/jetified-exoplayer-smoothstreaming-2.9.2/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/0c219c82da586347bcf5ab19716c645a/transformed/jetified-exoplayer-core-2.9.2/AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/b76bff72d12bc8da93b8f5cbb61884cc/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/275a706008bd0488593d8c3c3ddf544c/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/e53b0f797e6c3da9aff3f425e5de1a8c/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/d6ee2f1880c942b1c88494742ab4304f/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/fda84eb1ca5433c8f57bdae4fbe8fe37/transformed/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/c914b5975532f76122152c4c98d550a6/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/d32bd07586aeb4c024888cb1adf354a8/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/df5c4f099bc04d576cc9cfd354ad1462/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7fb5034efb26d4f90589e78fd3e1407c/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:2:1-13:12
 MERGED from [com.yqritc:android-scalablevideoview:1.0.1] /Users/coqoa/.gradle/caches/transforms-3/fbbff95b5ab7402f3f563076b51cd02b/transformed/jetified-android-scalablevideoview-1.0.1/AndroidManifest.xml:2:1-12:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/13d7fd083de6f0579d9dccc045748dc8/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:2:1-11:12
@@ -129,13 +133,13 @@ INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/debug/And
 		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/debug/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-32:12
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-34:12
 		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/debug/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/debug/AndroidManifest.xml:2:5-51
 	android:versionCode
 		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-32:12
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-34:12
 		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:11-69
@@ -196,9 +200,9 @@ ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/Android
 	android:scheme
 		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:13-35
 application
-ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:3-31:17
-MERGED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:3-31:17
-MERGED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:3-31:17
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:3-33:17
+MERGED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:3-33:17
+MERGED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:3-33:17
 MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-27:19
 MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-27:19
 MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:26:5-71:19
@@ -268,45 +272,45 @@ MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.grad
 		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:16-47
 		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:16-47
 meta-data#expo.modules.updates.EXPO_UPDATE_URL
-ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:5-103
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:5-103
 	android:value
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:68-101
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:68-101
 	android:name
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:16-67
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:16-67
 meta-data#expo.modules.updates.EXPO_SDK_VERSION
-ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:5-112
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:5-112
 	android:value
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:69-110
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:69-110
 	android:name
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:16-68
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:16-68
 activity#com.taptapcard.MainActivity
-ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:5-29:16
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:5-31:16
 	android:label
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:44-76
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:44-76
 	android:launchMode
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:155-186
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:155-186
 	android:windowSoftInputMode
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:187-226
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:187-226
 	android:configChanges
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:77-154
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:77-154
 	android:theme
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:227-272
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:227-272
 	android:name
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:15-43
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:15-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:7-28:23
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:7-30:23
 action#android.intent.action.MAIN
-ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:9-60
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:28:9-60
 	android:name
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:17-58
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:28:17-58
 category#android.intent.category.LAUNCHER
-ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:9-68
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:29:9-68
 	android:name
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:19-66
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:29:19-66
 activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:5-81
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:32:5-81
 	android:name
-		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:15-79
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:32:15-79
 uses-sdk
 INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
@@ -327,6 +331,8 @@ MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/cach
 MERGED from [com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:21:5-44
 MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:invertase_react-native-apple-authentication] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@invertase/react-native-apple-authentication/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-10:41
+MERGED from [:invertase_react-native-apple-authentication] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@invertase/react-native-apple-authentication/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-10:41
 MERGED from [:react-native-google-signin_google-signin] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-google-signin_google-signin] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:expo] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
@@ -441,6 +447,8 @@ MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/coqoa
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/f75dc8635e29a7f3dd6f2112b9c38a6f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/239dcb6ccd82bc1e794ac9d00cbc293d/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/239dcb6ccd82bc1e794ac9d00cbc293d/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.3.0] /Users/coqoa/.gradle/caches/transforms-3/e9caa8ce1801ebd1dc8ef87502e73e50/transformed/jetified-core-ktx-1.3.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.3.0] /Users/coqoa/.gradle/caches/transforms-3/e9caa8ce1801ebd1dc8ef87502e73e50/transformed/jetified-core-ktx-1.3.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
@@ -459,8 +467,8 @@ MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:18:5-43
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7ccf0e71e0d1aa2cd1af94bbbfd9fe85/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7ccf0e71e0d1aa2cd1af94bbbfd9fe85/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment:1.2.1] /Users/coqoa/.gradle/caches/transforms-3/7e00c0c23a6f469583c5411de2f65b56/transformed/fragment-1.2.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment:1.2.1] /Users/coqoa/.gradle/caches/transforms-3/7e00c0c23a6f469583c5411de2f65b56/transformed/fragment-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.2] /Users/coqoa/.gradle/caches/transforms-3/281f1e576a4238923d3beae8dc6c4a66/transformed/fragment-1.3.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.2] /Users/coqoa/.gradle/caches/transforms-3/281f1e576a4238923d3beae8dc6c4a66/transformed/fragment-1.3.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/2632538ffd1a78dee6f487a9cae8cada/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/2632538ffd1a78dee6f487a9cae8cada/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.webkit:webkit:1.4.0] /Users/coqoa/.gradle/caches/transforms-3/3f8d5ebba2860908298f1147a0d27cb5/transformed/webkit-1.4.0/AndroidManifest.xml:20:5-22:41
@@ -473,16 +481,12 @@ MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradl
 MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/65734f4924cc1eae6ebdbd8e2b0689f3/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/73983d4935a7f88fea3ffc1ce2450ffa/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/73983d4935a7f88fea3ffc1ce2450ffa/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/08ddb8d3a2517b0491534c21e24d6e6b/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/08ddb8d3a2517b0491534c21e24d6e6b/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/752e223c6b6ddb35b4a2fc04d355d47d/transformed/jetified-activity-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/752e223c6b6ddb35b4a2fc04d355d47d/transformed/jetified-activity-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.2.2] /Users/coqoa/.gradle/caches/transforms-3/de2877082ac791b45d12d51f6bc77b56/transformed/jetified-activity-1.2.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.2] /Users/coqoa/.gradle/caches/transforms-3/de2877082ac791b45d12d51f6bc77b56/transformed/jetified-activity-1.2.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/013050e6d48ff8d811cb280aa8af3e09/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/013050e6d48ff8d811cb280aa8af3e09/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/5ff86b6192273fe88df0140e16b82d09/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
@@ -491,6 +495,10 @@ MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/coqoa/.g
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7abf82544ca901ee77d08a1883abd733/transformed/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7dc766fb0db719889748b099275c8c0d/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7dc766fb0db719889748b099275c8c0d/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/73983d4935a7f88fea3ffc1ce2450ffa/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/73983d4935a7f88fea3ffc1ce2450ffa/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/eb817fde748f0dc27ae6bb4dd800b280/transformed/jetified-exoplayer-2.9.2/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/eb817fde748f0dc27ae6bb4dd800b280/transformed/jetified-exoplayer-2.9.2/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-ui:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/ff9849e8e0cda6e06a650bc677ed2385/transformed/jetified-exoplayer-ui-2.9.2/AndroidManifest.xml:20:5-22:41
@@ -503,12 +511,24 @@ MERGED from [androidx.core:core:1.3.0] /Users/coqoa/.gradle/caches/transforms-3/
 MERGED from [androidx.core:core:1.3.0] /Users/coqoa/.gradle/caches/transforms-3/6fed69050e27398189012d7635b36a49/transformed/core-1.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/6469fabab7a45339c1c048b1b0c75aa9/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/6469fabab7a45339c1c048b1b0c75aa9/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/1510df70f6533deb527cf078c6e7c399/transformed/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/1510df70f6533deb527cf078c6e7c399/transformed/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/0f79b3fb659c43a11ccf011833b0f3f1/transformed/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/0f79b3fb659c43a11ccf011833b0f3f1/transformed/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/6fcef73541d913375bb9900e453db570/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/6fcef73541d913375bb9900e453db570/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/5aecb538be99e943b6ca6ebd43ba8340/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/5aecb538be99e943b6ca6ebd43ba8340/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/3f328409b530bd0be9d7ac0a71680701/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/3f328409b530bd0be9d7ac0a71680701/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/24fd2af65b48b790b61760e9820e41f1/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/24fd2af65b48b790b61760e9820e41f1/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/341b4184664491502e852bb606d9271c/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/341b4184664491502e852bb606d9271c/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f9da0e1a391f289bd0e6a76fd621aca1/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f9da0e1a391f289bd0e6a76fd621aca1/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/d6ee2f1880c942b1c88494742ab4304f/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/d6ee2f1880c942b1c88494742ab4304f/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/b74cdccde4f2ac9e91abead65a9ba949/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/b74cdccde4f2ac9e91abead65a9ba949/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/c914b5975532f76122152c4c98d550a6/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/c914b5975532f76122152c4c98d550a6/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-dash:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/1c1d438fb9bd20e67489019bdcf4c923/transformed/jetified-exoplayer-dash-2.9.2/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-dash:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/1c1d438fb9bd20e67489019bdcf4c923/transformed/jetified-exoplayer-dash-2.9.2/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-hls:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/e4d78f9c0c39837ef2c6f38060646a5d/transformed/jetified-exoplayer-hls-2.9.2/AndroidManifest.xml:20:5-22:41
@@ -519,20 +539,12 @@ MERGED from [com.google.android.exoplayer:exoplayer-core:2.9.2] /Users/coqoa/.gr
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/0c219c82da586347bcf5ab19716c645a/transformed/jetified-exoplayer-core-2.9.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/b76bff72d12bc8da93b8f5cbb61884cc/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/b76bff72d12bc8da93b8f5cbb61884cc/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/275a706008bd0488593d8c3c3ddf544c/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/275a706008bd0488593d8c3c3ddf544c/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/e53b0f797e6c3da9aff3f425e5de1a8c/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/e53b0f797e6c3da9aff3f425e5de1a8c/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/d6ee2f1880c942b1c88494742ab4304f/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/d6ee2f1880c942b1c88494742ab4304f/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/fda84eb1ca5433c8f57bdae4fbe8fe37/transformed/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/coqoa/.gradle/caches/transforms-3/fda84eb1ca5433c8f57bdae4fbe8fe37/transformed/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/c914b5975532f76122152c4c98d550a6/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/c914b5975532f76122152c4c98d550a6/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/d32bd07586aeb4c024888cb1adf354a8/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/d32bd07586aeb4c024888cb1adf354a8/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/df5c4f099bc04d576cc9cfd354ad1462/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/df5c4f099bc04d576cc9cfd354ad1462/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7fb5034efb26d4f90589e78fd3e1407c/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7fb5034efb26d4f90589e78fd3e1407c/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.yqritc:android-scalablevideoview:1.0.1] /Users/coqoa/.gradle/caches/transforms-3/fbbff95b5ab7402f3f563076b51cd02b/transformed/jetified-android-scalablevideoview-1.0.1/AndroidManifest.xml:8:5-10:41

@@ -6,7 +6,7 @@ import { colors } from "../component/Color";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import AxiosApi from "../component/paymentComponent/AxiosApi";
+
 
 const BG = styled.ImageBackground`
     flex: 1;

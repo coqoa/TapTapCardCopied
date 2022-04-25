@@ -95,9 +95,9 @@ const GanadaNameText = styled.Text`
     color: ${colors.DARKGRAY};
 `
 const CardNameText = styled.Text`
-    height: 100px;
+    height: 60px;
     text-align: center;
-    font-size: 100px;
+    font-size: 60px;
     font-family: 'SDChild';
     color: ${colors.REALDARKGRAY};
 `
@@ -241,7 +241,7 @@ const RealPictureContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     align-items: center;
     width: 100%;
-    height: 80%;
+    height: 100%;
 `
 const RealPictureExitBtn =styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
@@ -983,7 +983,7 @@ export const WordCardLevel = (props) => {
                                         </>
                                         )}
                                         {props.level !== "word3LV" && (
-                                            <CardNameText style={{fontSize:100}}>{dataName(secondIndex)}</CardNameText>
+                                            <CardNameText style={{fontSize:60}}>{dataName(secondIndex)}</CardNameText>
                                         )}
                                     </CardContents>
                                 )}
@@ -1043,6 +1043,7 @@ export const WordCardLevel = (props) => {
                                 {/* 터치시 텍스트 색깔을 바꿔주는 모달 */}
                                 <CardNameModal style={{opacity:secondTextOpacity}}>
                                     <CardNameModalText style={{color:data[firstIndex].textColor}}>{dataName(firstIndex)}</CardNameModalText>
+                                    {/* <CardNameModalText style={{color:data[firstIndex].bgColor}}>{dataName(firstIndex)}</CardNameModalText> */}
                                 </CardNameModal>
 
                                 {props.level == "word2LV" && (

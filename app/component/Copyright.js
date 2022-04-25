@@ -36,7 +36,7 @@ const Contents = styled.Text`
 export const Copyright = () =>{
     return(
         <CopyrightShell>
-            <List><Title>타이틀</Title><Contents>컨텐츠</Contents></List>
+            <List><Title></Title><Contents>컨텐츠</Contents></List>
             <List><Title>타이틀</Title><Contents>컨텐츠</Contents></List>
             <List><Title>타이틀</Title><Contents>컨텐츠</Contents></List>
             <List><Title>타이틀</Title><Contents>컨텐츠</Contents></List>

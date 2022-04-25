@@ -7,6 +7,11 @@ export const colors = {
     CUSTOMPINK:"#FF5384",
     TOMATO : "#FF8D8D",
     GREEN:"#198c19",
+    BLUESKY:"#bcdffb",
+    PINKSKY:"#ffe8ec",
+    GREENSKY:"#d6ffd5",
+    ORANGESKY:"#ffedcc",
+    REDSKY:"#ffd5d6",
 
     REALLIGHTGRAY : "#DBDBDB",
     LIGHTGRAY : "#C4C4C4",

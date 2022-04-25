@@ -34,6 +34,11 @@ const MenuText = styled.Text`
     font-size: 35px;
     font-family: 'SDChild';
 `
+const MenuImage = styled.Image`
+    width: 100%;
+    height: 100%;
+    flex: 1;
+`
 const SelectModalBG = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     width: 100%;
@@ -114,10 +119,15 @@ const Menu = ({navigation}) => {
     const EngBtnAnimation = useRef(new Animated.Value(1)).current;
 
     //메뉴 버튼 애니메이션 & 실행함수
-    const btnFunc = (a,b,c) => {
+    const btnFunc = (a,b,c,d) => {
         return(
+        // <MenuBox style={{backgroundColor:colors.SKYBLUE}}>
+        //     <MenuImage source={require("../asset/images/ganada1.png")} resizeMode="contain" />
+        // </MenuBox>
         <MenuBox
-            style={{transform: [{scale:a}], 
+            style={{
+                backgroundColor:d,
+                transform: [{scale:a}], 
                 shadowColor: "black",
                 shadowOpacity: 0.1,
                 shadowRadius: 3,
@@ -128,7 +138,8 @@ const Menu = ({navigation}) => {
             onPressIn={() => {a.setValue(0.9)}}
             onPressOut={() => (BtnClick(b),a.setValue(1))}
         >
-                <MenuText>{c}</MenuText>
+                {/* <MenuText>{c}</MenuText> */}
+                <MenuImage source={c} resizeMode="contain" />
         </MenuBox>
         )
     }
@@ -170,9 +181,13 @@ const Menu = ({navigation}) => {
         <MenuBoxShell>
             {/* <AxiosApi /> */}
             <TouchableOpacity style={{position:"absolute", left:-10, top:20}} onPress={()=>{logout(), console.log('로그아웃')}}><Text>로그아웃</Text></TouchableOpacity>
-            {btnFunc(ganadaBtnAnimation,"Ganada","가나다")}
-            {btnFunc(languageBtnAnimation,"Language","ABC")}
-            {btnFunc(numberBtnAnimation,"Number","숫자")}
+            
+            {/* <MenuBox style={{backgroundColor:colors.SKYBLUE}}><MenuImage source={require("../asset/images/ganada1.png")} resizeMode="contain" /></MenuBox> */}
+            {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ganada.png"),colors.BLUESKY)}
+            {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ABC.png"),colors.ORANGESKY)}
+            {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/123.png"),colors.REDSKY)}
+            {/* {btnFunc(languageBtnAnimation,"Language","ABC")} */}
+            {/* {btnFunc(numberBtnAnimation,"Number","숫자")} */}
             <MenuBox 
                 style={{transform: [{scale:wordPlayBtnAnimation}],
                     shadowColor: "black",

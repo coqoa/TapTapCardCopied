@@ -94,7 +94,7 @@ export default function PaymentResult({ route, navigation }) {
         // console.log(response.data.response);
         const { access_token } = res.data.response; // 인증 토큰
         setAccessToken(access_token)
-        console.log("getToken 성공", access_token);
+        // console.log("getToken 성공", access_token);
         // console.log('access_token = ',access_token)
     })
     .catch(function(error) {
@@ -103,7 +103,7 @@ export default function PaymentResult({ route, navigation }) {
   },[])
   
   useEffect(()=>{
-    console.log('accessToken',accessToken)
+    // console.log('accessToken',accessToken)
     const getPaymentData = axios({
       url: `https://api.iamport.kr/payments/${imp_uid}`, // imp_uid 전달
       method: "get", // GET method

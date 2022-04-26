@@ -119,6 +119,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Google-Mobile-Ads-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleAppMeasurement.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GoogleDataTransport.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -130,6 +140,11 @@
 			<false/>
 		</dict>
 		<key>GoogleSignIn.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleUserMessagingPlatform.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -160,6 +175,11 @@
 			<false/>
 		</dict>
 		<key>RCTTypeSafety.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RNAdMob.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

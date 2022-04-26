@@ -77,6 +77,20 @@
     <string name="exo_track_surround_5_point_1">System dźwięku przestrzennego 5.1</string>
     <string name="exo_track_surround_7_point_1">System dźwięku przestrzennego 7.1</string>
     <string name="exo_track_unknown">Nieznany</string>
+    <string name="offline_notification_text">Kliknij, by otworzyć reklamę</string>
+    <string name="offline_notification_title">Wyświetl reklamę zapisaną w trybie offline</string>
+    <string name="offline_opt_in_confirm">OK</string>
+    <string name="offline_opt_in_confirmation">Otrzymasz powiadomienie z linkiem, gdy znów połączysz się z internetem</string>
+    <string name="offline_opt_in_decline">Nie</string>
+    <string name="offline_opt_in_message">Wyślemy Ci powiadomienie z linkiem do strony reklamodawcy.</string>
+    <string name="offline_opt_in_title">Otwórz reklamę, gdy znów połączysz się z internetem.</string>
+    <string name="s1">Zapisz obraz</string>
+    <string name="s2">Zezwolić reklamie na zapisanie obrazu w galerii zdjęć?</string>
+    <string name="s3">Zaakceptuj</string>
+    <string name="s4">Odrzuć</string>
+    <string name="s5">Utwórz wydarzenie w kalendarzu</string>
+    <string name="s6">Zezwolić reklamie na utworzenie wydarzenia w kalendarzu?</string>
+    <string name="s7">Reklama testowa</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Szukaj"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

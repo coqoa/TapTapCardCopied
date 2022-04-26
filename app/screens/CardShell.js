@@ -9,8 +9,9 @@ import { WordCardLevel } from "../component/CardDefault";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import {InterstitialAd, BannerAd} from "../component/Ads"
+import { BannerAds} from "../component/Ads"
 import { Copyright } from "../component/Copyright";
+
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -35,6 +36,7 @@ const Top = styled.View`
     flex-direction: row;
     width: 80%;
     height: 80%;
+    top: 3px;
     border-radius: 15px;
     align-items: center;
     z-index: 10;
@@ -379,16 +381,8 @@ const CardShell = ({route, navigation}) => {
             {paymentMember == false && (
             <>
                 <BannerShell>
-                    <BannerAd />
+                    <BannerAds />
                 </BannerShell>
-                {interstitial &&(
-                    <InterstitialShell>
-                        <InterstitialAd />
-                        <TouchableOpacity style={{width:50 , height:50, backgroundColor:"green", justifyContent:"center"}} onPress={() => setInterstitial(false)}>
-                            <Text style={{textAlign:"center", color:"white"}}>닫기</Text>
-                        </TouchableOpacity>
-                    </InterstitialShell>
-                )}
             </>
             )}
             <TopContainer>

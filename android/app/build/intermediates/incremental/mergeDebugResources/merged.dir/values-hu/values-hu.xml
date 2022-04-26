@@ -77,6 +77,20 @@
     <string name="exo_track_surround_5_point_1">5.1-es térhatású hangzás</string>
     <string name="exo_track_surround_7_point_1">7.1-es térhatású hangzás</string>
     <string name="exo_track_unknown">Ismeretlen</string>
+    <string name="offline_notification_text">Koppintson a hirdetés megnyitásához</string>
+    <string name="offline_notification_title">Az offline mentett hirdetés megtekintése</string>
+    <string name="offline_opt_in_confirm">OK</string>
+    <string name="offline_opt_in_confirmation">Linket tartalmazó értesítést kap, amikor újra online lesz</string>
+    <string name="offline_opt_in_decline">Nem</string>
+    <string name="offline_opt_in_message">Értesítést küldünk, amelyben a hirdető webhelyére mutató link szerepel.</string>
+    <string name="offline_opt_in_title">Megnyithatja a hirdetést akkor, amikor újra online lesz.</string>
+    <string name="s1">Kép mentése</string>
+    <string name="s2">Engedélyezi a hirdetés számára a kép tárolását a Képgalériában?</string>
+    <string name="s3">Elfogadás</string>
+    <string name="s4">Elutasítás</string>
+    <string name="s5">Naptáresemény létrehozása</string>
+    <string name="s6">Engedélyezi a hirdetés számára naptáresemény létrehozását?</string>
+    <string name="s7">Teszthirdetés</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Keresés"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

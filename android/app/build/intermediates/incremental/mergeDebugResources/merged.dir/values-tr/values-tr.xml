@@ -77,6 +77,20 @@
     <string name="exo_track_surround_5_point_1">5.1 surround ses</string>
     <string name="exo_track_surround_7_point_1">7.1 surround ses</string>
     <string name="exo_track_unknown">Bilinmiyor</string>
+    <string name="offline_notification_text">Reklamı açmak için dokunun</string>
+    <string name="offline_notification_title">Kaydettiğiniz reklamı internet bağlantınız yokken görüntüleyin</string>
+    <string name="offline_opt_in_confirm">Tamam</string>
+    <string name="offline_opt_in_confirmation">İnternete tekrar bağlandığınızda bağlantı içeren bir bildirim alacaksınız</string>
+    <string name="offline_opt_in_decline">Hayır</string>
+    <string name="offline_opt_in_message">Size reklamverenin sitesine bir bağlantının olduğu bildirim göndereceğiz.</string>
+    <string name="offline_opt_in_title">İnternete tekrar bağlandığınızda reklamı açın.</string>
+    <string name="s1">Resmi kaydet</string>
+    <string name="s2">Reklamın, Resim galerisine resim kaydetmesine izin verilsin mi?</string>
+    <string name="s3">Kabul et</string>
+    <string name="s4">Reddet</string>
+    <string name="s5">Takvim etkinliği oluştur</string>
+    <string name="s6">Reklamın, takvim etkinliği oluşturmasına izin verilsin mi?</string>
+    <string name="s7">Test Reklamı</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Ara"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

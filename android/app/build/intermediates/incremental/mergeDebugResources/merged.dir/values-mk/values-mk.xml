@@ -77,6 +77,20 @@
     <string name="exo_track_surround_5_point_1">5.1 опкружувачки звук</string>
     <string name="exo_track_surround_7_point_1">7.1 опкружувачки звук</string>
     <string name="exo_track_unknown">Непозната</string>
+    <string name="offline_notification_text">Допрете за да ја отворите рекламата</string>
+    <string name="offline_notification_title">Прегледајте ја рекламата што ја зачувавте кога бевте офлајн</string>
+    <string name="offline_opt_in_confirm">Во ред</string>
+    <string name="offline_opt_in_confirmation">Ќе добиете известување со линк кога ќе бидете повторно онлајн</string>
+    <string name="offline_opt_in_decline">Не, фала</string>
+    <string name="offline_opt_in_message">Ќе ви испратиме известување со линк до сајтот на огласувачот.</string>
+    <string name="offline_opt_in_title">Отворете ја рекламата кога ќе бидете повторно онлајн.</string>
+    <string name="s1">Зачувај ја сликата</string>
+    <string name="s2">Дали дозволувате рекламата да ја зачува сликата во „Галеријата со слики“?</string>
+    <string name="s3">Прифати</string>
+    <string name="s4">Одбиј</string>
+    <string name="s5">Создај настан во календарот</string>
+    <string name="s6">Дали дозволувате рекламата да создаде настан во календарот?</string>
+    <string name="s7">Тестирај ја рекламата</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Пребарај"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

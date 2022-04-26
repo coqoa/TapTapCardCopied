@@ -107,6 +107,9 @@ attr activityChooserViewStyle
 attr actualImageResource
 attr actualImageScaleType
 attr actualImageUri
+attr adSize
+attr adSizes
+attr adUnitId
 attr ad_marker_color
 attr ad_marker_width
 attr alertDialogButtonGroupStyle
@@ -376,6 +379,7 @@ attr fontProviderFetchStrategy
 attr fontProviderFetchTimeout
 attr fontProviderPackage
 attr fontProviderQuery
+attr fontProviderSystemFontFamily
 attr fontStyle
 attr fontVariationSettings
 attr fontWeight
@@ -528,6 +532,7 @@ attr navigationContentDescription
 attr navigationIcon
 attr navigationMode
 attr navigationViewStyle
+attr nestedScrollViewStyle
 attr number
 attr numericModifiers
 attr overlapAnchor
@@ -563,6 +568,7 @@ attr progressBarPadding
 attr progressBarStyle
 attr queryBackground
 attr queryHint
+attr queryPatterns
 attr radioButtonStyle
 attr rangeFillColor
 attr ratingBarStyle
@@ -611,6 +617,7 @@ attr shapeAppearanceLargeComponent
 attr shapeAppearanceMediumComponent
 attr shapeAppearanceOverlay
 attr shapeAppearanceSmallComponent
+attr shortcutMatchRequired
 attr showAsAction
 attr showDividers
 attr showMotionSpec
@@ -773,7 +780,11 @@ attr yearTodayStyle
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
+bool enable_system_alarm_service_default
+bool enable_system_foreground_service_default
+bool enable_system_job_service_default
 bool mtrl_btn_textappearance_all_caps
+bool workmanager_test_configuration
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -1408,6 +1419,8 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable admob_close_button_black_circle_white_cross
+drawable admob_close_button_white_circle_black_cross
 drawable avd_hide_password
 drawable avd_show_password
 drawable btn_checkbox_checked_mtrl
@@ -1861,10 +1874,15 @@ id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
 id tag_accessibility_pane_title
+id tag_on_apply_window_listener
+id tag_on_receive_content_listener
+id tag_on_receive_content_mime_types
 id tag_screen_reader_focusable
+id tag_state_description
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id tag_window_insets_animation_callback
 id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
 id text
@@ -2092,6 +2110,7 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string alert_description
+string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
@@ -2239,6 +2258,13 @@ string mtrl_picker_toggle_to_calendar_input_mode
 string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
+string offline_notification_text
+string offline_notification_title
+string offline_opt_in_confirm
+string offline_opt_in_confirmation
+string offline_opt_in_decline
+string offline_opt_in_message
+string offline_opt_in_title
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -2248,6 +2274,13 @@ string progressbar_description
 string project_id
 string radiogroup_description
 string rn_tab_description
+string s1
+string s2
+string s3
+string s4
+string s5
+string s6
+string s7
 string scrollbar_description
 string search_description
 string search_menu_title
@@ -2693,6 +2726,7 @@ style Theme_Design_NoActionBar
 style Theme_FullScreenDialog
 style Theme_FullScreenDialogAnimatedFade
 style Theme_FullScreenDialogAnimatedSlide
+style Theme_IAPTheme
 style Theme_MaterialComponents
 style Theme_MaterialComponents_BottomSheetDialog
 style Theme_MaterialComponents_Bridge
@@ -2975,6 +3009,7 @@ styleable ActionMenuItemView android_minWidth
 styleable ActionMenuView
 styleable ActionMode background backgroundSplit closeItemLayout height subtitleTextStyle titleTextStyle
 styleable ActivityChooserView expandActivityOverflowButtonDrawable initialActivityCount
+styleable AdsAttrs adSize adSizes adUnitId
 styleable AlertDialog android_layout buttonIconDimen buttonPanelSideLayout listItemLayout listLayout multiChoiceItemLayout showTitle singleChoiceItemLayout
 styleable AnimatedStateListDrawableCompat android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable AnimatedStateListDrawableItem android_id android_drawable
@@ -2993,6 +3028,7 @@ styleable BottomAppBar backgroundTint elevation fabAlignmentMode fabAnimationMod
 styleable BottomNavigationView backgroundTint elevation itemBackground itemHorizontalTranslationEnabled itemIconSize itemIconTint itemRippleColor itemTextAppearanceActive itemTextAppearanceInactive itemTextColor labelVisibilityMode menu
 styleable BottomSheetBehavior_Layout android_elevation backgroundTint behavior_expandedOffset behavior_fitToContents behavior_halfExpandedRatio behavior_hideable behavior_peekHeight behavior_saveFlags behavior_skipCollapsed shapeAppearance shapeAppearanceOverlay
 styleable ButtonBarLayout allowStacking
+styleable Capability queryPatterns shortcutMatchRequired
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Chip android_textAppearance android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical singleLine singleSelection
@@ -3009,7 +3045,7 @@ styleable ExtendedFloatingActionButton_Behavior_Layout behavior_autoHide behavio
 styleable FloatingActionButton backgroundTint backgroundTintMode borderWidth elevation ensureMinTouchTargetSize fabCustomSize fabSize hideMotionSpec hoveredFocusedTranslationZ maxImageSize pressedTranslationZ rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec useCompatPadding
 styleable FloatingActionButton_Behavior_Layout behavior_autoHide
 styleable FlowLayout itemSpacing lineSpacing
-styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery
+styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery fontProviderSystemFontFamily
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
 styleable ForegroundLinearLayout android_foreground android_foregroundGravity foregroundInsidePadding
 styleable Fragment android_name android_id android_tag

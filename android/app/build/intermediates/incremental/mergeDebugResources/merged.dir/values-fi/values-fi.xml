@@ -77,6 +77,20 @@
     <string name="exo_track_surround_5_point_1">5.1-surround-ääni</string>
     <string name="exo_track_surround_7_point_1">7.1-surround-ääni</string>
     <string name="exo_track_unknown">Tuntematon</string>
+    <string name="offline_notification_text">Avaa mainos napauttamalla</string>
+    <string name="offline_notification_title">Katso mainos, jonka tallensit ollessasi offline-tilassa</string>
+    <string name="offline_opt_in_confirm">OK</string>
+    <string name="offline_opt_in_confirmation">Saat ilmoituksen, jossa on linkki, kun olet taas yhteydessä verkkoon</string>
+    <string name="offline_opt_in_decline">Ei kiitos</string>
+    <string name="offline_opt_in_message">Lähetämme sinulle ilmoituksen, jossa on linkki mainostajan sivustolle.</string>
+    <string name="offline_opt_in_title">Avaa mainos, kun olet taas yhteydessä verkkoon.</string>
+    <string name="s1">Tallenna kuva</string>
+    <string name="s2">Myönnetäänkö mainokselle oikeus tallentaa kuva galleriaan?</string>
+    <string name="s3">Hyväksy</string>
+    <string name="s4">Hylkää</string>
+    <string name="s5">Luo kalenteritapahtuma</string>
+    <string name="s6">Myönnetäänkö mainokselle oikeus luoda kalenteritapahtuma?</string>
+    <string name="s7">Testimainos</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Haku"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

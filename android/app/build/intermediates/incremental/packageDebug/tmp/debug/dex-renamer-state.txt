@@ -1,4 +1,4 @@
-#Sat Apr 23 15:03:25 KST 2022
+#Tue Apr 26 21:14:24 KST 2022
 path.4=classes_0.dex
 path.3=classes3.dex
 path.2=classes2.dex
@@ -19,11 +19,13 @@ base.8=/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/
 base.7=/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_11.dex
 base.6=/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_10.dex
 base.5=/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_1.dex
+renamed.25=classes26.dex
 renamed.24=classes25.dex
 renamed.23=classes24.dex
 renamed.22=classes23.dex
 renamed.21=classes22.dex
 renamed.20=classes21.dex
+base.25=/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_20.dex
 renamed.18=classes19.dex
 renamed.17=classes18.dex
 renamed.9=classes10.dex
@@ -74,3 +76,4 @@ path.23=classes_8.dex
 path.24=classes_9.dex
 path.21=classes_6.dex
 path.22=classes_7.dex
+path.25=classes_20.dex

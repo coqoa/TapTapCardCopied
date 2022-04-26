@@ -77,6 +77,20 @@
     <string name="exo_track_surround_5_point_1">5.1 surround-lyd</string>
     <string name="exo_track_surround_7_point_1">7.1 surround-lyd</string>
     <string name="exo_track_unknown">Ukjent</string>
+    <string name="offline_notification_text">Trykk for å åpne annonsen</string>
+    <string name="offline_notification_title">Se annonsen du lagret mens du var uten nett</string>
+    <string name="offline_opt_in_confirm">OK</string>
+    <string name="offline_opt_in_confirmation">Du får et varsel med linken når du er på nettet igjen</string>
+    <string name="offline_opt_in_decline">Nei takk</string>
+    <string name="offline_opt_in_message">Vi sender deg et varsel med en link til annonsørnettstedet.</string>
+    <string name="offline_opt_in_title">Åpne annonsen når du er på nettet igjen.</string>
+    <string name="s1">Lagre bilde</string>
+    <string name="s2">Vil du la annonsen lagre bildet i bildegalleriet?</string>
+    <string name="s3">Godta</string>
+    <string name="s4">Avslå</string>
+    <string name="s5">Opprett kalenderaktivitet</string>
+    <string name="s6">Vil du la annonsen opprette en kalenderaktivitet?</string>
+    <string name="s7">Testannonse</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Søk"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

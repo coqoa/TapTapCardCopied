@@ -1,4 +1,4 @@
-import React,{ useRef, useEffect } from "react";
+import React,{ useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import {Platform, Animated, Pressable, View, Text, Button, TouchableOpacity} from "react-native";
 import { Audio } from 'expo-av';
@@ -6,6 +6,9 @@ import { colors } from "../component/Color";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+
+import {BannerAd, BannerAdSize, TestIds} from '@react-native-admob/admob';
+import { loadAsync } from "expo-font";
 
 
 const BG = styled.ImageBackground`
@@ -83,6 +86,9 @@ const WordSelectTitleText = styled(WordSelectText)`
     font-size: 40px;
     color: ${colors.REALDARKGRAY};
     margin-bottom: 10px;
+`
+const FullAdBtn = styled.Button`
+    z-index: 100;
 `
 // -------------------------------------------------------------------------------------------------
 
@@ -176,18 +182,17 @@ const Menu = ({navigation}) => {
             email:auth()._user.email,
         })
     },[])
+    
+
     return(
     <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
+
         <MenuBoxShell>
-            {/* <AxiosApi /> */}
             <TouchableOpacity style={{position:"absolute", left:-10, top:20}} onPress={()=>{logout(), console.log('로그아웃')}}><Text>로그아웃</Text></TouchableOpacity>
             
-            {/* <MenuBox style={{backgroundColor:colors.SKYBLUE}}><MenuImage source={require("../asset/images/ganada1.png")} resizeMode="contain" /></MenuBox> */}
             {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ganada.png"),colors.BLUESKY)}
-            {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ABC.png"),colors.ORANGESKY)}
-            {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/123.png"),colors.REDSKY)}
-            {/* {btnFunc(languageBtnAnimation,"Language","ABC")} */}
-            {/* {btnFunc(numberBtnAnimation,"Number","숫자")} */}
+            {btnFunc(languageBtnAnimation,"Language",require("../asset/images/ABC.png"),colors.ORANGESKY)}
+            {btnFunc(numberBtnAnimation,"Number",require("../asset/images/123.png"),colors.REDSKY)}
             <MenuBox 
                 style={{transform: [{scale:wordPlayBtnAnimation}],
                     shadowColor: "black",

@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 // @invertase/react-native-apple-authentication
 import com.RNAppleAuthentication.AppleAuthenticationAndroidPackage;
+// @react-native-admob/admob
+import com.rnadmob.admob.RNAdMobPackage;
 // @react-native-firebase/app
 import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
 // @react-native-firebase/auth
@@ -81,6 +83,7 @@ public class PackageList {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
       new AppleAuthenticationAndroidPackage(),
+      new RNAdMobPackage(),
       new ReactNativeFirebaseAppPackage(),
       new ReactNativeFirebaseAuthPackage(),
       new ReactNativeFirebaseFirestorePackage(),

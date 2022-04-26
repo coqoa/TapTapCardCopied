@@ -77,6 +77,20 @@
     <string name="exo_track_surround_5_point_1">Som surround 5.1</string>
     <string name="exo_track_surround_7_point_1">Som surround 7.1</string>
     <string name="exo_track_unknown">Desconhecida</string>
+    <string name="offline_notification_text">Toque para abrir o anúncio.</string>
+    <string name="offline_notification_title">Veja o anúncio que guardou quando estava offline</string>
+    <string name="offline_opt_in_confirm">OK</string>
+    <string name="offline_opt_in_confirmation">Receberá uma notificação com o link quando voltar a estar online.</string>
+    <string name="offline_opt_in_decline">Não</string>
+    <string name="offline_opt_in_message">Receberá uma notificação com um link para o site do anunciante.</string>
+    <string name="offline_opt_in_title">Abra o anúncio quando voltar a estar online</string>
+    <string name="s1">Guardar imagem</string>
+    <string name="s2">Permitir ao anúncio armazenar uma imagem na galeria de imagens?</string>
+    <string name="s3">Aceitar</string>
+    <string name="s4">Recusar</string>
+    <string name="s5">Criar evento de calendário</string>
+    <string name="s6">Permitir ao anúncio criar um evento de calendário?</string>
+    <string name="s7">Anúncio de teste</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Pesquisar"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

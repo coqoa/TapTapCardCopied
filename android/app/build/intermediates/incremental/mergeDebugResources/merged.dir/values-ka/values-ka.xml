@@ -77,6 +77,20 @@
     <string name="exo_track_surround_5_point_1">5.1 მოცულობითი ხმა</string>
     <string name="exo_track_surround_7_point_1">7.1 მოცულობითი ხმა</string>
     <string name="exo_track_unknown">უცნობი</string>
+    <string name="offline_notification_text">შეეხეთ რეკლამის გასახსნელად</string>
+    <string name="offline_notification_title">ნახეთ თქვენ მიერ ხაზგარეშე ყოფნისას შენახული რეკლამა</string>
+    <string name="offline_opt_in_confirm">კარგი</string>
+    <string name="offline_opt_in_confirmation">თქვენ მიიღებთ შეტყობინებას ბმულით, როდესაც ონლაინ დაბრუნდებით</string>
+    <string name="offline_opt_in_decline">არა, გმადლობთ</string>
+    <string name="offline_opt_in_message">ჩვენ გამოგიგზავნით შეტყობინებას რეკლამის განმთავსების საიტის ბმულით.</string>
+    <string name="offline_opt_in_title">გახსენით რეკლამა, როდესაც ონლაინ დაბრუნდებით.</string>
+    <string name="s1">სურათის შენახვა</string>
+    <string name="s2">აძლევთ ნებას რეკლამას, შეინახოს სურათი გალერეაში?</string>
+    <string name="s3">მიღება</string>
+    <string name="s4">უარყოფა</string>
+    <string name="s5">კალენდარში მოვლენის შექმნა</string>
+    <string name="s6">აძლევთ ნებას რეკლამას, შექმნას მოვლენა კალენდარში?</string>
+    <string name="s7">სატესტო რეკლამა</string>
     <string msgid="6264217191555673260" name="search_menu_title">"ძიება"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

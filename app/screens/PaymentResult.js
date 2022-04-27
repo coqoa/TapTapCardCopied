@@ -67,13 +67,13 @@ export default function PaymentResult({ route, navigation }) {
   }
   
   const [defaultAmount, setDefaultAmount] = useState('')
+  const [paymentAmount, setPaymentAmount] = useState('')
   const dbAmount = firestore().collection('Amount');
   useEffect(()=>{
     dbAmount.get().then((res)=>{
       res.forEach((doc)=>{
         const resAmount = doc.data().amount
         setDefaultAmount(resAmount)
-        console.log(doc.data().amount)
       })
     })
   },[])
@@ -91,14 +91,17 @@ export default function PaymentResult({ route, navigation }) {
       }
     })
     .then(function(res) {
-        // console.log(response.data.response);
-        const { access_token } = res.data.response; // 인증 토큰
-        setAccessToken(access_token)
-        // console.log("getToken 성공", access_token);
-        // console.log('access_token = ',access_token)
+      const { access_token } = res.data.response; // 인증 토큰
+      const { now } = res.data.response; // 인증 토큰
+      const { expired_at } = res.data.response; // 인증 토큰
+      setAccessToken(access_token)
+      // console.log("getToken 성공", access_token);
+      // console.log('access_token = ',access_token)
+      // console.log('    now      = ', now)
+      // console.log(' expired_at  = ',expired_at)
     })
     .catch(function(error) {
-        console.log("getToken 실패");
+      console.log("getToken 실패", error);
     });
   },[])
   
@@ -107,18 +110,26 @@ export default function PaymentResult({ route, navigation }) {
     const getPaymentData = axios({
       url: `https://api.iamport.kr/payments/${imp_uid}`, // imp_uid 전달
       method: "get", // GET method
-      headers: { "Authorization": "Bearer "+accessToken } // 인증 토큰 Authorization header에 추가
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer "+accessToken 
+      } // 인증 토큰 Authorization header에 추가
     })
     .then(function(res) {
         const paymentData = res.data.response;
         // console.log('조회한 결제 정보(내가입력한주문서) paymentData =', paymentData);
         const {amount, status} = paymentData;
-        // console.log(typeof(amount))
-        // console.log(typeof(parseInt(defaultAmount)))
-        if(amount === parseInt(defaultAmount)){
+        setPaymentAmount(toString(amount))
+        // console.log('결제액 일치 확인 (일치하지않아서 거래취소됨, 새로고침하면 됐다고 뜸..) : ',amount === parseInt(defaultAmount))
+        // ⬇︎ 해결책 : amount값을 string으로 변환해서 새로운 state에 넣은 뒤 서버의 값과 비교
+        // console.log('------------')
+        // console.log(typeof(paymentAmount),paymentAmount)
+        // console.log(typeof(defaultAmount),defaultAmount)
+        // console.log('------------')
+        if(paymentAmount === defaultAmount){
           createDB()
           setIsSuccess(true)
-          console.log(" getPaymentData 성공");
+          console.log(" getPaymentData 성공", status);
         }
     })
     .catch(function(error) {

@@ -35,9 +35,12 @@ export default function PaymentTest({ navigation }) {
 
   const [validationCheck, setValidationCheck] = useState("")
   const TextArea = styled.Text`
-    margin: 10px 15px;
+    padding: 6px;
+    border-radius: 3px;
+    /* margin: 10px 15px; */
     /* margin-left: 15px; */
     color:${colors.GRAY};
+    border: 1px solid lightgray;
   `
   const Validation = styled.Text`
   margin-top: 10px;
@@ -127,13 +130,16 @@ export default function PaymentTest({ navigation }) {
           <Input value={name} onChangeText={(value) => setName(value)} />
         </Stack> */}
         <Stack>
+          <FormControl.Label>결제금액</FormControl.Label>
+          <TextArea>{amount+"원"}</TextArea>
+        </Stack>
+        {/* <Stack>
           <FormControl.Label>이메일</FormControl.Label>
-          <TextArea>{buyerEmail}</TextArea>
-          {/* <Input
+          <Input
             value={buyerEmail}
             onChangeText={(value) => setBuyerEmail(value)}
-          /> */}
-        </Stack>
+          />
+        </Stack> */}
         <Stack>
           <FormControl.Label>이름</FormControl.Label>
           {/* <TextArea>{buyerName}</TextArea> */}
@@ -157,19 +163,6 @@ export default function PaymentTest({ navigation }) {
             onChangeText={(value) => setBuyerTel(value)}
           />
         </Stack>
-        {/* <Stack>
-          <FormControl.Label>상품내용</FormControl.Label>
-          <TextArea>컨텐츠 제한을 해제하기 위한 상품</TextArea>
-        </Stack>
-        <Stack>
-          <FormControl.Label>주문번호</FormControl.Label>
-          <TextArea>{merchantUid}</TextArea>
-        </Stack>
-        <Stack>
-          <FormControl.Label>결제금액</FormControl.Label>
-          <TextArea>{amount+"원"}</TextArea>
-        </Stack> */}
-        
         <Validation>{validationCheck}</Validation>
         <Button
         style={{marginTop:10, backgroundColor:colors.WhaleBG}}

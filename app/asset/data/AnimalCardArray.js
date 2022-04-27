@@ -468,7 +468,7 @@ export const AnimalCardArray = [
     {
         "id" : "25", 
         "image" :  require("../lottie/Animal/panda.json"), 
-        "size" : "120%",
+        "size" : "140%",
         "realImage1" : require("../images/RealPicture/panda1.jpg"), 
         "realImage2" : require("../images/RealPicture/panda2.jpg"), 
         "realImage3" : require("../images/RealPicture/panda3.jpg"), 

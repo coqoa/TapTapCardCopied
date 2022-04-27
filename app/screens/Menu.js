@@ -11,12 +11,14 @@ import {BannerAd, BannerAdSize, TestIds} from '@react-native-admob/admob';
 import { loadAsync } from "expo-font";
 
 
-const BG = styled.ImageBackground`
+// const BG = styled.ImageBackground`
+const BG = styled.View`
     flex: 1;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
+    background-color: ${colors.bgColor};
 `
 const MenuBoxShell = styled.View`
     flex: 1;
@@ -33,7 +35,17 @@ const MenuBox = styled(Animated.createAnimatedComponent(Pressable))`
     align-items: center;
     border-radius: 25px;
 `
+const TextShell = styled.View`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.5);
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+`
 const MenuText = styled.Text`
+    position: absolute;
     font-size: 35px;
     font-family: 'SDChild';
 `
@@ -146,6 +158,9 @@ const Menu = ({navigation}) => {
         >
                 {/* <MenuText>{c}</MenuText> */}
                 <MenuImage source={c} resizeMode="contain" />
+                {/* <TextShell>
+                    <MenuText>{e}</MenuText>
+                </TextShell> */}
         </MenuBox>
         )
     }
@@ -185,27 +200,34 @@ const Menu = ({navigation}) => {
     
 
     return(
-    <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch">
+    <BG>
+    {/* <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch"> */}
 
         <MenuBoxShell>
             <TouchableOpacity style={{position:"absolute", left:-10, top:20}} onPress={()=>{logout(), console.log('로그아웃')}}><Text>로그아웃</Text></TouchableOpacity>
             
-            {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ganada.png"),colors.BLUESKY)}
-            {btnFunc(languageBtnAnimation,"Language",require("../asset/images/ABC.png"),colors.ORANGESKY)}
-            {btnFunc(numberBtnAnimation,"Number",require("../asset/images/123.png"),colors.REDSKY)}
-            <MenuBox 
-                style={{transform: [{scale:wordPlayBtnAnimation}],
+            {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ganada.png"),colors.LIGHTPINK)}
+            {btnFunc(languageBtnAnimation,"Language",require("../asset/images/ABC.png"),colors.LIGHTPASTELORANGE)}
+            {btnFunc(numberBtnAnimation,"Number",require("../asset/images/123.png"),colors.LIGHTSKYBLUE)}
+
+            <MenuBox
+                style={{
+                    backgroundColor:colors.LIGHTPASTELGREEN,
+                    transform: [{scale:wordPlayBtnAnimation}], 
                     shadowColor: "black",
                     shadowOpacity: 0.1,
-                    shadowRadius: 3,
-                    shadowOffset: {height: 2,width: 0},
+                    // shadowRadius: 15,
+                    shadowOffset: {height: 2,width: 0,},
                     elevation:1
                 }}
-                onPress={()=>{playSound(require("../asset/audio/btnClickSound.mp3"))}}
+                onPress={() => {playSound(require("../asset/audio/btnClickSound.mp3"))}}
                 onPressIn={() => {wordPlayBtnAnimation.setValue(0.9)}}
                 onPressOut={() => (animalModalZIndex.setValue(2), animalSelectScale.setValue(1) ,wordPlayBtnAnimation.setValue(1))}
             >
-                <MenuText>동물</MenuText>
+                <MenuImage source={require("../asset/images/BtnAnimal.png")} resizeMode="contain" />
+                {/* <TextShell>
+                    <MenuText>동물</MenuText>
+                </TextShell> */}
             </MenuBox>
         </MenuBoxShell>
 

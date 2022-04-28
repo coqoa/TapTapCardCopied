@@ -148,6 +148,8 @@
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="catalyst_logbox_background">#ffffffff</color>
     <color name="catalyst_redbox_background">#eecc0000</color>
+    <color name="colorPrimary">#023c69</color>
+    <color name="colorPrimaryDark">#ffffff</color>
     <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
     <color name="common_google_signin_btn_text_dark_disabled">#1F000000</color>
     <color name="common_google_signin_btn_text_dark_focused">@android:color/black</color>
@@ -203,6 +205,7 @@
     <color name="foreground_material_light">@android:color/black</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
+    <color name="iconBackground">#FFFFFF</color>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
     <color name="material_blue_grey_950">#ff21272b</color>
@@ -771,7 +774,7 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="alert_description" translatable="false">Alert</string>
     <string name="androidx_startup" translatable="false">androidx.startup</string>
-    <string name="app_name">taptapcard</string>
+    <string name="app_name">탭탭카드놀이</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
     <string name="button_description" translatable="false">Button</string>
@@ -987,6 +990,8 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="android:textColor">@android:color/black</item>
     <item name="android:editTextStyle">@style/ResetEditText</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
   </style>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>

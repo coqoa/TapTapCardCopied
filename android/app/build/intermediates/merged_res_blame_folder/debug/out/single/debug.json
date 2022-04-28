@@ -1,11 +1,23 @@
 [
     {
-        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/drawable_splashscreen_image.png.flat",
-        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/drawable/splashscreen_image.png"
+        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png"
     },
     {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
         "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png"
     },
     {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
@@ -24,12 +36,12 @@
         "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
-    },
-    {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
         "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
     {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/drawable_splashscreen.xml.flat",
@@ -42,6 +54,10 @@
     {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png"
     },
     {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",

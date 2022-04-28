@@ -1,11 +1,12 @@
 {
   "expo": {
-    "name": "taptapcard",
+    "name": "탭탭카드놀이",
     "version": "1.0.0",
     "slug": "taptapcard",
     "assetBundlePatterns": [
       "**/*"
     ],
+    "icon": "./app/asset/images/MainIcon.png",
     "ios": {
       "bundleIdentifier": "org.name.taptapcard",
       "buildNumber": "1.0.0",
@@ -49,7 +50,7 @@
           "NSAllowsArbitraryLoadsInWebContent": true
         }
       },
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./ios/GoogleService-Info.plist"
     },
     "android": {
       "package": "com.taptapcard",
@@ -67,7 +68,7 @@
         }
       ],
       "softwareKeyboardLayoutMode": "pan",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./android/app/google-services.json"
     },
     "plugins": ["@react-native-google-signin/google-signin"]
   },

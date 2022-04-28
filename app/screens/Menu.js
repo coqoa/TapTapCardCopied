@@ -204,7 +204,7 @@ const Menu = ({navigation}) => {
     {/* <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch"> */}
 
         <MenuBoxShell>
-            <TouchableOpacity style={{position:"absolute", left:-10, top:20}} onPress={()=>{logout(), console.log('로그아웃')}}><Text>로그아웃</Text></TouchableOpacity>
+            {/* <TouchableOpacity style={{position:"absolute", left:-10, top:20}} onPress={()=>{logout(), console.log('로그아웃')}}><Text>로그아웃</Text></TouchableOpacity> */}
             
             {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ganada.png"),colors.LIGHTPINK)}
             {btnFunc(languageBtnAnimation,"Language",require("../asset/images/ABC.png"),colors.LIGHTPASTELORANGE)}

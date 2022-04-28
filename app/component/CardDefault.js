@@ -166,19 +166,19 @@ const DistractorRow = styled.View`
     background-color: ${colors.BEIGE};
 `
 const Distractor = styled(Animated.createAnimatedComponent(Pressable))`
-    width: 48%;
+    width: 50%;
     height: 90%;
     margin: 5px;
-    border-radius: 45px;
+    border-radius: 15px;
     justify-content: center;
     align-items: center;
-    border: 3px solid ${colors.GRAY};
-    background-color: rgba(255,255,255, 0.6);
+    /* border: 2px solid ${colors.GRAY}; */
+    background-color: rgba(255,255,255, 1);
     z-index: 100;
 `
 const DistractorText = styled(Animated.createAnimatedComponent(Text))`
     font-family: 'SDChild';
-    font-size: 45px;
+    font-size: 28px;
     color: ${colors.REALDARKGRAY};
 `
 const CorrectAnswerContainer = styled(Animated.createAnimatedComponent(View))`
@@ -604,19 +604,32 @@ export const WordCardLevel = (props) => {
             dataName(firstIndex) == dataName(d) ? (
                 <Distractor 
                     {...a.panHandlers} 
-                    style={{transform:[{scale:c}]}}
+                    style={{
+                        transform:[{scale:c}],
+                        shadowColor: "black",
+                        shadowOpacity: 0.1,
+                        shadowRadius: 5,
+                        shadowOffset: {height: 2,width: 1,},
+                        elevation:3
+                    }}
                     onPressIn={()=>{playSound(correctAudio(d)),clickBlockerFunc()}}
                 >
                     <DistractorText style={{opacity:distractorOpacity}}>{dataName(d)}</DistractorText>
                 </Distractor>
             ):(
-            <Distractor 
-            {...b.panHandlers} 
-            style={{transform:[{scale:c}]}}
-            onPressIn={()=>playSound(wrongAudio(d))}
-            >
-                <DistractorText style={{opacity:distractorOpacity}}>{dataName(d)}</DistractorText>
-            </Distractor>
+                <Distractor 
+                {...b.panHandlers} 
+                style={{transform:[{scale:c}],
+                    shadowColor: "black",
+                    shadowOpacity: 0.1,
+                    shadowRadius: 3,
+                    shadowOffset: {height: 2,width: 0,},
+                    elevation:3
+                }}
+                onPressIn={()=>playSound(wrongAudio(d))}
+                >
+                    <DistractorText style={{opacity:distractorOpacity}}>{dataName(d)}</DistractorText>
+                </Distractor>
             )
         )
     }
@@ -752,7 +765,15 @@ export const WordCardLevel = (props) => {
                 return
     }}
     const wrongAudio = (e) => {
-        return data[e].SoundImage;
+        switch(type){
+            case "AnimalKOR":
+                return data[e].SoundKOR;
+            case "AnimalENG":
+                return data[e].SoundENG;
+            default:
+                return
+        }
+        // return data[e].SoundImage;
     }
 
     {if(secondIndex == data.length-1){

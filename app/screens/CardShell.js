@@ -518,7 +518,7 @@ const CardShell = ({route, navigation}) => {
             {copyrightModal && (
                 <CopyrightShell>
                     <CopyrightHeader>
-                        <CopyrightText>저작권정보</CopyrightText>
+                        {/* <CopyrightText>저작권정보</CopyrightText> */}
                         <CopyrightCloseBtn onPress={()=>setCopyrightModal(false)}>
                             <Ionicons name="close-circle-outline" size={22} color="gray" />
                         </CopyrightCloseBtn>

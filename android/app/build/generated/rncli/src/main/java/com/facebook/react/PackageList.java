@@ -21,8 +21,6 @@ import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
 import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
 // @react-native-firebase/firestore
 import io.invertase.firebase.firestore.ReactNativeFirebaseFirestorePackage;
-// @react-native-google-signin/google-signin
-import com.reactnativegooglesignin.RNGoogleSigninPackage;
 // expo
 import expo.modules.ExpoModulesPackage;
 // iamport-react-native
@@ -87,7 +85,6 @@ public class PackageList {
       new ReactNativeFirebaseAppPackage(),
       new ReactNativeFirebaseAuthPackage(),
       new ReactNativeFirebaseFirestorePackage(),
-      new RNGoogleSigninPackage(),
       new ExpoModulesPackage(),
       new IamportReactNativePackage(),
       new LottiePackage(),

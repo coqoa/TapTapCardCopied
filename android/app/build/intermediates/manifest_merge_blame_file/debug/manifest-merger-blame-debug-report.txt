@@ -2,599 +2,657 @@
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.taptapcard"
 4    android:versionCode="1"
-5    android:versionName="1.0" >
+5    android:versionName="1.0.0" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
 9        android:targetSdkVersion="31" />
 10
 11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-11-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:5:3-75
-11-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:5:20-73
+11-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:6:3-75
+11-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:6:20-73
 12    <uses-permission android:name="android.permission.INTERNET" />
-12-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:3:3-64
-12-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:3:20-62
-13    <uses-permission android:name="android.permission.VIBRATE" /> <!-- These require runtime permissions on M -->
-13-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:6:3-63
-13-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:6:20-61
+12-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:2:3-64
+12-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:2:20-62
+13    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+13-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:3:3-77
+13-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:3:20-75
 14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-14-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:8:3-77
-14-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:8:20-75
-15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- END OPTIONAL PERMISSIONS -->
-15-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:9:3-78
-15-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:9:20-76
-16    <queries>
-16-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:3-19:13
-17
-18        <!-- Support checking for http(s) links via the Linking API -->
-19        <intent>
-19-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:14:5-18:14
-20            <action android:name="android.intent.action.VIEW" />
-20-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:7-59
-20-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:15-56
-21
-22            <category android:name="android.intent.category.BROWSABLE" />
-22-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:7-68
-22-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:17-65
-23
-24            <data android:scheme="https" />
-24-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:7-38
-24-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:13-35
-25        </intent>
-26        <!-- Query open documents -->
-27        <intent>
-27-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-21:18
-28            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE" />
-28-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-79
-28-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:21-76
-29        </intent> <!-- End of browser content -->
-30        <!-- For CustomTabsService -->
-31        <intent>
-31-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:40:9-42:18
-32            <action android:name="android.support.customtabs.action.CustomTabsService" />
-32-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:41:13-90
-32-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:41:21-87
-33        </intent>
-34    </queries>
-35
-36    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-36-->[com.facebook.flipper:flipper:0.95.0] /Users/coqoa/.gradle/caches/transforms-3/cc45e4ed7543a66363f7ec054b1802f1/transformed/jetified-flipper-0.95.0/AndroidManifest.xml:16:5-76
-36-->[com.facebook.flipper:flipper:0.95.0] /Users/coqoa/.gradle/caches/transforms-3/cc45e4ed7543a66363f7ec054b1802f1/transformed/jetified-flipper-0.95.0/AndroidManifest.xml:16:22-73
-37    <uses-permission android:name="android.permission.WAKE_LOCK" />
-37-->[:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-68
-37-->[:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:22-65
-38    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-38-->[:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:5-79
-38-->[:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:22-76
-39    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-39-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:25:5-79
-39-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:25:22-76
-40    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-40-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:27:5-81
-40-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:27:22-78
-41    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-41-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:28:5-77
-41-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:28:22-74
-42    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-42-->[com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
-42-->[com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107
-43
-44    <application
-44-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:3-34:17
-45        android:name="com.taptapcard.MainApplication"
-45-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:16-47
-46        android:allowBackup="false"
-46-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:162-189
-47        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-47-->[androidx.core:core:1.6.0] /Users/coqoa/.gradle/caches/transforms-3/00f7f57b381579b32b6f96d9a2c25b39/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
-48        android:debuggable="true"
-49        android:icon="@mipmap/ic_launcher"
-49-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:81-115
-50        android:label="@string/app_name"
-50-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:48-80
-51        android:roundIcon="@mipmap/ic_launcher_round"
-51-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:116-161
-52        android:theme="@style/AppTheme"
-52-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:190-221
-53        android:usesCleartextTraffic="true" >
-53-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:222-257
-54        <meta-data
-54-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:5-129
-55            android:name="com.google.android.gms.ads.APPLICATION_ID"
-55-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:16-72
-56            android:value="ca-app-pub-2348793730555023~5576345839" />
-56-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:73-127
-57        <meta-data
-57-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:5-103
-58            android:name="expo.modules.updates.EXPO_UPDATE_URL"
-58-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:16-67
-59            android:value="YOUR-APP-URL-HERE" />
-59-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:68-101
-60        <meta-data
-60-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:5-112
-61            android:name="expo.modules.updates.EXPO_SDK_VERSION"
-61-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:16-68
-62            android:value="YOUR-APP-SDK-VERSION-HERE" />
-62-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:69-110
-63
-64        <activity
-64-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:5-32:16
-65            android:name="com.taptapcard.MainActivity"
-65-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:15-43
-66            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-66-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:77-154
-67            android:label="@string/app_name"
-67-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:44-76
-68            android:launchMode="singleTask"
-68-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:155-186
-69            android:theme="@style/Theme.App.SplashScreen"
-69-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:227-272
-70            android:windowSoftInputMode="adjustPan" >
-70-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:27:187-226
-71            <intent-filter>
-71-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:28:7-31:23
-72                <action android:name="android.intent.action.MAIN" />
-72-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:29:9-60
-72-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:29:17-58
+14-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:4:3-77
+14-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:4:20-75
+15    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+15-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:5:3-68
+15-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:5:20-66
+16    <uses-permission android:name="android.permission.VIBRATE" />
+16-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:7:3-63
+16-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:7:20-61
+17    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+17-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:8:3-78
+17-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:8:20-76
+18
+19    <queries>
+19-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:9:3-15:13
+20        <intent>
+20-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:10:5-14:14
+21            <action android:name="android.intent.action.VIEW" />
+21-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:7-58
+21-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:15-56
+22
+23            <category android:name="android.intent.category.BROWSABLE" />
+23-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:7-67
+23-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:17-65
+24
+25            <data android:scheme="https" />
+25-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:7-37
+25-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:13-35
+26        </intent>
+27        <!-- Query open documents -->
+28        <intent>
+28-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-21:18
+29            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE" />
+29-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-79
+29-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:21-76
+30        </intent> <!-- End of browser content -->
+31        <!-- For CustomTabsService -->
+32        <intent>
+32-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:40:9-42:18
+33            <action android:name="android.support.customtabs.action.CustomTabsService" />
+33-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:41:13-90
+33-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:41:21-87
+34        </intent>
+35    </queries>
+36
+37    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+37-->[com.facebook.flipper:flipper:0.95.0] /Users/coqoa/.gradle/caches/transforms-3/cc45e4ed7543a66363f7ec054b1802f1/transformed/jetified-flipper-0.95.0/AndroidManifest.xml:16:5-76
+37-->[com.facebook.flipper:flipper:0.95.0] /Users/coqoa/.gradle/caches/transforms-3/cc45e4ed7543a66363f7ec054b1802f1/transformed/jetified-flipper-0.95.0/AndroidManifest.xml:16:22-73
+38    <uses-permission android:name="android.permission.WAKE_LOCK" />
+38-->[:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-68
+38-->[:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:22-65
+39    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+39-->[:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:5-79
+39-->[:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:22-76
+40    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+40-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:25:5-79
+40-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:25:22-76
+41    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+41-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:27:5-81
+41-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:27:22-78
+42    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+42-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:28:5-77
+42-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:28:22-74
+43    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+43-->[com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
+43-->[com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107
+44
+45    <application
+45-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:3-42:17
+46        android:name="com.taptapcard.MainApplication"
+46-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:16-47
+47        android:allowBackup="true"
+47-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:162-188
+48        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+48-->[androidx.core:core:1.6.0] /Users/coqoa/.gradle/caches/transforms-3/00f7f57b381579b32b6f96d9a2c25b39/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+49        android:debuggable="true"
+50        android:icon="@mipmap/ic_launcher"
+50-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:81-115
+51        android:label="@string/app_name"
+51-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:48-80
+52        android:roundIcon="@mipmap/ic_launcher_round"
+52-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:116-161
+53        android:theme="@style/AppTheme"
+53-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:189-220
+54        android:usesCleartextTraffic="true" >
+54-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:221-256
+55        <meta-data
+55-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:5-82
+56            android:name="expo.modules.updates.ENABLED"
+56-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:16-59
+57            android:value="true" />
+57-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:60-80
+58        <meta-data
+58-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:18:5-98
+59            android:name="expo.modules.updates.EXPO_RELEASE_CHANNEL"
+59-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:18:16-72
+60            android:value="default" />
+60-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:18:73-96
+61        <meta-data
+61-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:19:5-93
+62            android:name="expo.modules.updates.EXPO_SDK_VERSION"
+62-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:19:16-68
+63            android:value="44.0.0" />
+63-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:19:69-91
+64        <meta-data
+64-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:20:5-105
+65            android:name="expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH"
+65-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:20:16-80
+66            android:value="ALWAYS" />
+66-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:20:81-103
+67        <meta-data
+67-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:5-99
+68            android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS"
+68-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:16-79
+69            android:value="0" />
+69-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:80-97
+70        <meta-data
+70-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:5-120
+71            android:name="expo.modules.updates.EXPO_UPDATE_URL"
+71-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:16-67
+72            android:value="https://exp.host/@coqoa/taptapcard" />
+72-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:68-118
 73
-74                <category android:name="android.intent.category.LAUNCHER" />
-74-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:9-68
-74-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:19-66
-75            </intent-filter>
-76        </activity>
-77        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-77-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:33:5-81
-77-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:33:15-79
-78
-79        <meta-data
-79-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:36
-80            android:name="app_data_collection_default_enabled"
-80-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-63
-81            android:value="true" />
-81-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-33
-82
-83        <service
-83-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-20:19
-84            android:name="com.google.firebase.components.ComponentDiscoveryService"
-84-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:18-89
-85            android:directBootAware="true"
-85-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:35:13-43
-86            android:exported="false" >
-86-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:66:13-37
-87            <meta-data
-87-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:85
-88                android:name="com.google.firebase.components:io.invertase.firebase.app.ReactNativeFirebaseAppRegistrar"
-88-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-120
-89                android:value="com.google.firebase.components.ComponentRegistrar" />
-89-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-82
-90            <meta-data
-90-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:67:13-69:85
-91                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-91-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:68:17-109
-92                android:value="com.google.firebase.components.ComponentRegistrar" />
-92-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:69:17-82
-93            <meta-data
-93-->[com.google.firebase:firebase-firestore:24.0.2] /Users/coqoa/.gradle/caches/transforms-3/ad6598eae7f17c0908679d6329bd37db/transformed/jetified-firebase-firestore-24.0.2/AndroidManifest.xml:20:13-22:85
-94                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-94-->[com.google.firebase:firebase-firestore:24.0.2] /Users/coqoa/.gradle/caches/transforms-3/ad6598eae7f17c0908679d6329bd37db/transformed/jetified-firebase-firestore-24.0.2/AndroidManifest.xml:21:17-111
-95                android:value="com.google.firebase.components.ComponentRegistrar" />
-95-->[com.google.firebase:firebase-firestore:24.0.2] /Users/coqoa/.gradle/caches/transforms-3/ad6598eae7f17c0908679d6329bd37db/transformed/jetified-firebase-firestore-24.0.2/AndroidManifest.xml:22:17-82
-96        </service>
-97
-98        <provider
-98-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:22:9-26:38
-99            android:name="io.invertase.firebase.app.ReactNativeFirebaseAppInitProvider"
-99-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:23:13-88
-100            android:authorities="com.taptapcard.reactnativefirebaseappinitprovider"
-100-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-86
-101            android:exported="false"
-101-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-37
-102            android:initOrder="99" />
-102-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-35
-103
-104        <activity
-104-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:27:9-44:20
-105            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-105-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:28:13-80
-106            android:excludeFromRecents="true"
-106-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:29:13-46
-107            android:exported="true"
-107-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:30:13-36
-108            android:launchMode="singleTask"
-108-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:31:13-44
-109            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-109-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:32:13-72
-110            <intent-filter>
-110-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:33:13-43:29
-111                <action android:name="android.intent.action.VIEW" />
-111-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:7-59
-111-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:15-56
-112
-113                <category android:name="android.intent.category.DEFAULT" />
-113-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:17-76
-113-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:27-73
-114                <category android:name="android.intent.category.BROWSABLE" />
-114-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:7-68
-114-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:17-65
-115
-116                <data
-116-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:7-38
-117                    android:host="firebase.auth"
-118                    android:path="/"
-119                    android:scheme="genericidp" />
-119-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:13-35
-120            </intent-filter>
-121        </activity>
-122        <activity
-122-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:45:9-62:20
-123            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-123-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:46:13-79
-124            android:excludeFromRecents="true"
-124-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:47:13-46
-125            android:exported="true"
-125-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:48:13-36
-126            android:launchMode="singleTask"
-126-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:49:13-44
-127            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-127-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:50:13-72
-128            <intent-filter>
-128-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:51:13-61:29
-129                <action android:name="android.intent.action.VIEW" />
-129-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:7-59
-129-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:15:15-56
-130
-131                <category android:name="android.intent.category.DEFAULT" />
-131-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:17-76
-131-->[com.google.firebase:firebase-auth:21.0.2] /Users/coqoa/.gradle/caches/transforms-3/633e8240a607e85088ac128c289f5c40/transformed/jetified-firebase-auth-21.0.2/AndroidManifest.xml:36:27-73
-132                <category android:name="android.intent.category.BROWSABLE" />
-132-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:7-68
-132-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:17-65
-133
-134                <data
-134-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:7-38
-135                    android:host="firebase.auth"
-136                    android:path="/"
-137                    android:scheme="recaptcha" />
-137-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:13-35
-138            </intent-filter>
-139        </activity>
-140
-141        <provider
-141-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-20:20
-142            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
-142-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-83
-143            android:authorities="com.taptapcard.fileprovider"
-143-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-64
-144            android:exported="false"
-144-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-37
-145            android:grantUriPermissions="true" >
-145-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-47
-146            <meta-data
-146-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:63
-147                android:name="android.support.FILE_PROVIDER_PATHS"
-147-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-67
-148                android:resource="@xml/file_provider_paths" />
-148-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-60
-149        </provider>
-150        <provider
-150-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-34:20
-151            android:name="expo.modules.filesystem.FileSystemFileProvider"
-151-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-74
-152            android:authorities="com.taptapcard.FileSystemFileProvider"
-152-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-74
-153            android:exported="false"
-153-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-37
-154            android:grantUriPermissions="true" >
-154-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-47
-155            <meta-data
-155-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:63
-156                android:name="android.support.FILE_PROVIDER_PATHS"
-156-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-67
-157                android:resource="@xml/file_system_provider_paths" />
-157-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-60
-158        </provider>
+74        <activity
+74-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:5-40:16
+75            android:name="com.taptapcard.MainActivity"
+75-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:15-43
+76            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+76-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:77-154
+77            android:label="@string/app_name"
+77-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:44-76
+78            android:launchMode="singleTask"
+78-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:155-186
+79            android:theme="@style/Theme.App.SplashScreen"
+79-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:227-272
+80            android:windowSoftInputMode="adjustPan" >
+80-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:187-226
+81            <intent-filter>
+81-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:7-27:23
+82                <action android:name="android.intent.action.MAIN" />
+82-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:9-60
+82-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:17-58
+83
+84                <category android:name="android.intent.category.LAUNCHER" />
+84-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:9-68
+84-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:19-66
+85            </intent-filter>
+86            <intent-filter>
+86-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:28:7-33:23
+87                <action android:name="android.intent.action.VIEW" />
+87-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:7-58
+87-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:15-56
+88
+89                <category android:name="android.intent.category.DEFAULT" />
+89-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:9-67
+89-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:19-65
+90                <category android:name="android.intent.category.BROWSABLE" />
+90-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:7-67
+90-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:17-65
+91
+92                <data android:scheme="com.taptapcard" />
+92-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:7-37
+92-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:13-35
+93            </intent-filter>
+94            <intent-filter data-generated="true" >
+94-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:34:7-39:23
+94-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:34:22-43
+95                <action android:name="android.intent.action.VIEW" />
+95-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:7-58
+95-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:15-56
+96
+97                <data android:scheme="taptapScheme" />
+97-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:7-37
+97-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:13-35
+98
+99                <category android:name="android.intent.category.DEFAULT" />
+99-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:9-67
+99-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:19-65
+100                <category android:name="android.intent.category.BROWSABLE" />
+100-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:7-67
+100-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:17-65
+101            </intent-filter>
+102        </activity>
+103        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+103-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:41:5-81
+103-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:41:15-79
+104
+105        <meta-data
+105-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:36
+106            android:name="app_data_collection_default_enabled"
+106-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-63
+107            android:value="true" />
+107-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-33
+108
+109        <service
+109-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-20:19
+110            android:name="com.google.firebase.components.ComponentDiscoveryService"
+110-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:18-89
+111            android:directBootAware="true"
+111-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:35:13-43
+112            android:exported="false" >
+112-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:66:13-37
+113            <meta-data
+113-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:85
+114                android:name="com.google.firebase.components:io.invertase.firebase.app.ReactNativeFirebaseAppRegistrar"
+114-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-120
+115                android:value="com.google.firebase.components.ComponentRegistrar" />
+115-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-82
+116            <meta-data
+116-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:67:13-69:85
+117                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+117-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:68:17-109
+118                android:value="com.google.firebase.components.ComponentRegistrar" />
+118-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:69:17-82
+119            <meta-data
+119-->[com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:20:13-22:85
+120                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+120-->[com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:21:17-111
+121                android:value="com.google.firebase.components.ComponentRegistrar" />
+121-->[com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:22:17-82
+122        </service>
+123
+124        <provider
+124-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:22:9-26:38
+125            android:name="io.invertase.firebase.app.ReactNativeFirebaseAppInitProvider"
+125-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:23:13-88
+126            android:authorities="com.taptapcard.reactnativefirebaseappinitprovider"
+126-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-86
+127            android:exported="false"
+127-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-37
+128            android:initOrder="99" />
+128-->[:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-35
+129
+130        <activity
+130-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:27:9-44:20
+131            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+131-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:28:13-80
+132            android:excludeFromRecents="true"
+132-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:29:13-46
+133            android:exported="true"
+133-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:30:13-36
+134            android:launchMode="singleTask"
+134-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:31:13-44
+135            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+135-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:32:13-72
+136            <intent-filter>
+136-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:33:13-43:29
+137                <action android:name="android.intent.action.VIEW" />
+137-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:7-58
+137-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:15-56
+138
+139                <category android:name="android.intent.category.DEFAULT" />
+139-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:9-67
+139-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:19-65
+140                <category android:name="android.intent.category.BROWSABLE" />
+140-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:7-67
+140-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:17-65
+141
+142                <data
+142-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:7-37
+143                    android:host="firebase.auth"
+144                    android:path="/"
+145                    android:scheme="genericidp" />
+145-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:13-35
+146            </intent-filter>
+147        </activity>
+148        <activity
+148-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:45:9-62:20
+149            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+149-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:46:13-79
+150            android:excludeFromRecents="true"
+150-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:47:13-46
+151            android:exported="true"
+151-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:48:13-36
+152            android:launchMode="singleTask"
+152-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:49:13-44
+153            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+153-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:50:13-72
+154            <intent-filter>
+154-->[com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:51:13-61:29
+155                <action android:name="android.intent.action.VIEW" />
+155-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:7-58
+155-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:15-56
+156
+157                <category android:name="android.intent.category.DEFAULT" />
+157-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:9-67
+157-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:19-65
+158                <category android:name="android.intent.category.BROWSABLE" />
+158-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:7-67
+158-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:17-65
 159
-160        <meta-data
-160-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:89
-161            android:name="org.unimodules.core.AppLoader#react-native-headless"
-161-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-79
-162            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
-162-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-86
-163
-164        <provider
-164-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:26:9-31:39
-165            android:name="com.google.firebase.provider.FirebaseInitProvider"
-165-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:27:13-77
-166            android:authorities="com.taptapcard.firebaseinitprovider"
-166-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:28:13-72
-167            android:directBootAware="true"
-167-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:29:13-43
-168            android:exported="false"
-168-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:30:13-37
-169            android:initOrder="100" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
-169-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:31:13-36
-170        <activity
-170-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:49:9-53:64
-171            android:name="com.google.android.gms.ads.AdActivity"
-171-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:50:13-65
-172            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-172-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:51:13-122
-173            android:exported="false"
-173-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:52:13-37
-174            android:theme="@android:style/Theme.Translucent" />
-174-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:53:13-61
-175
+160                <data
+160-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:7-37
+161                    android:host="firebase.auth"
+162                    android:path="/"
+163                    android:scheme="recaptcha" />
+163-->/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:13-35
+164            </intent-filter>
+165        </activity>
+166
+167        <provider
+167-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-20:20
+168            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+168-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-83
+169            android:authorities="com.taptapcard.fileprovider"
+169-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-64
+170            android:exported="false"
+170-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-37
+171            android:grantUriPermissions="true" >
+171-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-47
+172            <meta-data
+172-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:63
+173                android:name="android.support.FILE_PROVIDER_PATHS"
+173-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-67
+174                android:resource="@xml/file_provider_paths" />
+174-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-60
+175        </provider>
 176        <provider
-176-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:55:9-59:39
-177            android:name="com.google.android.gms.ads.MobileAdsInitProvider"
-177-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:56:13-76
-178            android:authorities="com.taptapcard.mobileadsinitprovider"
-178-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:57:13-73
+176-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-34:20
+177            android:name="expo.modules.filesystem.FileSystemFileProvider"
+177-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-74
+178            android:authorities="com.taptapcard.FileSystemFileProvider"
+178-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-74
 179            android:exported="false"
-179-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:58:13-37
-180            android:initOrder="100" />
-180-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:59:13-36
-181
-182        <service
-182-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:61:9-64:40
-183            android:name="com.google.android.gms.ads.AdService"
-183-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:62:13-64
-184            android:enabled="true"
-184-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:63:13-35
-185            android:exported="false" />
-185-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:64:13-37
-186
-187        <provider
-187-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:31:9-39:20
-188            android:name="androidx.startup.InitializationProvider"
-188-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:32:13-67
-189            android:authorities="com.taptapcard.androidx-startup"
-189-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:33:13-68
-190            android:exported="false" >
-190-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:34:13-37
-191            <meta-data
-191-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:36:13-38:52
-192                android:name="androidx.work.WorkManagerInitializer"
-192-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:37:17-68
-193                android:value="androidx.startup" />
-193-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:38:17-49
-194            <meta-data
-194-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/coqoa/.gradle/caches/transforms-3/b039d9c1bef8834a184f328e3b35cc59/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
-195                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-195-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/coqoa/.gradle/caches/transforms-3/b039d9c1bef8834a184f328e3b35cc59/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
-196                android:value="androidx.startup" />
-196-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/coqoa/.gradle/caches/transforms-3/b039d9c1bef8834a184f328e3b35cc59/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
-197        </provider>
-198
-199        <service
-199-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:41:9-46:35
-200            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
-200-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:42:13-88
-201            android:directBootAware="false"
-201-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:43:13-44
-202            android:enabled="@bool/enable_system_alarm_service_default"
-202-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:44:13-72
-203            android:exported="false" />
-203-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:45:13-37
-204        <service
-204-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:47:9-53:35
-205            android:name="androidx.work.impl.background.systemjob.SystemJobService"
-205-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:48:13-84
-206            android:directBootAware="false"
-206-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:49:13-44
-207            android:enabled="@bool/enable_system_job_service_default"
-207-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:50:13-70
-208            android:exported="true"
-208-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:51:13-36
-209            android:permission="android.permission.BIND_JOB_SERVICE" />
-209-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:52:13-69
-210        <service
-210-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:54:9-59:35
-211            android:name="androidx.work.impl.foreground.SystemForegroundService"
-211-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:55:13-81
-212            android:directBootAware="false"
-212-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:56:13-44
-213            android:enabled="@bool/enable_system_foreground_service_default"
-213-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:57:13-77
-214            android:exported="false" />
-214-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:58:13-37
-215
-216        <receiver
-216-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:61:9-66:35
-217            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
-217-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:62:13-88
-218            android:directBootAware="false"
-218-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:63:13-44
-219            android:enabled="true"
-219-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:64:13-35
-220            android:exported="false" />
-220-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:65:13-37
-221        <receiver
-221-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:67:9-77:20
-222            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
-222-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:68:13-106
-223            android:directBootAware="false"
-223-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:69:13-44
-224            android:enabled="false"
-224-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:70:13-36
-225            android:exported="false" >
-225-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:71:13-37
-226            <intent-filter>
-226-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:73:13-76:29
-227                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-227-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:74:17-87
-227-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:74:25-84
-228                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-228-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:75:17-90
-228-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:75:25-87
-229            </intent-filter>
-230        </receiver>
-231        <receiver
-231-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:78:9-88:20
-232            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
-232-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:79:13-104
-233            android:directBootAware="false"
-233-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:80:13-44
-234            android:enabled="false"
-234-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:81:13-36
-235            android:exported="false" >
-235-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:82:13-37
-236            <intent-filter>
-236-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:84:13-87:29
-237                <action android:name="android.intent.action.BATTERY_OKAY" />
-237-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:85:17-77
-237-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:85:25-74
-238                <action android:name="android.intent.action.BATTERY_LOW" />
-238-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:86:17-76
-238-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:86:25-73
-239            </intent-filter>
-240        </receiver>
-241        <receiver
-241-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:89:9-99:20
-242            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
-242-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:90:13-104
-243            android:directBootAware="false"
-243-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:91:13-44
-244            android:enabled="false"
-244-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:92:13-36
-245            android:exported="false" >
-245-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:93:13-37
-246            <intent-filter>
-246-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:95:13-98:29
-247                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
-247-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:96:17-83
-247-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:96:25-80
-248                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
-248-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:97:17-82
-248-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:97:25-79
-249            </intent-filter>
-250        </receiver>
-251        <receiver
-251-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:100:9-109:20
-252            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
-252-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:101:13-103
-253            android:directBootAware="false"
-253-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:102:13-44
-254            android:enabled="false"
-254-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:103:13-36
-255            android:exported="false" >
-255-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:104:13-37
-256            <intent-filter>
-256-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:106:13-108:29
-257                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-257-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:107:17-79
-257-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:107:25-76
-258            </intent-filter>
-259        </receiver>
-260        <receiver
-260-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:110:9-121:20
-261            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
-261-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:111:13-88
-262            android:directBootAware="false"
-262-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:112:13-44
-263            android:enabled="false"
-263-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:113:13-36
-264            android:exported="false" >
-264-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:114:13-37
-265            <intent-filter>
-265-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:116:13-120:29
-266                <action android:name="android.intent.action.BOOT_COMPLETED" />
-266-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:117:17-79
-266-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:117:25-76
-267                <action android:name="android.intent.action.TIME_SET" />
-267-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:118:17-73
-267-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:118:25-70
-268                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
-268-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:119:17-81
-268-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:119:25-78
-269            </intent-filter>
-270        </receiver>
-271        <receiver
-271-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:122:9-131:20
-272            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
-272-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:123:13-99
-273            android:directBootAware="false"
-273-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:124:13-44
-274            android:enabled="@bool/enable_system_alarm_service_default"
-274-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:125:13-72
-275            android:exported="false" >
-275-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:126:13-37
-276            <intent-filter>
-276-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:128:13-130:29
-277                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
-277-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:129:17-98
-277-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:129:25-95
-278            </intent-filter>
-279        </receiver>
-280        <receiver
-280-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:132:9-142:20
-281            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
-281-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:133:13-78
-282            android:directBootAware="false"
-282-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:134:13-44
-283            android:enabled="true"
-283-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:135:13-35
-284            android:exported="true"
-284-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:136:13-36
-285            android:permission="android.permission.DUMP" >
-285-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:137:13-57
-286            <intent-filter>
-286-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:139:13-141:29
-287                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
-287-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:140:17-88
-287-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:140:25-85
-288            </intent-filter>
-289        </receiver>
-290
-291        <service
-291-->[androidx.room:room-runtime:2.2.5] /Users/coqoa/.gradle/caches/transforms-3/48287a239d2f2c2fd2b88d47d17d5754/transformed/room-runtime-2.2.5/AndroidManifest.xml:25:9-28:40
-292            android:name="androidx.room.MultiInstanceInvalidationService"
-292-->[androidx.room:room-runtime:2.2.5] /Users/coqoa/.gradle/caches/transforms-3/48287a239d2f2c2fd2b88d47d17d5754/transformed/room-runtime-2.2.5/AndroidManifest.xml:26:13-74
-293            android:directBootAware="true"
-293-->[androidx.room:room-runtime:2.2.5] /Users/coqoa/.gradle/caches/transforms-3/48287a239d2f2c2fd2b88d47d17d5754/transformed/room-runtime-2.2.5/AndroidManifest.xml:27:13-43
-294            android:exported="false" />
-294-->[androidx.room:room-runtime:2.2.5] /Users/coqoa/.gradle/caches/transforms-3/48287a239d2f2c2fd2b88d47d17d5754/transformed/room-runtime-2.2.5/AndroidManifest.xml:28:13-37
-295
-296        <activity
-296-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:23:9-27:75
-297            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-297-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:24:13-93
-298            android:excludeFromRecents="true"
-298-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:25:13-46
-299            android:exported="false"
-299-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:26:13-37
-300            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-300-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:27:13-72
-301        <!--
-302            Service handling Google Sign-In user revocation. For apps that do not integrate with
-303            Google Sign-In, this service will never be started.
-304        -->
-305        <service
-305-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:33:9-37:51
-306            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-306-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:34:13-89
-307            android:exported="true"
-307-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:35:13-36
-308            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-308-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:36:13-107
-309            android:visibleToInstantApps="true" />
-309-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:37:13-48
-310
-311        <activity
-311-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
-312            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-312-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
-313            android:exported="false"
-313-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
-314            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-314-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
-315
-316        <meta-data
-316-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
-317            android:name="com.google.android.gms.version"
-317-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
-318            android:value="@integer/google_play_services_version" />
-318-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
-319    </application>
-320
-321</manifest>
+179-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-37
+180            android:grantUriPermissions="true" >
+180-->[:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-47
+181            <meta-data
+181-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:63
+182                android:name="android.support.FILE_PROVIDER_PATHS"
+182-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-67
+183                android:resource="@xml/file_system_provider_paths" />
+183-->[:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-60
+184        </provider>
+185
+186        <meta-data
+186-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:89
+187            android:name="org.unimodules.core.AppLoader#react-native-headless"
+187-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-79
+188            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
+188-->[:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-86
+189
+190        <provider
+190-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:26:9-31:39
+191            android:name="com.google.firebase.provider.FirebaseInitProvider"
+191-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:27:13-77
+192            android:authorities="com.taptapcard.firebaseinitprovider"
+192-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:28:13-72
+193            android:directBootAware="true"
+193-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:29:13-43
+194            android:exported="false"
+194-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:30:13-37
+195            android:initOrder="100" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
+195-->[com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:31:13-36
+196        <activity
+196-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:49:9-53:64
+197            android:name="com.google.android.gms.ads.AdActivity"
+197-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:50:13-65
+198            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+198-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:51:13-122
+199            android:exported="false"
+199-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:52:13-37
+200            android:theme="@android:style/Theme.Translucent" />
+200-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:53:13-61
+201
+202        <provider
+202-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:55:9-59:39
+203            android:name="com.google.android.gms.ads.MobileAdsInitProvider"
+203-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:56:13-76
+204            android:authorities="com.taptapcard.mobileadsinitprovider"
+204-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:57:13-73
+205            android:exported="false"
+205-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:58:13-37
+206            android:initOrder="100" />
+206-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:59:13-36
+207
+208        <service
+208-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:61:9-64:40
+209            android:name="com.google.android.gms.ads.AdService"
+209-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:62:13-64
+210            android:enabled="true"
+210-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:63:13-35
+211            android:exported="false" />
+211-->[com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:64:13-37
+212
+213        <provider
+213-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:31:9-39:20
+214            android:name="androidx.startup.InitializationProvider"
+214-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:32:13-67
+215            android:authorities="com.taptapcard.androidx-startup"
+215-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:33:13-68
+216            android:exported="false" >
+216-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:34:13-37
+217            <meta-data
+217-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:36:13-38:52
+218                android:name="androidx.work.WorkManagerInitializer"
+218-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:37:17-68
+219                android:value="androidx.startup" />
+219-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:38:17-49
+220            <meta-data
+220-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/coqoa/.gradle/caches/transforms-3/b039d9c1bef8834a184f328e3b35cc59/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+221                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+221-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/coqoa/.gradle/caches/transforms-3/b039d9c1bef8834a184f328e3b35cc59/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+222                android:value="androidx.startup" />
+222-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/coqoa/.gradle/caches/transforms-3/b039d9c1bef8834a184f328e3b35cc59/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+223        </provider>
+224
+225        <service
+225-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:41:9-46:35
+226            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+226-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:42:13-88
+227            android:directBootAware="false"
+227-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:43:13-44
+228            android:enabled="@bool/enable_system_alarm_service_default"
+228-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:44:13-72
+229            android:exported="false" />
+229-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:45:13-37
+230        <service
+230-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:47:9-53:35
+231            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+231-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:48:13-84
+232            android:directBootAware="false"
+232-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:49:13-44
+233            android:enabled="@bool/enable_system_job_service_default"
+233-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:50:13-70
+234            android:exported="true"
+234-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:51:13-36
+235            android:permission="android.permission.BIND_JOB_SERVICE" />
+235-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:52:13-69
+236        <service
+236-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:54:9-59:35
+237            android:name="androidx.work.impl.foreground.SystemForegroundService"
+237-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:55:13-81
+238            android:directBootAware="false"
+238-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:56:13-44
+239            android:enabled="@bool/enable_system_foreground_service_default"
+239-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:57:13-77
+240            android:exported="false" />
+240-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:58:13-37
+241
+242        <receiver
+242-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:61:9-66:35
+243            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+243-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:62:13-88
+244            android:directBootAware="false"
+244-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:63:13-44
+245            android:enabled="true"
+245-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:64:13-35
+246            android:exported="false" />
+246-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:65:13-37
+247        <receiver
+247-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:67:9-77:20
+248            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+248-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:68:13-106
+249            android:directBootAware="false"
+249-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:69:13-44
+250            android:enabled="false"
+250-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:70:13-36
+251            android:exported="false" >
+251-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:71:13-37
+252            <intent-filter>
+252-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:73:13-76:29
+253                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+253-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:74:17-87
+253-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:74:25-84
+254                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+254-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:75:17-90
+254-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:75:25-87
+255            </intent-filter>
+256        </receiver>
+257        <receiver
+257-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:78:9-88:20
+258            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+258-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:79:13-104
+259            android:directBootAware="false"
+259-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:80:13-44
+260            android:enabled="false"
+260-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:81:13-36
+261            android:exported="false" >
+261-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:82:13-37
+262            <intent-filter>
+262-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:84:13-87:29
+263                <action android:name="android.intent.action.BATTERY_OKAY" />
+263-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:85:17-77
+263-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:85:25-74
+264                <action android:name="android.intent.action.BATTERY_LOW" />
+264-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:86:17-76
+264-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:86:25-73
+265            </intent-filter>
+266        </receiver>
+267        <receiver
+267-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:89:9-99:20
+268            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+268-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:90:13-104
+269            android:directBootAware="false"
+269-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:91:13-44
+270            android:enabled="false"
+270-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:92:13-36
+271            android:exported="false" >
+271-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:93:13-37
+272            <intent-filter>
+272-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:95:13-98:29
+273                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+273-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:96:17-83
+273-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:96:25-80
+274                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+274-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:97:17-82
+274-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:97:25-79
+275            </intent-filter>
+276        </receiver>
+277        <receiver
+277-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:100:9-109:20
+278            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+278-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:101:13-103
+279            android:directBootAware="false"
+279-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:102:13-44
+280            android:enabled="false"
+280-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:103:13-36
+281            android:exported="false" >
+281-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:104:13-37
+282            <intent-filter>
+282-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:106:13-108:29
+283                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+283-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:107:17-79
+283-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:107:25-76
+284            </intent-filter>
+285        </receiver>
+286        <receiver
+286-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:110:9-121:20
+287            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+287-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:111:13-88
+288            android:directBootAware="false"
+288-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:112:13-44
+289            android:enabled="false"
+289-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:113:13-36
+290            android:exported="false" >
+290-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:114:13-37
+291            <intent-filter>
+291-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:116:13-120:29
+292                <action android:name="android.intent.action.BOOT_COMPLETED" />
+292-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:117:17-79
+292-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:117:25-76
+293                <action android:name="android.intent.action.TIME_SET" />
+293-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:118:17-73
+293-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:118:25-70
+294                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+294-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:119:17-81
+294-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:119:25-78
+295            </intent-filter>
+296        </receiver>
+297        <receiver
+297-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:122:9-131:20
+298            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+298-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:123:13-99
+299            android:directBootAware="false"
+299-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:124:13-44
+300            android:enabled="@bool/enable_system_alarm_service_default"
+300-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:125:13-72
+301            android:exported="false" >
+301-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:126:13-37
+302            <intent-filter>
+302-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:128:13-130:29
+303                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+303-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:129:17-98
+303-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:129:25-95
+304            </intent-filter>
+305        </receiver>
+306        <receiver
+306-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:132:9-142:20
+307            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+307-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:133:13-78
+308            android:directBootAware="false"
+308-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:134:13-44
+309            android:enabled="true"
+309-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:135:13-35
+310            android:exported="true"
+310-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:136:13-36
+311            android:permission="android.permission.DUMP" >
+311-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:137:13-57
+312            <intent-filter>
+312-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:139:13-141:29
+313                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+313-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:140:17-88
+313-->[androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:140:25-85
+314            </intent-filter>
+315        </receiver>
+316
+317        <service
+317-->[androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:25:9-28:40
+318            android:name="androidx.room.MultiInstanceInvalidationService"
+318-->[androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:26:13-74
+319            android:directBootAware="true"
+319-->[androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:27:13-43
+320            android:exported="false" />
+320-->[androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:28:13-37
+321
+322        <activity
+322-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:23:9-27:75
+323            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+323-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:24:13-93
+324            android:excludeFromRecents="true"
+324-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:25:13-46
+325            android:exported="false"
+325-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:26:13-37
+326            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+326-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:27:13-72
+327        <!--
+328            Service handling Google Sign-In user revocation. For apps that do not integrate with
+329            Google Sign-In, this service will never be started.
+330        -->
+331        <service
+331-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:33:9-37:51
+332            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+332-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:34:13-89
+333            android:exported="true"
+333-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:35:13-36
+334            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+334-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:36:13-107
+335            android:visibleToInstantApps="true" />
+335-->[com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:37:13-48
+336
+337        <activity
+337-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+338            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+338-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+339            android:exported="false"
+339-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+340            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+340-->[com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+341
+342        <meta-data
+342-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+343            android:name="com.google.android.gms.version"
+343-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
+344            android:value="@integer/google_play_services_version" />
+344-->[com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+345    </application>
+346
+347</manifest>

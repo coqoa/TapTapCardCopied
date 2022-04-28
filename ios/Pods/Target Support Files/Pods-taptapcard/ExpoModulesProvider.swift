@@ -7,6 +7,7 @@
 
 import ExpoModulesCore
 import ExpoAdapterGoogleSignIn
+import EXUpdates
 
 @objc(ExpoModulesProvider)
 public class ExpoModulesProvider: ModulesProvider {
@@ -23,6 +24,7 @@ public class ExpoModulesProvider: ModulesProvider {
 
   public override func getReactDelegateHandlers() -> [ExpoReactDelegateHandlerTupleType] {
     return [
+      (packageName: "expo-updates", handler: ExpoUpdatesReactDelegateHandler.self)
     ]
   }
 }

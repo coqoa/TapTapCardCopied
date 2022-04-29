@@ -72,5 +72,9 @@
     },
     "plugins": ["@react-native-google-signin/google-signin"]
   },
-  "name": "taptapcard"
+  "name": "taptapcard",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-2348793730555023~5576345839",
+    "ios_app_id": "ca-app-pub-2348793730555023~2577033002"
+  }
 }

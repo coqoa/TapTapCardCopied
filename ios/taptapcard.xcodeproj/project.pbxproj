@@ -11,9 +11,8 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		578A9235D2A7451C8B7F7B0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7239FC88258F44628F3CA989 /* GoogleService-Info.plist */; };
 		758F3F385E3D4BF2A5EA0041 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6330F18F9D4E3C82FAACDF /* noop-file.swift */; };
-		842D25122801DAD300F54EAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 842D25112801DAD300F54EAB /* GoogleService-Info.plist */; };
+		84283093281C0DB2005E5787 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84283092281C0DB2005E5787 /* GoogleService-Info.plist */; };
 		96905EF65AED1B983A6B3ABC /* libPods-taptapcard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-taptapcard.a */; };
 		A7FC387E778941C4BA949B62 /* SDChildfundkoreaTTF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 677C0D3C50D94C838DED8C69 /* SDChildfundkoreaTTF.ttf */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
@@ -24,7 +23,7 @@
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		0F70AE59623848409FC86C3D /* SDChildfundkorea.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SDChildfundkorea.otf; path = ../app/asset/fonts/SDChildfundkorea.otf; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* taptapcard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taptapcard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* taptapcard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = taptapcard.app; path = app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = taptapcard/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = taptapcard/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = taptapcard/Images.xcassets; sourceTree = "<group>"; };
@@ -36,7 +35,7 @@
 		6C2E3173556A471DD304B334 /* Pods-taptapcard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taptapcard.debug.xcconfig"; path = "Target Support Files/Pods-taptapcard/Pods-taptapcard.debug.xcconfig"; sourceTree = "<group>"; };
 		7239FC88258F44628F3CA989 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "taptapcard/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-taptapcard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taptapcard.release.xcconfig"; path = "Target Support Files/Pods-taptapcard/Pods-taptapcard.release.xcconfig"; sourceTree = "<group>"; };
-		842D25112801DAD300F54EAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84283092281C0DB2005E5787 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		848ACB7B280E8F030071712B /* taptapcard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = taptapcard.entitlements; path = taptapcard/taptapcard.entitlements; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = taptapcard/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
@@ -95,7 +94,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				842D25112801DAD300F54EAB /* GoogleService-Info.plist */,
+				84283092281C0DB2005E5787 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* taptapcard */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -228,8 +227,7 @@
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
 				E11F04AF4A594E1EA6EFAD64 /* SDChildfundkorea.otf in Resources */,
 				A7FC387E778941C4BA949B62 /* SDChildfundkoreaTTF.ttf in Resources */,
-				842D25122801DAD300F54EAB /* GoogleService-Info.plist in Resources */,
-				578A9235D2A7451C8B7F7B0B /* GoogleService-Info.plist in Resources */,
+				84283093281C0DB2005E5787 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

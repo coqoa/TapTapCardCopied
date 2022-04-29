@@ -7,7 +7,7 @@ import { colors } from "../component/Color";
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-import {BannerAd, BannerAdSize, TestIds} from '@react-native-admob/admob';
+// import {BannerAd, BannerAdSize, TestIds} from '@react-native-admob/admob';
 import { loadAsync } from "expo-font";
 
 

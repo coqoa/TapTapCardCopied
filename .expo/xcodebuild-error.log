@@ -1,4 +1,2 @@
-objc[6421]: Class AMSupportURLConnectionDelegate is implemented in both /usr/lib/libauthinstall.dylib (0x2015dfb78) and /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/MobileDevice (0x10d0c42c8). One of the two will be used. Which one is undefined.
-objc[6421]: Class AMSupportURLSession is implemented in both /usr/lib/libauthinstall.dylib (0x2015dfbc8) and /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/MobileDevice (0x10d0c4318). One of the two will be used. Which one is undefined.
-** BUILD FAILED **
-
+objc[33930]: Class AMSupportURLConnectionDelegate is implemented in both /usr/lib/libauthinstall.dylib (0x2015dfb78) and /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/MobileDevice (0x1104542c8). One of the two will be used. Which one is undefined.
+objc[33930]: Class AMSupportURLSession is implemented in both /usr/lib/libauthinstall.dylib (0x2015dfbc8) and /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/MobileDevice (0x110454318). One of the two will be used. Which one is undefined.

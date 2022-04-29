@@ -9,7 +9,7 @@ import { WordCardLevel } from "../component/CardDefault";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { BannerAds} from "../component/Ads"
+// import { BannerAds} from "../component/Ads"
 import { Copyright } from "../component/Copyright";
 
 
@@ -381,7 +381,7 @@ const CardShell = ({route, navigation}) => {
             {paymentMember == false && (
             <>
                 <BannerShell>
-                    <BannerAds />
+                    {/* <BannerAds /> */}
                 </BannerShell>
             </>
             )}

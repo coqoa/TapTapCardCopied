@@ -7,11 +7,6 @@ import { colors } from "../component/Color";
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-// import {BannerAd, BannerAdSize, TestIds} from '@react-native-admob/admob';
-import { loadAsync } from "expo-font";
-
-
-// const BG = styled.ImageBackground`
 const BG = styled.View`
     flex: 1;
     width: 100%;
@@ -42,7 +37,6 @@ const TextShell = styled.View`
     background-color: rgba(255,255,255,0.5);
     justify-content: center;
     align-items: center;
-    /* background-color: red; */
 `
 const MenuText = styled.Text`
     position: absolute;
@@ -102,8 +96,6 @@ const WordSelectTitleText = styled(WordSelectText)`
 const FullAdBtn = styled.Button`
     z-index: 100;
 `
-// -------------------------------------------------------------------------------------------------
-
 // -------------------------------------------------------------------------------------------------
 const Menu = ({navigation}) => {
     function playSound(sound){

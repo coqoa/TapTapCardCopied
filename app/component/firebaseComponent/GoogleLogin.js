@@ -4,7 +4,7 @@ import {colors} from "../Color"
 import {Ionicons} from "@expo/vector-icons";
 
 import auth from '@react-native-firebase/auth';
-import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const SocialSign = styled.TouchableOpacity`
     flex-direction: row;

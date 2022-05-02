@@ -20,15 +20,12 @@ const Shell = styled.View`
     flex: 1;
     background-color: ${colors.mainBgColor};
     align-items: center;
-    /* padding: 10px 0px; */
     border-radius: 15px;
 `
 const TopContainer = styled.View`
-    /* top:10px; */
     height:70px;
     align-items: center;
     justify-content: flex-end;
-    /* margin-bottom: 5px; */
     z-index: 3;
     
 `

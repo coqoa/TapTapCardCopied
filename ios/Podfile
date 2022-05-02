@@ -11,7 +11,7 @@ podfile_properties = JSON.parse(File.read('./Podfile.properties.json')) rescue {
 target 'taptapcard' do
   use_expo_modules!
   config = use_native_modules!
-
+  
   pod 'GoogleSignIn', '~> 6.1.0'
   
   use_react_native!(
@@ -48,5 +48,7 @@ target 'taptapcard' do
       Pod::UI.warn e
     end
   end
+
+  
 
 end

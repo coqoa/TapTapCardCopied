@@ -37,7 +37,6 @@ const NavBtn = styled.TouchableOpacity`
     width: 40%;
     height: 40px;
     justify-content: center;
-    /* border: 1px solid red; */
 `
 const NavBtnText = styled.Text`
     text-align: center;
@@ -52,7 +51,6 @@ const Empty = styled.View`
     width: 100%;
     padding: 0px;
     height: 30%;
-    /* border: 1px solid red; */
 `
 const TextArea = styled.TextInput`
     width: 90%;
@@ -70,7 +68,6 @@ const Btn = styled.TouchableOpacity`
     height: 45px;
     margin: 10px 0px;
     border-radius: 15px;
-    /* background-color: #EC705E; */
     align-items: center;
     justify-content: center;
 `

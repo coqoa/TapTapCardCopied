@@ -164,6 +164,13 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2348793730555023~5576345839" />
+        <meta-data
+            android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT"
+            android:value="false" />
+
         <provider
             android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
             android:authorities="com.taptapcard.fileprovider"
@@ -216,9 +223,6 @@
             android:exported="false" >
             <meta-data
                 android:name="androidx.work.WorkManagerInitializer"
-                android:value="androidx.startup" />
-            <meta-data
-                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
                 android:value="androidx.startup" />
         </provider>
 

@@ -230,13 +230,13 @@ const Menu = ({navigation}) => {
                 transform:[{scale:animalSelectScale}], 
                 shadowColor: "black",
                 shadowOpacity: 0.1,
-                shadowRadius: 3,
+                shadowRadius: 3, 
                 shadowOffset: {height: 2,width: 0},
                 elevation:1
             }}>
                 <WordSelectTitle><WordSelectTitleText>동물</WordSelectTitleText></WordSelectTitle>
                 {modalBtnFunc(KorBtnAnimation,colors.BLUE,"AnimalKOR","한글")}
-                {modalBtnFunc(EngBtnAnimation,colors.REDORANGE,"AnimalENG","영어")}
+                {modalBtnFunc(EngBtnAnimation,colors.REDORANGE,"AnimalENG","영어 ")}
             </SelectContainer>
         </SelectModalBG>
     </BG>

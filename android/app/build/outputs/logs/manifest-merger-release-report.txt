@@ -1,0 +1,1113 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-43:12
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-43:12
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-43:12
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-43:12
+MERGED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-15:12
+MERGED from [:react-native-firebase_firestore] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/firestore/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-29:12
+MERGED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:17:1-73:12
+MERGED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-24:12
+MERGED from [com.google.android.gms:play-services-ads:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/0904ff06771d0189de53ecf837f0835f/transformed/jetified-play-services-ads-20.6.0/AndroidManifest.xml:17:1-25:12
+MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:invertase_react-native-apple-authentication] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@invertase/react-native-apple-authentication/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-12:12
+MERGED from [:react-native-google-signin_google-signin] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:iamport-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/iamport-react-native/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-safe-area-context] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-screens] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-screens/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-svg] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-svg/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-23:12
+MERGED from [:expo-application] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-application/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-av] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-av/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-constants] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-constants/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-37:12
+MERGED from [:expo-font] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-font/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-keep-awake] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-keep-awake/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-splash-screen] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-splash-screen/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-updates] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-updates/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-13:12
+MERGED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-17:12
+MERGED from [:react-native-google-signin-google-signin] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.react:react-native:0.64.3] /Users/coqoa/.gradle/caches/transforms-3/e43cd5aa52d44d6688924375319b8dfb/transformed/jetified-react-native-0.64.3/AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.browser:browser:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/3a48869a16a4fdee6924b3517dd125c4/transformed/browser-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/95ed9fc1fe6bc0da543594966214947f/transformed/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/924e93f77a98eadb96a1b78bf4f000f9/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/751ef799dc67a25f7a20a849371c01f5/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/73feba2af373afa572ac85ba56205c7a/transformed/jetified-fresco-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/fc0d9d73fdc9ebf785f7e965c42f122e/transformed/jetified-imagepipeline-okhttp3-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:animated-gif:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/9a43626092da5a30f3a0d1c6e5566dd5/transformed/jetified-animated-gif-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:webpsupport:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/f1291a49149188a46ee884c4d8ff676d/transformed/jetified-webpsupport-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [org.webkit:android-jsc:r245459] /Users/coqoa/.gradle/caches/transforms-3/153815ba80d32cf1e33fdc34d9798778/transformed/jetified-android-jsc-r245459/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/coqoa/.gradle/caches/transforms-3/d1be7fc0cd730f16ccb4d39053e83dc3/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta06] /Users/coqoa/.gradle/caches/transforms-3/4b52386d85be282e4abf9b1b5bd1a6d8/transformed/jetified-firebase-appcheck-interop-16.0.0-beta06/AndroidManifest.xml:15:1-26:12
+MERGED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:15:1-40:12
+MERGED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.android.material:material:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/b02f2999b7cf7281e89d8109a16869ba/transformed/material-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:17:1-67:12
+MERGED from [com.google.android.gms:play-services-ads-base:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/9223bfa0a0910b2ed6daf65c9990f4a2/transformed/jetified-play-services-ads-base-20.6.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.ump:user-messaging-platform:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/b8a56baa624c244ee77fce66829042b7/transformed/jetified-user-messaging-platform-2.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/e77d32378375bdcf2d1e0bf441d0526f/transformed/jetified-play-services-ads-identifier-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-appset:16.0.0] /Users/coqoa/.gradle/caches/transforms-3/e9909043725b4f97876135b59446ac50/transformed/jetified-play-services-appset-16.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/6f8f5f73adcf0dd1761a2be47e3be43e/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb8762276a43e9bbf6310934cf7a94a2/transformed/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/3d1d2b941cbd28ae8daf7e7ff377e139/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb6fc5f569bf50ae50d583af432780e6/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/c7284a850b1573b8cec570ef9fdfafb0/transformed/jetified-play-services-measurement-sdk-api-18.0.3/AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.android.gms:play-services-measurement-base:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/b04136f0cab74995625e4cc9d40dfcfb/transformed/jetified-play-services-measurement-base-18.0.3/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:16:1-26:12
+MERGED from [com.airbnb.android:lottie:4.0.0] /Users/coqoa/.gradle/caches/transforms-3/421c0bf0b9ded181e6e80552a27238eb/transformed/jetified-lottie-4.0.0/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-structured-headers] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-structured-headers/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/c3d01fbb04d1b294124ee3997981ce65/transformed/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7ccf0e71e0d1aa2cd1af94bbbfd9fe85/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.3.2] /Users/coqoa/.gradle/caches/transforms-3/281f1e576a4238923d3beae8dc6c4a66/transformed/fragment-1.3.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/2632538ffd1a78dee6f487a9cae8cada/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.2.2] /Users/coqoa/.gradle/caches/transforms-3/de2877082ac791b45d12d51f6bc77b56/transformed/jetified-activity-1.2.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/153faf73f0baafc96c163a4634043949/transformed/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/f75dc8635e29a7f3dd6f2112b9c38a6f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/73983d4935a7f88fea3ffc1ce2450ffa/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.3.0] /Users/coqoa/.gradle/caches/transforms-3/e9caa8ce1801ebd1dc8ef87502e73e50/transformed/jetified-core-ktx-1.3.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.webkit:webkit:1.4.0] /Users/coqoa/.gradle/caches/transforms-3/3f8d5ebba2860908298f1147a0d27cb5/transformed/webkit-1.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:17:1-145:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/08ddb8d3a2517b0491534c21e24d6e6b/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2ae8915466fd9d591da47ff0bf5f8e95/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/013050e6d48ff8d811cb280aa8af3e09/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7abf82544ca901ee77d08a1883abd733/transformed/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/5ff86b6192273fe88df0140e16b82d09/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7dc766fb0db719889748b099275c8c0d/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/31a01791c318aae52acdc4aa925b28e7/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.exoplayer:exoplayer:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/eb817fde748f0dc27ae6bb4dd800b280/transformed/jetified-exoplayer-2.9.2/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/ff9849e8e0cda6e06a650bc677ed2385/transformed/jetified-exoplayer-ui-2.9.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media:media:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/fdfa1a0a3700bb9d5c75f28a6dd60d39/transformed/media-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.6.0] /Users/coqoa/.gradle/caches/transforms-3/00f7f57b381579b32b6f96d9a2c25b39/transformed/core-1.6.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/coqoa/.gradle/caches/transforms-3/70775c0ba851cbe4178a64945da62bff/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.facebook.fresco:animated-base:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/a72c2ef814f066b05bd384210218d11d/transformed/jetified-animated-base-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:animated-drawable:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/cd49317ea2fb50d01e53839c8b57a7e5/transformed/jetified-animated-drawable-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/1692c18fd2fc29cf490a1d63ea638871/transformed/jetified-drawee-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/0fb2d282ba48f5a6c31150b3212926ef/transformed/jetified-nativeimagefilters-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/0bdbad90b12036e5ea9aed2d1e33d1b7/transformed/jetified-imagepipeline-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/4352c46fa84c0d8a197bbb4359dcebe9/transformed/jetified-nativeimagetranscoder-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/10fb640a15b100845a699ffc7aa241c7/transformed/jetified-imagepipeline-base-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.9.0] /Users/coqoa/.gradle/caches/transforms-3/ea42c08338d95c5cae59eaaf68eae484/transformed/jetified-soloader-0.9.0/AndroidManifest.xml:2:1-13:12
+MERGED from [io.grpc:grpc-android:1.44.1] /Users/coqoa/.gradle/caches/transforms-3/be099e9ef03e583b9f5be8accb946a4a/transformed/jetified-grpc-android-1.44.1/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.exoplayer:extension-okhttp:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/d40970d4a7e961d95ae74fa58fbd52d3/transformed/jetified-extension-okhttp-2.9.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/239dcb6ccd82bc1e794ac9d00cbc293d/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2794239bffd4bcda8e3ace851c671d2a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/65734f4924cc1eae6ebdbd8e2b0689f3/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/6fcef73541d913375bb9900e453db570/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/5aecb538be99e943b6ca6ebd43ba8340/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/3f328409b530bd0be9d7ac0a71680701/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/24fd2af65b48b790b61760e9820e41f1/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/b76bff72d12bc8da93b8f5cbb61884cc/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f61972bea0e13c89237d59d7385e12f7/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.sqlite:sqlite-framework:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/93babed7a1c7246662c22922af5ff7db/transformed/sqlite-framework-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/d92d16522a497559bbb2245409a42774/transformed/jetified-lifecycle-service-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/341b4184664491502e852bb606d9271c/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f9da0e1a391f289bd0e6a76fd621aca1/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/e8ee0a25a56f8f6d93cab0518ce1e0af/transformed/lifecycle-livedata-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/b74cdccde4f2ac9e91abead65a9ba949/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/c914b5975532f76122152c4c98d550a6/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/1c1d438fb9bd20e67489019bdcf4c923/transformed/jetified-exoplayer-dash-2.9.2/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/e4d78f9c0c39837ef2c6f38060646a5d/transformed/jetified-exoplayer-hls-2.9.2/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/81f10f3e150bf330c4a110729c335dee/transformed/jetified-exoplayer-smoothstreaming-2.9.2/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/0c219c82da586347bcf5ab19716c645a/transformed/jetified-exoplayer-core-2.9.2/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/d32bd07586aeb4c024888cb1adf354a8/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/df5c4f099bc04d576cc9cfd354ad1462/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/bd195ecccdb1e1e2e44bcaf013550b35/transformed/jetified-fbcore-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [:expo-manifests] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-manifests/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-json-utils] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-json-utils/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [:expo-updates-interface] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-updates-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/b3f48b104d8a94d029fc9fd4251ed1bc/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:2:1-13:12
+MERGED from [com.yqritc:android-scalablevideoview:1.0.1] /Users/coqoa/.gradle/caches/transforms-3/fbbff95b5ab7402f3f563076b51cd02b/transformed/jetified-android-scalablevideoview-1.0.1/AndroidManifest.xml:2:1-12:12
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/13d7fd083de6f0579d9dccc045748dc8/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:2:1-11:12
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-43:12
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-43:12
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-43:12
+	package
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:70-94
+		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-43:12
+		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:1-43:12
+		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:2:3-64
+MERGED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-67
+MERGED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-67
+MERGED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:23:5-67
+MERGED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-67
+MERGED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-67
+MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/release/AndroidManifest.xml:9:5-67
+MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/release/AndroidManifest.xml:9:5-67
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-67
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-67
+MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:14:5-67
+MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/c7284a850b1573b8cec570ef9fdfafb0/transformed/jetified-play-services-measurement-sdk-api-18.0.3/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/c7284a850b1573b8cec570ef9fdfafb0/transformed/jetified-play-services-measurement-sdk-api-18.0.3/AndroidManifest.xml:23:5-67
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:2:20-62
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:3:3-77
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:3:20-75
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:4:3-77
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:5-80
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:5-80
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:4:20-75
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:5:3-68
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:5:20-66
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:6:3-75
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:6:20-73
+uses-permission#android.permission.VIBRATE
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:7:3-63
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:7:20-61
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:8:3-78
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-81
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:8:20-76
+queries
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:9:3-15:13
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:5-22:15
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:5-22:15
+MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:28:5-44:15
+MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:28:5-44:15
+intent#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+data:scheme:https
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:10:5-14:14
+action#android.intent.action.VIEW
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:7-58
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:11:15-56
+category#android.intent.category.BROWSABLE
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:7-67
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:12:17-65
+data
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:7-37
+	android:scheme
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:13:13-35
+application
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:3-42:17
+MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-27:19
+MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-27:19
+MERGED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:26:5-71:19
+MERGED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:26:5-71:19
+MERGED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:5-22:19
+MERGED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:5-22:19
+MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-21:19
+MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-21:19
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:24:5-35:19
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:24:5-35:19
+MERGED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-15:19
+MERGED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-15:19
+MERGED from [com.facebook.react:react-native:0.64.3] /Users/coqoa/.gradle/caches/transforms-3/e43cd5aa52d44d6688924375319b8dfb/transformed/jetified-react-native-0.64.3/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.64.3] /Users/coqoa/.gradle/caches/transforms-3/e43cd5aa52d44d6688924375319b8dfb/transformed/jetified-react-native-0.64.3/AndroidManifest.xml:11:5-20
+MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/coqoa/.gradle/caches/transforms-3/d1be7fc0cd730f16ccb4d39053e83dc3/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/coqoa/.gradle/caches/transforms-3/d1be7fc0cd730f16ccb4d39053e83dc3/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta06] /Users/coqoa/.gradle/caches/transforms-3/4b52386d85be282e4abf9b1b5bd1a6d8/transformed/jetified-firebase-appcheck-interop-16.0.0-beta06/AndroidManifest.xml:24:5-20
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta06] /Users/coqoa/.gradle/caches/transforms-3/4b52386d85be282e4abf9b1b5bd1a6d8/transformed/jetified-firebase-appcheck-interop-16.0.0-beta06/AndroidManifest.xml:24:5-20
+MERGED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:25:5-38:19
+MERGED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:25:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.material:material:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/b02f2999b7cf7281e89d8109a16869ba/transformed/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/b02f2999b7cf7281e89d8109a16869ba/transformed/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:46:5-65:19
+MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:46:5-65:19
+MERGED from [com.google.android.gms:play-services-ads-base:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/9223bfa0a0910b2ed6daf65c9990f4a2/transformed/jetified-play-services-ads-base-20.6.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-ads-base:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/9223bfa0a0910b2ed6daf65c9990f4a2/transformed/jetified-play-services-ads-base-20.6.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/e77d32378375bdcf2d1e0bf441d0526f/transformed/jetified-play-services-ads-identifier-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/e77d32378375bdcf2d1e0bf441d0526f/transformed/jetified-play-services-ads-identifier-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-appset:16.0.0] /Users/coqoa/.gradle/caches/transforms-3/e9909043725b4f97876135b59446ac50/transformed/jetified-play-services-appset-16.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-appset:16.0.0] /Users/coqoa/.gradle/caches/transforms-3/e9909043725b4f97876135b59446ac50/transformed/jetified-play-services-appset-16.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb6fc5f569bf50ae50d583af432780e6/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb6fc5f569bf50ae50d583af432780e6/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/b04136f0cab74995625e4cc9d40dfcfb/transformed/jetified-play-services-measurement-base-18.0.3/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/b04136f0cab74995625e4cc9d40dfcfb/transformed/jetified-play-services-measurement-base-18.0.3/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.airbnb.android:lottie:4.0.0] /Users/coqoa/.gradle/caches/transforms-3/421c0bf0b9ded181e6e80552a27238eb/transformed/jetified-lottie-4.0.0/AndroidManifest.xml:9:5-20
+MERGED from [com.airbnb.android:lottie:4.0.0] /Users/coqoa/.gradle/caches/transforms-3/421c0bf0b9ded181e6e80552a27238eb/transformed/jetified-lottie-4.0.0/AndroidManifest.xml:9:5-20
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:30:5-143:19
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:30:5-143:19
+MERGED from [androidx.core:core:1.6.0] /Users/coqoa/.gradle/caches/transforms-3/00f7f57b381579b32b6f96d9a2c25b39/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.6.0] /Users/coqoa/.gradle/caches/transforms-3/00f7f57b381579b32b6f96d9a2c25b39/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/coqoa/.gradle/caches/transforms-3/70775c0ba851cbe4178a64945da62bff/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/coqoa/.gradle/caches/transforms-3/70775c0ba851cbe4178a64945da62bff/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [com.facebook.soloader:soloader:0.9.0] /Users/coqoa/.gradle/caches/transforms-3/ea42c08338d95c5cae59eaaf68eae484/transformed/jetified-soloader-0.9.0/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.9.0] /Users/coqoa/.gradle/caches/transforms-3/ea42c08338d95c5cae59eaaf68eae484/transformed/jetified-soloader-0.9.0/AndroidManifest.xml:11:5-20
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f61972bea0e13c89237d59d7385e12f7/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f61972bea0e13c89237d59d7385e12f7/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:24:5-29:19
+MERGED from [androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:24:5-29:19
+MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:11:5-20
+MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:11:5-20
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.6.0] /Users/coqoa/.gradle/caches/transforms-3/00f7f57b381579b32b6f96d9a2c25b39/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:48-80
+	android:roundIcon
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:116-161
+	android:icon
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:81-115
+	android:allowBackup
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:162-188
+	android:theme
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:189-220
+	android:usesCleartextTraffic
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:221-256
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:16:16-47
+meta-data#expo.modules.updates.ENABLED
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:5-82
+	android:value
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:60-80
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:17:16-59
+meta-data#expo.modules.updates.EXPO_RELEASE_CHANNEL
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:18:5-98
+	android:value
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:18:73-96
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:18:16-72
+meta-data#expo.modules.updates.EXPO_SDK_VERSION
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:19:5-93
+	android:value
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:19:69-91
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:19:16-68
+meta-data#expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:20:5-105
+	android:value
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:20:81-103
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:20:16-80
+meta-data#expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:5-99
+	android:value
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:80-97
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:21:16-79
+meta-data#expo.modules.updates.EXPO_UPDATE_URL
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:5-120
+	android:value
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:68-118
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:22:16-67
+activity#com.taptapcard.MainActivity
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:5-40:16
+	android:label
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:44-76
+	android:launchMode
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:155-186
+	android:windowSoftInputMode
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:187-226
+	android:configChanges
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:77-154
+	android:theme
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:227-272
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:15-43
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:24:7-27:23
+action#android.intent.action.MAIN
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:9-60
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:25:17-58
+category#android.intent.category.LAUNCHER
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:9-68
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:26:19-66
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:com.taptapcard
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:28:7-33:23
+category#android.intent.category.DEFAULT
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:9-67
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:30:19-65
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:taptapScheme
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:34:7-39:23
+	data-generated
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:34:22-43
+activity#com.facebook.react.devsupport.DevSettingsActivity
+ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:41:5-81
+	android:name
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:41:15-79
+uses-sdk
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-firebase_firestore] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/firestore/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-firebase_firestore] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/firestore/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:21:5-44
+MERGED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:21:5-44
+MERGED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.gms:play-services-ads:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/0904ff06771d0189de53ecf837f0835f/transformed/jetified-play-services-ads-20.6.0/AndroidManifest.xml:21:5-23:52
+MERGED from [com.google.android.gms:play-services-ads:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/0904ff06771d0189de53ecf837f0835f/transformed/jetified-play-services-ads-20.6.0/AndroidManifest.xml:21:5-23:52
+MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:lottie-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:invertase_react-native-apple-authentication] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@invertase/react-native-apple-authentication/android/build/intermediates/library_manifest/release/AndroidManifest.xml:8:5-10:41
+MERGED from [:invertase_react-native-apple-authentication] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@invertase/react-native-apple-authentication/android/build/intermediates/library_manifest/release/AndroidManifest.xml:8:5-10:41
+MERGED from [:react-native-google-signin_google-signin] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-google-signin_google-signin] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:iamport-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/iamport-react-native/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:iamport-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/iamport-react-native/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-safe-area-context] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-safe-area-context] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-screens] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-screens/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-screens] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-screens/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-svg] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-svg/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-svg] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-svg/android/build/intermediates/library_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-application] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-application/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-application] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-application/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-av] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-av/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-av] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-av/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-constants] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-constants/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-constants] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-constants/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:8:5-10:41
+MERGED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:8:5-10:41
+MERGED from [:expo-font] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-font/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-font] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-font/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-keep-awake] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-keep-awake/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-keep-awake] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-keep-awake/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-splash-screen] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-splash-screen/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-splash-screen] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-splash-screen/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-updates] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-updates/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-updates] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-updates/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-google-signin-google-signin] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-google-signin-google-signin] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.64.3] /Users/coqoa/.gradle/caches/transforms-3/e43cd5aa52d44d6688924375319b8dfb/transformed/jetified-react-native-0.64.3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.64.3] /Users/coqoa/.gradle/caches/transforms-3/e43cd5aa52d44d6688924375319b8dfb/transformed/jetified-react-native-0.64.3/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.browser:browser:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/3a48869a16a4fdee6924b3517dd125c4/transformed/browser-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/3a48869a16a4fdee6924b3517dd125c4/transformed/browser-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/95ed9fc1fe6bc0da543594966214947f/transformed/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/95ed9fc1fe6bc0da543594966214947f/transformed/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/924e93f77a98eadb96a1b78bf4f000f9/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/924e93f77a98eadb96a1b78bf4f000f9/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/751ef799dc67a25f7a20a849371c01f5/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/751ef799dc67a25f7a20a849371c01f5/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/73feba2af373afa572ac85ba56205c7a/transformed/jetified-fresco-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/73feba2af373afa572ac85ba56205c7a/transformed/jetified-fresco-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/fc0d9d73fdc9ebf785f7e965c42f122e/transformed/jetified-imagepipeline-okhttp3-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/fc0d9d73fdc9ebf785f7e965c42f122e/transformed/jetified-imagepipeline-okhttp3-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:animated-gif:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/9a43626092da5a30f3a0d1c6e5566dd5/transformed/jetified-animated-gif-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:animated-gif:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/9a43626092da5a30f3a0d1c6e5566dd5/transformed/jetified-animated-gif-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:webpsupport:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/f1291a49149188a46ee884c4d8ff676d/transformed/jetified-webpsupport-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:webpsupport:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/f1291a49149188a46ee884c4d8ff676d/transformed/jetified-webpsupport-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [org.webkit:android-jsc:r245459] /Users/coqoa/.gradle/caches/transforms-3/153815ba80d32cf1e33fdc34d9798778/transformed/jetified-android-jsc-r245459/AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc:r245459] /Users/coqoa/.gradle/caches/transforms-3/153815ba80d32cf1e33fdc34d9798778/transformed/jetified-android-jsc-r245459/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/coqoa/.gradle/caches/transforms-3/d1be7fc0cd730f16ccb4d39053e83dc3/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/coqoa/.gradle/caches/transforms-3/d1be7fc0cd730f16ccb4d39053e83dc3/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta06] /Users/coqoa/.gradle/caches/transforms-3/4b52386d85be282e4abf9b1b5bd1a6d8/transformed/jetified-firebase-appcheck-interop-16.0.0-beta06/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta06] /Users/coqoa/.gradle/caches/transforms-3/4b52386d85be282e4abf9b1b5bd1a6d8/transformed/jetified-firebase-appcheck-interop-16.0.0-beta06/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/b02f2999b7cf7281e89d8109a16869ba/transformed/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/b02f2999b7cf7281e89d8109a16869ba/transformed/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-base:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/9223bfa0a0910b2ed6daf65c9990f4a2/transformed/jetified-play-services-ads-base-20.6.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-ads-base:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/9223bfa0a0910b2ed6daf65c9990f4a2/transformed/jetified-play-services-ads-base-20.6.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.ump:user-messaging-platform:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/b8a56baa624c244ee77fce66829042b7/transformed/jetified-user-messaging-platform-2.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.ump:user-messaging-platform:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/b8a56baa624c244ee77fce66829042b7/transformed/jetified-user-messaging-platform-2.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/e77d32378375bdcf2d1e0bf441d0526f/transformed/jetified-play-services-ads-identifier-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/e77d32378375bdcf2d1e0bf441d0526f/transformed/jetified-play-services-ads-identifier-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-appset:16.0.0] /Users/coqoa/.gradle/caches/transforms-3/e9909043725b4f97876135b59446ac50/transformed/jetified-play-services-appset-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-appset:16.0.0] /Users/coqoa/.gradle/caches/transforms-3/e9909043725b4f97876135b59446ac50/transformed/jetified-play-services-appset-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/4705f47e27a249e2731f0d8d2793ef2a/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/6f8f5f73adcf0dd1761a2be47e3be43e/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/6f8f5f73adcf0dd1761a2be47e3be43e/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb8762276a43e9bbf6310934cf7a94a2/transformed/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb8762276a43e9bbf6310934cf7a94a2/transformed/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/3d1d2b941cbd28ae8daf7e7ff377e139/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/3d1d2b941cbd28ae8daf7e7ff377e139/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb6fc5f569bf50ae50d583af432780e6/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/eb6fc5f569bf50ae50d583af432780e6/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/c7284a850b1573b8cec570ef9fdfafb0/transformed/jetified-play-services-measurement-sdk-api-18.0.3/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/c7284a850b1573b8cec570ef9fdfafb0/transformed/jetified-play-services-measurement-sdk-api-18.0.3/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/b04136f0cab74995625e4cc9d40dfcfb/transformed/jetified-play-services-measurement-base-18.0.3/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/b04136f0cab74995625e4cc9d40dfcfb/transformed/jetified-play-services-measurement-base-18.0.3/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:18:5-43
+MERGED from [com.airbnb.android:lottie:4.0.0] /Users/coqoa/.gradle/caches/transforms-3/421c0bf0b9ded181e6e80552a27238eb/transformed/jetified-lottie-4.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.airbnb.android:lottie:4.0.0] /Users/coqoa/.gradle/caches/transforms-3/421c0bf0b9ded181e6e80552a27238eb/transformed/jetified-lottie-4.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [:expo-structured-headers] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-structured-headers/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-structured-headers] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-structured-headers/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/c3d01fbb04d1b294124ee3997981ce65/transformed/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/c3d01fbb04d1b294124ee3997981ce65/transformed/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7ccf0e71e0d1aa2cd1af94bbbfd9fe85/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7ccf0e71e0d1aa2cd1af94bbbfd9fe85/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.2] /Users/coqoa/.gradle/caches/transforms-3/281f1e576a4238923d3beae8dc6c4a66/transformed/fragment-1.3.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.2] /Users/coqoa/.gradle/caches/transforms-3/281f1e576a4238923d3beae8dc6c4a66/transformed/fragment-1.3.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/2632538ffd1a78dee6f487a9cae8cada/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/2632538ffd1a78dee6f487a9cae8cada/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.2] /Users/coqoa/.gradle/caches/transforms-3/de2877082ac791b45d12d51f6bc77b56/transformed/jetified-activity-1.2.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.2] /Users/coqoa/.gradle/caches/transforms-3/de2877082ac791b45d12d51f6bc77b56/transformed/jetified-activity-1.2.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/4aae79fa2388e16682375725fce5c813/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/153faf73f0baafc96c163a4634043949/transformed/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/coqoa/.gradle/caches/transforms-3/153faf73f0baafc96c163a4634043949/transformed/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/f75dc8635e29a7f3dd6f2112b9c38a6f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/f75dc8635e29a7f3dd6f2112b9c38a6f/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/73983d4935a7f88fea3ffc1ce2450ffa/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/73983d4935a7f88fea3ffc1ce2450ffa/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.3.0] /Users/coqoa/.gradle/caches/transforms-3/e9caa8ce1801ebd1dc8ef87502e73e50/transformed/jetified-core-ktx-1.3.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.3.0] /Users/coqoa/.gradle/caches/transforms-3/e9caa8ce1801ebd1dc8ef87502e73e50/transformed/jetified-core-ktx-1.3.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.webkit:webkit:1.4.0] /Users/coqoa/.gradle/caches/transforms-3/3f8d5ebba2860908298f1147a0d27cb5/transformed/webkit-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.webkit:webkit:1.4.0] /Users/coqoa/.gradle/caches/transforms-3/3f8d5ebba2860908298f1147a0d27cb5/transformed/webkit-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/08ddb8d3a2517b0491534c21e24d6e6b/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/08ddb8d3a2517b0491534c21e24d6e6b/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2ae8915466fd9d591da47ff0bf5f8e95/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2ae8915466fd9d591da47ff0bf5f8e95/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/07cb5829f83c6077090bc9ec450398d3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/013050e6d48ff8d811cb280aa8af3e09/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/013050e6d48ff8d811cb280aa8af3e09/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7abf82544ca901ee77d08a1883abd733/transformed/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7abf82544ca901ee77d08a1883abd733/transformed/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/5ff86b6192273fe88df0140e16b82d09/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/5ff86b6192273fe88df0140e16b82d09/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7dc766fb0db719889748b099275c8c0d/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/7dc766fb0db719889748b099275c8c0d/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/31a01791c318aae52acdc4aa925b28e7/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/31a01791c318aae52acdc4aa925b28e7/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.exoplayer:exoplayer:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/eb817fde748f0dc27ae6bb4dd800b280/transformed/jetified-exoplayer-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/eb817fde748f0dc27ae6bb4dd800b280/transformed/jetified-exoplayer-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/ff9849e8e0cda6e06a650bc677ed2385/transformed/jetified-exoplayer-ui-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/ff9849e8e0cda6e06a650bc677ed2385/transformed/jetified-exoplayer-ui-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/fdfa1a0a3700bb9d5c75f28a6dd60d39/transformed/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/fdfa1a0a3700bb9d5c75f28a6dd60d39/transformed/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.6.0] /Users/coqoa/.gradle/caches/transforms-3/00f7f57b381579b32b6f96d9a2c25b39/transformed/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.6.0] /Users/coqoa/.gradle/caches/transforms-3/00f7f57b381579b32b6f96d9a2c25b39/transformed/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/coqoa/.gradle/caches/transforms-3/70775c0ba851cbe4178a64945da62bff/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/coqoa/.gradle/caches/transforms-3/70775c0ba851cbe4178a64945da62bff/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.facebook.fresco:animated-base:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/a72c2ef814f066b05bd384210218d11d/transformed/jetified-animated-base-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:animated-base:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/a72c2ef814f066b05bd384210218d11d/transformed/jetified-animated-base-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:animated-drawable:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/cd49317ea2fb50d01e53839c8b57a7e5/transformed/jetified-animated-drawable-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:animated-drawable:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/cd49317ea2fb50d01e53839c8b57a7e5/transformed/jetified-animated-drawable-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/1692c18fd2fc29cf490a1d63ea638871/transformed/jetified-drawee-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/1692c18fd2fc29cf490a1d63ea638871/transformed/jetified-drawee-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/0fb2d282ba48f5a6c31150b3212926ef/transformed/jetified-nativeimagefilters-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/0fb2d282ba48f5a6c31150b3212926ef/transformed/jetified-nativeimagefilters-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/0bdbad90b12036e5ea9aed2d1e33d1b7/transformed/jetified-imagepipeline-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/0bdbad90b12036e5ea9aed2d1e33d1b7/transformed/jetified-imagepipeline-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/4352c46fa84c0d8a197bbb4359dcebe9/transformed/jetified-nativeimagetranscoder-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/4352c46fa84c0d8a197bbb4359dcebe9/transformed/jetified-nativeimagetranscoder-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/10fb640a15b100845a699ffc7aa241c7/transformed/jetified-imagepipeline-base-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/10fb640a15b100845a699ffc7aa241c7/transformed/jetified-imagepipeline-base-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.9.0] /Users/coqoa/.gradle/caches/transforms-3/ea42c08338d95c5cae59eaaf68eae484/transformed/jetified-soloader-0.9.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.9.0] /Users/coqoa/.gradle/caches/transforms-3/ea42c08338d95c5cae59eaaf68eae484/transformed/jetified-soloader-0.9.0/AndroidManifest.xml:7:5-9:41
+MERGED from [io.grpc:grpc-android:1.44.1] /Users/coqoa/.gradle/caches/transforms-3/be099e9ef03e583b9f5be8accb946a4a/transformed/jetified-grpc-android-1.44.1/AndroidManifest.xml:5:5-7:41
+MERGED from [io.grpc:grpc-android:1.44.1] /Users/coqoa/.gradle/caches/transforms-3/be099e9ef03e583b9f5be8accb946a4a/transformed/jetified-grpc-android-1.44.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.exoplayer:extension-okhttp:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/d40970d4a7e961d95ae74fa58fbd52d3/transformed/jetified-extension-okhttp-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:extension-okhttp:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/d40970d4a7e961d95ae74fa58fbd52d3/transformed/jetified-extension-okhttp-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/239dcb6ccd82bc1e794ac9d00cbc293d/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/239dcb6ccd82bc1e794ac9d00cbc293d/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2794239bffd4bcda8e3ace851c671d2a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/2794239bffd4bcda8e3ace851c671d2a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/65734f4924cc1eae6ebdbd8e2b0689f3/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/coqoa/.gradle/caches/transforms-3/65734f4924cc1eae6ebdbd8e2b0689f3/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/6fcef73541d913375bb9900e453db570/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/6fcef73541d913375bb9900e453db570/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/5aecb538be99e943b6ca6ebd43ba8340/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/5aecb538be99e943b6ca6ebd43ba8340/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/3f328409b530bd0be9d7ac0a71680701/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/3f328409b530bd0be9d7ac0a71680701/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/24fd2af65b48b790b61760e9820e41f1/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/24fd2af65b48b790b61760e9820e41f1/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/b76bff72d12bc8da93b8f5cbb61884cc/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/b76bff72d12bc8da93b8f5cbb61884cc/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f61972bea0e13c89237d59d7385e12f7/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f61972bea0e13c89237d59d7385e12f7/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/93babed7a1c7246662c22922af5ff7db/transformed/sqlite-framework-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/93babed7a1c7246662c22922af5ff7db/transformed/sqlite-framework-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/03261b96eac00dee11f7312399448d0c/transformed/sqlite-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-service:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/d92d16522a497559bbb2245409a42774/transformed/jetified-lifecycle-service-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/d92d16522a497559bbb2245409a42774/transformed/jetified-lifecycle-service-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/341b4184664491502e852bb606d9271c/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/341b4184664491502e852bb606d9271c/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f9da0e1a391f289bd0e6a76fd621aca1/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f9da0e1a391f289bd0e6a76fd621aca1/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/e8ee0a25a56f8f6d93cab0518ce1e0af/transformed/lifecycle-livedata-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/e8ee0a25a56f8f6d93cab0518ce1e0af/transformed/lifecycle-livedata-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/b74cdccde4f2ac9e91abead65a9ba949/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/coqoa/.gradle/caches/transforms-3/b74cdccde4f2ac9e91abead65a9ba949/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/c914b5975532f76122152c4c98d550a6/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/coqoa/.gradle/caches/transforms-3/c914b5975532f76122152c4c98d550a6/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/1c1d438fb9bd20e67489019bdcf4c923/transformed/jetified-exoplayer-dash-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/1c1d438fb9bd20e67489019bdcf4c923/transformed/jetified-exoplayer-dash-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/e4d78f9c0c39837ef2c6f38060646a5d/transformed/jetified-exoplayer-hls-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/e4d78f9c0c39837ef2c6f38060646a5d/transformed/jetified-exoplayer-hls-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/81f10f3e150bf330c4a110729c335dee/transformed/jetified-exoplayer-smoothstreaming-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/81f10f3e150bf330c4a110729c335dee/transformed/jetified-exoplayer-smoothstreaming-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/0c219c82da586347bcf5ab19716c645a/transformed/jetified-exoplayer-core-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/0c219c82da586347bcf5ab19716c645a/transformed/jetified-exoplayer-core-2.9.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/d32bd07586aeb4c024888cb1adf354a8/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/d32bd07586aeb4c024888cb1adf354a8/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/df5c4f099bc04d576cc9cfd354ad1462/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/df5c4f099bc04d576cc9cfd354ad1462/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/bd195ecccdb1e1e2e44bcaf013550b35/transformed/jetified-fbcore-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/coqoa/.gradle/caches/transforms-3/bd195ecccdb1e1e2e44bcaf013550b35/transformed/jetified-fbcore-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [:expo-manifests] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-manifests/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-manifests] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-manifests/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-json-utils] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-json-utils/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-json-utils] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-json-utils/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-updates-interface] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-updates-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:expo-updates-interface] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-updates-interface/android/build/intermediates/library_manifest/release/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/b3f48b104d8a94d029fc9fd4251ed1bc/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/coqoa/.gradle/caches/transforms-3/b3f48b104d8a94d029fc9fd4251ed1bc/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.yqritc:android-scalablevideoview:1.0.1] /Users/coqoa/.gradle/caches/transforms-3/fbbff95b5ab7402f3f563076b51cd02b/transformed/jetified-android-scalablevideoview-1.0.1/AndroidManifest.xml:8:5-10:41
+MERGED from [com.yqritc:android-scalablevideoview:1.0.1] /Users/coqoa/.gradle/caches/transforms-3/fbbff95b5ab7402f3f563076b51cd02b/transformed/jetified-android-scalablevideoview-1.0.1/AndroidManifest.xml:8:5-10:41
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/13d7fd083de6f0579d9dccc045748dc8/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/13d7fd083de6f0579d9dccc045748dc8/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:7:5-9:41
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.google.android.gms:play-services-ads:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/0904ff06771d0189de53ecf837f0835f/transformed/jetified-play-services-ads-20.6.0/AndroidManifest.xml:23:9-49
+	android:targetSdkVersion
+		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-68
+MERGED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-68
+MERGED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-68
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/c7284a850b1573b8cec570ef9fdfafb0/transformed/jetified-play-services-measurement-sdk-api-18.0.3/AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/c7284a850b1573b8cec570ef9fdfafb0/transformed/jetified-play-services-measurement-sdk-api-18.0.3/AndroidManifest.xml:25:5-68
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:25:5-68
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:25:5-68
+	android:name
+		ADDED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:22-65
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:24:5-79
+MERGED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-79
+MERGED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-79
+MERGED from [:expo-updates] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-updates/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-79
+MERGED from [:expo-updates] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-updates/android/build/intermediates/library_manifest/release/AndroidManifest.xml:11:5-79
+MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:13:5-79
+MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/c7284a850b1573b8cec570ef9fdfafb0/transformed/jetified-play-services-measurement-sdk-api-18.0.3/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] /Users/coqoa/.gradle/caches/transforms-3/c7284a850b1573b8cec570ef9fdfafb0/transformed/jetified-play-services-measurement-sdk-api-18.0.3/AndroidManifest.xml:24:5-79
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:26:5-79
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:26:5-79
+MERGED from [io.grpc:grpc-android:1.44.1] /Users/coqoa/.gradle/caches/transforms-3/be099e9ef03e583b9f5be8accb946a4a/transformed/jetified-grpc-android-1.44.1/AndroidManifest.xml:9:5-79
+MERGED from [io.grpc:grpc-android:1.44.1] /Users/coqoa/.gradle/caches/transforms-3/be099e9ef03e583b9f5be8accb946a4a/transformed/jetified-grpc-android-1.44.1/AndroidManifest.xml:9:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/0c219c82da586347bcf5ab19716c645a/transformed/jetified-exoplayer-core-2.9.2/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.9.2] /Users/coqoa/.gradle/caches/transforms-3/0c219c82da586347bcf5ab19716c645a/transformed/jetified-exoplayer-core-2.9.2/AndroidManifest.xml:24:5-79
+	android:name
+		ADDED from [:react-native-firebase_auth] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/auth/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:22-76
+meta-data#app_data_collection_default_enabled
+ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:9-14:36
+	android:value
+		ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:13-33
+	android:name
+		ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:13-63
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:9-20:19
+MERGED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:64:9-70:19
+MERGED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:64:9-70:19
+MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:17:9-23:19
+MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:17:9-23:19
+MERGED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:33:9-37:35
+MERGED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:33:9-37:35
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:66:13-37
+	tools:targetApi
+		ADDED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:37:13-32
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:35:13-43
+	android:name
+		ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:18-89
+meta-data#com.google.firebase.components:io.invertase.firebase.app.ReactNativeFirebaseAppRegistrar
+ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:17:13-19:85
+	android:value
+		ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:19:17-82
+	android:name
+		ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:18:17-120
+provider#io.invertase.firebase.app.ReactNativeFirebaseAppInitProvider
+ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:22:9-26:38
+	android:authorities
+		ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:24:13-86
+	android:exported
+		ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:25:13-37
+	android:initOrder
+		ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:26:13-35
+	android:name
+		ADDED from [:react-native-firebase_app] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/release/AndroidManifest.xml:23:13-88
+activity#com.google.firebase.auth.internal.GenericIdpActivity
+ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:27:9-44:20
+	android:excludeFromRecents
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:29:13-46
+	android:launchMode
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:31:13-44
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:30:13-36
+	android:theme
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:32:13-72
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:28:13-80
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:genericidp
+ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:33:13-43:29
+activity#com.google.firebase.auth.internal.RecaptchaActivity
+ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:45:9-62:20
+	android:excludeFromRecents
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:47:13-46
+	android:launchMode
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:49:13-44
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:48:13-36
+	android:theme
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:50:13-72
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:46:13-79
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:recaptcha
+ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:51:13-61:29
+meta-data#com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar
+ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:67:13-69:85
+	android:value
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:69:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.3] /Users/coqoa/.gradle/caches/transforms-3/e64cabbc9aa63a17b4b5b7032aa282f3/transformed/jetified-firebase-auth-21.0.3/AndroidManifest.xml:68:17-109
+meta-data#com.google.android.gms.ads.APPLICATION_ID
+ADDED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:9-18:70
+	android:value
+		ADDED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:18:13-67
+	android:name
+		ADDED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:17:13-69
+meta-data#com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT
+ADDED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:19:9-21:37
+	android:value
+		ADDED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:21:13-34
+	android:name
+		ADDED from [:react-native-google-mobile-ads] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-google-mobile-ads/android/build/intermediates/library_manifest/release/AndroidManifest.xml:20:13-81
+provider#com.reactnativecommunity.webview.RNCWebViewFileProvider
+ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:9-20:20
+	android:grantUriPermissions
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:13-47
+	android:authorities
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:13-64
+	android:exported
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:13-37
+	android:name
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:13-83
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:17:13-19:63
+	android:resource
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:19:17-60
+	android:name
+		ADDED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:18:17-67
+intent#action:name:android.intent.action.OPEN_DOCUMENT_TREE
+ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:19:9-21:18
+action#android.intent.action.OPEN_DOCUMENT_TREE
+ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:20:13-79
+	android:name
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:20:21-76
+provider#expo.modules.filesystem.FileSystemFileProvider
+ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:25:9-34:20
+	android:grantUriPermissions
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:29:13-47
+	android:authorities
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:27:13-74
+	android:exported
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:28:13-37
+	tools:replace
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:30:13-48
+	android:name
+		ADDED from [:expo-file-system] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-file-system/android/build/intermediates/library_manifest/release/AndroidManifest.xml:26:13-74
+meta-data#org.unimodules.core.AppLoader#react-native-headless
+ADDED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:9-14:89
+	android:value
+		ADDED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:13-86
+	android:name
+		ADDED from [:expo-modules-core] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-modules-core/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:13-79
+meta-data#com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar
+ADDED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:20:13-22:85
+	android:value
+		ADDED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:22:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-firestore:24.1.1] /Users/coqoa/.gradle/caches/transforms-3/7b829e81b08f81493b437deadd6b2538/transformed/jetified-firebase-firestore-24.1.1/AndroidManifest.xml:21:17-111
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:26:9-31:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:28:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:30:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:29:13-43
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:31:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/2e6ccce13035b2dfc8ae403a6dbee706/transformed/jetified-firebase-common-20.1.0/AndroidManifest.xml:27:13-77
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:33:9-37:51
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:35:13-36
+	android:visibleToInstantApps
+		ADDED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:37:13-48
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.1.0] /Users/coqoa/.gradle/caches/transforms-3/fde1637a70e1f6ace9ea7f7b99efa230/transformed/jetified-play-services-auth-20.1.0/AndroidManifest.xml:34:13-89
+uses-permission#com.google.android.gms.permission.AD_ID
+ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:25:5-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:25:22-76
+intent#action:name:android.support.customtabs.action.CustomTabsService
+ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:40:9-42:18
+action#android.support.customtabs.action.CustomTabsService
+ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:41:13-90
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:41:21-87
+activity#com.google.android.gms.ads.AdActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:49:9-53:64
+	android:exported
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:52:13-37
+	android:configChanges
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:51:13-122
+	android:theme
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:53:13-61
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:50:13-65
+provider#com.google.android.gms.ads.MobileAdsInitProvider
+ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:55:9-59:39
+	android:authorities
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:57:13-73
+	android:exported
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:58:13-37
+	android:initOrder
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:59:13-36
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:56:13-76
+service#com.google.android.gms.ads.AdService
+ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:61:9-64:40
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:63:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:64:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:20.6.0] /Users/coqoa/.gradle/caches/transforms-3/ad1c9772608abc35f86bde8f5e953d69/transformed/jetified-play-services-ads-lite-20.6.0/AndroidManifest.xml:62:13-64
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/coqoa/.gradle/caches/transforms-3/1445055c61e53c710c576ed891c8832c/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.0.0] /Users/coqoa/.gradle/caches/transforms-3/9b85b40f33e5bd5149a198c206bbf43a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:27:5-81
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:27:22-78
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:28:5-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:28:22-74
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:31:9-39:20
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f61972bea0e13c89237d59d7385e12f7/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/coqoa/.gradle/caches/transforms-3/f61972bea0e13c89237d59d7385e12f7/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:35:13-31
+	android:authorities
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:33:13-68
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:34:13-37
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:32:13-67
+meta-data#androidx.work.WorkManagerInitializer
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:36:13-38:52
+	android:value
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:38:17-49
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:37:17-68
+service#androidx.work.impl.background.systemalarm.SystemAlarmService
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:41:9-46:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:44:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:45:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:46:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:43:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:42:13-88
+service#androidx.work.impl.background.systemjob.SystemJobService
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:47:9-53:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:50:13-70
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:51:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:52:13-69
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:53:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:49:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:48:13-84
+service#androidx.work.impl.foreground.SystemForegroundService
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:54:9-59:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:57:13-77
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:58:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:59:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:56:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:55:13-81
+receiver#androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:61:9-66:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:64:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:65:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:66:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:63:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:62:13-88
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:67:9-77:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:70:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:71:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:72:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:69:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:68:13-106
+intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:73:13-76:29
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:74:17-87
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:74:25-84
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:75:17-90
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:75:25-87
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:78:9-88:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:81:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:82:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:83:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:80:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:79:13-104
+intent-filter#action:name:android.intent.action.BATTERY_LOW+action:name:android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:84:13-87:29
+action#android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:85:17-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:85:25-74
+action#android.intent.action.BATTERY_LOW
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:86:17-76
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:86:25-73
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:89:9-99:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:92:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:93:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:94:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:91:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:90:13-104
+intent-filter#action:name:android.intent.action.DEVICE_STORAGE_LOW+action:name:android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:95:13-98:29
+action#android.intent.action.DEVICE_STORAGE_LOW
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:96:17-83
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:96:25-80
+action#android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:97:17-82
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:97:25-79
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:100:9-109:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:103:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:104:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:105:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:102:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:101:13-103
+intent-filter#action:name:android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:106:13-108:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:107:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:107:25-76
+receiver#androidx.work.impl.background.systemalarm.RescheduleReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:110:9-121:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:113:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:114:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:115:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:112:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:111:13-88
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.TIMEZONE_CHANGED+action:name:android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:116:13-120:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:117:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:117:25-76
+action#android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:118:17-73
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:118:25-70
+action#android.intent.action.TIMEZONE_CHANGED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:119:17-81
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:119:25-78
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:122:9-131:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:125:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:126:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:127:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:124:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:123:13-99
+intent-filter#action:name:androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:128:13-130:29
+action#androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:129:17-98
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:129:25-95
+receiver#androidx.work.impl.diagnostics.DiagnosticsReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:132:9-142:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:135:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:136:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:137:13-57
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:138:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:134:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:133:13-78
+intent-filter#action:name:androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:139:13-141:29
+action#androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:140:17-88
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/coqoa/.gradle/caches/transforms-3/391f32f2a4147cabb57105204d915497/transformed/work-runtime-2.7.0/AndroidManifest.xml:140:25-85
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:25:9-28:40
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:28:13-37
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:27:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.3.0] /Users/coqoa/.gradle/caches/transforms-3/13eb14239fc42656faf4ec5006880939/transformed/room-runtime-2.3.0/AndroidManifest.xml:26:13-74
+uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+ADDED from [com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
+	android:name
+		ADDED from [com.android.installreferrer:installreferrer:1.0] /Users/coqoa/.gradle/caches/transforms-3/458992125b0626d756b01ede0f21727f/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107

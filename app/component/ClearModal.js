@@ -6,7 +6,7 @@ import { colors } from "./Color";
 
 const ClearModal = (props) => {
 
-    const ClearModal = styled.View`
+    const ClearModalShell = styled.View`
     position: absolute;
     
     width: 300px;
@@ -50,7 +50,7 @@ const ClearModal = (props) => {
         <>
         <Lottie source={require("../asset/lottie/last1.json")} style={{position:"absolute", width: 450}} autoPlay loop />
         <Lottie source={require("../asset/lottie/last.json")} style={{width: 500}} autoPlay loop />
-        <ClearModal>
+        <ClearModalShell>
             <RepeatLevel
                 onPressIn={() => ClickSound()}
                 onPressOut={() => {props.restartLevelBtn()}}
@@ -91,7 +91,7 @@ const ClearModal = (props) => {
                     <NextLevelText>다음레벨 도전 !</NextLevelText>
                 </NextLevel>
             )}
-        </ClearModal>
+        </ClearModalShell>
         </>
     )
 };

@@ -367,6 +367,8 @@ ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/Android
 		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:155-186
 	android:windowSoftInputMode
 		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:187-226
+	android:exported
+		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:273-296
 	android:configChanges
 		ADDED from /Users/coqoa/Downloads/RN-APP/taptapcard/android/app/src/main/AndroidManifest.xml:23:77-154
 	android:theme

@@ -1,11 +1,12 @@
 package com.taptapcard;
 
 import android.os.Bundle;
-import org.devio.rn.splashscreen.SplashScreen;
 import android.os.Build;
-import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
+
+// react-native-splash-screen >= 0.3.1 
+import org.devio.rn.splashscreen.SplashScreen;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 
@@ -14,13 +15,9 @@ import expo.modules.ReactActivityDelegateWrapper;
 public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-SplashScreen.show(this, R.style.SplashScreenTheme);    // Set the theme to AppTheme BEFORE onCreate to support 
-SplashScreen.show(this, R.style.SplashScreenTheme);    // coloring the background, status bar, and navigation bar.
-    // This is required for expo-splash-screen.
-    setTheme(R.style.AppTheme);
-    super.onCreate(null);
-SplashScreen.show(this, R.style.SplashScreenTheme);  }
-
+    SplashScreen.show(this);    // Set the theme to AppTheme BEFORE onCreate to support 
+    super.onCreate(savedInstanceState);
+  }
   /**
    * Returns the name of the main component registered from JavaScript.
    * This is used to schedule rendering of the component.

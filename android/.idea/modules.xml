@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/탭탭카드놀이.iml" filepath="$PROJECT_DIR$/.idea/modules/탭탭카드놀이.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/탭탭카드놀이.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/탭탭카드놀이.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1729151621/탭탭카드놀이.expo.iml" filepath="$PROJECT_DIR$/.idea/modules/1729151621/탭탭카드놀이.expo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1725524216/탭탭카드놀이.expo-application.iml" filepath="$PROJECT_DIR$/.idea/modules/-1725524216/탭탭카드놀이.expo-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1222314301/탭탭카드놀이.expo-av.iml" filepath="$PROJECT_DIR$/.idea/modules/1222314301/탭탭카드놀이.expo-av.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1115580935/탭탭카드놀이.expo-constants.iml" filepath="$PROJECT_DIR$/.idea/modules/1115580935/탭탭카드놀이.expo-constants.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2039498072/탭탭카드놀이.expo-file-system.iml" filepath="$PROJECT_DIR$/.idea/modules/2039498072/탭탭카드놀이.expo-file-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2064991575/탭탭카드놀이.expo-font.iml" filepath="$PROJECT_DIR$/.idea/modules/2064991575/탭탭카드놀이.expo-font.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628983700/탭탭카드놀이.expo-json-utils.iml" filepath="$PROJECT_DIR$/.idea/modules/1628983700/탭탭카드놀이.expo-json-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1578077765/탭탭카드놀이.expo-keep-awake.iml" filepath="$PROJECT_DIR$/.idea/modules/1578077765/탭탭카드놀이.expo-keep-awake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1016122332/탭탭카드놀이.expo-manifests.iml" filepath="$PROJECT_DIR$/.idea/modules/1016122332/탭탭카드놀이.expo-manifests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1282679085/탭탭카드놀이.expo-modules-core.iml" filepath="$PROJECT_DIR$/.idea/modules/1282679085/탭탭카드놀이.expo-modules-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1406810038/탭탭카드놀이.expo-splash-screen.iml" filepath="$PROJECT_DIR$/.idea/modules/-1406810038/탭탭카드놀이.expo-splash-screen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-222430446/탭탭카드놀이.expo-structured-headers.iml" filepath="$PROJECT_DIR$/.idea/modules/-222430446/탭탭카드놀이.expo-structured-headers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1677739138/탭탭카드놀이.expo-updates.iml" filepath="$PROJECT_DIR$/.idea/modules/1677739138/탭탭카드놀이.expo-updates.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1385650770/탭탭카드놀이.expo-updates-interface.iml" filepath="$PROJECT_DIR$/.idea/modules/-1385650770/탭탭카드놀이.expo-updates-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-603799345/탭탭카드놀이.iamport-react-native.iml" filepath="$PROJECT_DIR$/.idea/modules/-603799345/탭탭카드놀이.iamport-react-native.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-176813676/탭탭카드놀이.invertase_react-native-apple-authentication.iml" filepath="$PROJECT_DIR$/.idea/modules/-176813676/탭탭카드놀이.invertase_react-native-apple-authentication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1981282635/탭탭카드놀이.lottie-react-native.iml" filepath="$PROJECT_DIR$/.idea/modules/-1981282635/탭탭카드놀이.lottie-react-native.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1052816428/탭탭카드놀이.react-native-firebase_app.iml" filepath="$PROJECT_DIR$/.idea/modules/-1052816428/탭탭카드놀이.react-native-firebase_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/975504405/탭탭카드놀이.react-native-firebase_auth.iml" filepath="$PROJECT_DIR$/.idea/modules/975504405/탭탭카드놀이.react-native-firebase_auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1055632930/탭탭카드놀이.react-native-firebase_firestore.iml" filepath="$PROJECT_DIR$/.idea/modules/-1055632930/탭탭카드놀이.react-native-firebase_firestore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-951381692/탭탭카드놀이.react-native-google-mobile-ads.iml" filepath="$PROJECT_DIR$/.idea/modules/-951381692/탭탭카드놀이.react-native-google-mobile-ads.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1234907842/탭탭카드놀이.react-native-google-signin-google-signin.iml" filepath="$PROJECT_DIR$/.idea/modules/1234907842/탭탭카드놀이.react-native-google-signin-google-signin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1234907842/탭탭카드놀이.react-native-google-signin_google-signin.iml" filepath="$PROJECT_DIR$/.idea/modules/1234907842/탭탭카드놀이.react-native-google-signin_google-signin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/189562074/탭탭카드놀이.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/189562074/탭탭카드놀이.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1593525618/탭탭카드놀이.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/1593525618/탭탭카드놀이.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/761034557/탭탭카드놀이.react-native-splash-screen.iml" filepath="$PROJECT_DIR$/.idea/modules/761034557/탭탭카드놀이.react-native-splash-screen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2006451919/탭탭카드놀이.react-native-svg.iml" filepath="$PROJECT_DIR$/.idea/modules/2006451919/탭탭카드놀이.react-native-svg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/852468196/탭탭카드놀이.react-native-webview.iml" filepath="$PROJECT_DIR$/.idea/modules/852468196/탭탭카드놀이.react-native-webview.iml" />
+    </modules>
+  </component>
+</project>

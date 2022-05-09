@@ -21,6 +21,7 @@ MERGED from [:expo] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo/a
 MERGED from [:iamport-react-native] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/iamport-react-native/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-safe-area-context] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-splash-screen] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-svg] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-23:12
 MERGED from [:expo-application] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/expo-application/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
@@ -435,6 +436,8 @@ MERGED from [:react-native-safe-area-context] /Users/coqoa/Downloads/RN-APP/tapt
 MERGED from [:react-native-safe-area-context] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-screens] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-splash-screen] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-splash-screen] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-svg] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-svg] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-webview] /Users/coqoa/Downloads/RN-APP/taptapcard/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41

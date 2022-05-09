@@ -33,6 +33,8 @@ import io.invertase.googlemobileads.ReactNativeGoogleMobileAdsPackage;
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
 import com.swmansion.rnscreens.RNScreensPackage;
+// react-native-splash-screen
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 // react-native-svg
 import com.horcrux.svg.SvgPackage;
 // react-native-webview
@@ -93,6 +95,7 @@ public class PackageList {
       new ReactNativeGoogleMobileAdsPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),
+      new SplashScreenReactPackage(),
       new SvgPackage(),
       new RNCWebViewPackage()
     ));

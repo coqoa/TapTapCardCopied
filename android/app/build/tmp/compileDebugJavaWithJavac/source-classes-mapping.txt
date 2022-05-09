@@ -1,14 +1,3 @@
-com/taptapcard/ReactNativeFlipper.java
- com.taptapcard.ReactNativeFlipper
- com.taptapcard.ReactNativeFlipper$1
- com.taptapcard.ReactNativeFlipper$2
- com.taptapcard.ReactNativeFlipper$2$1
-com/taptapcard/BuildConfig.java
- com.taptapcard.BuildConfig
 com/taptapcard/MainApplication.java
  com.taptapcard.MainApplication
  com.taptapcard.MainApplication$1
-com/facebook/react/PackageList.java
- com.facebook.react.PackageList
-com/taptapcard/MainActivity.java
- com.taptapcard.MainActivity

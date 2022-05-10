@@ -4,6 +4,8 @@ import Lottie from 'lottie-react-native';
 import styled from "styled-components"
 import { colors } from "./Color";
 
+// 마지막 카드 다음에 나오는 모달창 
+
 const ClearModal = (props) => {
 
     const ClearModalShell = styled.View`
@@ -55,15 +57,11 @@ const ClearModal = (props) => {
                 onPressIn={() => ClickSound()}
                 onPressOut={() => {props.restartLevelBtn()}}
             >
-
                 {props.type !== "AnimalENG" ? (
                     <RepeatLevelText>다시하기 !</RepeatLevelText>
                 ):(
                     <RepeatLevelText>Again !</RepeatLevelText>
                 )}
-                {/* {props.type !== "AnimalENG" && (<RepeatLevelText>다시하기 !</RepeatLevelText>)}
-                {props.type == "AnimalENG" && (<RepeatLevelText>Again !</RepeatLevelText>)} */}
-                
             </RepeatLevel>
 
             { props.level == "word1LV" && (

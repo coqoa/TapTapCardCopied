@@ -4,8 +4,7 @@ import {colors} from "../Color"
 import {Ionicons} from "@expo/vector-icons";
 
 import auth from '@react-native-firebase/auth';
-import { appleAuth, AppleButton } from '@invertase/react-native-apple-authentication';
-import { TouchableOpacity } from 'react-native';
+import { appleAuth } from '@invertase/react-native-apple-authentication';
 
 const SocialSign = styled.TouchableOpacity`
     flex-direction: row;
@@ -43,7 +42,7 @@ const AppleLogin = () => {
             //     이 예제에서는 `signInWithCredential`이 사용되지만, 기존 사용자와 연결하려면 `linkWithCredential`를 호출할 수 있다
             const userCredential = await auth().signInWithCredential(appleCredential);
         
-            // 사용자가 로그인되면 모든Firebase의 `onAuthStateChanged` 리스너가 트리거된다 
+            // 사용자가 로그인되면 모든 Firebase의 `onAuthStateChanged` 리스너가 트리거된다 
             console.log(`Login.js 애플을 통해 인증된 파이어베이스, 유저아이디: ${userCredential.user.uid}`);
           } else {
             // 재시도하기 위한 처리부분
@@ -53,14 +52,6 @@ const AppleLogin = () => {
     return (
     <>
         {appleAuth.isSupported && (
-            // <AppleButton
-            // cornerRadius={5}
-            // style={{ width: 200, height: 60 }}
-            // buttonStyle={AppleButton.Style.WHITE}
-            // buttonType={AppleButton.Type.SIGN_IN}
-            // onPress={() => onAppleButtonPress()}
-            // />
-
             <SocialSign style={{backgroundColor:colors.REALDARKGRAY}} onPress={() => onAppleButtonPress()}>
                 <Ionicons name="logo-apple" size={22} color="white" /><SocialText>애플계정으로 시작하기</SocialText>
             </SocialSign>

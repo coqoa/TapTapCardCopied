@@ -1,24 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 
 function AxiosApi() {
     
-    // photos, setPhotos 비구조화 할당
-
-    // 통신 메서드
-    // function searchApi() {
-    //     const url = "https://jsonplaceholder.typicode.com/photos";
-    //     axios.get(url)
-    //     .then(function(response) {
-    //         setPhotos(response.data);
-    //         console.log("성공");
-    //     })
-    //     .catch(function(error) {
-    //         console.log("실패");
-    //     })
-    // }
     const getToken = axios({
         url: "https://api.iamport.kr/users/getToken",
         method: "post", // POST method

@@ -23,9 +23,8 @@ const SocialText = styled.Text`
     padding: 0px 10px ;
 `
 
+//구글소셜로그인
 const GoogleLogin = () => {
-
-    //구글소셜로그인
     const onGoogleButtonPress = async () => { 
         const { idToken } = await GoogleSignin.signIn(); 
         const googleCredential = auth.GoogleAuthProvider.credential(idToken); 

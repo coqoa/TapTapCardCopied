@@ -66,12 +66,8 @@ const StarViewImage1 = styled.ImageBackground`
 `
 const Main = styled.View`
     flex: 1;
-    /* margin-top: 5px; */
-    /* justify-content: center; */
-    /* align-items: center; */
     flex-direction: row;
     z-index: 2;
-    /* border: 1px solid green; */
 `
 const MenuText = styled.Text`
     top: 3px;
@@ -157,7 +153,6 @@ const CopyrightBtn  = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
     z-index: 10;
-    /* border: 1px solid red; */
 `
 const CopyrightShell = styled.View`
     position: absolute;
@@ -180,23 +175,11 @@ const CopyrightHeader = styled.View`
     align-items: center;
     justify-content: center;
 `
-const CopyrightText = styled.Text`
-    bottom: 1px;
-    font-size: 18px;
-`
 const CopyrightCloseBtn = styled.TouchableOpacity`
     position: absolute;
     right: 0px;
 `
-const InterstitialShell = styled.View`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    z-index: 10;
-`
 const BannerShell = styled.View`
-    /* top:0px; */
     width: 100%;
     height: 50px;
     background-color: white;
@@ -205,7 +188,6 @@ const BannerShell = styled.View`
 const CardShell = ({route, navigation}) => {
 
     const [copyrightModal, setCopyrightModal] = useState(false);
-    const [interstitial, setInterstitial] = useState(true)
     const [loading, setLoading] = useState(false);
     const contentsLoading = () => {
         setLoading(true)
@@ -310,7 +292,7 @@ const CardShell = ({route, navigation}) => {
         )
     }
 
-    // 뒤로가기 버튼
+// 뒤로가기 버튼
     const goBackBtnScale = useRef(new Animated.Value(1)).current
     const goBackPan = useRef(
         PanResponder.create({
@@ -325,15 +307,15 @@ const CardShell = ({route, navigation}) => {
         })
     ).current
 
-    // mainScreenRender를 false로 만들면 실행되는 리렌더 함수(clearTimeout해준다)
-    // mainScreenRender?  메인컴포넌트를 출력하기위한 state
+// mainScreenRender를 false로 만들면 실행되는 리렌더 함수(clearTimeout해준다)
+// mainScreenRender?  메인컴포넌트를 출력하기위한 state
     const rerenderTimeout = useRef(null); 
     useEffect(()=>{
         rerenderTimeout.current = setTimeout(() => {setMainScreenRender(true)},50)
         return() => clearTimeout(rerenderTimeout.current)
     },[mainScreenRender])
 
-    // 받은props를 기반으로 cardSelector state를 변경하는 함수 -> mainScreenRender를 false로 바꿔서 위의 코드를 실행한다
+    // 받은 props를 기반으로 cardSelector state를 변경하는 함수 -> mainScreenRender를 false로 바꿔서 위의 코드를 실행한다
     const cardCheck = (e) => {
         setMainScreenRender(false);
         setCardSelector(e);
@@ -349,12 +331,10 @@ const CardShell = ({route, navigation}) => {
     }
 
     function playSound(sound){
-        // console.log('Playing '+sound);
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
         ).then((res)=>{
             res.sound.setOnPlaybackStatusUpdate((status)=>{
                 if(!status.didJustFinish) return;
-                // console.log('Unloading '+sound);
                 res.sound.unloadAsync().catch(()=>{});
             });
         }).catch((error)=>{});
@@ -515,7 +495,6 @@ const CardShell = ({route, navigation}) => {
             {copyrightModal && (
                 <CopyrightShell>
                     <CopyrightHeader>
-                        {/* <CopyrightText>저작권정보</CopyrightText> */}
                         <CopyrightCloseBtn onPress={()=>setCopyrightModal(false)}>
                             <Ionicons name="close-circle-outline" size={22} color="gray" />
                         </CopyrightCloseBtn>
@@ -523,27 +502,7 @@ const CardShell = ({route, navigation}) => {
                     <Copyright />
                 </CopyrightShell>
             )}
-
-
-            {/* {paymentMember == false && (
-            <>
-                <BannerShell>
-                    <BannerAd />
-                </BannerShell>
-                {interstitial &&(
-                    <InterstitialShell>
-                        <InterstitialAd />
-                        <TouchableOpacity style={{width:50 , height:50, backgroundColor:"green", justifyContent:"center"}} onPress={() => setInterstitial(false)}>
-                            <Text style={{textAlign:"center", color:"white"}}>닫기</Text>
-                        </TouchableOpacity>
-                    </InterstitialShell>
-                )}
-            </>
-            )} */}
         </Shell>
-
-
-        
         </>
     )
 }

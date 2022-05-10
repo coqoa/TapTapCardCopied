@@ -1,14 +1,12 @@
 export const colors = {
-    // bgColor : "#F9EBEB",
     bgColor : "#ffffff",
     mainBgColor : "#D3F3FF",
-    // mainBgColor : "#00a8ff",
-    // mainBgColor : "#ffffff",
 
     BEIGE:"#f5f5dc",
     CUSTOMPINK:"#FF5384",
     TOMATO : "#FF8D8D",
     GREEN:"#198c19",
+    WhaleBG:"#37b5e6",
     PINKSKY:"#ffccd5",
     ORANGESKY:"#ffedcc",
     BLUESKY:"#daf8ff",
@@ -88,10 +86,4 @@ export const colors = {
     LIGHTPASTELBROWN:"#EDE0C3",
     PASTELBROWN:"#E3C49C",
     DARKPASTELBROWN:"#C39F71",
-
-
-
-    WhaleBG:"#37b5e6",
-
 };
-// export default colors;

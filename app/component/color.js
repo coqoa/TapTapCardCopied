@@ -9,10 +9,10 @@ export const colors = {
     CUSTOMPINK:"#FF5384",
     TOMATO : "#FF8D8D",
     GREEN:"#198c19",
-    BLUESKY:"#d4f6ff",
-    PINKSKY:"#f4eeff",
-    GREENSKY:"#cbf6dd",
+    PINKSKY:"#ffccd5",
     ORANGESKY:"#ffedcc",
+    BLUESKY:"#daf8ff",
+    GREENSKY:"#cbf6dd",
     REDSKY:"#ffd5d6",
 
     REALLIGHTGRAY : "#DBDBDB",

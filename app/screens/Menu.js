@@ -212,7 +212,7 @@ const Menu = ({navigation}) => {
             <LogoutBtn onPress={()=>{logout()}}><LogoutText>로그아웃</LogoutText></LogoutBtn>
             
             {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ganada.png"),colors.PINKSKY)}
-            {btnFunc(languageBtnAnimation,"Language",require("../asset/images/ABC.png"),colors.BEIGE)}
+            {btnFunc(languageBtnAnimation,"Language",require("../asset/images/ABC.png"),colors.ORANGESKY)}
             {btnFunc(numberBtnAnimation,"Number",require("../asset/images/123.png"),colors.BLUESKY)}
 
             <MenuBox

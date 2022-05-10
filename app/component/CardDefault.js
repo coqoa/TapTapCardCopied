@@ -97,7 +97,7 @@ const GanadaNameText = styled.Text`
 const CardNameText = styled.Text`
     height: 60px;
     text-align: center;
-    font-size: 60px;
+    font-size: 50px;
     font-family: 'SDChild';
     color: ${colors.REALDARKGRAY};
 `
@@ -261,6 +261,7 @@ const RealPictureExitBtnImage = styled.ImageBackground`
 `
 const RealPictureScrollView = styled.ScrollView`
     background-color: ${colors.mainBgColor};
+    top: 4px;
 `
 const PictureImageShell = styled.View`
     border: 1px solid ${colors.REALLIGHTGRAY};
@@ -399,7 +400,7 @@ export const WordCardLevel = (props) => {
     //panResponder
     const cardPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:() => true,
-        onPanResponderMove:(_,{dx})=>{cardPosition.setValue(dx), console.log(dx)},
+        onPanResponderMove:(_,{dx})=>{cardPosition.setValue(dx)},
         onPanResponderGrant:()=>{cardPressIn.start();},
         onPanResponderRelease:(_,{dx})=>{ 
             if(dx < -100){
@@ -731,7 +732,8 @@ export const WordCardLevel = (props) => {
         }
     }
     function playSound(sound){
-        // console.log('Playing '+sound);
+        // console.log('Playing '+sound);\
+        // Audio.Sound.unloadAsync();
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
         ).then((res)=>{
             res.sound.setOnPlaybackStatusUpdate((status)=>{

@@ -114,11 +114,11 @@ const CardNameModalText = styled(CardNameText)``
 
 const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
-    width: 90%;
-    height: 60%;
+    width: 80%;
+    height: 55%;
     border-radius: 80px;
     z-index: 1;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0);
 `
 const TextAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
@@ -399,10 +399,10 @@ export const WordCardLevel = (props) => {
     //panResponder
     const cardPan = useRef(PanResponder.create({
         onStartShouldSetPanResponder:() => true,
-        onPanResponderMove:(_,{dx})=>{cardPosition.setValue(dx)},
+        onPanResponderMove:(_,{dx})=>{cardPosition.setValue(dx), console.log(dx)},
         onPanResponderGrant:()=>{cardPressIn.start();},
         onPanResponderRelease:(_,{dx})=>{ 
-            if(dx < -180){
+            if(dx < -100){
                 playSound(require("../asset/audio/CardPass.mp3"))
                 {props.level == "word2LV" && (
                     setTimeout(function(){
@@ -416,7 +416,7 @@ export const WordCardLevel = (props) => {
                     distractorContainervisible,
                     distractorContainerScaleMax, 
                 ]).start(onDismiss, Animated.parallel([distractorOpacityUp]).start());
-            }else if(dx > 180){
+            }else if(dx > 100){
                 playSound(require("../asset/audio/CardPass.mp3"))
                 {props.level == "word2LV" && (
                     setTimeout(function(){

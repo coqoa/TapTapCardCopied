@@ -17,6 +17,7 @@ const Container = styled.View`
     justify-content: center;
     align-items: center;
     flex: 1;
+     background-color: ${colors.bgColor};
 `
 const GreetingShell = styled.View`
     width: 100%;

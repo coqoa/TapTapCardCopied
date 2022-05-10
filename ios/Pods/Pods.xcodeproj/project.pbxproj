@@ -25015,8 +25015,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BEEBF816BB724392ECAC43898187F31C /* Build configuration list for PBXNativeTarget "EXAV" */;
 			buildPhases = (
-				911C0DF05CC763AB3C74B3C0018416CD /* Sources */,
 				975BAA215C59C39980DE7E37F5919695 /* Headers */,
+				911C0DF05CC763AB3C74B3C0018416CD /* Sources */,
 				878F918441443BE52930870DEEA9EAC3 /* Frameworks */,
 			);
 			buildRules = (
@@ -25462,8 +25462,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75878CD89CDAE8840AB4A3EAB7C2A0A3 /* Build configuration list for PBXNativeTarget "ExpoModulesCore" */;
 			buildPhases = (
-				78B282AAB7E9F34037EDD0C284F2966F /* Sources */,
 				FB5084445B9EDEB30F6491BDFCD404FB /* Headers */,
+				78B282AAB7E9F34037EDD0C284F2966F /* Sources */,
 				2B038E2759BC9D0BC746F2503678221D /* Frameworks */,
 				48635DEE1A498BE8184BAE98D9DA8C98 /* Copy generated compatibility header */,
 			);

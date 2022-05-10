@@ -1,5 +1,6 @@
 export const colors = {
-    bgColor : "#F9EBEB",
+    // bgColor : "#F9EBEB",
+    bgColor : "#ffffff",
     mainBgColor : "#D3F3FF",
     mainBgColor : "#00a8ff",
 

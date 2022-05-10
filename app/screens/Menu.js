@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Platform, Animated, Pressable, View, Text, Button, TouchableOpacity} from "react-native";
 import { Audio } from 'expo-av';
 import { colors } from "../component/Color";
+import {Ionicons, MaterialIcons} from "@expo/vector-icons";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -11,6 +12,7 @@ const BG = styled.View`
     flex: 1;
     width: 100%;
     height: 100%;
+    top: 10px;
     justify-content: center;
     align-items: center;
     background-color: ${colors.bgColor};
@@ -93,8 +95,20 @@ const WordSelectTitleText = styled(WordSelectText)`
     color: ${colors.REALDARKGRAY};
     margin-bottom: 10px;
 `
-const FullAdBtn = styled.Button`
-    z-index: 100;
+const LogoutBtn = styled.TouchableOpacity`
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background-color: wheat;
+    width: 80px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+`
+const LogoutText = styled(WordSelectText)`
+    font-size: 22;
+    color: ${colors.REALDARKGRAY};
 `
 // -------------------------------------------------------------------------------------------------
 const Menu = ({navigation}) => {
@@ -196,7 +210,7 @@ const Menu = ({navigation}) => {
     {/* <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch"> */}
 
         <MenuBoxShell>
-            <TouchableOpacity style={{position:"absolute", left:-10, top:20}} onPress={()=>{logout(), console.log('로그아웃')}}><Text>로그아웃</Text></TouchableOpacity>
+            <LogoutBtn onPress={()=>{logout()}}><LogoutText>로그아웃</LogoutText></LogoutBtn>
             
             {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ganada.png"),colors.LIGHTPINK)}
             {btnFunc(languageBtnAnimation,"Language",require("../asset/images/ABC.png"),colors.LIGHTPASTELORANGE)}

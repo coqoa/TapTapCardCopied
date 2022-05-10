@@ -3,6 +3,7 @@ import * as Font from "expo-font"
 import AppLoading from 'expo-app-loading';
 import React, { useState, useEffect, useCallback } from 'react';
 import {View, ActivityIndicator} from "react-native";
+import { StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SplashScreen from 'react-native-splash-screen';
 import InStack from './app/navigators/InStack';

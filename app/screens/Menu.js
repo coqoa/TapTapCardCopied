@@ -12,7 +12,6 @@ const BG = styled.View`
     flex: 1;
     width: 100%;
     height: 100%;
-    top: 10px;
     justify-content: center;
     align-items: center;
     background-color: ${colors.bgColor};
@@ -107,7 +106,7 @@ const LogoutBtn = styled.TouchableOpacity`
     border-radius: 10px;
 `
 const LogoutText = styled(WordSelectText)`
-    font-size: 22;
+    font-size: 22px;
     color: ${colors.REALDARKGRAY};
 `
 // -------------------------------------------------------------------------------------------------
@@ -212,13 +211,13 @@ const Menu = ({navigation}) => {
         <MenuBoxShell>
             <LogoutBtn onPress={()=>{logout()}}><LogoutText>로그아웃</LogoutText></LogoutBtn>
             
-            {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ganada.png"),colors.LIGHTPINK)}
-            {btnFunc(languageBtnAnimation,"Language",require("../asset/images/ABC.png"),colors.LIGHTPASTELORANGE)}
-            {btnFunc(numberBtnAnimation,"Number",require("../asset/images/123.png"),colors.LIGHTSKYBLUE)}
+            {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ganada.png"),colors.PINKSKY)}
+            {btnFunc(languageBtnAnimation,"Language",require("../asset/images/ABC.png"),colors.BEIGE)}
+            {btnFunc(numberBtnAnimation,"Number",require("../asset/images/123.png"),colors.BLUESKY)}
 
             <MenuBox
                 style={{
-                    backgroundColor:colors.LIGHTPASTELGREEN,
+                    backgroundColor:colors.GREENSKY,
                     transform: [{scale:wordPlayBtnAnimation}], 
                     shadowColor: "black",
                     shadowOpacity: 0.1,

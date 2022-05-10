@@ -114,11 +114,11 @@ const CardNameModalText = styled(CardNameText)``
 
 const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
-    width: 60%;
-    height: 50%;
-    border-radius: 150px;
+    width: 90%;
+    height: 60%;
+    border-radius: 80px;
     z-index: 1;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0.5);
 `
 const TextAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;

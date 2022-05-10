@@ -265,7 +265,7 @@ export const Alphabet = [
     {
         "id" : "emptyPage1", 
         "nameKOR" : "",
-        "image" : require("../images/Alphabet/Z.png"), 
+        "image" : require("../images/transparent.png"), 
         "bgColor" : "transparent",
         "cardBgColor" : colors.mainBgColor,
         "textColor" : "transparent",
@@ -273,7 +273,7 @@ export const Alphabet = [
     {
         "id" : "emptyPage2", 
         "nameKOR" : "",
-        "image" : require("../images/Alphabet/Z.png"), 
+        "image" : require("../images/transparent.png"), 
         "bgColor" : "transparent",
         "cardBgColor" : colors.mainBgColor,
         "textColor" : "transparent",

@@ -88,7 +88,8 @@ const ValidationText = styled.Text`
     font-family: "SDChild";
 `
 // ------------------------------------------------------------------
-const Login = ({navigation}) => {
+
+const Login = () => {
     const PasswordInput = useRef()
     const [navCheck, setNavCheck] = useState("Login")
     const [email, setEmail] = useState("");
@@ -101,7 +102,7 @@ const Login = ({navigation}) => {
         PasswordInput.current.focus();
     }
 
-    // 로그인을 진행하는 함수
+// 로그인 함수
     const loginEditing = async() => {
         playSound(require("../asset/audio/btnClickSound.mp3"))
         //ActivityIndicator컴포넌트 출력
@@ -115,12 +116,12 @@ const Login = ({navigation}) => {
                 // 입력값이 공백이 아니면 로그인
                 await auth().signInWithEmailAndPassword(email, password)
             }else{
-                // 입력값이 공백이라면 유효성 체크 메시지 출력
+                // 입력값이 공백이라면 메시지 출력
                 setLoading(false)
                 setValidation('칸을 채워주세요')
             }
         }catch(e){
-            // 에러 발생시 에러이유를 유효성 체크 메시지로 출력
+            // 에러 발생시 에러이유를 메시지로 출력
             setLoading(false)
             switch(e.code){
                 case "auth/invalid-email" : {
@@ -142,7 +143,7 @@ const Login = ({navigation}) => {
         }
     }
 
-// 회원가입 버튼
+// 회원가입 함수
     const signupEditing = async() => {
         playSound(require("../asset/audio/btnClickSound.mp3"))
         setLoading(true)
@@ -160,13 +161,13 @@ const Login = ({navigation}) => {
             setLoading(false)
             switch(e.code){
                 case "auth/email-already-in-use" : {
-                     return setValidation('이미 사용중인 이메일입니다.')
+                    return setValidation('이미 사용중인 이메일입니다.')
                 }
                 case "auth/invalid-email" : {
                     return setValidation('이메일을 입력해주세요')
                 }
                 case "auth/weak-password" : {
-                     return setValidation('안전하지 않은 비밀번호입니다.\n다른 비밀번호를 사용해 주세요.')
+                    return setValidation('안전하지 않은 비밀번호입니다.\n다른 비밀번호를 사용해 주세요.')
                 }
                 case "auth/operation-not-allowed" : {
                     return setValidation('operation-not-allowed \n관리자에게 문의하세요 ')
@@ -175,7 +176,7 @@ const Login = ({navigation}) => {
             console.log("error1 = ", e.code)
         }
     }
-    //Login인지 Signup인지 확인 후 버튼에 쓰이는 함수를 나눠줌 
+//로그인인지 회원가입인지 확인 후 버튼에 함수 할당
     const btnAlloter = () => {
         if(navCheck == "Login"){
             return loginEditing
@@ -183,7 +184,7 @@ const Login = ({navigation}) => {
             return signupEditing
         }
     }
-    // 오디오출력 관련 함수
+// 오디오출력 관련 함수
     function playSound(sound){
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
         ).then((res)=>{
@@ -191,15 +192,13 @@ const Login = ({navigation}) => {
                 if(!status.didJustFinish) return;
                 res.sound.unloadAsync().catch(()=>{});
             });
-        }).catch((error)=>{});
+        }).catch((e)=>{console.log(e)});
     }
-
-    
 
     return(
     <Container>
         <GreetingShell style={{transform:[{scale:3}]}}>
-            {/* 로그인/회원가입 TextInput 상단 LottieAnimation */}
+            {/* 로그인/회원가입 상단 LottieAnimation */}
             {navCheck == "Login" ? (<Greeting />):(<GreetingNavy />)}
         </GreetingShell>
         <Contents>
@@ -239,7 +238,7 @@ const Login = ({navigation}) => {
                 </ValidationShell>
 
                 {navCheck=="Login" ? (
-                    // 로그인 관련 버튼
+                // 로그인 관련 버튼
                 <>
                     <Btn onPress = {loginEditing} style={{backgroundColor : navCheck == "Login" ? "#EC705E" : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>로그인</BtnText>}
@@ -250,10 +249,10 @@ const Login = ({navigation}) => {
                     )}
                 </>
                 ):(
-                    // 회원가입 관련 버튼
-                    <Btn onPress = {signupEditing} style={{backgroundColor : navCheck == "Signup" ? colors.NAVY : "lightgray"}}>
-                        {loading ? <ActivityIndicator color="white"/> : <BtnText>회원가입</BtnText>}
-                    </Btn>
+                // 회원가입 관련 버튼
+                <Btn onPress = {signupEditing} style={{backgroundColor : navCheck == "Signup" ? colors.NAVY : "lightgray"}}>
+                    {loading ? <ActivityIndicator color="white"/> : <BtnText>회원가입</BtnText>}
+                </Btn>
                 )}
             </Main>
         </Contents>

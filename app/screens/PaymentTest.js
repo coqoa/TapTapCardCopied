@@ -8,13 +8,11 @@ import {
   Input,
   ScrollView,
   Stack,
-  Switch,
   Text,
 } from 'native-base';
 import Picker from '../component/paymentComponent/Pickers';
 import { PGS, TIER_CODES } from '../component/paymentComponent/constants';
 import { getMethods, getQuotas } from '../component/paymentComponent/utils';
-// import { IMPConst } from 'lib/module';
 import { IMPConst } from 'iamport-react-native';
 
 export default function PaymentTest({ navigation }) {
@@ -37,8 +35,6 @@ export default function PaymentTest({ navigation }) {
   const TextArea = styled.Text`
     padding: 6px;
     border-radius: 3px;
-    /* margin: 10px 15px; */
-    /* margin-left: 15px; */
     color:${colors.GRAY};
     border: 1px solid lightgray;
   `

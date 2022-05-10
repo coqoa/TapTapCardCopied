@@ -1,6 +1,5 @@
 import {React, useState, useEffect} from 'react';
 import styled from "styled-components/native";
-import { colors } from '../component/Color';
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -47,14 +46,6 @@ export default function PaymentResult({ route, navigation }) {
   const merchant_uid = route.params.merchant_uid;
   const error_msg = route.params.error_msg;
 
-  // [WARNING: 이해를 돕기 위한 것일 뿐, imp_success 또는 success 파라미터로 결제 성공 여부를 장담할 수 없습니다.]
-  // 아임포트 서버로 결제내역 조회(GET /payments/${imp_uid})를 통해 그 응답(status)에 따라 결제 성공 여부를 판단하세요.
-  // const isSuccess = !(
-  //   imp_success === 'false' ||
-  //   imp_success === false ||
-  //   success === 'false' ||
-  //   success === false
-  // )
   const [isSuccess, setIsSuccess] = useState(false)
   const PaymentUserCollection = firestore().collection('PaymentUsers');
   const [userEmail, setUserEmail] = useState(auth()._user.email); 
@@ -68,6 +59,8 @@ export default function PaymentResult({ route, navigation }) {
   
   const [defaultAmount, setDefaultAmount] = useState('')
   const [paymentAmount, setPaymentAmount] = useState('')
+
+  // 결제금액 위변조를 방지하기 위해 firestore에 저장된 금액과 결제금액이 일치하는지 대조하기 위해 defaultAmount state를 사용한다
   const dbAmount = firestore().collection('Amount');
   useEffect(()=>{
     dbAmount.get().then((res)=>{
@@ -78,8 +71,8 @@ export default function PaymentResult({ route, navigation }) {
     })
   },[])
 
+  //아임포트의 getToken api를 통해 accessToken을 얻는다
   const [accessToken, setAccessToken] = useState() 
-
   useEffect(()=>{
     const getToken = axios({
       url: "https://api.iamport.kr/users/getToken",
@@ -92,8 +85,8 @@ export default function PaymentResult({ route, navigation }) {
     })
     .then(function(res) {
       const { access_token } = res.data.response; // 인증 토큰
-      const { now } = res.data.response; // 인증 토큰
-      const { expired_at } = res.data.response; // 인증 토큰
+      const { now } = res.data.response; // 현재 시간
+      const { expired_at } = res.data.response; // 인증 시간
       setAccessToken(access_token)
       // console.log("getToken 성공", access_token);
       // console.log('access_token = ',access_token)
@@ -106,9 +99,8 @@ export default function PaymentResult({ route, navigation }) {
   },[])
   
   useEffect(()=>{
-    // console.log('accessToken',accessToken)
     const getPaymentData = axios({
-      url: `https://api.iamport.kr/payments/${imp_uid}`, // imp_uid 전달
+      url: `https://api.iamport.kr/payments/${imp_uid}`, // imp_uid(결제금액) 전달
       method: "get", // GET method
       headers: {
         "Content-Type": "application/json",
@@ -117,7 +109,7 @@ export default function PaymentResult({ route, navigation }) {
     })
     .then(function(res) {
         const paymentData = res.data.response;
-        // console.log('조회한 결제 정보(내가입력한주문서) paymentData =', paymentData);
+        // = 조회한 결제 정보 (내가입력한주문서)
         const {amount, status} = paymentData;
         setPaymentAmount(toString(amount))
         // console.log('결제액 일치 확인 (일치하지않아서 거래취소됨, 새로고침하면 됐다고 뜸..) : ',amount === parseInt(defaultAmount))
@@ -126,6 +118,7 @@ export default function PaymentResult({ route, navigation }) {
         // console.log(typeof(paymentAmount),paymentAmount)
         // console.log(typeof(defaultAmount),defaultAmount)
         // console.log('------------')
+        // 결제금약와 firestore의 금액이 일치하는지 대조
         if(paymentAmount === defaultAmount){
           createDB()
           setIsSuccess(true)

@@ -9,7 +9,7 @@ import PaymentTest from "../screens/PaymentTest";
 
 const NativeStack = createNativeStackNavigator();
 
-//  Menu와 WordPlay를 Screen으로 가진다, MathPlay 추가할예정
+//  메뉴와 카드본문, 결제관련 스크린을 가진다
 const MenuStack = () => {
     return(
     <NativeStack.Navigator initialRouteName="Menu" screenOptions={{headerShown: false}} >

@@ -25015,8 +25015,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BEEBF816BB724392ECAC43898187F31C /* Build configuration list for PBXNativeTarget "EXAV" */;
 			buildPhases = (
-				975BAA215C59C39980DE7E37F5919695 /* Headers */,
 				911C0DF05CC763AB3C74B3C0018416CD /* Sources */,
+				975BAA215C59C39980DE7E37F5919695 /* Headers */,
 				878F918441443BE52930870DEEA9EAC3 /* Frameworks */,
 			);
 			buildRules = (

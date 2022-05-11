@@ -1006,7 +1006,7 @@ export const WordCardLevel = (props) => {
                                         </>
                                         )}
                                         {props.level !== "word3LV" && (
-                                            <CardNameText style={{fontSize:60}}>{dataName(secondIndex)}</CardNameText>
+                                            <CardNameText style={{fontSize:50}}>{dataName(secondIndex)}</CardNameText>
                                         )}
                                     </CardContents>
                                 )}

@@ -368,7 +368,7 @@ const CardShell = ({route, navigation}) => {
                 <GoBack 
                     {...goBackPan.panHandlers} 
                     style={{transform: [{scale:goBackBtnScale}]}}
-                    onPress={()=>{playSound(require("../asset/audio/btnClickSound.mp3"))}} 
+                    onPress={()=>{playSound(require("../asset/audio/btnClickSound2.mp3"))}} 
                 >
                     <GoBackBtnImage source={require("../asset/images/goBack1.png")} />
                 </GoBack>
@@ -417,7 +417,7 @@ const CardShell = ({route, navigation}) => {
                 {/* 메뉴 버튼 */}
                 <Menu 
                     style={{transform: [{scale:menuBtnScale}]}}
-                    onPress={()=>{playSound(require("../asset/audio/btnClickSound.mp3"))}}
+                    onPress={()=>{playSound(require("../asset/audio/btnClickSound2.mp3"))}}
                     onPressIn={()=>{menuBtnScale.setValue(0.8), menuModalIndex.setValue(2)}}
                     onPressOut={()=>{menuBtnScale.setValue(1)}}
                 >
@@ -441,7 +441,7 @@ const CardShell = ({route, navigation}) => {
             {/* 메뉴버튼 터치시 출력되는 모달 */}
             <MenuModalBg 
             style={{ zIndex: menuModalIndex, opacity: menuModalIndex}}
-            onPressOut={() =>  {menuModalIndex.setValue(0)}}
+            onPressOut={() =>  {menuModalIndex.setValue(0),playSound(require("../asset/audio/btnClickSound2.mp3"))}}
             />
             <MenuModalContainer style={{zIndex: menuModalIndex, opacity: menuModalIndex}}>
                 

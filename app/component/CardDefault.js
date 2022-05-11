@@ -613,7 +613,13 @@ export const WordCardLevel = (props) => {
                         shadowOffset: {height: 2,width: 1,},
                         elevation:3
                     }}
-                    onPressIn={()=>{playSound(correctAudio(d)),clickBlockerFunc()}}
+                    onPressOut={()=>{
+                        playSound(require("../asset/audio/Correct.mp3")),
+                        setTimeout(function(){
+                            playSound(correctAudio(d))
+                        },600),
+                        clickBlockerFunc()
+                    }}
                 >
                     <DistractorText style={{opacity:distractorOpacity}}>{dataName(d)}</DistractorText>
                 </Distractor>
@@ -627,7 +633,13 @@ export const WordCardLevel = (props) => {
                     shadowOffset: {height: 2,width: 0,},
                     elevation:3
                 }}
-                onPressIn={()=>playSound(wrongAudio(d))}
+                onPressOut={()=>{
+                    playSound(require("../asset/audio/Wrong.mp3")),
+                    setTimeout(function(){
+                        playSound(wrongAudio(d))
+                    },800)
+                    // wrongPlaySound(wrongAudio(d))
+                }}
                 >
                     <DistractorText style={{opacity:distractorOpacity}}>{dataName(d)}</DistractorText>
                 </Distractor>
@@ -719,29 +731,39 @@ export const WordCardLevel = (props) => {
     
 // function
     //오디오관련
-    const ClickSound = async() => {
-        const sound = new Audio.Sound();
-        try {    
-            await sound.loadAsync(require("../asset/audio/btnClickSound.mp3"));
-            await sound.playAsync();
-            setTimeout(function(){
-                sound.unloadAsync();
-            },200) 
-        } catch (error) {
-            console.log('CardDefault.js ClickSound error = ', error)
-        }
+    // const [sound, setSound] = React.useState();
+    // async function playSound(e) {
+    //     console.log('Loading Sound');
+    //     const { sound } = await Audio.Sound.createAsync(e);
+    //     setSound(sound);
+    //     console.log('Playing Sound');
+    //     await sound.playAsync(); 
+    // }
+    // useEffect(() => {
+    //     return sound
+    //     ? () => {
+    //         console.log('Unloading Sound');
+    //         sound.unloadAsync(); }
+    //     : undefined;
+    // }, [sound]);
+
+    async function playSound(e) {
+        const { sound } = await Audio.Sound.createAsync(e);
+        console.log('Playing Sound');
+        sound.playAsync(); 
+        setTimeout(function(){
+            console.log('Unloading Sound');
+            sound.unloadAsync(); 
+        },1500)
     }
-    function playSound(sound){
-        // console.log('Playing '+sound);\
-        // Audio.Sound.unloadAsync();
-        Audio.Sound.createAsync( sound,{ shouldPlay: true }
-        ).then((res)=>{
-            res.sound.setOnPlaybackStatusUpdate((status)=>{
-                if(!status.didJustFinish) return;
-                // console.log('Unloading '+sound);
-                res.sound.unloadAsync().catch(()=>{});
-            });
-        }).catch((error)=>{});
+    async function wrongPlaySound(e) {
+        const { sound } = await Audio.Sound.createAsync(e);
+        console.log('Playing wrongSound');
+        sound.playAsync(); 
+        setTimeout(function(){
+            console.log('Unloading wrongSound');
+            sound.unloadAsync(); 
+        },1500)
     }
 
     const itemAudio = (e) => {
@@ -929,7 +951,7 @@ export const WordCardLevel = (props) => {
                     <RealPictureContainer style={{zIndex: pictureZIndex, opacity:pictureOpacity, transform:[{scale:pictureContainerScale}]}}>
                         <RealPictureExitBtn  
                             {...pictureClosePan.panHandlers} 
-                            onPressIn={()=>{ClickSound(),setTimeout(function(){setPicture(false)},500) }} 
+                            onPressIn={()=>{playSound(require("../asset/audio/btnClickSound.mp3")),setTimeout(function(){setPicture(false)},500) }} 
                             style={{transform:[{scale:pictureCloseBtnScale}]}}
                         >
                             <RealPictureExitBtnImage source={require("../asset/images/RealPictureExitBtn.png")} resizeMode="contain" />
@@ -1025,7 +1047,7 @@ export const WordCardLevel = (props) => {
                             <RealPictureBtn
                             {...pictureOpenPan.panHandlers}
                             style={{transform:[{scale:pictureBtnScale}]}}
-                            onPressIn={()=>{pictureBtnScale.setValue(0.8), ClickSound(), setPicture(true)}}
+                            onPressIn={()=>{pictureBtnScale.setValue(0.8), playSound(require("../asset/audio/btnClickSound.mp3")), setPicture(true)}}
                             onPressOut={()=>{pictureBtnScale.setValue(1)}}
                             >
                                 <RealPictureBtnBGContainer>

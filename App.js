@@ -5,6 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import SplashScreen from 'react-native-splash-screen';
 import { NativeBaseProvider } from 'native-base';
 import {SSRProvider} from '@react-aria/ssr'; 
+import { StatusBar} from "react-native";
+
 
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -13,6 +15,9 @@ import InStack from './app/navigators/InStack';
 import OutStack from './app/navigators/OutStack'
 
 GoogleSignin.configure({ webClientId: '694781280993-81244ijlf95pvdvn4du0im7ebh456ns1.apps.googleusercontent.com'}) 
+StatusBar.setBackgroundColor("transparent");
+StatusBar.setTranslucent(true);
+StatusBar.setBarStyle("dark-content")
 
 export default function App() {
   const [ready, setReady] = useState(false);

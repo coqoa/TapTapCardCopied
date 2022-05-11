@@ -203,10 +203,10 @@ const Login = () => {
         </GreetingShell>
         <Contents>
             <Nav>
-                <NavBtn onPress={() => {setNavCheck("Login"), setValidation("")}}>
+                <NavBtn onPress={() => {setNavCheck("Login"), setValidation(""), playSound(require("../asset/audio/btnClickSound2.mp3"))}}>
                     <NavBtnText style={{color : navCheck == "Login" ? "black" : "lightgray"}}>로그인</NavBtnText>
                 </NavBtn>
-                <NavBtn onPress={() => {setNavCheck("Signup"), setValidation("")}} >
+                <NavBtn onPress={() => {setNavCheck("Signup"), setValidation(""), playSound(require("../asset/audio/btnClickSound2.mp3"))}} >
                     <NavBtnText  style={{color : navCheck == "Signup" ? "black" : "lightgray"}}>회원가입</NavBtnText>
                 </NavBtn>
             </Nav>

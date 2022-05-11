@@ -176,7 +176,7 @@ const Menu = ({navigation}) => {
 
     return(
     <BG>
-        <LogoutBtn onPress={()=>{logout()}}><FontAwesome5 name="power-off" size={24} color="lightgray" /></LogoutBtn>
+        <LogoutBtn onPress={()=>{logout(), playSound(require("../asset/audio/btnClickSound2.mp3"))}}><FontAwesome5 name="power-off" size={24} color="lightgray" /></LogoutBtn>
         <MenuBoxShell>
             {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ganada.png"),colors.PINKSKY)}
             {btnFunc(languageBtnAnimation,"Language",require("../asset/images/ABC.png"),colors.ORANGESKY)}
@@ -201,7 +201,7 @@ const Menu = ({navigation}) => {
 
         {/* 동물 모달창 세부사항 */}
         {/*  모달컨테이너를 제외한 전체화면 : 터치시 모달 닫기위해 구현 */}
-        <SelectModalBG style={{zIndex:animalModalZIndex, opacity:animalModalZIndex}} onPress={()=>{animalModalZIndex.setValue(0), animalSelectScale.setValue(0)}}>
+        <SelectModalBG style={{zIndex:animalModalZIndex, opacity:animalModalZIndex}} onPress={()=>{animalModalZIndex.setValue(0), animalSelectScale.setValue(0), playSound(require("../asset/audio/btnClickSound1.mp3"))}}>
             <SelectContainer style={{
                 transform:[{scale:animalSelectScale}], 
                 shadowColor: "black",

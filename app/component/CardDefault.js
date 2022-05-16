@@ -1,34 +1,36 @@
-import React, {useState, useEffect, useCallback, useRef} from "react"
+import React, {useState, useEffect, useRef} from "react"
 import { Audio } from 'expo-av';
-import {View, Dimensions, Animated, Pressable, PanResponder, Text, Platform, ActivityIndicator} from "react-native";
+import {View, Dimensions, Animated, Pressable, PanResponder, Text } from "react-native";
 import styled from "styled-components"
 import { colors } from "./Color";
 
+// 파이어베이스
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+//json데이터
 import { AnimalCardArray } from "../asset/data/AnimalCardArray";
 import { KorArrayConsonant, KorArrayVowel } from "../asset/data/WordArrayKOR";
 import { Alphabet } from "../asset/data/Alphabet";
 import { Number } from "../asset/data/Number";
 
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
 
+// 커스텀 컴포넌트
 import AnimalAnimation from "./AnimalAnimation";
 import ClearModal from './ClearModal';
 import QuestionMarkAnimation from './lottieComponent/QuestionMarkAnimation';
 import CorrectAnswer from "./lottieComponent/CorrectAnswer";
 import WrongAnswer from './lottieComponent/WrongAnswer';
 
-//Diemensions
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 const Container = styled.View`
-flex: 1;
+    flex: 1;
     justify-content: center;
     align-items: center;
 `
+// 카드 본문 부분 스타일
 const CardContainer = styled.View`
-    /* flex: 1; */
     width: 100%;
     height: 120%;
     justify-content: center;
@@ -67,7 +69,8 @@ const CardImgShellModal = styled(Animated.createAnimatedComponent(View))`
     /* z-index: 1; */
 `
 const CardImg2 = styled(CardImg)``
-// 카드 텍스트 style
+
+// 카드 내부 텍스트 스타일
 const CardContents = styled(Animated.createAnimatedComponent(View))`
     width: 100%;
     z-index: 15;
@@ -112,14 +115,6 @@ const CardNameModal = styled(Animated.createAnimatedComponent(View))`
 `
 const CardNameModalText = styled(CardNameText)``
 
-const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
-    position: absolute;
-    width: 80%;
-    height: 55%;
-    border-radius: 80px;
-    z-index: 1;
-    background-color: rgba(0,0,0,0);
-`
 const TextAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
     width: 50%;
@@ -127,6 +122,16 @@ const TextAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     border-radius: 80px;
     background-color: rgba(0,0,0,0);
     z-index: 1;
+`
+
+//카드 이미지 부분 스타일
+const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
+    position: absolute;
+    width: 80%;
+    height: 55%;
+    border-radius: 80px;
+    z-index: 1;
+    background-color: rgba(0,0,0,0);
 `
 
 // 동물 2레벨 물음표박스
@@ -172,7 +177,6 @@ const Distractor = styled(Animated.createAnimatedComponent(Pressable))`
     border-radius: 15px;
     justify-content: center;
     align-items: center;
-    /* border: 2px solid ${colors.GRAY}; */
     background-color: rgba(255,255,255, 1);
     z-index: 100;
 `
@@ -186,10 +190,6 @@ const CorrectAnswerContainer = styled(Animated.createAnimatedComponent(View))`
     bottom: 25%;
     width: 100px;
     height: 100px;
-`
-const CorrectAnswerImage = styled.Image`
-    width: 100%;
-    height: 100%;
 `
 const WrongContainer = styled(CorrectAnswerContainer)``
 
@@ -224,7 +224,6 @@ const RealPictureBtn = styled(Animated.createAnimatedComponent(Pressable))`
     align-items: center;
     justify-content: center;
 `
-
 const RealPictureBtnBGContainer = styled.View`
     width: 80%;
     height: 80%;
@@ -236,7 +235,6 @@ const RealPictureBtnBG = styled.Image`
     width: 100%;
     height: 100%;
 `
-
 const RealPictureContainer = styled(Animated.createAnimatedComponent(View))`
     position: absolute;
     align-items: center;
@@ -277,14 +275,6 @@ border-radius: 20px;
 // ---------------------------------------------------------------------------------------------------------------------
 
 export const WordCardLevel = (props) => {
-
-    //카드 로딩
-    // const [loading,setLoading] = useState(true);
-    // useEffect(()=>{
-    //     setTimeout(function(){
-    //         setLoading(false)
-    //     },500)
-    // },[])
 
     //  데이터베이스 이메일체크(결제고객체크)
     const PaymentUserCollection = firestore().collection('PaymentUsers');
@@ -335,16 +325,11 @@ export const WordCardLevel = (props) => {
     //결제멤버/ 미결제 멤버 체크해주는 함수
     //clear모달에서 결제멤버면 다음창으로 미결제멤버면 결제버튼 출력하기
     const memberChecker = (e) => {
-        // if(paymentMember == true){
-        //     return arrayAlloter(e)
-        // }else{
-        //     return arrayAlloter(e).slice(0,8)
-        // }
         return arrayAlloter(e)
     }
     const data = memberChecker(type)
 
-    // AnimatedValues & panResponder ~
+// AnimatedValues & panResponder ~
     // 카드애니메이션 (좌우이동, scale, opacity)
     const position = useRef(new Animated.Value(0)).current;
 
@@ -539,7 +524,8 @@ export const WordCardLevel = (props) => {
         friction:1,
         useNativeDriver:true
     })
-    //선택지 버튼 panResponder
+//선택지 버튼 panResponder
+    // 정답
     const distracttorCorrect = (a,b) => {
         return(
             useRef(PanResponder.create({
@@ -566,7 +552,7 @@ export const WordCardLevel = (props) => {
     const correct2 = distracttorCorrect(btn2PressOn, btn2PressOut)
     const correct3 = distracttorCorrect(btn3PressOn, btn3PressOut)
     const correct4 = distracttorCorrect(btn4PressOn, btn4PressOut)
-
+    // 오답
     const distracttorWrong = (a,b) => {
         return(
             useRef(PanResponder.create({
@@ -599,10 +585,11 @@ export const WordCardLevel = (props) => {
     const wrong2 = distracttorWrong(btn2PressOn, btn2PressOut)
     const wrong3 = distracttorWrong(btn3PressOn, btn3PressOut)
     const wrong4 = distracttorWrong(btn4PressOn, btn4PressOut)
-    // 선택지 정답확인
+// 선택지 정답확인 함수
     const distractorChecker = (a,b,c,d) => {
         return(
             dataName(firstIndex) == dataName(d) ? (
+                //정답
                 <Distractor 
                     {...a.panHandlers} 
                     style={{
@@ -624,6 +611,7 @@ export const WordCardLevel = (props) => {
                     <DistractorText style={{opacity:distractorOpacity}}>{dataName(d)}</DistractorText>
                 </Distractor>
             ):(
+                //오답
                 <Distractor 
                 {...b.panHandlers} 
                 style={{transform:[{scale:c}],
@@ -648,7 +636,7 @@ export const WordCardLevel = (props) => {
     }
     
 
-    // 텍스트 클릭시 출력하는 애니메이션
+// 텍스트 클릭시 출력하는 애니메이션
     const secondTextOpacity = useRef(new Animated.Value(0)).current;
     const secondTextOn = Animated.timing(secondTextOpacity,{
         toValue:1,
@@ -668,8 +656,8 @@ export const WordCardLevel = (props) => {
         }
     })).current
 
-    //실사 애니메이션
-     // 실제사진 모달 관련 애니메이션
+//동물 사진 애니메이션
+     // 동물 사진 모달 관련 애니메이션
     const pictureBtnScale = useRef(new Animated.Value(1)).current
     const pictureContainerScale = useRef(new Animated.Value(0)).current
     const pictureContainerModalOn = Animated.spring(pictureContainerScale,{
@@ -729,24 +717,7 @@ export const WordCardLevel = (props) => {
     const [firstIndex, setFirstIndex] = useState(0);
     const [secondIndex, setSecondIndex] = useState(1);
     
-// function
-    //오디오관련
-    // const [sound, setSound] = React.useState();
-    // async function playSound(e) {
-    //     console.log('Loading Sound');
-    //     const { sound } = await Audio.Sound.createAsync(e);
-    //     setSound(sound);
-    //     console.log('Playing Sound');
-    //     await sound.playAsync(); 
-    // }
-    // useEffect(() => {
-    //     return sound
-    //     ? () => {
-    //         console.log('Unloading Sound');
-    //         sound.unloadAsync(); }
-    //     : undefined;
-    // }, [sound]);
-
+//오디오 재생 관련
     async function playSound(e) {
         const { sound } = await Audio.Sound.createAsync(e);
         console.log('Playing Sound');
@@ -756,16 +727,7 @@ export const WordCardLevel = (props) => {
             sound.unloadAsync(); 
         },1500)
     }
-    async function wrongPlaySound(e) {
-        const { sound } = await Audio.Sound.createAsync(e);
-        console.log('Playing wrongSound');
-        sound.playAsync(); 
-        setTimeout(function(){
-            console.log('Unloading wrongSound');
-            sound.unloadAsync(); 
-        },1500)
-    }
-
+// 오디오에 어떤 데이터를 넣어줄지 너누는 함수
     const itemAudio = (e) => {
         switch(type){
             case "AnimalKOR":
@@ -779,6 +741,7 @@ export const WordCardLevel = (props) => {
             default:
                 return
     }}
+// 동물 3레벨에서 정답시 출력할 데이터
     const correctAudio = (e) => {
         switch(type){
             case "AnimalKOR":
@@ -788,6 +751,7 @@ export const WordCardLevel = (props) => {
             default:
                 return
     }}
+// 동물 3레벨에서 오답시 출력할 데이터
     const wrongAudio = (e) => {
         switch(type){
             case "AnimalKOR":
@@ -799,29 +763,24 @@ export const WordCardLevel = (props) => {
         }
         // return data[e].SoundImage;
     }
-
+// LastListModal이 언제 나올지 결정하는 조건문
     {if(secondIndex == data.length-1){
         lastListModal.setValue(1)
         playSound(require("../asset/audio/LastListModal.mp3"))
         
     }}
     
-    //랜덤배열
-    // console.log(data[0].id)
+// 선택지 랜덤배열
     const numberArray = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     //배열마다 무작위 숫자 부여
     const mapArray = numberArray.map(item => item*Math.floor(Math.random()*(data.length-2)))
-    // console.log(data.length, mapArray)
     // // 동일한 숫자 제거
     const mapArraySort = Array.from(new Set(mapArray))
-    // console.log(mapArraySort)
     // // 해당카드의 id는 제거한다(중복방지)
     const filterMapArray = mapArraySort.filter(function(element){
         return element !== firstIndex
     });
-    // console.log(filterMapArray)
     const numArray =  [data[firstIndex].id, filterMapArray[0], filterMapArray[1], filterMapArray[2]]
-    // console.log(numArray)
     // // 배열 섞기
     function shuffle(array) {
         array.sort(() => Math.random() - 0.5);
@@ -863,7 +822,7 @@ export const WordCardLevel = (props) => {
         )
     }
 
-    // 새로고침
+// 새로고침
     const refreshTimeout = useRef(null); 
     useEffect(()=>{
         refreshTimeout.current = setTimeout(function() {setRefresh(true)},100)
@@ -933,17 +892,16 @@ export const WordCardLevel = (props) => {
         },500)
     }
 
-    //실사이미지
+//동물 사진 이미지
     const PictureImageData = (e) => {
         return(
             <PictureImageShell style={{width:SCREEN_WIDTH}}><PictureImage source={e} resizeMode="cover" /></PictureImageShell>
         )
     }
     
-// 실제 출력되는 부분
+// 여기서부터 실제 화면에 출력되는 부분
     const levelConsole = () => {
         return(
-            // <Container style={{width:SCREEN_WIDTH, height:SCREEN_HEIGHT}}>
             <Container>
                 <ClickBlock style={{zIndex:clickBlockerValue, opacity:clickBlockerValue}} />
                 {/* 실사 모달창 */}

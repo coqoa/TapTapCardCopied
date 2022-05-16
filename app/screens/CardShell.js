@@ -12,7 +12,6 @@ import firestore from '@react-native-firebase/firestore';
 import { BannerAds} from "../component/Ads"
 import { Copyright } from "../component/Copyright";
 
-
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
@@ -188,6 +187,8 @@ const BannerShell = styled.View`
 const CardShell = ({route, navigation}) => {
 
     const [copyrightModal, setCopyrightModal] = useState(false);
+
+    // 콘텐츠 로딩 함수
     const [loading, setLoading] = useState(false);
     const contentsLoading = () => {
         setLoading(true)

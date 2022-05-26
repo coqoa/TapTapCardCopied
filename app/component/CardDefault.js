@@ -1,8 +1,9 @@
 import React, {useState, useEffect, useRef} from "react"
 import { Audio } from 'expo-av';
-import {View, Dimensions, Animated, Pressable, PanResponder, Text } from "react-native";
+import {View, Dimensions, Animated, Pressable, PanResponder, Text, TouchableOpacity } from "react-native";
 import styled from "styled-components"
 import { colors } from "./Color";
+import {Ionicons, MaterialIcons, Entypo, AntDesign} from "@expo/vector-icons";
 
 // 파이어베이스
 import auth from '@react-native-firebase/auth';
@@ -117,21 +118,29 @@ const CardNameModalText = styled(CardNameText)``
 
 const TextAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
     position: absolute;
-    width: 50%;
-    height: 70%;
+    /* right: 20px; */
+    /* bottom: 10px; */
+    width: 130px;
+    height: 50px;
     border-radius: 80px;
-    background-color: rgba(0,0,0,0);
+    align-items: center;
+    justify-content: center;
+    /* background-color: rgba(0,0,0,0.6); */
     z-index: 1;
 `
 
 //카드 이미지 부분 스타일
-const ImageAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
+const ImageAudioBtn = styled(Animated.createAnimatedComponent(TouchableOpacity))`
     position: absolute;
-    width: 80%;
-    height: 55%;
+    bottom: 25px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
     border-radius: 80px;
+    justify-content: center;
+    align-items:center;
     z-index: 1;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(211,211,211,0.7);
 `
 
 // 동물 2레벨 물음표박스
@@ -420,11 +429,11 @@ export const WordCardLevel = (props) => {
                 Animated.parallel([cardPressOut,goCenter]).start();
             }
         },
-        onPanResponderEnd:(_,{dx})=>{
-            if(dx<30 && dx>-30){
-                Animated.sequence([secondImageOn,secondImageOff]).start()
-            }
-        }
+        // onPanResponderEnd:(_,{dx})=>{
+        //     if(dx<30 && dx>-30){
+        //         Animated.sequence([secondImageOn,secondImageOff]).start()
+        //     }
+        // }
     })).current;
     const onDismiss = () => {
         setFirstIndex(prev => prev + 1);
@@ -725,7 +734,7 @@ export const WordCardLevel = (props) => {
         setTimeout(function(){
             console.log('Unloading Sound');
             sound.unloadAsync(); 
-        },1500)
+        },2300)
     }
 // 오디오에 어떤 데이터를 넣어줄지 너누는 함수
     const itemAudio = (e) => {
@@ -891,6 +900,12 @@ export const WordCardLevel = (props) => {
             clickBlockerValue.setValue(0)
         },500)
     }
+    const secondImageFunc = () =>{
+        secondImageOpacity.setValue(1),
+        setTimeout(function(){
+            secondImageOpacity.setValue(0)
+        },800)
+    }
 
 //동물 사진 이미지
     const PictureImageData = (e) => {
@@ -1018,12 +1033,18 @@ export const WordCardLevel = (props) => {
                             {arrayAlloter(type) == AnimalCardArray ? (
                             <>
                                 <AnimalAnimation id={data[firstIndex].id} />
-                                <ImageAudioBtn onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/>
+                                <ImageAudioBtn onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}>
+                                    {/* <Entypo name="sound" size={28} color="lightgray" /> */}
+                                    <AntDesign name="sound" size={30} color="black" />
+                                </ImageAudioBtn>
                             </>
                             ):(
                             <>
                                 <CardImg source={data[firstIndex].image} resizeMode="contain" />
-                                <ImageAudioBtn {...cardPan.panHandlers} onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc()}}/>
+                                <ImageAudioBtn {...cardPan.panHandlers} onPress={()=>{playSound(data[firstIndex].SoundImage),clickBlockerFunc(), secondImageFunc()}}>
+                                    {/* <Entypo name="sound" size={28} color="lightgray" /> */}
+                                    <AntDesign name="sound" size={30} color="black" />
+                                </ImageAudioBtn>
                                 <CardImgShellModal style={{
                                     backgroundColor: data[firstIndex].bgColor, 
                                     opacity:secondImageOpacity}}
@@ -1042,7 +1063,9 @@ export const WordCardLevel = (props) => {
                                 <CardNameText>{dataName(firstIndex)}</CardNameText>
                                 <TextAudioBtn {...secondTextPan.panHandlers}
                                     onPressOut={()=>{playSound(itemAudio(firstIndex)),clickBlockerFunc()}} 
-                                />
+                                >
+                                    {/* <AntDesign name="sound" size={30} color="black" /> */}
+                                </TextAudioBtn>
                                 {/* 터치시 텍스트 색깔을 바꿔주는 모달 */}
                                 <CardNameModal style={{opacity:secondTextOpacity}}>
                                     <CardNameModalText style={{color:data[firstIndex].textColor}}>{dataName(firstIndex)}</CardNameModalText>

@@ -9,8 +9,8 @@ import { WordCardLevel } from "../component/CardDefault";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { BannerAds} from "../component/Ads"
 import { Copyright } from "../component/Copyright";
+import { BannerAds } from "../component/Ads";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -51,7 +51,7 @@ const GoBackBtnImage = styled.Image`
     width: 100%;
     height: 100%;
 `
-const Star = styled.View`
+const Star = styled.Pressable`
     flex: 1;
     height: 40px;
     width: 30%;
@@ -116,17 +116,32 @@ const MenuModalScrollView = styled.ScrollView`
     width: 90%;
     flex:1;
 `
+const ModalDistractor = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 15px;
+    /* background-color: red; */
+`
 const LevelBtn = styled(Animated.createAnimatedComponent(Pressable))`
-    width: 60%;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
+
+    width: 23px;
+    height: 23px;
+    /* align-items: center; */
+    /* justify-content: center; */
     margin: 5px;
     padding: 5px;
-    border-radius: 15px;
-    `
+    border-radius: 5px;
+    border: 2px;
+    background-color: white;
+`
 const ModalMenuText =styled.Text`
-    top: 1px;
+/* background-color: black; */
+    text-align: center;
+    width: 80%;
+    top: 3px;
     font-size: 28px;
     font-family: "SDChild";
     color: white;
@@ -137,11 +152,13 @@ const StarViewImage = styled.ImageBackground`
     height: 100%;
 `
 const PaymentBtn = styled(LevelBtn)`
-    background-color: ${colors.REALDARKGRAY};
+    background-color: white;
 `
 const PaymentText = styled(ModalMenuText)`
-    font-size: 22px;
-    color: ${colors.REALLIGHTGRAY};
+    text-align: center;
+    top: 4px;
+    font-size: 24px;
+    color: white;
 `
 const CopyrightBtn  = styled.TouchableOpacity`
     position: absolute;
@@ -277,19 +294,24 @@ const CardShell = ({route, navigation}) => {
     //숫자 메뉴 모달 선택지 함수
     const distractorFunc = (a,b,c,d) => {
         return (
+            <ModalDistractor 
+                style={{backgroundColor: b}}
+            >
             <LevelBtn 
                 {...a}
-                style={{backgroundColor: b, transform: [{scale:c}]}}
+                style={{borderColor: b, transform: [{scale:c}]}}
                 onPress={()=>{playSound(require("../asset/audio/btnClickSound.mp3"))}}
                 onPressIn={()=>{c.setValue(0.8)}}
                 onPressOut={()=>{c.setValue(1)}}
             >
-                {typeCheckRes !== "Animal" ? (
-                    <ModalMenuText>{d}</ModalMenuText>
-                ):(
-                    <StarViewImage source={d} resizeMode="contain" />
-                )}
-            </LevelBtn>   
+                
+            </LevelBtn> 
+            {typeCheckRes !== "Animal" ? (
+                <ModalMenuText>{d}</ModalMenuText>
+            ):(
+                <StarViewImage source={d} resizeMode="contain" />
+            )}  
+            </ModalDistractor>
         )
     }
 
@@ -357,11 +379,11 @@ const CardShell = ({route, navigation}) => {
         <>
         <Shell>
             {paymentMember == false && (
-            <>
+                <>
                 <BannerShell>
                     <BannerAds />
                 </BannerShell>
-            </>
+                </>
             )}
             <TopContainer>
             <Top>
@@ -375,7 +397,7 @@ const CardShell = ({route, navigation}) => {
                 </GoBack>
                 
                 {/* 상단네비게이션 가운데 레벨표시하는 부분 */}
-                <Star>
+                <Star onPress={()=>{playSound(require("../asset/audio/btnClickSound2.mp3")), menuModalIndex.setValue(3)}}>
                     {typeCheckRes == "Animal" && (
                     <>
                         {(()=>{
@@ -419,7 +441,7 @@ const CardShell = ({route, navigation}) => {
                 <Menu 
                     style={{transform: [{scale:menuBtnScale}]}}
                     onPress={()=>{playSound(require("../asset/audio/btnClickSound2.mp3"))}}
-                    onPressIn={()=>{menuBtnScale.setValue(0.8), menuModalIndex.setValue(2)}}
+                    onPressIn={()=>{menuBtnScale.setValue(0.8), menuModalIndex.setValue(3)}}
                     onPressOut={()=>{menuBtnScale.setValue(1)}}
                 >
                     <MenuBtnImage source={require("../asset/images/MenuBar.png")} />
@@ -449,7 +471,12 @@ const CardShell = ({route, navigation}) => {
                 {typeCheckRes == "Number" ? (
                     <MenuModalScrollView contentContainerStyle = {{alignItems:"center"}}>
                         {paymentMember == false && (
-                            <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}><PaymentText>광고제거하기</PaymentText></PaymentBtn>
+                            <ModalDistractor 
+                                style={{backgroundColor: colors.REALDARKGRAY}}
+                            >
+                                <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}></PaymentBtn>
+                                <PaymentText>광고제거하기</PaymentText>
+                            </ModalDistractor>
                         )}
                         {distractorFunc(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "0~100")}
                         {distractorFunc(number0Pan.panHandlers, colors.WhaleBG, level2Scale, "0~10")}
@@ -466,7 +493,12 @@ const CardShell = ({route, navigation}) => {
                 ):(
                     <MenuModal>
                         {paymentMember == false && (
-                            <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}><PaymentText>광고제거하기</PaymentText></PaymentBtn>
+                            <ModalDistractor
+                                style={{backgroundColor: colors.REALDARKGRAY}}
+                            >
+                                <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}></PaymentBtn>
+                                <PaymentText>광고제거하기</PaymentText>
+                            </ModalDistractor>
                         )}
                         {typeCheckRes == "Animal" && (
                         <>

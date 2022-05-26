@@ -25,7 +25,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>org.name.taptapcard</string>
+				<string>org.name.taptap</string>
 			</array>
 		</dict>
 		<dict>

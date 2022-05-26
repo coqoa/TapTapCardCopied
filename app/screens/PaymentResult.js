@@ -40,14 +40,16 @@ const GoBackText = styled.Text`
   color:white;
 `
 export default function PaymentResult({ route, navigation }) {
-  const imp_success = route.params.imp_success;
-  const success = route.params.success;
+  // const imp_success = route.params.imp_success;
+  // const success = route.params.success;
   const imp_uid = route.params.imp_uid;
-  const merchant_uid = route.params.merchant_uid;
-  const error_msg = route.params.error_msg;
-
+  // const merchant_uid = route.params.merchant_uid;
+  // const error_msg = route.params.error_msg;
+  
+  //결제 성공 / 실패 state
   const [isSuccess, setIsSuccess] = useState(false)
 
+  // 서버에 결제가 완료될 경유 데이터 등록하는 코드
   const PaymentUserCollection = firestore().collection('PaymentUsers');
   const [userEmail, setUserEmail] = useState(auth()._user.email); 
   const createDB = async() =>{

@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import * as Font from "expo-font"
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SplashScreen from 'react-native-splash-screen';
 import { NativeBaseProvider } from 'native-base';
@@ -56,7 +56,7 @@ export default function App() {
         SplashScreen.hide();
       }, 1000); /** 스플래시 시간 조절 (1초) **/
     } catch(e) {
-      console.log(e);
+      // console.log(e); 
     }
     
   },[])
@@ -67,7 +67,8 @@ export default function App() {
         <NavigationContainer>
           {ready && (
           <SafeAreaView style={{flex:1}}>
-            {isLoggedIn ? <InStack /> : <OutStack />}
+            {isLoggedIn ? <MenuStack /> : <OutStack />}
+            {/* <InStack /> */}
             {/* <MenuStack /> */}
           </SafeAreaView>
           )}

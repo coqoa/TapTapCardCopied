@@ -31,7 +31,7 @@ export const BannerAds = () =>{
         mobileAds()
             .setRequestConfiguration({
                 // Update all future requests suitable for parental guidance
-                maxAdContentRating: MaxAdContentRating.PG,
+                maxAdContentRating: MaxAdContentRating.G,
                 // Indicates that you want your content treated as child-directed for purposes of COPPA.
                 tagForChildDirectedTreatment: true,
                 // Indicates that you want the ad request to be handled in a
@@ -43,6 +43,11 @@ export const BannerAds = () =>{
             .then(() => {
                 // Request config successfully set!
                 setShowBanner(true)
+            });
+        mobileAds()
+            .initialize()
+            .then(adapterStatuses => {
+              // Initialization complete!
             });
     },[])
     // console.log('Platform = ',Platform.OS)

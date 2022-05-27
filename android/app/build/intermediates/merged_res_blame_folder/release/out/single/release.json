@@ -220,6 +220,10 @@
         "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/generated/res/react/release/drawable-mdpi/app_asset_images_realpicture_bat4.jpg"
     },
     {
+        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/release/raw_app_asset_audio_btnclicksound2.mp3.flat",
+        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/generated/res/react/release/raw/app_asset_audio_btnclicksound2.mp3"
+    },
+    {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/release/drawable-mdpi_app_asset_images_realpicture_monkey5.jpg.flat",
         "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/generated/res/react/release/drawable-mdpi/app_asset_images_realpicture_monkey5.jpg"
     },
@@ -3332,6 +3336,10 @@
         "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/generated/res/react/release/raw/app_asset_audio_animal_eng_engcrab.mp3"
     },
     {
+        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/release/raw_app_asset_audio_correct.mp3.flat",
+        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/generated/res/react/release/raw/app_asset_audio_correct.mp3"
+    },
+    {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/release/drawable-mdpi_app_asset_images_number_902.png.flat",
         "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/generated/res/react/release/drawable-mdpi/app_asset_images_number_902.png"
     },
@@ -3570,6 +3578,10 @@
     {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/release/drawable-mdpi_app_asset_images_realpicture_chick2.jpg.flat",
         "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/generated/res/react/release/drawable-mdpi/app_asset_images_realpicture_chick2.jpg"
+    },
+    {
+        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/release/raw_app_asset_audio_btnclicksound1.mp3.flat",
+        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/generated/res/react/release/raw/app_asset_audio_btnclicksound1.mp3"
     },
     {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/release/drawable-mdpi_app_asset_images_realpicture_flamingo5.jpg.flat",
@@ -3918,6 +3930,10 @@
     {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/release/drawable-mdpi_app_asset_images_ganada_hieut.png.flat",
         "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/generated/res/react/release/drawable-mdpi/app_asset_images_ganada_hieut.png"
+    },
+    {
+        "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/release/raw_app_asset_audio_wrong.mp3.flat",
+        "source": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/generated/res/react/release/raw/app_asset_audio_wrong.mp3"
     },
     {
         "merged": "/Users/coqoa/Downloads/RN-APP/taptapcard/android/app/build/intermediates/res/merged/release/drawable-mdpi_app_asset_images_number_662.png.flat",

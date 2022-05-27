@@ -126,8 +126,12 @@ export default function PaymentTest({ navigation }) {
           <Input value={name} onChangeText={(value) => setName(value)} />
         </Stack> */}
         <Stack>
-          <FormControl.Label>결제금액</FormControl.Label>
+          <FormControl.Label>결제 금액</FormControl.Label>
           <TextArea>{amount+"원"}</TextArea>
+        </Stack>
+        <Stack>
+          <FormControl.Label>상품 설명</FormControl.Label>
+          <TextArea>광고를 제거하기 위한 상품입니다.</TextArea>
         </Stack>
         {/* <Stack>
           <FormControl.Label>이메일</FormControl.Label>
@@ -136,9 +140,8 @@ export default function PaymentTest({ navigation }) {
             onChangeText={(value) => setBuyerEmail(value)}
           />
         </Stack> */}
-        <Stack>
+        {/* <Stack>
           <FormControl.Label>이름</FormControl.Label>
-          {/* <TextArea>{buyerName}</TextArea> */}
           <Input
             ref={buyerEmailRef}
             value={buyerName}
@@ -149,7 +152,6 @@ export default function PaymentTest({ navigation }) {
         </Stack>
         <Stack>
           <FormControl.Label>전화번호</FormControl.Label>
-          {/* <TextArea>{buyerTel}</TextArea> */}
           <Input
             ref={buyerTelRef}
             value={buyerTel}
@@ -158,10 +160,10 @@ export default function PaymentTest({ navigation }) {
             keyboardType="number-pad"
             onChangeText={(value) => setBuyerTel(value)}
           />
-        </Stack>
+        </Stack> */}
         <Validation>{validationCheck}</Validation>
         <Button
-        style={{marginTop:10, backgroundColor:colors.WhaleBG}}
+        style={{backgroundColor:colors.WhaleBG}}
           onPress={() => {
             const data = {
               params: {
@@ -245,17 +247,18 @@ export default function PaymentTest({ navigation }) {
                 },
               ];
             }
-            {buyerName.length > 1 && buyerTel.length > 7 &&(
-              navigation.navigate('Payment', data)
-            )}
-            {buyerName.length < 2 && (
-              setValidationCheck("이름을 정확히 입력해주세요"),
-              buyerEmailRef.current.focus()
-            )}
-            {buyerTel.length < 8 &&(
-              setValidationCheck("전화번호를 정확히 입력해주세요"),
-              buyerTelRef.current.focus()
-          )}
+            navigation.navigate('Payment', data)
+            // {buyerName.length > 1 && buyerTel.length > 7 &&(
+            //   navigation.navigate('Payment', data)
+            // )}
+            // {buyerName.length < 2 && (
+            //   setValidationCheck("이름을 정확히 입력해주세요"),
+            //   buyerEmailRef.current.focus()
+            // )}
+            // {buyerTel.length < 8 &&(
+            //   setValidationCheck("전화번호를 정확히 입력해주세요"),
+            //   buyerTelRef.current.focus()
+            // )}
           }}
         >
           <Text style={{fontSize:16, color:colors.BEIGE}}>결제하기</Text>

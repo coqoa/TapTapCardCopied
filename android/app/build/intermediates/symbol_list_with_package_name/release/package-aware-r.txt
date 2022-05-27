@@ -2733,7 +2733,10 @@ raw app_asset_audio_animal_kor_korturtle
 raw app_asset_audio_animal_kor_korwolf
 raw app_asset_audio_animal_kor_korwoodpecker
 raw app_asset_audio_btnclicksound
+raw app_asset_audio_btnclicksound1
+raw app_asset_audio_btnclicksound2
 raw app_asset_audio_cardpass
+raw app_asset_audio_correct
 raw app_asset_audio_ganada_a
 raw app_asset_audio_ganada_ba
 raw app_asset_audio_ganada_beo
@@ -2990,6 +2993,7 @@ raw app_asset_audio_number_96
 raw app_asset_audio_number_97
 raw app_asset_audio_number_98
 raw app_asset_audio_number_99
+raw app_asset_audio_wrong
 raw app_asset_fonts_sdchildfundkorea
 raw app_asset_lottie_animal_bat
 raw app_asset_lottie_animal_bear

@@ -368,7 +368,7 @@
 				CODE_SIGN_ENTITLEMENTS = taptapcard/app.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6.0.0;
+				CURRENT_PROJECT_VERSION = 8.0.0;
 				DEVELOPMENT_TEAM = GYH6YN8KF3;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -378,7 +378,7 @@
 				INFOPLIST_FILE = taptapcard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 6.0.0;
+				MARKETING_VERSION = 8.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -402,12 +402,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = taptapcard/app.entitlements;
-				CURRENT_PROJECT_VERSION = 6.0.0;
-				DEVELOPMENT_TEAM = GYH6YN8KF3;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8.0.0;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = taptapcard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 6.0.0;
+				MARKETING_VERSION = 8.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -415,6 +417,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.name.taptap;
 				PRODUCT_NAME = app;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "taptapcard/taptapcard-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

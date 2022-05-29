@@ -34,6 +34,7 @@ const AppleLogin = () => {
         });
         // 2).요청이 성공하면 토큰과 nonce를 추출
         const { identityToken, nonce } = appleAuthRequestResponse;
+        
         if (identityToken) {
             // 3).Firebase `AppleAuthProvider` credential 생성
             const appleCredential = firebase.auth.AppleAuthProvider.credential(identityToken, nonce);

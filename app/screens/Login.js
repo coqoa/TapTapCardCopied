@@ -5,8 +5,8 @@ import {colors} from "../component/Color"
 import { Audio } from 'expo-av';
 
 import auth from '@react-native-firebase/auth';
-import AppleLogin from "../component/firebaseComponent/AppleLogin";
-import GoogleLogin from "../component/firebaseComponent/GoogleLogin";
+// import AppleLogin from "../component/firebaseComponent/AppleLogin";
+// import GoogleLogin from "../component/firebaseComponent/GoogleLogin";
 
 import Greeting from "../component/lottieComponent/Greeting";
 import Welcome from "../component/lottieComponent/Welcome";
@@ -243,10 +243,10 @@ const Login = () => {
                     <Btn onPress = {loginEditing} style={{backgroundColor : navCheck == "Login" ? "#EC705E" : "lightgray"}}>
                         {loading ? <ActivityIndicator color="white"/> : <BtnText>로그인</BtnText>}
                     </Btn>
-                    <GoogleLogin />
+                    {/* <GoogleLogin />
                     {Platform.OS == "ios" && (
                         <AppleLogin />
-                    )}
+                    )} */}
                 </>
                 ):(
                 // 회원가입 관련 버튼

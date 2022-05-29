@@ -364,6 +364,7 @@ const CardShell = ({route, navigation}) => {
     }
 
     const [userEmail, setUserEmail] = useState(auth()._user.email); 
+
     const [paymentMember, setPaymentMember] = useState(false);
     const PaymentUserCollection = firestore().collection('PaymentUsers');
 
@@ -378,13 +379,13 @@ const CardShell = ({route, navigation}) => {
     return(    
         <>
         <Shell>
-            {paymentMember == false && (
-                <>
+            {/* {paymentMember == false && (
+                <> */}
                 <BannerShell>
                     <BannerAds />
                 </BannerShell>
-                </>
-            )}
+                {/* </>
+            )} */}
             <TopContainer>
             <Top>
                 {/* 뒤로가기 버튼 */}
@@ -470,14 +471,14 @@ const CardShell = ({route, navigation}) => {
                 
                 {typeCheckRes == "Number" ? (
                     <MenuModalScrollView contentContainerStyle = {{alignItems:"center"}}>
-                        {paymentMember == false && (
+                        {/* {paymentMember == false && (
                             <ModalDistractor 
                                 style={{backgroundColor: colors.REALDARKGRAY}}
                             >
                                 <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}></PaymentBtn>
                                 <PaymentText>광고제거하기</PaymentText>
                             </ModalDistractor>
-                        )}
+                        )} */}
                         {distractorFunc(numberAllPan.panHandlers, colors.REDORANGE, level1Scale, "0~100")}
                         {distractorFunc(number0Pan.panHandlers, colors.WhaleBG, level2Scale, "0~10")}
                         {distractorFunc(number1Pan.panHandlers, colors.DARKOLIVE, level3Scale, "11~20")}
@@ -492,14 +493,14 @@ const CardShell = ({route, navigation}) => {
                     </MenuModalScrollView>
                 ):(
                     <MenuModal>
-                        {paymentMember == false && (
+                        {/* {paymentMember == false && (
                             <ModalDistractor
                                 style={{backgroundColor: colors.REALDARKGRAY}}
                             >
                                 <PaymentBtn  onPress={()=>{navigation.navigate("PaymentTest")}}></PaymentBtn>
                                 <PaymentText>광고제거하기</PaymentText>
                             </ModalDistractor>
-                        )}
+                        )} */}
                         {typeCheckRes == "Animal" && (
                         <>
                             {distractorFunc(animal1Pan.panHandlers,colors.BLUE,level1Scale,require("../asset/images/Star1.png"))}

@@ -132,15 +132,16 @@ const TextAudioBtn = styled(Animated.createAnimatedComponent(Pressable))`
 //카드 이미지 부분 스타일
 const ImageAudioBtn = styled(Animated.createAnimatedComponent(TouchableOpacity))`
     position: absolute;
-    bottom: 25px;
-    right: 25px;
+    top: 15px;
+    /* bottom: 25px; */
+    /* right: 25px; */
     width: 45px;
     height: 45px;
     border-radius: 80px;
     justify-content: center;
     align-items:center;
     z-index: 1;
-    background-color: rgba(211,211,211,0.7);
+    background-color: rgba(225,225,225,0.5);
 `
 
 // 동물 2레벨 물음표박스

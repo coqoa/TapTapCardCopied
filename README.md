@@ -1,5 +1,14 @@
  # 탭탭카드놀이
 <br/>
+
+다운로드  
+
+[App Store](https://apps.apple.com/us/app/%ED%83%AD%ED%83%AD%EC%B9%B4%EB%93%9C%EB%86%80%EC%9D%B4/id1625563756)   
+
+[Google Play Store](https://play.google.com/store/apps/details?id=com.taptapcard)  
+   
+---   
+   
 <details> 
 	<summary> 탭탭카드놀이 개발 정보 </summary>   
 
@@ -85,7 +94,7 @@ Lottie 애니메이션을 무료 버전만 사용했기에 디자인 통일성�
 </details>
 
 --- 
-<br/>
+<br/>  
 
 #### 탭탭 카드놀이는 유아 단어 학습을 위한 카드놀이 모바일 앱입니다   
 ![Main1](https://user-images.githubusercontent.com/81023768/169139195-ae30ef6d-9a03-4494-b394-cf7c822f1b51.png)

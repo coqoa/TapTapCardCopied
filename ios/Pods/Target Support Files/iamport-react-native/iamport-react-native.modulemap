@@ -1,6 +1,0 @@
-module iamport_react_native {
-  umbrella header "iamport-react-native-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import {colors} from "../Color"
 import {Ionicons} from "@expo/vector-icons";
 
-import auth from '@react-native-firebase/auth';
+import firebase from '@react-native-firebase/auth';
 import { appleAuth } from '@invertase/react-native-apple-authentication';
 
 const SocialSign = styled.TouchableOpacity`
@@ -34,13 +34,14 @@ const AppleLogin = () => {
         });
         // 2).요청이 성공하면 토큰과 nonce를 추출
         const { identityToken, nonce } = appleAuthRequestResponse;
+        
         if (identityToken) {
             // 3).Firebase `AppleAuthProvider` credential 생성
-            const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
+            const appleCredential = firebase.auth.AppleAuthProvider.credential(identityToken, nonce);
         
             // 4). 생성된 `AppleAuthProvider` credential을 사용해서 Firebase인증 요청을 시작한다,
             //     이 예제에서는 `signInWithCredential`이 사용되지만, 기존 사용자와 연결하려면 `linkWithCredential`를 호출할 수 있다
-            const userCredential = await auth().signInWithCredential(appleCredential);
+            const userCredential = await firebase.auth().signInWithCredential(appleCredential);
         
             // 사용자가 로그인되면 모든 Firebase의 `onAuthStateChanged` 리스너가 트리거된다 
             console.log(`Login.js 애플을 통해 인증된 파이어베이스, 유저아이디: ${userCredential.user.uid}`);

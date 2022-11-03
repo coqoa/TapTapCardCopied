@@ -1,18 +1,27 @@
 import { NavigationContainer } from '@react-navigation/native';
 import * as Font from "expo-font"
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SplashScreen from 'react-native-splash-screen';
 import { NativeBaseProvider } from 'native-base';
 import {SSRProvider} from '@react-aria/ssr'; 
+import { Platform, StatusBar} from "react-native";
+
 
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 import InStack from './app/navigators/InStack';
 import OutStack from './app/navigators/OutStack'
+import MenuStack from './app/navigators/MenuStack';
 
 GoogleSignin.configure({ webClientId: '694781280993-81244ijlf95pvdvn4du0im7ebh456ns1.apps.googleusercontent.com'}) 
+
+if(Platform.OS == 'android'){
+  StatusBar.setBackgroundColor("transparent");
+  StatusBar.setTranslucent(true);
+}
+StatusBar.setBarStyle("dark-content")
 
 export default function App() {
   const [ready, setReady] = useState(false);
@@ -47,7 +56,7 @@ export default function App() {
         SplashScreen.hide();
       }, 1000); /** 스플래시 시간 조절 (1초) **/
     } catch(e) {
-      console.log(e);
+      // console.log(e); 
     }
     
   },[])
@@ -58,7 +67,9 @@ export default function App() {
         <NavigationContainer>
           {ready && (
           <SafeAreaView style={{flex:1}}>
-            {isLoggedIn ? <InStack /> : <OutStack />}
+            {isLoggedIn ? <MenuStack /> : <OutStack />}
+            {/* <InStack /> */}
+            {/* <MenuStack /> */}
           </SafeAreaView>
           )}
         </NavigationContainer>

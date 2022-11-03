@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -25,7 +25,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>org.name.taptapcard</string>
+				<string>org.name.taptap</string>
 			</array>
 		</dict>
 		<dict>
@@ -33,12 +33,12 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.694781280993-motoonrlcbhd4br8ambih105khun11hq</string>
+				<string>com.googleusercontent.apps.694781280993-iql541gevh7kr3k0u67da3sh6sloulii</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.0</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kftc-bankpay</string>
@@ -76,6 +76,12 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs Location access for useful advertisement</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs Location access for useful advertisement</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs Location access for useful advertisement</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your microphone</string>
 	<key>UIAppFonts</key>
@@ -84,6 +90,8 @@
 		<string>SDChildfundkoreaTTF.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
+	<string>SplashScreen</string>
+	<key>UIMainStoryboardFile</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

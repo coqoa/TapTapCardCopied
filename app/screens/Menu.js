@@ -1,9 +1,9 @@
-import React,{ useRef, useEffect, useState } from "react";
+import React,{ useRef, useEffect } from "react";
 import styled from "styled-components";
-import {Platform, Animated, Pressable, View, Text, Button, TouchableOpacity} from "react-native";
+import {Animated, Pressable, View} from "react-native";
 import { Audio } from 'expo-av';
 import { colors } from "../component/Color";
-import {Ionicons, MaterialIcons} from "@expo/vector-icons";
+import {FontAwesome5} from "@expo/vector-icons";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -31,19 +31,6 @@ const MenuBox = styled(Animated.createAnimatedComponent(Pressable))`
     align-items: center;
     border-radius: 25px;
 `
-const TextShell = styled.View`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255,255,255,0.5);
-    justify-content: center;
-    align-items: center;
-`
-const MenuText = styled.Text`
-    position: absolute;
-    font-size: 35px;
-    font-family: 'SDChild';
-`
 const MenuImage = styled.Image`
     width: 100%;
     height: 100%;
@@ -57,9 +44,10 @@ const SelectModalBG = styled(Animated.createAnimatedComponent(Pressable))`
     justify-content: center;
 `
 const SelectContainer = styled(Animated.createAnimatedComponent(View))`
-    width: 250px;
-    height: 270px;
+    width: 270px;
+    height: 300px;
     background-color: white;
+    border: 1px solid ${colors.REALLIGHTGRAY};
     border-radius: 20px;
 
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
@@ -96,28 +84,17 @@ const WordSelectTitleText = styled(WordSelectText)`
 `
 const LogoutBtn = styled.TouchableOpacity`
     position: absolute;
-    left: 20px;
-    top: 20px;
-    background-color: wheat;
-    width: 80px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-`
-const LogoutText = styled(WordSelectText)`
-    font-size: 22px;
-    color: ${colors.REALDARKGRAY};
+    left: 10px;
+    top: 10px;
+    z-index: 100;
 `
 // -------------------------------------------------------------------------------------------------
 const Menu = ({navigation}) => {
     function playSound(sound){
-        // console.log('Playing '+sound);
         Audio.Sound.createAsync( sound,{ shouldPlay: true }
         ).then((res)=>{
             res.sound.setOnPlaybackStatusUpdate((status)=>{
                 if(!status.didJustFinish) return;
-                // console.log('Unloading '+sound);
                 res.sound.unloadAsync().catch(()=>{});
             });
         }).catch((error)=>{console.log('Menu = ', error)});
@@ -144,9 +121,6 @@ const Menu = ({navigation}) => {
     //메뉴 버튼 애니메이션 & 실행함수
     const btnFunc = (a,b,c,d) => {
         return(
-        // <MenuBox style={{backgroundColor:colors.SKYBLUE}}>
-        //     <MenuImage source={require("../asset/images/ganada1.png")} resizeMode="contain" />
-        // </MenuBox>
         <MenuBox
             style={{
                 backgroundColor:d,
@@ -161,11 +135,7 @@ const Menu = ({navigation}) => {
             onPressIn={() => {a.setValue(0.9)}}
             onPressOut={() => (BtnClick(b),a.setValue(1))}
         >
-                {/* <MenuText>{c}</MenuText> */}
                 <MenuImage source={c} resizeMode="contain" />
-                {/* <TextShell>
-                    <MenuText>{e}</MenuText>
-                </TextShell> */}
         </MenuBox>
         )
     }
@@ -206,15 +176,11 @@ const Menu = ({navigation}) => {
 
     return(
     <BG>
-    {/* <BG source={require("../asset/images/loginBg.png")} resizeMode="stretch"> */}
-
+        <LogoutBtn onPress={()=>{logout(), playSound(require("../asset/audio/btnClickSound2.mp3"))}}><FontAwesome5 name="power-off" size={24} color="lightgray" /></LogoutBtn>
         <MenuBoxShell>
-            <LogoutBtn onPress={()=>{logout()}}><LogoutText>로그아웃</LogoutText></LogoutBtn>
-            
             {btnFunc(ganadaBtnAnimation,"Ganada",require("../asset/images/ganada.png"),colors.PINKSKY)}
             {btnFunc(languageBtnAnimation,"Language",require("../asset/images/ABC.png"),colors.ORANGESKY)}
             {btnFunc(numberBtnAnimation,"Number",require("../asset/images/123.png"),colors.BLUESKY)}
-
             <MenuBox
                 style={{
                     backgroundColor:colors.GREENSKY,
@@ -230,15 +196,12 @@ const Menu = ({navigation}) => {
                 onPressOut={() => (animalModalZIndex.setValue(2), animalSelectScale.setValue(1) ,wordPlayBtnAnimation.setValue(1))}
             >
                 <MenuImage source={require("../asset/images/BtnAnimal.png")} resizeMode="contain" />
-                {/* <TextShell>
-                    <MenuText>동물</MenuText>
-                </TextShell> */}
             </MenuBox>
         </MenuBoxShell>
 
         {/* 동물 모달창 세부사항 */}
         {/*  모달컨테이너를 제외한 전체화면 : 터치시 모달 닫기위해 구현 */}
-        <SelectModalBG style={{zIndex:animalModalZIndex, opacity:animalModalZIndex}} onPress={()=>{animalModalZIndex.setValue(0), animalSelectScale.setValue(0)}}>
+        <SelectModalBG style={{zIndex:animalModalZIndex, opacity:animalModalZIndex}} onPress={()=>{animalModalZIndex.setValue(0), animalSelectScale.setValue(0), playSound(require("../asset/audio/btnClickSound1.mp3"))}}>
             <SelectContainer style={{
                 transform:[{scale:animalSelectScale}], 
                 shadowColor: "black",

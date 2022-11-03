@@ -40,13 +40,16 @@ const GoBackText = styled.Text`
   color:white;
 `
 export default function PaymentResult({ route, navigation }) {
-  const imp_success = route.params.imp_success;
-  const success = route.params.success;
+  // const imp_success = route.params.imp_success;
+  // const success = route.params.success;
   const imp_uid = route.params.imp_uid;
-  const merchant_uid = route.params.merchant_uid;
-  const error_msg = route.params.error_msg;
-
+  // const merchant_uid = route.params.merchant_uid;
+  // const error_msg = route.params.error_msg;
+  
+  //결제 성공 / 실패 state
   const [isSuccess, setIsSuccess] = useState(false)
+
+  // 서버에 결제가 완료될 경유 데이터 등록하는 코드
   const PaymentUserCollection = firestore().collection('PaymentUsers');
   const [userEmail, setUserEmail] = useState(auth()._user.email); 
   const createDB = async() =>{
@@ -56,9 +59,8 @@ export default function PaymentResult({ route, navigation }) {
         PaymentUserCollection.doc(userEmail).set({email:userEmail,})
     ))
   }
-  
+  // 서버에 저장되어있는 가격
   const [defaultAmount, setDefaultAmount] = useState('')
-  const [paymentAmount, setPaymentAmount] = useState('')
 
   // 결제금액 위변조를 방지하기 위해 firestore에 저장된 금액과 결제금액이 일치하는지 대조하기 위해 defaultAmount state를 사용한다
   const dbAmount = firestore().collection('Amount');
@@ -69,7 +71,7 @@ export default function PaymentResult({ route, navigation }) {
         setDefaultAmount(resAmount)
       })
     })
-  },[])
+  },[accessToken])
 
   //아임포트의 getToken api를 통해 accessToken을 얻는다
   const [accessToken, setAccessToken] = useState() 
@@ -88,10 +90,9 @@ export default function PaymentResult({ route, navigation }) {
       const { now } = res.data.response; // 현재 시간
       const { expired_at } = res.data.response; // 인증 시간
       setAccessToken(access_token)
-      // console.log("getToken 성공", access_token);
-      // console.log('access_token = ',access_token)
-      // console.log('    now      = ', now)
-      // console.log(' expired_at  = ',expired_at)
+      console.log('access_token = ',access_token)
+      console.log('    now      = ', now)
+      console.log(' expired_at  = ',expired_at)
     })
     .catch(function(error) {
       console.log("getToken 실패", error);
@@ -111,24 +112,28 @@ export default function PaymentResult({ route, navigation }) {
         const paymentData = res.data.response;
         // = 조회한 결제 정보 (내가입력한주문서)
         const {amount, status} = paymentData;
-        setPaymentAmount(toString(amount))
         // console.log('결제액 일치 확인 (일치하지않아서 거래취소됨, 새로고침하면 됐다고 뜸..) : ',amount === parseInt(defaultAmount))
-        // ⬇︎ 해결책 : amount값을 string으로 변환해서 새로운 state에 넣은 뒤 서버의 값과 비교
-        // console.log('------------')
-        // console.log(typeof(paymentAmount),paymentAmount)
-        // console.log(typeof(defaultAmount),defaultAmount)
-        // console.log('------------')
+        // 해결책 : amount값을 string으로 변환해서 새로운 state에 넣은 뒤 서버의 값과 비교
+
         // 결제금약와 firestore의 금액이 일치하는지 대조
-        if(paymentAmount === defaultAmount){
-          createDB()
-          setIsSuccess(true)
-          console.log(" getPaymentData 성공", status);
+        if(status == "paid"){
+          if(String(amount) === defaultAmount){
+            createDB(),
+            setIsSuccess(true),
+            console.log("결제성공")
+          }else{
+              console.log("결제실패(금액불일치)")
+          }
+        }else{
+          console.log('결제실패 : 잘못된 값 = ', status)
         }
+        
     })
     .catch(function(error) {
         console.log(" getPaymentData 실패", error);
+        return
     });
-  },[accessToken])
+  },[defaultAmount])
 
   return (
     <Container>

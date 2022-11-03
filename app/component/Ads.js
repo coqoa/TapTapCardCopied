@@ -10,11 +10,28 @@ const BannerShell = styled.View`
 `
 export const BannerAds = () =>{
     const [showBanner, setShowBanner] = useState(false);
+    const [bannerId, setBannerId] = useState('')
+
+    const platformSelect = () =>{        
+        // 개발중이라면 test ID 켜야함
+        // admob test ID
+        setBannerId(TestIds.BANNER)
+
+        //실제 admob ID
+        // if(Platform.OS == 'ios'){
+        //     setBannerId('ca-app-pub-2348793730555023/6387698778')
+        // }else if(Platform.OS == 'android'){
+        //     setBannerId('ca-app-pub-2348793730555023/1584898425')
+        // }
+
+    }
+    // console.log(typeof(bannerId),bannerId)
     useEffect(()=>{
+        platformSelect()
         mobileAds()
             .setRequestConfiguration({
                 // Update all future requests suitable for parental guidance
-                maxAdContentRating: MaxAdContentRating.PG,
+                maxAdContentRating: MaxAdContentRating.G,
                 // Indicates that you want your content treated as child-directed for purposes of COPPA.
                 tagForChildDirectedTreatment: true,
                 // Indicates that you want the ad request to be handled in a
@@ -27,15 +44,21 @@ export const BannerAds = () =>{
                 // Request config successfully set!
                 setShowBanner(true)
             });
+        mobileAds()
+            .initialize()
+            .then(adapterStatuses => {
+              // Initialization complete!
+            });
     },[])
-    // console.log('TestIds = ',TestIds)
+    // console.log('Platform = ',Platform.OS)
+    // console.log('TestIds = ',typeof(TestIds.BANNER), TestIds.BANNER)
     // console.log('BannerAdSize = ',BannerAdSize)
     return(
     <>
         {showBanner && (
             <BannerShell>
                 <BannerAd
-                    unitId={TestIds.BANNER}
+                    unitId={bannerId}
                     size={BannerAdSize.ADAPTIVE_BANNER}
                     requestOptions={{
                         requestNonPersonalizedAdsOnly: true,

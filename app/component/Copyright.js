@@ -38,13 +38,11 @@ export const Copyright = () =>{
         <CopyrightShell>
             <Index>사업자 등록 정보</Index>
             <Title/>
-            <List><Title>상호명</Title><Contents>탭탭카드놀이</Contents></List>
-            <List><Title>대표자 이름</Title><Contents>최병민</Contents></List>
-            <List><Title>연락처</Title><Contents>010-3907-2354</Contents></List>
-            <List><Title>사업장 주소</Title><Contents>서울 강동구 둔촌동 77-83 101호</Contents></List>
-            <List><Title>사업자 등록 번호</Title><Contents>738-04-02362</Contents></List>
-            <List><Title>통신판매업 신고 번호</Title><Contents>2022-서울강동-0781</Contents></List>
+            <List><Contents>모바일 앱에서 구매한 유료 서비스의 환불 정책은 각 스토어 이용 약관을 따르며, 환불 역시 각 스토어에서 직접 관리합니다.</Contents></List>
+            <List><Contents>인앱 구매 관련 모든 문의 사항은 구글 플레이스토어 또는 애플 앱스토어의 고객 지원 채널에 문의하시기 바랍니다.</Contents></List>
+            <List><Contents> 관련 내용 : https://coqoa.tistory.com/74</Contents></List>
             <Title></Title>
+
             <Index>저작권 정보</Index>
             <Title></Title>
             <List><Title>폰트</Title><Contents>초록나무어린이체</Contents></List>

@@ -23,10 +23,10 @@ const PGS = [
     //   value: 'nice',
     //   label: '나이스 정보통신',
     // },
-    {
-      value: 'kakaopay',
-      label: '카카오페이',
-    },
+    // {
+    //   value: 'kakaopay',
+    //   label: '카카오페이',
+    // },
     // {
     //   value: 'kakao',
     //   label: '구 - LG CNS 카카오페이',
@@ -67,10 +67,10 @@ const PGS = [
     //   value: 'naverco',
     //   label: '네이버 체크아웃',
     // },
-    {
-      value: 'naverpay',
-      label: '네이버페이',
-    },
+    // {
+    //   value: 'naverpay',
+    //   label: '네이버페이',
+    // },
     // {
     //   value: 'smilepay',
     //   label: '스마일페이',
